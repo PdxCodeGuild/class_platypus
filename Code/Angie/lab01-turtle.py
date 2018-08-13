@@ -1,4 +1,8 @@
 from turtle import *
+
+fillcolor('orange')
+begin_fill()
+
 #face
 forward(50)
 left(45)
@@ -16,6 +20,7 @@ forward(50)
 left(45)
 forward(50)
 left(45)
+end_fill()
 #body
 forward(25)
 right(90)
