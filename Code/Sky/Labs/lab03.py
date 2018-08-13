@@ -35,5 +35,5 @@ while appExit != bool(True):
         print('Your letter grade is a ' + letterGrade + suffix + '!')
 
     else:
-        appExit = bool(True)
+        appExit = True
 

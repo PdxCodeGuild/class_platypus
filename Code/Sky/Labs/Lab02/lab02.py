@@ -16,11 +16,12 @@ while gameExit != bool(True):
         verbList = input('Please enter a list of 2 verbs separated by commas only ')
         verbA, verbB = verbList.split(',')
         print('There once was a ' + animalA + ' that could be described as ' + adjectiveA + '. '
-                'One day the ' + animalA + ' decided to go to the ' + placeA + '. While ' + verbA + ' a ' + adjectiveB + ' ' + animalB + ' approached'
-                ' the ' + animalA + ' and started ' + verbB + ' towards the ' + animalA + '.')
+              'One day the ' + animalA + ' decided to go to the ' + placeA + '. While ' + verbA + ' a'
+              ' ' + adjectiveB + ' ' + animalB + ' approached'
+              ' the ' + animalA + ' and started ' + verbB + ' towards the ' + animalA + '.')
 
     else:
-        gameExit = bool(True)
+        gameExit = True
 
 
 
