@@ -1,6 +1,7 @@
 # Magic Eight Ball
 # By Skyler Parker
 # Created on 13AUG18
+
 firstMessage = '''                                                                                                       
  \  / _  ._ |_   _. | |       _.  _ |    ._ _   _     _.    _.      _   _ _|_ o  _  ._     _. ._   _| 
   \/ (/_ |  |_) (_| | | \/   (_| _> |<   | | | (/_   (_|   (_| |_| (/_ _>  |_ | (_) | |   (_| | | (_| 
