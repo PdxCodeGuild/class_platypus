@@ -96,17 +96,17 @@ def draw_stick_figure(headLength, headColor, neckLength, bodyLength, legLength, 
 ##### Begin Code #####
 answer = input('Would you like to input your own dimensions? yes or no.')
 
-if answer == "no":
+if answer == 'no':
     draw_stick_figure(headLength, headColor, neckLength, bodyLength, legLength, legAngle, armLength, armAngle)
-elif answer == "yes":
-    headLength = input('Head Length?')
+elif answer == 'yes':
+    headLength = int(input('Head Length?'))
     headColor = input('Head color?')
-    neckLength = input('Neck Length?')
-    bodyLength = input('Body Length?')
-    legLength = input('Leg Length?')
-    legAngle = input('Leg Angle?')
-    armLength = input('Arm Length?')
-    armAngle = input('Arm Angle?')
+    neckLength = int(input('Neck Length?'))
+    bodyLength = int(input('Body Length?'))
+    legLength = int(input('Leg Length?'))
+    legAngle = int(input('Leg Angle?'))
+    armLength = int(input('Arm Length?'))
+    armAngle = int(input('Arm Angle?'))
     draw_stick_figure(headLength, headColor, neckLength, bodyLength, legLength, legAngle, armLength, armAngle)
 else:
     print("It needs to be answered yes or no, please restart program")
