@@ -1,5 +1,5 @@
 
-
+adjective = input('Give me an adjective\n:')
 last_name = input('Give me a last name\n:')
 chair = input('Give me something to sit on\n:')
 food1 = input('Give me a type of food\n:')
@@ -12,4 +12,4 @@ action = input('Give me an action\n:')
 
 
 
-print(f"little miss {last_name} sat on a {chair}, eating her {food1} and {food2}, along came a {spider} who {action} down beside her, and frightened Miss {last_name} away!")
+print(f"{adjective} miss {last_name} sat on a {chair}, eating her {food1} and {food2}, along came a {spider} who {action} down beside her, and frightened Miss {last_name} away!")
