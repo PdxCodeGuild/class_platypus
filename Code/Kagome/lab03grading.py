@@ -9,4 +9,4 @@ elif grades <= 79 and grades >= 70:
 elif grades <= 69 and grades >= 60:
     print('You received an D!')
 elif grades <= 59 and grades >= 0:
-    print('You received have FAILED!')
+    print('You have FAILED!')
