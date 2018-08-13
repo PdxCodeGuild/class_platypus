@@ -4,6 +4,8 @@
 
 from turtle import *
 
+#####Variable#####
+
 #Start Angles
 startAngle = 90
 startlength = 150
@@ -12,6 +14,7 @@ startlength = 150
 
 headAngle = 350
 headLength = 10
+headColor = 'red'
 
 #body lengths
 neckLength = 35
@@ -21,8 +24,10 @@ legAngle = 45
 armLength = 35
 armAngle = 45
 
+#####Begin Code#####
 
 
+#Move to starting location
 penup()
 left(startAngle)
 forward(startlength)
@@ -33,12 +38,16 @@ pendown()
 #Make Head
 angle = 350
 i = 0
+fillcolor(headColor)
+begin_fill()
+
 while i < 36:
     forward(headLength)
     left(headAngle)
     i += 1
     angle -= 10
 
+end_fill()
 penup()
 forward(headLength/2)
 right(90)
