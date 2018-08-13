@@ -42,7 +42,7 @@ def draw_stick_figure(headLength, headColor, neckLength, bodyLength, legLength, 
 
     while i < 36:
         forward(headLength)
-        left(headAngle)
+        right(10)
         i += 1
         angle -= 10
 
