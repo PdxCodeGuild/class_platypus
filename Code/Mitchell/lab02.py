@@ -1,0 +1,31 @@
+print('To start the "Behind The Scenes" Mad Lib...\n')
+
+adjective1 = input('Tell me an adjective:')
+adjective2 = input('Give me another adjective:')
+verbEndingInIng = input('Give me a verb ending in "ing":')
+place = input('Name a place:')
+adjective3 = input('Tell me another adjective:')
+pluralNoun1 = input('Give me a plural noun:')
+pluralNoun2 = input('Tell me another plural noun:')
+verb1 = input('Tell me a verb:')
+adjective4 = input('Give me another adjective:')
+bodyPartPlural = input('Name a plural part of the body:')
+verb2 = input('Give me one more verb:')
+bodyPart =('Name another body part:')
+sillyWord = ('Tell me a silly word:')
+adjective5 = input('Give me one more adjective:')
+pluralNoun3 = input('Tell me one more plural noun:')
+
+print('Your Mad Lib reads...\n')
+
+print('Putting on a newscast might look easy, but it takes a lot of ' + adjective1 + ' work. ')
+print('Go behind the scenes, and you\'ll see dozens of ' + adjective2 + ' workers ' + verbEndingInIng + ' in every direction! ')
+print('Reporters run back and forth between the studio all around (the) ' + place + ' to cover ' + adjective3 +  'stories and interview ' + pluralNoun1 + '. ')
+print('They are joined by videographers who operate handheld ' + pluralNoun2 + ' to capture all the action. ')
+print('The anchors are the people who ' + verb1 + ' behind the news desk and read the stories during the newscast. ')
+print('They have to look ' + adjective4 + ' on air, so they can often be found getting makeup applied to their ' + bodyPartPlural + '. ')
+print('The director tells everyone where and when ' + verb2 + '. It\'s easy to spot a director because he wears a headset on his ' + bodyPart + 'and ')
+print('yells things like "Camera two!" and "Cut to commercial!" and "' + sillyWord + '!" ')
+print('A newscast is live television, so if you make a/an ' + adjective5 + ' mistake, everyone watching at home on their ' + pluralNoun3 + ' will know!')
+
+
