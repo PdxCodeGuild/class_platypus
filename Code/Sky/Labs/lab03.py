@@ -12,7 +12,7 @@ while appExit != bool(True):
     suffix = ''
 
     if menuAnswer == 1:
-        grade = int(input('What did you get on the test?'))
+        grade = int(input('What did you get on the test? '))
 
         remainder = (int(grade) % 10)
         if remainder <= 3:
@@ -21,14 +21,14 @@ while appExit != bool(True):
             suffix = '+'
 
 
-        if grade > 60:
-            letterGrade = 'D'
-        elif grade > 70:
-            letterGrade = 'C'
+        if grade > 90:
+            letterGrade = 'A'
         elif grade > 80:
             letterGrade = 'B'
-        elif grade > 90:
-            letterGrade = 'A'
+        elif grade > 70:
+            letterGrade = 'C'
+        elif grade > 60:
+            letterGrade = 'D'
         else:
             letterGrade = 'F'
             suffix = ''
