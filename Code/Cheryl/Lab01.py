@@ -157,8 +157,10 @@ forward(75)
 
 #go to leg area
 left(angle)
-forward(30)
+forward(35)
 right(angle)
-forward(40)
+forward(80)
+left(angle)
+forward(10)
 
 done()
