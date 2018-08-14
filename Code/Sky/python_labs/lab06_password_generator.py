@@ -16,17 +16,16 @@ def password_generator(length):
 
 
 def picky_password_generator(num_lowercase, num_uppercase, num_numbers):
-    char_list = ''
+    char_list = []
     for i in range(num_lowercase):
-        char_list += random.choice(string.ascii_lowercase)
+        char_list.append(random.choice(string.ascii_lowercase))
     for i in range(num_uppercase):
-        char_list += random.choice(string.ascii_uppercase)
+        char_list.append(random.choice(string.ascii_uppercase))
     for i in range(num_numbers):
-        char_list += random.choice(string.digits)
-    print(char_list)
-    password = list(char_list)
+        char_list.append(random.choice(string.digits))
+    random.shuffle(char_list)
+    password = ''.join(char_list)
     print(password)
-    print(random.shuffle(password))
 
 
 while appExit != bool(True):
