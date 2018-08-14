@@ -1,7 +1,7 @@
 # Random emoticon generator
 import random
 eyes = [':','D','o','$','%',':']
-nose = ['|','i','o']
+nose = ['|','i','^']
 mouth = ['(',')','O','D']
 out_string = ''
 for i in [0,1,2,3]:
