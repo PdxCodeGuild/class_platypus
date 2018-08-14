@@ -10,12 +10,13 @@
 
 
 def get_number():
-    expression = input('\nPlease enter an expression that you would like to have evaluated: ')
-    while True:                   # error handling not working
+
+    while True:
         try:
+            expression = input('\nPlease enter an expression that you would like to have evaluated: ')
             answer = eval(expression)
             break
-        except ValueError:
+        except NameError:
             print('that\'s not a valid expression')
     print('\nYour answer is ' + str(answer))
 

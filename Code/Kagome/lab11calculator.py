@@ -14,8 +14,7 @@ while True:
         print(num1 / num2)
 
     continuecalc = input('Would you like to continue using the calculator? yes(y) or done(d)')
-    if continuecalc == 'y':
-        print(ans)
+
 
     if continuecalc == 'd':
         break
