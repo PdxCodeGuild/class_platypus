@@ -1,9 +1,34 @@
 import string
 import random
+#Ask the user for input
+upperCase = string.ascii_uppercase
+lowerCase = string.ascii_lowercase
+numbers = string.digits
+specialCharacters = string.punctuation
+numUpCase = input('Who many uppercase letters do you want your password to have?')
+numLowCase = input('Who many lowercase letters do you want your password to have?')
+numNums = input('Who many numbers do you want your password to have?')
+numSpec = input('Who many special characters do you want your password to have?')
+#Randomly selects the need number of each type of character
+current = 0
+password = ''
+while current < int(numUpCase):
+ password = password + random.choice(upperCase)
+ current = current + 1
+current = 0
+while current < int(numLowCase):
+ password = password + random.choice(lowerCase)
+ current = current + 1
+current = 0
+while current < int(numNums):
+ password = password + random.choice(numbers)
+ current = current + 1
+current = 0
+while current < int(numSpec):
+ password = password + random.choice(specialCharacters)
+ current = current + 1
+#Randomizes the characters into the final password
+randomPassword = list(password)
+random.shuffle(randomPassword)
+print(''.join(randomPassword))
 
-characters = (string.ascii_letters + string.digits + string.printable)
-length = input('How many characters do you want your password to be?')
-start = 0
-while start < int(length):
- print(random.choice(characters), end='')
- start = start + 1
