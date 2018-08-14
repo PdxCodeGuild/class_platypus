@@ -1,6 +1,5 @@
 import string
 import random
-
 #Ask the user for input
 upperCase = string.ascii_uppercase
 lowerCase = string.ascii_lowercase
@@ -9,7 +8,7 @@ specialCharacters = string.punctuation
 numUpCase = input('Who many uppercase letters do you want your password to have?')
 numLowCase = input('Who many lowercase letters do you want your password to have?')
 numNums = input('Who many numbers do you want your password to have?')
-numSpec = input('Who many uppercase letters do you want your password to have?')
+numSpec = input('Who many special characters do you want your password to have?')
 #Randomly selects the need number of each type of character
 current = 0
 password = ''
