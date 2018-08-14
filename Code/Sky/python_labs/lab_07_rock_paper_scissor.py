@@ -2,17 +2,14 @@
 # By Skyler Parker
 # Created on 14AUG18
 
-# Declare Variable
-app_exit = False
-
-player_score = 0
-
-computer_score = 0
 
 # Import
 import random
 
 # Define Variables and lists
+app_exit = False
+player_score = 0
+computer_score = 0
 computer_answer_list = [1, 2, 3]
 
 
@@ -20,7 +17,9 @@ computer_answer_list = [1, 2, 3]
 def decide(answer):
     global computer_score
     global player_score
+
     computer_answer = random.choice(computer_answer_list)
+
     if computer_answer == 1:
         print('The computer chose Rock')
     elif computer_answer == 2:
