@@ -1,4 +1,5 @@
 #rock paper scissors
+#created by Indu Thekkemeppilly Sivakumar on 14 Aug 2018
 import random
 list = ['rock','paper','scissors']
 player1  = input ("rock or paper or scissors\n")
