@@ -1,6 +1,6 @@
-#Letter Grade
+#Password Generator
 #By Skyler Parker
-#Created on 13AUG18
+#Created on 14AUG18
 
 import random
 import string
@@ -12,19 +12,23 @@ def password_generator(length):
     password = ''
     for i in range(length):
         password += random.choice(string.ascii_letters + string.digits)
+
     print(password)
 
 
 def picky_password_generator(num_lowercase, num_uppercase, num_numbers):
-    char_list = []
+    password = []
     for i in range(num_lowercase):
-        char_list.append(random.choice(string.ascii_lowercase))
+        password.append(random.choice(string.ascii_lowercase))
+
     for i in range(num_uppercase):
-        char_list.append(random.choice(string.ascii_uppercase))
+        password.append(random.choice(string.ascii_uppercase))
+
     for i in range(num_numbers):
-        char_list.append(random.choice(string.digits))
-    random.shuffle(char_list)
-    password = ''.join(char_list)
+        password.append(random.choice(string.digits))
+
+    random.shuffle(password)
+    password = ''.join(password)
     print(password)
 
 
