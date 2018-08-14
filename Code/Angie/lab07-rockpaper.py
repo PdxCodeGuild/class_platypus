@@ -6,7 +6,7 @@ while True:
     user = input('which do you choose? rock, paper or scissors?').lower()
 
     while user not in ['rock', 'paper', 'scissors']:
-        user = input('Which do you choose rock, paper or scissors?')
+        user = input('Which do you choose? rock, paper or scissors?')
 
     if user == 'rock' and compy == 'rock':
         print('rock vs. rock! it is a tie!')
