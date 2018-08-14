@@ -6,6 +6,6 @@ while True:
     expression = x + ops + y
     value = eval(expression)
     print(value)
-    perform = input('Do you want to compute anything else?')
+    perform = input('Do you want to compute anything else?').lower()
     if perform == 'no':
         break
