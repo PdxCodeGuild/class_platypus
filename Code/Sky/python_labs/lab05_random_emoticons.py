@@ -1,4 +1,4 @@
-# Magic Eight Ball
+# Random Emoticon Generator
 # By Skyler Parker
 # Created on 13AUG18
 
