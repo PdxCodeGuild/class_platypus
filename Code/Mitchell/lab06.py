@@ -28,8 +28,7 @@ while current < int(numSpec):
  password = password + random.choice(specialCharacters)
  current = current + 1
 #Randomizes the characters into the final password
-current = 0
-length = int(numUpCase) + int(numLowCase) + int(numNums) + int(numSpec)
-while current < int(length):
- print(random.choice(password), end='')
- current = current + 1
+randomPassword = list(password)
+random.shuffle(randomPassword)
+print(''.join(randomPassword))
+
