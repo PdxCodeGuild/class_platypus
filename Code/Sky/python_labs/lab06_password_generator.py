@@ -37,7 +37,7 @@ while appExit != bool(True):
 
     elif menuAnswer == 2:
         num_lowercase = int(input('How many lowercase letters would you like?'))
-        num_uppercase = int(input('HOw many uppercase letters would you like?'))
+        num_uppercase = int(input('How many uppercase letters would you like?'))
         num_numbers = int(input('How many numbers would you like?'))
         picky_password_generator(num_lowercase, num_uppercase, num_numbers)
 
