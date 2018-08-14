@@ -17,8 +17,6 @@ lc_password = 0
 uc_password = 0
 dig_password = 0
 x = ''
-y = ''
-z = ''
 
 while lc_password < lowercase_int:
     x += random.choice(string.ascii_lowercase)
@@ -26,14 +24,22 @@ while lc_password < lowercase_int:
 
 
 while uc_password < uppercase_int:
-    y += random.choice(string.ascii_uppercase)
+    x += random.choice(string.ascii_uppercase)
     uc_password += 1
 
 while dig_password < digits_int:
-    z += random.choice(string.digits)
+    x += random.choice(string.digits)
     dig_password += 1
 
-print(x + y + z)
+#changes it to a list
+x = list(x)
+#randomly shuffles the list
+random.shuffle(x)
+#joins them back together
+x = ''.join(x)
+print(x)
+
+
 
 #user's number
 # i = int(input("Please enter the number of digits you would like your password to be. > "))
