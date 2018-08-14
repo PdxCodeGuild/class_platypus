@@ -8,16 +8,13 @@ import random
 
 # Define Variables and lists
 app_exit = False
-player_score = 0
-computer_score = 0
 computer_answer_list = [1, 2, 3]
+
+results = {'player': 0, 'computer': 0, 'tie': 0}
 
 
 # define Functions
 def decide(answer):
-    global computer_score
-    global player_score
-
     computer_answer = random.choice(computer_answer_list)
 
     if computer_answer == 1:
@@ -33,15 +30,15 @@ def decide(answer):
         result = int(computer_answer - answer)
         if (result == 1) or (result == -2):
             print('The computer won, boo!')
-            computer_score += 1
+            results['computer'] += 1
         else:
             print('You won!')
-            player_score += 1
+            results['player'] += 1
 
-    print('\nCurrent Score:\nPlayer --- ' + str(player_score) + '\nComputer --- ' + str(computer_score))
+    print('\nCurrent Score:\nPlayer --- ' + str(results['player']) + '\nComputer --- ' + str(results['computer']))
 
 
-while app_exit != bool(True):
+while not app_exit:
     menu_answer = int(input('\nMenu:\n\n1 - Rock\n2 - Paper\n3 - Scissor\n4 - Close Program'))
 
     # Declare Variables
@@ -59,5 +56,4 @@ while app_exit != bool(True):
         app_exit = True
 
     print('\n' + '-' * 28 + '\n')
-
 
