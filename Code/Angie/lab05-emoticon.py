@@ -1,14 +1,21 @@
 import random
 
-emoticon = 0
-while emoticon < 10:
+eyes = ['8', ':', ';', 'X', '|']
+nose = ['-', 'U', '=', 'c', '^']
+mouth = ['D', 'P', ')', '(', 'O']
 
+c = 0
 
-    eyes = ['8', ':', ';', 'X', '|']
-    nose = ['-', 'U', '=', 'c', '^']
-    mouth = ['D', 'P', ')', '(', 'O']
-
+while c < 10:
     emoticon = random.choice(eyes) + random.choice(nose) + random.choice(mouth)
+    c += 1
+
+    if c == 11:
+        break
 
     print(emoticon)
-    emoticon += 1
+
+
+
+
+

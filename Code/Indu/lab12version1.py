@@ -2,16 +2,16 @@
 #created by Indu Thekkemeppilly Sivakumar on 08-14-2018
 import random
 i=0
+print("You have a maximum of 10 guesses")
+comp_num=random.randint(0,10)
 while i<10:
+ print(f"you have {10-i}trials left")
  usernum = int(input("Guess a number between 0,10\n"))
- comp_num=random.randint(0,10)
- print (f"your number is {usernum} and computer's number is {comp_num}")
- count=0
+ print(comp_num)
  if usernum == comp_num:
-     count = count+1
-     print("you guessed correct")
+     print(f"you guessed correct in your {i+1}th try")
+     print(f"the number chosen by computer was {comp_num}")
+     break
  else :
-     print ("Wrong!!")
+     print ("Wrong!! Try again!")
  i=i+1
-print(f"you guessed correct {count} times!")
-
