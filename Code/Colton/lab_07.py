@@ -24,5 +24,3 @@ while True:
     end_game = input (f"Want to play again yes or no? ")
     if end_game != 'yes':
         break
-
-
