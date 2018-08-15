@@ -16,6 +16,10 @@ while True:
     #     value = user * 1000
     # elif input_units =='m':
     #     value = user * 1
+    # elif input_units == 'yd':
+    #     value = user * 0.9144
+    # elif input_units == 'in':
+    #     value = user * 0.0254
 
     value = user * units[input_units]
 
