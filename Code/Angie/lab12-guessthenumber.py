@@ -11,13 +11,16 @@ while True:
     if x == user:
         print(f'Winner Winner Chicken Dinner! You guessed {counter} times')
         break
+    elif x > user:
+        print('Too low!')
+    else:
+        print('Too High!')
 
-    if counter == 10:
+    if counter == 11:
         print('you guessed 10 times! Sorry you lose.')
         break
-
     else:
-        print(f'Sorry try again! You guessed {counter} times')
+        print('Sorry try again!')
 
     perform = input('Do you want to guess again?').lower()
     if perform == 'no':
