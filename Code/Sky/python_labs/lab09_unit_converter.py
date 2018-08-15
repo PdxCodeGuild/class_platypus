@@ -5,7 +5,7 @@
 # Imports
 
 # Define global variables and lists
-units = {"in": 0.0254, "ft": 0.3048, "yd": 0.9144, "m": 1, "mi": 1609.34, "km": 1000}
+units = {"in": 0.0254, "ft": 0.3048, "yd": 0.9144, "m": 1, "mi": 1609.34, "km": 1000, "sky": 0.00001}
 
 
 # Define Functions
