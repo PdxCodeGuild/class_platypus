@@ -52,7 +52,7 @@ while True:
             computer_answer = random_number_generator()
             number_of_guesses += 1
 
-        print('The computer guessed your nuber after ' + str(number_of_guesses) + ' tries!')
+        print('The computer guessed your number after ' + str(number_of_guesses) + ' tries!')
 
 
     else:
