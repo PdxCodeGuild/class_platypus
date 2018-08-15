@@ -20,7 +20,7 @@ while True:
         print('you guessed 10 times! Sorry you lose.')
         break
     else:
-        print(f'Sorry try again!')
+        print('Sorry try again!')
 
     perform = input('Do you want to guess again?').lower()
     if perform == 'no':
