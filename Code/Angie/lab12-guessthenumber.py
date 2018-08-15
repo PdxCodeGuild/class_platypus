@@ -10,10 +10,10 @@ while True:
     user = int(input('Guess the number between 1 and 10\n'))
     counter += 1
     if x == user:
-        print('Winner Winner Chicken Dinner')
+        print(f'Winner Winner Chicken Dinner {counter}')
         break
     else:
-        print('Sorry try again')
+        print(f'Sorry try again {counter}')
 
     perform = input('Do you want to guess again?').lower()
     if perform == 'no':
