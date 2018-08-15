@@ -1,4 +1,4 @@
-# Letter Grade
+# Simple Calculator
 # By Skyler Parker
 # Created on 14AUG18
 
