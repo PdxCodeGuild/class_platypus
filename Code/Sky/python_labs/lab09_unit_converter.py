@@ -1,4 +1,4 @@
-# Letter Grade
+# Unit Converter
 # By Skyler Parker
 # Created on 15AUG18
 
@@ -11,7 +11,6 @@ unit_options = ['in', 'ft', 'yd', 'mi', 'm', 'km']
 
 # Define Functions
 def unit_converter(distance, starting_unit_type, converted_unit_type):
-
     return (distance*units[starting_unit_type])/units[converted_unit_type]
 
 
