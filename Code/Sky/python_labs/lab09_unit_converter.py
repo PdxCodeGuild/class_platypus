@@ -18,7 +18,8 @@ while True:
     menu_answer = int(input('\nMenu:\n\n1 - Convert a new unit of measurement\n2 - Close Program'))
 
     if menu_answer == 1:
-        initial_unit = input('What unit are you converting from? Your options are in, ft, yd, mi, m and km')
+        print(f'What unit are you converting from? Your options are: ', end='')
+        initial_unit = input(', '.join(units.keys()))
         initial_length = float(input('How long is the initial measurement?'))
         target_unit = input('What unit of measurement do you want to convert to?')
 
