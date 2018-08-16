@@ -37,3 +37,11 @@ Below is an example input/output:
 > enter a number, or 'done': done
 average: 4
 ```
+
+## Version 3
+
+Calculate the median and mode as well. The median is the number in the middle when the list is sorted. If there's an even number of numbers, the median is a list of the two numbers in the middle.
+
+## Version 4 (optional)
+
+The mode is the number that occurs the most. There may be multiple modes.
