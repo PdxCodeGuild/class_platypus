@@ -39,24 +39,27 @@ def mode(nums):
     number_count = {}
     for number in nums:
         if number in number_count:
-            print(number_count[number])
             number_count[number] = number_count[number] + 1
         else:
             number_count[number] = 1
 
     mode_numbers = {}
-    median_amount = 0
+    mode_amount = 0
     for number in number_count:
-        if number_count[number] > median_amount:
-            median_amount = number_count[number]
+        if number_count[number] > mode_amount:
+            mode_amount = number_count[number]
 
-    print median amount
+    for number in number_count:
+        if number_count[number] == mode_amount:
+            mode_numbers[number] = mode_amount
 
-
+    print('The mode values are: ', end='')
+    for number in mode_numbers:
+        print(number + ', ', end='')
+    print('\nThe amount of each value in the list you gave is: ' + str(mode_amount))
 
     print('----')
     print(number_count)
-
 
 
 # Program Begins
