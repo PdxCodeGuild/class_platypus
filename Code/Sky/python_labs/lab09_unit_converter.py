@@ -5,7 +5,7 @@
 # Imports
 
 # Define global variables and lists
-units = {"in": 0.0254, "ft": 0.3048, "yd": 0.9144, "m": 1, "mi": 1609.34, "km": 1000}
+units = {"in": 0.0254, "ft": 0.3048, "yd": 0.9144, "m": 1, "mi": 1609.34, "km": 1000, "sky": 0.00001}
 
 
 # Define Functions
@@ -24,7 +24,7 @@ while True:
         target_unit = input('What unit of measurement do you want to convert to?')
 
         if (initial_unit in units) and (target_unit in units):
-            target_length = float(unit_converter(initial_length, initial_unit, target_unit))
+            target_length = unit_converter(initial_length, initial_unit, target_unit)
             print(f"Your final measurement is {target_length}{target_unit}")
         else:
             print('You unit type selections are not valid >.<')
