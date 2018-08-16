@@ -1,2 +1,15 @@
 
-print('hello world!!!')
+
+
+
+
+whatever = 5
+print(whatever)
+
+
+
+
+
+
+
+
