@@ -4,6 +4,7 @@
 
 # Imports
 import random
+import math
 # Define global variables and lists
 
 # Define Functions
@@ -16,13 +17,48 @@ def averages(nums):
         total += float(num)
         num_count += 1
     average = total / num_count
-    print('The average of the numbers you enter is: ' + str(average))
+    print('\nThe average of the numbers you enter is: ' + str(average))
 
 
 def median(nums):
     total = float(0)
     nums.sort()
     print(nums)
+    if len(nums) % 2 == 1:
+        median_loc = math.ceil(len(nums)/2 - 1)
+        print('The median numbers are: ' + nums[median_loc])
+    else:
+        medians = []
+        median_loc = int(len(nums)/2)
+        medians.append(nums[median_loc - 1])
+        medians.append(nums[median_loc])
+        print('The median numbers are: ' + str(medians[0]) + ' and ' + str(medians[1]))
+
+
+def mode(nums):
+    number_count = {}
+    for number in nums:
+        if number in number_count:
+            number_count[number] = number_count[number] + 1
+        else:
+            number_count[number] = 1
+
+    mode_numbers = {}
+    mode_amount = 0
+    for number in number_count:
+        if number_count[number] > mode_amount:
+            mode_amount = number_count[number]
+
+    for number in number_count:
+        if number_count[number] == mode_amount:
+            mode_numbers[number] = mode_amount
+
+    print('The mode values are: ', end='')
+    for number in mode_numbers:
+        print(number + ', ', end='')
+    print('\nThe amount of each value in the list you gave is: ' + str(mode_amount))
+
+
 
 
 # Program Begins
@@ -41,9 +77,9 @@ while True:
             print('\n\nYou entered no numbers, would you like to try again?')
         else:
             print('\n')
-            print(numbers)
-            # averages(numbers)
+            averages(numbers)
             median(numbers)
+            mode(numbers)
 
     else:
         break
