@@ -24,7 +24,7 @@ while True:
         target_unit = input('What unit of measurement do you want to convert to?')
 
         if (initial_unit in units) and (target_unit in units):
-            target_length = float(unit_converter(initial_length, initial_unit, target_unit))
+            target_length = unit_converter(initial_length, initial_unit, target_unit)
             print(f"Your final measurement is {target_length}{target_unit}")
         else:
             print('You unit type selections are not valid >.<')
