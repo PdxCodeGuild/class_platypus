@@ -8,6 +8,23 @@ import random
 
 # Define Functions
 
+
+def averages(nums):
+    total = float(0)
+    num_count = 0
+    for num in nums:
+        total += float(num)
+        num_count += 1
+    average = total / num_count
+    print('The average of the numbers you enter is: ' + str(average))
+
+
+def median(nums):
+    total = float(0)
+    nums.sort()
+    print(nums)
+
+
 # Program Begins
 while True:
     menu_answer = int(input('\nMenu:\n\n1 - Find an average number\n2 - Close Program'))
@@ -25,6 +42,8 @@ while True:
         else:
             print('\n')
             print(numbers)
+            # averages(numbers)
+            median(numbers)
 
     else:
         break
