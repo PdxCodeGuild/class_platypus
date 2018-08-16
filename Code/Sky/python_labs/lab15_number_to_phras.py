@@ -34,8 +34,20 @@ while True:
             hundreds = user_number//100
             tens = (user_number % 100)//10
             ones = user_number % 10
+            print(tens)
+            print('\n\nThe number you entered is spelled ' + ones_place[hundreds] + ' hundred and ', end='')
 
-            print('\n\nThe number you entered is spelled ' + phrases)
+            if 20 <= user_number % 100 <= 99:
+                print(tens_place[tens - 1] + '-' + ones_place[ones])
+
+            elif 10 <= user_number % 100 <= 19:
+                print(teens[user_number % 100 - 11])
+
+            elif 0 <= user_number % 10 <= 10:
+                print(ones_place[user_number % 10])
+
+
+
 
         else:
             print('The number must be 0 - 999; try again')
