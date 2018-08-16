@@ -21,8 +21,9 @@ while True:
             else:
                 numbers.append(num)
         if len(numbers) == 0:
-            print('You entered no numbers, would you like to try again?')
+            print('\n\nYou entered no numbers, would you like to try again?')
         else:
+            print('\n')
             print(numbers)
 
     else:
