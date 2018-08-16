@@ -4,4 +4,4 @@ sum=0
 for i in range(len(nums)):
    sum = sum + nums[i]
 average=sum/len(nums)
-print(average)
+print(f"average of the list{nums} is {average}" )
