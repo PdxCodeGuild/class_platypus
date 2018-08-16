@@ -40,7 +40,7 @@ average: 4
 
 ## Version 3
 
-Calculate the median and mode as well. The median is the number in the middle when the list is sorted. If there's an even number of numbers, the median is a list of the two numbers in the middle. Remember the `sort` method on lists.
+Calculate the median. The median is the number in the middle when the list is sorted. If there's an even number of numbers, the median is a list of the two numbers in the middle. Remember the `sort` method on lists.
 
 ## Version 4 (optional)
 
