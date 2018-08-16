@@ -19,3 +19,10 @@ peaksAndValleys.sort()
 print(peaks)
 print(valleys)
 print(peaksAndValleys)
+#Prints out chart with X's
+for i in range(len(data)):
+    numOfXs = int(data[i])
+    print(str(data[i]) + ': ', end='')
+    for j in range(numOfXs):
+        print('X', end='')
+    print('')
