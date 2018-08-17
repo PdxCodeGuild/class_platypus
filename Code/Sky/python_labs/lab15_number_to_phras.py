@@ -15,12 +15,12 @@ def roman_numeral_conversion(input_number):
 
     if len(str(input_number)) == 4:
         temp_input_number = input_number//1000
-        next_number = input_number%1000
+        next_number = input_number % 1000
         index_add = 6
 
-    if len(str(input_number)) == 3:
+    elif len(str(input_number)) == 3:
         temp_input_number = input_number//100
-        next_number = input_number%100
+        next_number = input_number % 100
         index_add = 4
 
     elif len(str(input_number)) == 2:
