@@ -1,5 +1,5 @@
 abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-message = input("Enter your message to incode. ").upper()
+message = input("Enter your message to encrypt. ").upper()
 rotation = int(input("what rotation do you want? "))
 
 for char in message:
