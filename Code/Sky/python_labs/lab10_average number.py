@@ -17,7 +17,7 @@ def averages(nums):
         total += float(num)
         num_count += 1
     average = total / num_count
-    print('The average of the numbers you enter is: ' + str(average))
+    print('\nThe average of the numbers you enter is: ' + str(average))
 
 
 def median(nums):
@@ -58,8 +58,7 @@ def mode(nums):
         print(number + ', ', end='')
     print('\nThe amount of each value in the list you gave is: ' + str(mode_amount))
 
-    print('----')
-    print(number_count)
+
 
 
 # Program Begins
@@ -78,8 +77,8 @@ while True:
             print('\n\nYou entered no numbers, would you like to try again?')
         else:
             print('\n')
-            # averages(numbers)
-            # median(numbers)
+            averages(numbers)
+            median(numbers)
             mode(numbers)
 
     else:
