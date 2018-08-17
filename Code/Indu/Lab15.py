@@ -2,7 +2,7 @@ ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 
 teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
 tens = ['zero', '10ns', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 
-num = int(input("Enter the number you want?\n"))
+num = int(input("Enter the number you want to convert:\n"))
 if num < 10:
     print(f"The number {num} is {ones[num]}")
 elif num < 20:
