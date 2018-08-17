@@ -4,7 +4,7 @@ english = ['a', 'b', 'c', 'd', 'e', 'f', 'g',  'h', 'i', 'j', 'k', 'l', 'm', 'n'
 rotation = int(input('Enter a number to be used in encyption: '))%26
 rotated = english[rotation:] + english[:rotation]
 final = ''
-entered = input('Enter a string to have it encoded in ROT' + rotation + ': ')
+entered = input('Enter a string to have it encoded in ROT' + str(rotation) + ': ')
 #Loops inputed string and adds the correlating ROT letter to final
 for char in entered:
     for slot in range(len(english)):
