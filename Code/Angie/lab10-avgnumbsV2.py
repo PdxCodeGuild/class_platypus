@@ -16,6 +16,17 @@ while True:
 
 
 
+
+#loop over the indices
+c = 0
+for i in range(len(nums)):
+    c += nums[i]
+
+value = c/len(nums)
+print(value)
+
+
+
 #loop over the indices
 
 

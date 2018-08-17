@@ -74,68 +74,37 @@ def draw(data):
                 row += ' '
         print(row)
 
-# ;_;
-# def let_it_rain_matthew_failure(data):
-#     water = 0
-#     for j in range(max(data), 0, -1):
-#         row = ''
-#         starting_index = 0
-#         while starting_index < len(data):
-#             while data[starting_index] < j and starting_index < len(data):
-#                 starting_index += 1
-#                 print(' ', end='')
-#             print('X')
-#
-#         # while starting_index < len(data):
-#         #     while data[starting_index] >= j:
-#         #         starting_index += 1
-#         #         if starting_index >= len(data):
-#         #             break
-#         #     ending_index = starting_index
-#         #     while data[ending_index] < j:
-#         #         ending_index += 1
-#         #         if ending_index >= len(data):
-#         #             break
-#         #     water += ending_index - starting_index
-#
-#     print(water)
 
+def let_it_rain(x):
+    r = 0
+    for j in range(max(x)):
+        i = 0
+        while i < len(x) and x[i] < j:  # skip over openings on the left
+            i += 1
+        while i < len(x):
+            if x[i] < j:  # trace out a valley
+                i0 = i
+                while i < len(x) and x[i] < j:  # find the other side of the valley
+                    i += 1
+                if i == len(x):  # we went off the right side
+                    break
+                else:  # we reached the other end of a valley
+                    r += i - i0 + 1
+            i += 1
 
-def draw_filled_maggie(data):  # uses a toggle to switch from space to fill
-    graph = ''
-    fill = False
-    water = 0
-    for line in range(max(data)):  # start with line 1, iterate through each line
-        for i in range(len(data)):  # iterate through each space (x value) in the line
-            if data[i] >= (max(data) - line):  # the first line should be the max, second line = max -1
-                graph += ' x '
-                fill = True
-            else:
-                if fill:
-                    graph += ' 0 '
-                    water += 1
-                else:
-                    graph += '   '
-        if line != max(data) - 1:
-            graph += '\n'  # skip a line at the end of each row, except for last line
-        fill = False
-    print(graph)
-    print(data)
-    print('amount of water collected: ', water, 'units')
-
-
+    return r
 
 
 
 def main():
-    data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9, 8, 7, 6, 5, 4]
+    data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
     #print(peaks(data))
     #print(valleys(data))
     draw(data)
     print()
     print()
     print()
-    draw_filled(data)
+    print(let_it_rain(data))
 
 main()
 
