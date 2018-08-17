@@ -9,9 +9,9 @@
 
 
 
-ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+ones = ['and zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
-tens = ['zeroty', 'onety', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+tens = ['and zero', 'one', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 
 
 def get_tens_phrase(num):
@@ -25,13 +25,13 @@ def get_tens_phrase(num):
         if ones_digit == 0:
             return tens[tens_digit]
         else:
-            return tens[tens_digit] + '-' + ones[ones_digit]
+            return tens[tens_digit] + ''+ ones[ones_digit]
 
 def get_hundreds_phrase(num):
     tens_num = num % 100
     hundreds_digit = num // 100
 
-    hundreds_phrase = ones[hundreds_digit]+'-hundred'
+    hundreds_phrase = ones[hundreds_digit]+' hundred'
 
     return hundreds_phrase + ' ' + get_tens_phrase(tens_num)
 
@@ -40,13 +40,13 @@ def get_thousands_phrase(num):
     hundreds_num = num % 1000
     thousands_digit = num // 1000
 
-    thousands_phrase = tens[thousands_digit]+'thousands'
+    thousands_phrase = tens[thousands_digit]+' thousand'
 
     return thousands_phrase + '' + get_hundreds_phrase(hundreds_num)
 
 
 
-num = int(input('what is your numbers? '))
+num = int(input('what is your number? '))
 
 if num < 10:
     print(get_ones_phrase(num))
