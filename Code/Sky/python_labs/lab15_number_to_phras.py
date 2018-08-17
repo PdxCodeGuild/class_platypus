@@ -15,12 +15,12 @@ def roman_numeral_conversion(input_number):
 
     if len(str(input_number)) == 4:
         temp_input_number = input_number//1000
-        next_number = input_number%1000
+        next_number = input_number % 1000
         index_add = 6
 
-    if len(str(input_number)) == 3:
+    elif len(str(input_number)) == 3:
         temp_input_number = input_number//100
-        next_number = input_number%100
+        next_number = input_number % 100
         index_add = 4
 
     elif len(str(input_number)) == 2:
@@ -63,7 +63,6 @@ def roman_numeral_conversion(input_number):
     return converted_number
 
 
-
 # Program Begins
 while True:
     menu_answer = int(input('\nMenu:\n\n1 - Convert Number to Phrase\n2 - Convert to Roman Numeral\n3 - Close Program'))
@@ -102,19 +101,11 @@ while True:
             elif 0 <= user_number % 10 <= 10:
                 print(ones_place[user_number % 10])
 
-
-
-
         else:
             print('The number must be 0 - 999; try again')
 
-
-
-
-
-
     elif menu_answer == 2:
-        user_number = int(input('What number would like converted?'))
+        user_number = int(input('What number, between 1 and 3999, would like converted?'))
         print('The number you enter is written in roman numerals like this: ', end='')
         print(roman_numeral_conversion(user_number))
 
