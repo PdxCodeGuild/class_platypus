@@ -1,9 +1,23 @@
 # Dictionaries with words for each number
 tensDigits = {2: 'twenty', 3: 'thir', 4: 'four', 5: 'fif', 6: 'six', 7: 'seven', 8: 'eigh', 9: 'nine'}
 onesDigits = {0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine'}
-x = 90
-tens_digit = x//10
-ones_digit = x%10
+num = int(input('Enter a number to have it spelt out: '))
+#Cases for four digit numbers
+thousands_digit = num//1000
+if thousands_digit > 0:
+    print(onesDigits[thousands_digit] + ' thousand, ', end='')
+    num = num - (1000 * thousands_digit)
+#Cases for three digit numbers
+hundreds_digit = num//100
+if hundreds_digit > 0:
+    print(onesDigits[hundreds_digit] + ' hundred ', end='')
+    num = num - (100 * hundreds_digit)
+#Define tens_digit after removing hundreds and thousands
+tens_digit = num//10
+ones_digit = num%10
+#Cases for multiples of one hundred
+if tens_digit == 0 and ones_digit == 0:
+    exit()
 #Cases for single digit
 if tens_digit == 0 or tens_digit == '':
     print(onesDigits[ones_digit])
