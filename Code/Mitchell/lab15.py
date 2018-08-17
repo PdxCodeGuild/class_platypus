@@ -2,16 +2,19 @@
 tensDigits = {2: 'twenty', 3: 'thir', 4: 'four', 5: 'fif', 6: 'six', 7: 'seven', 8: 'eigh', 9: 'nine'}
 onesDigits = {0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine'}
 num = int(input('Enter a number to have it spelt out: '))
-hundreds_digit = num//100
-#tens_digit defined bellow
-ones_digit = num%10
+#Cases for four digit numbers
+thousands_digit = num//1000
+if thousands_digit > 0:
+    print(onesDigits[thousands_digit] + ' thousand, ', end='')
+    num = num - (1000 * thousands_digit)
 #Cases for three digit numbers
+hundreds_digit = num//100
 if hundreds_digit > 0:
-    print(hundreds_digit)
     print(onesDigits[hundreds_digit] + ' hundred ', end='')
     num = num - (100 * hundreds_digit)
-#Define tens_digit after removing hundreds digit
+#Define tens_digit after removing hundreds and thousands
 tens_digit = num//10
+ones_digit = num%10
 #Cases for multiples of one hundred
 if tens_digit == 0 and ones_digit == 0:
     exit()
