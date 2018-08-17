@@ -24,5 +24,7 @@ elif num <1000:
         print(f"{ones[hundreds_digit]} hundred")
     elif ones_num ==0:
         print(f"{ones[hundreds_digit]} hundred and {tens[tens_digit]}")
+    elif tens_digit == 0:
+        print(f"{ones[hundreds_digit]} hundred and {ones[ones_num]}")
     else:
         print(f"{ones[hundreds_digit]} hundred and {tens[tens_digit]} {ones[ones_num]}")
