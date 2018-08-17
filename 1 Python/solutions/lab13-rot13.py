@@ -75,3 +75,8 @@ def rotn_v3(text, offset):
             output += char
 
     print(output)
+
+def rotn_v4(text, offset):
+    return ''.join([chr(ord('a')+(ord(c)-ord('a')+offset)%26) if ord(c)>=ord('a') and ord(c)<=ord('z') else chr(ord('A')+(ord(c)-ord('A')+offset)%26) if ord(c)>=ord('A') and ord(c)<=ord('Z') else c for c in text])
+
+
