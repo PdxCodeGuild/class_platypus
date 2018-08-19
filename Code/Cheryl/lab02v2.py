@@ -1,16 +1,18 @@
-#
-# Search the interwebs for an example Mad Lib
-# Ask the user for each word you'll put in your Mad Lib
-# Use string concatenation to put each word into the Mad Lib
-# Make a functional solution that utilizes lists. For example, ask the user for 3 adjectives, separated by commas, then use the .split() function to store each adjective and later use it in your story.
-# Add randomness! Use the random module, rather than selecting which adjective goes where in the story.
+#Lab 2, Mad Lib, with randomness and user choices
+
 import random
-welcome_mess = input("Thanks for visiting Cheryl's Mad Lib! Hit enter to play. ")
+welcome_mess = input("Thanks for visiting Cheryl's Mad Lib \nwhere your input will rewrite a famous \nGeorge Orwell quote! \nHit enter to play. ")
 
 verbs = []
 nouns = []
 adjectives = []
 names = []
+
+#to see if I can get a list item to append itself into three different list items
+for verb in verbs:
+    if verb[0] == ',':
+        print("* " + verb)
+##############################
 
 verbs.append(input("Please enter a verb. >    "))
 verbs.append(input("Please enter another verb. >    "))
@@ -28,7 +30,16 @@ names.append(input("Please enter a name. >    "))
 names.append(input("Please enter another name. >    "))
 
 
-print(verbs, names, nouns, adjectives)
+# {random.choice(verbs)}
+# story = random.randint(1, 3)
+story = 2
+if story == 1:
+    print(f'\n{random.choice(nouns)} {random.choice(verbs)} {random.choice(nouns)}. \n{random.choice(nouns)} {random.choice(verbs)} {random.choice(nouns)}. \n{random.choice(nouns)} {random.choice(verbs)} {random.choice(nouns)}.\n-- {names[0]}\n\nWar is peace. \nFreedom is slavery. \nIgnorance is strength.\n-- George Orwell')
 
-print(f"Here's your Mad Lib! \nWhen {names[0]} starts to {random.choice(verbs)}\n with a {random.choice(adjectives)} {random.choice(nouns)}, {names[1]} \ncomes in and starts to {random.choice(verbs)} under the {random.choice(adjectives)} \n{random.choice(nouns)}. After all is said and\n {random.choice(verbs)}, the {random.choice(adjectives)} {random.choice(nouns)} \ntakes a nice, long {random.choice(verbs)}")
+elif story == 2:
+    print(f'The very concept of \n{random.choice(adjectives)} {random.choice(nouns)} {random.choice(verbs)} fading \nout of the {random.choice(nouns)}. \n{random.choice(verbs)} will pass into {random.choice(nouns)}.\n-- {names[1]}\n\nThe very concept of \nobjective truth is fading \nout of the world. \nLies will pass into history.\n-- George Orwell')
+
+else:
+    print('All animals are equal, \nbut some animals are more \nequal than others.\n-- George Orwell')
+
 
