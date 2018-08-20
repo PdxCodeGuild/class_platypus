@@ -1,6 +1,7 @@
 #lab 20 version 1
 
 user_card_nums = input('What are the digits of your credit card? >  ')
+user_card_nums = list(user_card_nums)
 
 user_card_nums = [int(x) for x in user_card_nums] #converts to an int
 
@@ -19,7 +20,7 @@ print(f'{double_nums} + I\'m double')
 i = 0
 while i < len(double_nums):
     if double_nums[i] > 9:
-         print(f'{double_nums[i] - 9} I am subtract 9')
-         i += 1
+         print(f'{double_nums} {double_nums[i] - 9} I am subtract 9')
+    i += 1
 
 # print(user_card_nums)
