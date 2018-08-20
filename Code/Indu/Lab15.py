@@ -15,7 +15,7 @@ elif num < 100:
     if ones_digit == 0:
         print(tens[tens_digit])
     else:
-        print(tens[tens_digit] + '-' + ones[ones_digit])
+        print(f"{tens[tens_digit]} {ones[ones_digit]}")
 elif num <1000:
     hundreds_digit = num // 100
     tens_digit = (num % 100)//10
