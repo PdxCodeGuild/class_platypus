@@ -16,7 +16,7 @@ while True:
         card_number = input("Enter your credit card number: ")
         card_number = [int(x) for x in card_number]
 
-        if len(card_number) == 16:
+            if len(card_number) == 16:
 
             check_digit = card_number[15]
             card_number = card_number[0:15]
