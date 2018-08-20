@@ -17,8 +17,9 @@ print(f'{double_nums} + I\'m double')
 
 #subtract nine from numbers over 9
 i = 0
-while i < len(double_nums[i] > 9:
-    print(f'{double_nums[i] - 9} I am subtract 9')
-    i += 1
+while i < len(double_nums):
+    if double_nums[i] > 9:
+         print(f'{double_nums[i] - 9} I am subtract 9')
+         i += 1
 
 # print(user_card_nums)
