@@ -33,4 +33,5 @@ print(f'{sum_nums} Sum of the remaining numbers')
 #check second digit of sum with check digit
 if sum_nums%10 == check_digit:
     print('Your card is valid!')
-
+else:
+    print('Your card is not valid.')
