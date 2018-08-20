@@ -21,19 +21,19 @@ while True:
 
         total = first_card + second_card + third_card
 
-        if first_card == 'A' and total <= 11
+        if first_card == 1 and total <= 11:
             total += 10
-        if second_card == 'A' and total <= 11
+        if second_card == 1 and total <= 11:
             total += 10
-        if third_card == 'A' and total <= 11
+        if third_card == 1 and total <= 11:
             total += 10
 
-        print('\nYour current hand is worth: ' + str(first_card + second_card + third_card))
-        if first_card + second_card + third_card > 21:
+        print('\nYour current hand is worth: ' + str(total))
+        if total > 21:
             print('You are already busted!')
-        elif first_card + second_card + third_card == 21:
+        elif total == 21:
             print('Blackjack!')
-        elif first_card + second_card + third_card >= 17:
+        elif total >= 17:
             print('Stay!')
         else:
             print('Hit')

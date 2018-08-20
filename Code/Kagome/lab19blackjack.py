@@ -14,13 +14,13 @@ def main():
     total = card_value(ans1) + card_value(ans2) + card_value(ans3)
 
     if total < 17:
-        print('Hit!')
+        print(f'{total} Hit!')
     elif total < 21:
-        print('Stay!')
+        print(f'{total} Stay!')
     elif total == 21:
-            print('Blackjack!')
+            print(f'{total} Blackjack!')
     else:
-        print('Busted!')
+        print(f'{total} Busted!')
 main()
 
 
