@@ -11,21 +11,15 @@ import math
 
 
 def averages(nums):
-    total = float(0)
-    num_count = 0
-    for num in nums:
-        total += float(num)
-        num_count += 1
-    average = total / num_count
+    average = sum(nums) / len(nums)
     print('\nThe average of the numbers you enter is: ' + str(average))
 
 
 def median(nums):
-    total = float(0)
+    nums = nums.copy
     nums.sort()
-    print(nums)
     if len(nums) % 2 == 1:
-        median_loc = math.ceil(len(nums)/2 - 1)
+        median_loc = math.ceil(len(nums)//2)
         print('The median numbers are: ' + nums[median_loc])
     else:
         medians = []
@@ -39,7 +33,7 @@ def mode(nums):
     number_count = {}
     for number in nums:
         if number in number_count:
-            number_count[number] = number_count[number] + 1
+            number_count[number] += 1
         else:
             number_count[number] = 1
 
