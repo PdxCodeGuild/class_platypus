@@ -20,8 +20,7 @@ while True:
         third_card = card_values[input('What\'s your second card?')]
 
         total = first_card + second_card + third_card
-        print(total)
-        print(first_card)
+
         if first_card == 1 and total <= 11:
             total += 10
         if second_card == 1 and total <= 11:
