@@ -21,7 +21,7 @@ while True:
             check_digit = card_number[15]
             card_number = card_number[0:15]
 
-            card_number.reverse
+            card_number.reverse()
 
             card_number = [x*2 for x in card_number]
 
@@ -37,8 +37,7 @@ while True:
             else:
                 print('This is not a valid card number')
 
-        else:
-            pass
+
 
     else:
         break
