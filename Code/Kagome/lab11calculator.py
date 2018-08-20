@@ -1,6 +1,6 @@
 
 while True:
-    ans = input('What operation would you like to perform? select(+) for add, \nselect(-) for subtract, select(*) formultiple, or (/)for divide(/)')
+    ans = input('What operation would you like to perform? select (+) for add, \nselect (-) for subtract, select (*) for multiplication, or (/) for divide... ')
     num1 = float(input('What is the first number? '))
     num2 = float(input('What is the second number? '))
 

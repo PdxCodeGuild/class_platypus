@@ -19,11 +19,11 @@ elif x < 100:
         print(tens[tens_digit])
     else:
         print(tens[tens_digit] + '-' + digit[ones_digit])
-elif x < 1000:
-    ones_digit = x % 10
-    tens_digit = x // 10
-    hundred_digit = (x // 100) % 10
-    print(digit[ones_digit] + ' ' + hundreds[hundred_digit] + ' ' + tens[tens_digit] + ' ' + digit[ones_digit])
+# elif x < 1000:
+#     ones_digit = x % 10
+#     tens_digit = x // 10
+#     hundred_digit = (x // 100) % 10
+#     print(digit[ones_digit] + ' ' + hundreds[hundred_digit] + ' ' + tens[tens_digit] + ' ' + digit[ones_digit])
 
 
 
