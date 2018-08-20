@@ -6,7 +6,8 @@ user_card_nums = list(user_card_nums)
 user_card_nums = [int(x) for x in user_card_nums] #converts to an int
 
 #pop off last num
-check_digit = user_card_nums.pop()
+check_digit = user_card_nums.pop(-1)
+print(f'check digit {check_digit}')
 
 #reverse
 user_card_nums.reverse()
@@ -20,7 +21,16 @@ print(f'{double_nums} + I\'m double')
 i = 0
 while i < len(double_nums):
     if double_nums[i] > 9:
-         print(f'{double_nums} {double_nums[i] - 9} I am subtract 9')
+        print(f'{double_nums} {double_nums[i] - 9} I am subtract 9')
+        double_nums[i] -= 9
     i += 1
+print(double_nums)
 
-# print(user_card_nums)
+#sum all the numbers
+sum_nums = sum(double_nums)
+print(f'{sum_nums} Sum of the remaining numbers')
+
+#check second digit of sum with check digit
+if sum_nums%10 == check_digit:
+    print('Your card is valid!')
+
