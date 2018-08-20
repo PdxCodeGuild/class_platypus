@@ -15,7 +15,7 @@ check_digit = card.pop(-1)
 #print(check_digit,card)
 card.reverse()
 #print(card)
-for i in range(0,15,2):
+for i in range(0,len(card),2):
       card[i] *=2
 print(card)
 # Subtract nine from numbers over nine
