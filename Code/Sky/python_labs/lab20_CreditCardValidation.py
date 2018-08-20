@@ -25,7 +25,7 @@ while True:
 
             card_number = [x*2 for x in card_number]
 
-            card_number = [x - 9 if x > 9 else x for x in card_number ]
+            card_number = [x - 9 if x > 9 else x for x in card_number]
 
             card_number = sum(card_number)
 
