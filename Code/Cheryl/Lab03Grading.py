@@ -2,26 +2,19 @@
 
 user_grade = int(input("Please enter your number grade: > "))
 
-# to add + and -
-
-singles_digit = user_grade % 10
-if singles_digit < 5:
-    prefix = '-'
-elif singles_digit > 5:
-    prefix = ""
 
 
 if user_grade >= 90:
-    print('Wahoo!!!That\'s an \'A\'' + prefix)
+    print('Wahoo!!!That\'s an \'A\'')
 
 elif user_grade >= 80:
-    print('Nice job! That\'s a \'B\'' + prefix)
+    print('Nice job! That\'s a \'B\'')
 
 elif user_grade >= 70:
-    print('Meh... That\'s a \'C\'' + prefix)
+    print('Meh... That\'s a \'C\'')
 
 elif user_grade >= 60:
-    print('That\'s a \'D\'' + prefix)
+    print('That\'s a \'D\'')
 
 else:
     print('Hide your face! That\'s an \'F\'')
