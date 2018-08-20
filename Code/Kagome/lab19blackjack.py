@@ -7,9 +7,9 @@ def card_value(card):
         return 10
 
 def main():
-    ans1 = input('Pick a card... ')
-    ans2 = input('Pick a second card... ')
-    ans3 = input('Pick a final card... ')
+    ans1 = input('Pick a card... ').upper()
+    ans2 = input('Pick a second card... ').upper()
+    ans3 = input('Pick a final card... ').upper()
 
     total = card_value(ans1) + card_value(ans2) + card_value(ans3)
 
@@ -26,3 +26,4 @@ main()
 
 
 
+#dict = dict(A='11', J='10', K='10', Q='10')
