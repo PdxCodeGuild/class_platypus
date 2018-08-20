@@ -24,5 +24,7 @@ while True:
             break
     elif f_card + s_card >= 17 and f_card + s_card < 21:
         print(f"{f_card + s_card} 'Stay'")
+        break
     elif f_card + s_card == 21:
         print("BLACKJACK!")
+        break
