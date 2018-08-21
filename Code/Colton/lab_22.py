@@ -26,6 +26,8 @@ def char_in_text():
     for word in range(len(contents)):
         if contents[word] == string.ascii_lowercase:
             contents.append(word)
+        else:
+            contents.remove(word)
     print(contents)
     contents = list(contents)
     return len(contents)
