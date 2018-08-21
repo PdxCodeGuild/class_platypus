@@ -8,11 +8,19 @@ def card_value(card):
 
 
 def main():
-    card1 = input('what is your first card? ')
-    card2 = input('what is your second card? ')
-    card3 = input('what is your third card? ')
+    card1 = input('what is your first card? ').upper()
+    card2 = input('what is your second card? ').upper()
+    card3 = input('what is your third card? ').upper()
 
     total = card_value(card1) + card_value(card2) + card_value(card3)
+
+    if card1 == 'A' and total <= 11:
+        total += 10
+    if card2 == 'A' and total <= 11:
+        total += 10
+    if card3 == 'A' and total <= 11:
+        total += 10
+
     if total < 17:
         print('hit!')
     elif total < 21:
