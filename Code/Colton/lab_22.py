@@ -1,18 +1,19 @@
 
-with open('wright_brothers.txt', 'r', encoding='utf-8') as f:
-    contents = f.read()
-    # def words_in_text():
-    #     with open('wright_brothers.txt', 'r', encoding='utf-8') as f:
-    #         contents = f.read()
-    #     contents = contents.lower()
-    #     punctuation = "/[-[\]{}()*+?.,\\^$|#\s]/g, \"\\$&"
-    #     for char in punctuation:
-    #         contents = contents.replace(char, ' ')
-    #     contents = contents.split()
-    #     count = 0
-    #     for word in range(len(contents)):
-    #         count += 1
-    #     return count
+import re
+import string
+
+# def words_in_text():
+#     with open('wright_brothers.txt', 'r', encoding='utf-8') as f:
+#         contents = f.read()
+#     contents = contents.lower()
+#     punctuation = "/[-[\]{}()*+?.,\\^$|#\]/, \"\\$&"
+#     for char in punctuation:
+#         contents = contents.replace(char, ' ')
+#     contents = contents.split()
+#     count = 0
+#     for word in range(len(contents)):
+#         count += 1
+#     return count
 #
 #
 #
@@ -21,32 +22,32 @@ def char_in_text():
     with open('wright_brothers.txt', 'r', encoding='utf-8') as f:
         contents = f.read()
     contents = contents.lower()
-    punctuation = "/[-[\]{}()*+?.,\\^$|#\s]/g, \"\\$& "
-    for char in punctuation:
-        contents = contents.replace(char, '')
     contents = list(contents)
+    for word in range(len(contents)):
+        if contents[word] == string.ascii_lowercase:
+            contents.append(word)
     print(contents)
-    count = 0
-    for char in range(len(contents)):
-        count += 1
-    return count
+    contents = list(contents)
+    return len(contents)
+print(char_in_text())
+
+# #sentences in a text
+# def sentences_in_text():
+#     with open('wright_brothers.txt', 'r', encoding='utf-8') as f:
+#         contents = f.read()
+#     contents = contents.lower()
+#     punctuation = "/[-[\]{}()*+,^$|#\]/,\"$&"
+#     for char in punctuation:
+#         contents = contents.replace(char, ' ')
+#     for x in contents:
+#         words = re.split('[]', x)
+#         for word in words:
+#             doclist.append(word)
+#     count = 0
+#     for char in range(len(contents)):
+#         count += 1
+#     return count
 
 
-# sentences in a text
-# import re
-# contents = contents.lower()
-# punctuation = "/[-[\]{}()*+?.,\\^$|#\s]/g, \"\\$&"
-# for char in punctuation:
-#     contents = contents.replace(char, ' ')
-# contents = re.split(r' *[\.\?!][\'"\)\]]* *', contents)
-# print(contents)
-# word_dict = {}
-# for i in range(len(contents)):
-#     if contents[i] not in word_dict:
-#         word_dict[contents[i]] = 1
-#     else:
-#         word_dict[contents[i]] += 1
-# words = list(word_dict.items())
-# words.sort(key=lambda tup: tup[1], reverse=True)
-# for i in range(min(10, len(words))):
-#    print(words[i])
+
+# print(f" {4.71 *(char_in_text/ words_in_text) + .5(words_in_text / sentences_in_text) - 21.43}")
