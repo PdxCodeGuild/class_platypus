@@ -1,4 +1,5 @@
 import re
+import operator
 punctuation = '.,!?()\'"-;:'
 word_count = {}
 #Opens and copies the text of a book's .txt file
@@ -14,4 +15,7 @@ with open('MobyDick.txt', 'r') as f:
         #If its in the dictionary incriment the count
         else:
             word_count[word_list[i]] += 1
-print(word_count)
+#Puts the words in desending order based on which word appears the most
+sorted_words = sorted(word_count.items(), key=operator.itemgetter(1), reverse=True)
+for j in range(10):
+    print(sorted_words[j])
