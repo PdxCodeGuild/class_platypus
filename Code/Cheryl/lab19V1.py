@@ -27,19 +27,3 @@ else:
 
 
 
-
-# user_choice = []
-# user_choice = input('Please choose three cards:\n A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, or K, \nand I will give you advice on whether or not to\n \'Hit\', \'Stay\', or if you\'ve already \'Busted\' >   ').lower()
-#
-#
-# cards_info = {'a': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'j': 10, 'q': 10, 'k': 10}
-#
-# for card in user_choice.split(','):
-#     card = card.strip()
-#
-# print(user_choice)
-#
-# print(card)
-
-# if user_choice[0] in cards_info:
-#     print(cards_info[user_choice[0]] + cards_info[user_choice[1]] + cards_info[user_choice[2]])
