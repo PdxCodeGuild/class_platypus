@@ -2,8 +2,9 @@ import string
 with open('wright_brothers.txt', 'r', encoding='utf-8') as f:
     contents = f.read()
 contents = contents.lower()
-for i in contents:
-    contents = contents.replace(string.punctuation, '')
+punctuation = ['.', '(', ')', "'", '!', '@', '#', '-', ';', '/', ':', '$', '%', '^', '&', '*', '_', '`', '?', '"', ',', '\n', '\\', '’', '“', '”',]
+for char in punctuation:
+    contents = contents.replace(char, ' ')
 contents = contents.split()
 word_dict = {}
 for i in range(len(contents)):
