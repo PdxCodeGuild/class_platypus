@@ -17,7 +17,7 @@ def credit_validator():  # convert the input string into a list of ints
         if output[i] > 9:  # Subtract nine from numbers over nine
             output[i] -= 9
 
-        sum()
+
 
 
 
