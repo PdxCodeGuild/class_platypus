@@ -4,6 +4,7 @@ import math
 characters = float(input('how many characters?  >   '))
 words = float(input('how many words?  >   '))
 sentences = float(input('how many sentences?  >   '))
+text = input('What book is this?  >   ')
 
 ari_equation = math.ceil(4.71 * (characters/words) + 0.5 *(words/sentences) - 21.43)
 
@@ -25,6 +26,12 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
-
-print(f'The ari equation is: {ari_equation}')
+print
+if ari_equation > 14:
+    print(f'The ARI for {text} is {ari_scale[1]}. ')
+else:
+     print('That is college level.')
+#
+#      This corresponds to a {ari_scale[11th Grade level of difficulty
+# that is suitable for an average person 16-17 years old.
 
