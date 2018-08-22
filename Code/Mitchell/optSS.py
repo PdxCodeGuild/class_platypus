@@ -1,5 +1,5 @@
 import random
-sock_types = ['ankle', 'crew', 'calf', 'thigh']
+sock_types = ['Ankle', 'Crew', 'Calf', 'Thigh']
 socks = {}
 # Generates 100 random sock types and stores them in socks
 for i in range(100):
@@ -10,4 +10,11 @@ for i in range(100):
     # If sock type in dictionary increment the count
     else:
         socks[random_sock] += 1
-print(socks)
+# Loop through socks and calculate the number of pairs can be made for each key's value
+for key, value in socks.items():
+    # If the number of socks of a type is even no remainder
+    if value % 2 == 0:
+        print(f'{key} socks can be divided into {int(value/2)} pairs with one remaining.')
+    # If the number of socks of a type is odd account for remainder
+    else:
+        print(f'{key} socks can be divided into {int((value-1)/2)} pairs with none remaining.')
