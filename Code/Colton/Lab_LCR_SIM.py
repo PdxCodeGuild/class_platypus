@@ -7,6 +7,5 @@ while True:
     if user_input == 'done':
         break
     else:
-        user_input =
-user_input = players
-print(players)
+        user_input = players.append(user_input)
+        continue
