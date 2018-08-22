@@ -2,7 +2,7 @@ import re
 
 with open('book.txt', 'r', encoding='utf-8') as f:
     contents = f.read()  # book is opened
-regex = '#[0-9a-fA-F]{6}'
+regex = '\w+'
 print(re.findall(regex, contents))
 contents = contents.lower()
 
