@@ -13,7 +13,7 @@ for char in punctuation:
     contents = contents.replace(char, ' ')  # replace each punctuation character in contents with a space
 # this will look like {'the':34, 'hello', 20, ...}
 word_dict = {}
-contents = contents.split(' ')
+contents = contents.split()
 for word in contents:
     if word in word_dict:
         word_dict[word] += 1
@@ -25,7 +25,7 @@ for word in contents:
 # word_dict is a dictionary where the key is the word and the value is the count
 words = list(word_dict.items())  # .items() returns a list of tuples
 words.sort(key=lambda tup: tup[1], reverse=True)  # sort largest to smallest, based on count
-for i in range(min(11, len(words))):  # print the top 10 words, or all of them, whichever is smaller
+for i in range(min(10, len(words))):  # print the top 10 words, or all of them, whichever is smaller
     print(words[i])
 
 
