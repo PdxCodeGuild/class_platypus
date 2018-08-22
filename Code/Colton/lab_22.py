@@ -7,7 +7,7 @@ def words_in_text():
     with open('wright_brothers.txt', 'r', encoding='utf-8') as f:
         contents = f.read()
     contents = contents.lower()
-    punctuation = "/[-[\]{}()*+?.,\\^$|#\]/, \"\\$&"
+    punctuation = "/[-[\]{}()*+?.,\\^$|#\]/, \"\\$&\n"
     for char in punctuation:
         contents = contents.replace(char, ' ')
     contents = contents.split()
@@ -15,7 +15,6 @@ def words_in_text():
     for word in range(len(contents)):
         count += 1
     return float(count)
-
 
 # characters in text
 def char_in_text():
