@@ -8,7 +8,9 @@ user_choice_three = input('Please choose one card:\n A, 2, 3, 4, 5, 6, 7, 8, 9, 
 
 cards_info = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'j': 10, 'q': 10, 'k': 10}
 
-cards_ace =
+cards_ace = [1, 11]
+# if user_choice_three or user_choice_two or user_choice_one == 'a':
+
 if user_choice_one in cards_info and user_choice_two in cards_info and user_choice_three in cards_info:
     print('Your total points are: ', end=' ')
     cards_total = cards_info[user_choice_one] + cards_info[user_choice_two] + cards_info[user_choice_three]
