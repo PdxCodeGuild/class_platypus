@@ -21,9 +21,6 @@ r = int(r*255)
 g = int(g*255)
 b = int(b*255)
 
-
-
-
 img.show()
 
 #to desaturate image
