@@ -9,3 +9,7 @@ while True:
     else:
         user_input = players.append(user_input)
         continue
+for turns in range(len(players)):
+    turns = 3
+    if turns > 0:
+        continue
