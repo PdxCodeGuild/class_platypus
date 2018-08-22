@@ -3,9 +3,7 @@
 
 #to open a file
 f = open('Nietzsche.txt', 'r')  # open the file
-contents = f.read()  # read the contents
+contents = (f.read()).lower() # read the contents and to lower
 
-#to lowercase
-print(contents.lower())
-
+print(contents)
 f.close()  # close the file
