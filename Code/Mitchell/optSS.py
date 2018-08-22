@@ -1,9 +1,11 @@
 import random
-sock_types = ['Ankle', 'Crew', 'Calf', 'Thigh']
+sock_colors = ['Black', 'White', 'Blue']
+sock_types = ['ankle', 'crew', 'calf', 'thigh']
 socks = {}
-# Generates 100 random sock types and stores them in socks
+# Generates 100 random sock colors and types then stores them in socks
 for i in range(100):
-    random_sock = sock_types[random.randint(0, 3)]
+    # Creates a random sock tuple with sock color and type
+    random_sock = (sock_colors[random.randint(0, 2)], sock_types[random.randint(0, 3)])
     # If sock type is not in socks add it with value 1
     if random_sock not in socks:
         socks[random_sock] = 1
@@ -14,7 +16,7 @@ for i in range(100):
 for key, value in socks.items():
     # If the number of socks of a type is even no remainder
     if value % 2 == 0:
-        print(f'{key} socks can be divided into {int(value/2)} pairs with one remaining.')
+        print(f'{key[0]} {key[1]} socks can be divided into {int(value/2)} pairs with one remaining.')
     # If the number of socks of a type is odd account for remainder
     else:
-        print(f'{key} socks can be divided into {int((value-1)/2)} pairs with none remaining.')
+        print(f'{key[0]} {key[1]} socks can be divided into {int((value-1)/2)} pairs with none remaining.')

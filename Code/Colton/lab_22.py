@@ -23,7 +23,7 @@ def char_in_text():
     contents = list(contents)
     num_char = 0
     for c in range(len(contents)):
-        if contents[c] in string.ascii_letters:
+        if contents[c] in string.ascii_letters or string.digits:
             num_char += 1
     return float(num_char)
 
