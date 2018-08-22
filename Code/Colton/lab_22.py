@@ -45,7 +45,6 @@ def sentences_in_text():
 
 ari = (4.71 * (char_in_text() / words_in_text()) + .05 * (words_in_text() / sentences_in_text()) - 21.43)
 ari = round(ari + .5)
-print(ari)
 ari_scale ={
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
      2: {'ages':   '6-7', 'grade_level':    '1st Grade'},
@@ -62,4 +61,5 @@ ari_scale ={
     13: {'ages': '17-18', 'grade_level':   '12th Grade'},
     14: {'ages': '18-22', 'grade_level':      'College'}}
 ari = ari_scale[ari]
-print(ari)
+print(f"That text has an ARI for ages {ari['ages']} in {ari['grade_level']}")
+
