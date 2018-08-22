@@ -6,11 +6,19 @@ import string
 f = open('Nietzsche.txt', 'r')  # open the file
 contents = (f.read()).lower() # read the contents and to lower
 
-for p in string.punctuation:
-    contents = contents.replace(p, ' ') #strips the punctuation
+characters = "".join(contents.split())
 
-characters = contents.replace(' ', '')
+
+
+
+# for p in string.punctuation:
+#     contents = contents.replace(p, ' ') #strips the punctuation
+#
+# characters = contents.replace(' ', '') + contents.replace('\n', '')
+
 print(characters)
+print(len(characters))
+print(len(contents))
 #
 # contents = contents.split() #puts all of the words into a list
 #
