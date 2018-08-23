@@ -11,11 +11,11 @@ while i < len(words):
         words.remove(words[i])
     else:
         i += 1
+won = False
 # Randomly pick a word
 random.shuffle(words)
 picked = words.pop()
 print(picked)
-
 # Set up the board
 guesses = 10
 already_guessed = ''
@@ -28,7 +28,11 @@ while guesses > 0:
     print(board)
     print('# of guesses remaining: ' + str(guesses))
     print('already guessed: ' + already_guessed)
-    letter_guess = input('Guess a letter: ')
+    # Checks if the player has won
+    if board.find('_') == -1:
+        won = True
+        break
+    letter_guess = input('Guess a letter: ').lower()
     # Loop through picked word, see if guest letter is in it
     for i in range(len(picked)):
         # If guessed letter is in word, replace '_' with it
@@ -40,3 +44,7 @@ while guesses > 0:
             already_guessed = already_guessed + letter_guess + ', '
             guesses -= 1
             break
+if won == True:
+    print('You won!')
+else:
+    print('You lost...')
