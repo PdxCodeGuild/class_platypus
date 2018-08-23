@@ -2,8 +2,8 @@
 import datetime
 
 
-def rain_data(info):  # open the data file
-    with open(info, 'r') as f:
+def rain_data(path):  # open the data file
+    with open(path, 'r') as f:
         contents = f.read().split('\n')
 
         data = {}
@@ -13,9 +13,14 @@ def rain_data(info):  # open the data file
         # print(date.day)    # 25
         # print(date)  # 2016-03-25 00:00:00
         # print(date.strftime('%d-%b-%Y'))  # 25-Mar-2016
-    return info
+    return data
 
 
 data = rain_data('rain.txt')
+
+
+# open the file
+# create a list of tuples/dictionaries
+#
 
 
