@@ -13,124 +13,118 @@ def load_words(path):
 
 
 words = load_words('english.txt')
-# secret = random.choice(words)
-secret = "hippopotamus"
+secret = random.choice(words)
+# secret = "hippopotamus"
 print(secret)
-#secret = list(secret)
+secret = list(secret)
 #print(secret)
 print(f"The length of word you have to guess is {len(secret)}")
 already_guessed = []
 correct_letter = len(secret)*['_']
 print(' '.join(correct_letter))
-user_guess = input("Guess a letter?")
+count = 0
 
+hangman_pics = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+./|\  |
+ / \  |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+./|\. |
+ / \  |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+./|\. |
+./ \  |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+./|\. |
+./ \. |
+      |
+=========''']
 
 while True:
-    count=0
-    if  user_guess in secret:
-        word_index = secret.index(user_guess)
-        print(word_index)
-        correct_letter.insert(word_index,user_guess)
-        print(' '.join(correct_letter))
-        already_guessed.append(user_guess)
-        secret[secret.index(user_guess) + 1:]
-        # if user_guess in secret:
+    user_guess = input("Guess a letter?  ")
+    found_letter = False
 
-            # secret[secret.index_one(user_guess) + 1:].index_one(user_guess)
-        # secret[secret.index(user_guess) + 1:].index(user_guess) + secret.index(user_guess) + 1
-
-    else:
-
-        count +=1
-        print(f"not a letter in the word. You have {10-count} guesses left")
+    for i in range(len(secret)):
+        if user_guess == secret[i]:
+            found_letter = True
+            correct_letter[i] = user_guess
+            print(' '.join(correct_letter))
+            already_guessed.append(user_guess)
+    if correct_letter == secret:
+        print("You win")
+        break
 
 
+    if not found_letter:
+        count += 1
+        if user_guess != secret[i]:
+            already_guessed.append(user_guess)
+            print(f"not a letter in the word. You have {10-count} guesses left. \n{already_guessed} \n{hangman_pics[count - 1]}")
 
+            if count == 10:
+                print('You lose')
+                break
 
-
-
-
-# hangman_pics = ['''
-#   +---+
-#   |   |
-#       |
-#       |
-#       |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-#       |
-#       |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-#   |   |
-#       |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-#  /|   |
-#       |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-#  /|\  |
-#       |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-#  /|\  |
-#  /    |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-#  /|\  |
-#  / \  |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-# ./|\  |
-#  / \  |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-# ./|\. |
-#  / \  |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-# ./|\. |
-# ./ \  |
-#       |
-# =========''', '''
-#   +---+
-#   |   |
-#   O   |
-# ./|\. |
-# ./ \. |
-#       |
-# =========''']
-#
-#
-#
-#
-#
-#
