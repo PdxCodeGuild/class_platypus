@@ -3,14 +3,29 @@ import math
 import string
 
 #to open a file
-f = open('Nietzsche.txt', 'r')  # open the file
-contents = (f.read()).lower() # read the contents and to lower
 
-for p in string.punctuation:
-    contents = contents.replace(p, ' ') #strips the punctuation
+#use regex to find the characters and word count
 
-characters = contents.replace(' ', '')
-print(characters)
+with open('Nietzsche.txt') as f:    # open the file
+    contents = (f.read()).lower()   # read the contents and to lower
+
+characters = "".join(contents.split())   #removes all whitespace
+
+#work on turning it into a list of individual characters
+characters_list = []
+for line in characters:
+   for characters in line:
+       characters_list.append()
+
+
+# for p in string.punctuation:
+#     contents = contents.replace(p, ' ') #strips the punctuation
+#
+# characters = contents.replace(' ', '') + contents.replace('\n', '')
+
+# print(characters)
+# print(len(characters))
+# print(len(contents))
 #
 # contents = contents.split() #puts all of the words into a list
 #
