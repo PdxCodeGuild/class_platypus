@@ -132,7 +132,7 @@ while playing:
         print('You won!')
     else:
         print(hangman_pics[10])
-        print('You lost...')
+        print('You lost... The word was' + picked)
     play_again = input('Do you want to play again? (type "yes" or "no") ').lower()
     if play_again == 'no':
         playing = False
