@@ -20,24 +20,23 @@ print(picked)
 guesses = 10
 already_guessed = ''
 board = ''
+# Initialize the board and pick word
 for i in range(len(picked)):
     board = board + '_ '
-# Play the game
+# Loop until they player runs out of guesses
 while guesses > 0:
+    print(board)
     print('# of guesses remaining: ' + str(guesses))
     print('already guessed: ' + already_guessed)
     letter_guess = input('Guess a letter: ')
-    if picked.find(letter_guess) == -1:
-        already_guessed = already_guessed + letter_guess
-        guesses -= 1
-    else:
-        board_spot = picked.find(letter_guess) * 2
-        board = board[:board_spot] + letter_guess + board[board_spot+1:]
-        other_spot = board_spot + 1
-        while picked.find(letter_guess) * 2 != -1:
-        #for other_spot in range(len(board)):
-            other_spot = picked.find(letter_guess) * 2
-            board = board[:other_spot] + letter_guess + board[other_spot + 1:]
-    print(board)
-
-
+    # Loop through picked word, see if guest letter is in it
+    for i in range(len(picked)):
+        # If guessed letter is in word, replace '_' with it
+        if picked[i] == letter_guess:
+            i *= 2
+            board = board[:i] + letter_guess + board[i + 1:]
+        # If not in word, add it to already_guest and decrement guesses
+        if picked.find(letter_guess) == -1:
+            already_guessed = already_guessed + letter_guess + ', '
+            guesses -= 1
+            break
