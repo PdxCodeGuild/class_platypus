@@ -1,6 +1,5 @@
 import re
 import operator
-punctuation = '.,!?()\'"-;:'
 word_count = {}
 pair_count = {}
 #Opens and copies the text of a book's .txt file
@@ -23,7 +22,7 @@ with open('MobyDick.txt', 'r') as f:
         # If the pair is not in the word dictionary add it
         if pair not in pair_count:
             pair_count[pair] = 1
-        # If its in the pair dictionary incriment the count
+        # If its in the pair dictionary increment the count
         else:
             pair_count[pair] += 1
 #Puts the single words in desending order based on which word appears the most
@@ -36,3 +35,12 @@ sorted_pairs = sorted(pair_count.items(), key=operator.itemgetter(1), reverse=Tr
 print('The top 10 most used pair of words are:')
 for b in range(10):
     print(sorted_pairs[b])
+
+# Trying to find next word
+print('----------------------------------------')
+input_string = 'of'
+for t in range(len(sorted_pairs)):
+    if input_string in sorted_pairs[t]:
+        start_word = str(sorted_pairs[t]).find(' ')
+        print(start_word)
+        #print(sorted_pairs[t])

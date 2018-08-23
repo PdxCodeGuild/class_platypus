@@ -8,7 +8,7 @@ check_digit = nums.pop(-1)
 #Reverses list and removes check_digit
 num_list = list(reversed(num_list[:len(num_list) - 1]))
 for i in range(len(num_list)):
-    #Doubles all values in even positions
+    #Doubles all values in odd positions
     if i % 2 == 0:
         num_list[i] = num_list[i] + num_list[i]
     #Subtracts 9 from all values greater than 9
