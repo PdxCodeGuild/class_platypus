@@ -77,7 +77,6 @@ hangman_pics = ['''
 ./ \. |
       |
 =========''']
-pic = 0
 # Opens and copies the text of a book's .txt file
 with open('english.txt', 'r') as f:
     input_text = f.read()
@@ -94,6 +93,7 @@ while i < len(words):
 playing = True
 while playing:
     won = False
+    pic = 0
     # Randomly pick a word
     random.shuffle(words)
     picked = words.pop()
