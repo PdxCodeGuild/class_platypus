@@ -1,5 +1,4 @@
 import datetime
-import re
 # Calculates the mean for a tuple list of daily rain
 def mean_finder(tups):
     sum_total = 0
@@ -35,5 +34,21 @@ for i in range(len(data_list)):
     else:
         daily_total = float(curr_line[11:20])
         daily_rain.append((date, daily_total))
-print(str(mean_finder(daily_rain)))
-print(most_rain(daily_rain))
+# Puts all included years in an ordered list
+years = {drr[0].year for drr in daily_rain}
+years = list(years)
+years.sort()
+print(years)
+# Variables used for finding yearly total and average
+yearly_rain = [0] * 21
+days_in_year = [0] * 21
+# Loop through the days & add its total to the appropriate year
+for m in range(len(daily_rain)):
+    for n in range(len(years)):
+        # If correct year increment yearly_rain and days in year
+        if daily_rain[m][0].year == years[n]:
+            yearly_rain[n] = yearly_rain[n] + daily_rain[m][1]
+            days_in_year[n] = days_in_year[n] + 1
+print(years)
+print(days_in_year)
+print(yearly_rain)
