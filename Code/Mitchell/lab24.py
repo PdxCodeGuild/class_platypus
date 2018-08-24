@@ -1,5 +1,20 @@
 import datetime
 import re
+# Calculates the mean for a tuple list of daily rain
+def mean_finder(tups):
+    sum_total = 0
+    for j in range(len(tups)):
+        sum_total += tups[j][1]
+    return sum_total / len(tups)
+# Finds the day/year with the most daily rain in list
+def most_rain(tups):
+    most = 0
+    most_day = tups[0][0]
+    for k in range(len(tups)):
+        if tups[k][1] > most:
+            most = tups[k][1]
+            most_day = tups[k][0]
+    return (most_day, most)
 # Opens and copies the text of a book's .txt file
 with open('hayden_island.rain.txt', 'r') as f:
     input_text = f.read()
@@ -19,6 +34,6 @@ for i in range(len(data_list)):
     # Save the daily total for each date in a list of tuples
     else:
         daily_total = float(curr_line[11:20])
-        print(f'On {date} it rainined  {str(daily_total)} inches.')
         daily_rain.append((date, daily_total))
-print(daily_rain)
+print(str(mean_finder(daily_rain)))
+print(most_rain(daily_rain))

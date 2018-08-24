@@ -36,28 +36,29 @@ import ast
 ########################################################################
 
 
-def get_info(path):
+def rain_file(path):
     with open(path, 'r') as f:
-        contents = f.read()
+        return f.read()
 
-    date = re.findall(r'\d\d\-\D\D\D\-\d\d\d\d', contents)
-    # date = ' '.join(date).split()
-    daily_total = re.findall(r'\     \d    ', contents)
-    daily_total = [x.strip(' ') for x in daily_total]
-    k = list(zip(date, daily_total))
-    get_info_dict = {}
-    ########
-    for (x, y) in k:
-        if x in get_info_dict:
-            get_info_dict[x] = d[x] + y
-        else:
-            get_info_dict[x] = y
-    ########
-    
-    print(get_info_dict)
-    return daily_total
 
-get_info('rain_test.txt')
+contents = rain_file('rain_test.txt')
+
+data = re.findall(r'(\d{2}\-\w{3}\-\d{4}) +(\d+)', contents)
+print(f'printing the data: {data}')
+
+
+for row in data:
+    date = datetime.datetime.strptime(row[0], '%d-%b-%Y')
+    dt = int(row[1])
+
+print(f'printint row {row}')
+
+print(f'printing data {data}')
+print(f'printing date {date}')
+print(f'print the motnh {date.month}')
+
+
+
 
 
 
@@ -66,9 +67,30 @@ get_info('rain_test.txt')
 
 
 #
-# date = datetime.datetime.strptime(get_date('rain_test.txt'), '%d-%b-%Y')
-# print(date.year)   # 2016
-# print(date.month)  # 3
-# print(date.day)    # 25
-# print(date)  # 2016-03-25 00:00:00
-# print(date.strftime('%d-%b-%Y'))  # 25-Mar-2016
+# data = []
+# for i in range(len(data)):
+#     date = datetime.datetime.strptime(date[i], '%d-%b-%Y')
+#     dt = dt[i]
+#     row = {
+#         'date': date,
+#         'daily_total': dt
+#     }
+# print(f'printing data {data}')
+# print(f'printing date {date}')
+# # print(f'print the motnh {date.month}')
+
+
+
+# data = [{
+#     'date': '2018-08-14',
+#     'daily_total': 0
+# },{
+#     'date': '2018-08-14',
+#     'daily_total': 0
+# },{
+#     'date': '2018-08-14',
+#     'daily_total': 0
+# },{
+#     'date': '2018-08-14',
+#     'daily_total': 0
+# }]
