@@ -15,7 +15,7 @@ def load_words(path):
 words = load_words('english.txt')
 secret = random.choice(words)
 # secret = "hippopotamus"
-print(secret)
+#print(secret)
 secret = list(secret)
 #print(secret)
 print(f"The length of word you have to guess is {len(secret)}")
@@ -105,7 +105,7 @@ hangman_pics = ['''
 quit_string = ''
 while quit_string != 'quit':
     while True:
-        user_guess = input("Guess a letter?  ")
+        user_guess = input("Guess a letter?  ").lower()
         if user_guess in already_guessed:
             print('You\'ve already tried this letter. ')
             continue
@@ -116,7 +116,7 @@ while quit_string != 'quit':
             if user_guess == secret[i]:
                 found_letter = True
                 correct_letter[i] = user_guess
-                print(' '.join(correct_letter))
+                #print(' '.join(correct_letter))
                 already_guessed.append(user_guess)
         if correct_letter == secret:
             print("You win")

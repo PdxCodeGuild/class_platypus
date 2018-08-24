@@ -15,8 +15,8 @@ def rain_data(path):  # open the data file
         # print(date.strftime('%d-%b-%Y'))  # 25-Mar-2016
     return data
 
-
 data = rain_data('rain.txt')
+print()
 
 
 # open the file
