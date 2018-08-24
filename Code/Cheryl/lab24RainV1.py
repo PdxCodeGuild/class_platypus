@@ -5,7 +5,8 @@
 import requests
 import re
 import datetime
-import ast
+import math
+
 
 #
 # url = 'https://or.water.usgs.gov/non-usgs/bes/'
@@ -43,19 +44,38 @@ def rain_file(path):
 
 contents = rain_file('rain_test.txt')
 
-data = re.findall(r'(\d{2}\-\w{3}\-\d{4}) +(\d+)', contents)
-print(f'printing the data: {data}')
+text_data = re.findall(r'(\d{2}\-\w{3}\-\d{4}) +(\d+)', contents)
+# print(f'printing the data: {text_data}')
 
 
-for row in data:
+data = []
+for row in text_data:
     date = datetime.datetime.strptime(row[0], '%d-%b-%Y')
     dt = int(row[1])
 
-print(f'printint row {row}')
 
-print(f'printing data {data}')
-print(f'printing date {date}')
-print(f'print the motnh {date.month}')
+for i in range(len(data)):
+    date = datetime.datetime.strptime(date[i], '%d-%b-%Y')
+    dt = dt[i]
+    row = {
+        'date': date,
+        'daily_total': dt
+    }
+
+search_value = print(input("Enter a date: "))
+
+def row_search(text_data, search_value):
+    for x in text_data:
+        if x[0] == search_value:
+            return x[1]
+
+print(row[1])
+print(row_search(text_data, '22-AUG-2018'))
+
+#
+# print(type(data))
+# print(row[0])
+# print(date)
 
 
 
@@ -63,6 +83,19 @@ print(f'print the motnh {date.month}')
 
 
 
+
+
+
+
+
+#
+# print(f'printint row {row}')
+#
+# print(date.year)   # 2016
+# print(date.month)  # 3
+# print(date.day)    # 25
+# print(date)  # 2016-03-25 00:00:00
+# print(date.strftime('%d-%b-%Y'))  # 25-Mar-2016
 
 
 
