@@ -17,25 +17,26 @@ data = []
 for row in text_data:
     date = datetime.datetime.strptime(row[0], '%d-%b-%Y')
     dt = int(row[1])
-
-for i in range(len(data)):
-    date = datetime.datetime.strptime(date[i], '%d-%b-%Y')
-    dt = dt[i]
     row = {
         'date': date,
         'daily_total': dt
     }
+    data.append(row)
 
-search_value = input("Enter a date: ")
+#total rainfall of all data
+total_rain = 0
+for row in data:
+    total_rain += row['daily_total']
+print(total_rain)
 
+#find the total num of days in data file
+total_days = 0
+for row in data:
+    total_days += int(len(row) / 2)
+print(total_days)
 
-def row_search(text_data, search_value):
-    for x in text_data:
-        if x[0] == search_value:
-            return x[1]
-
-
-row_search(text_data, search_value)
-rainfall = int(row_search(text_data, search_value)) * .01
-
-print(f'The rain on {search_value} was: {rainfall} of an inch.  ')
+#divide total rainfall by num of days
+rainfall_mean = 0
+for row in data:
+    rainfall_mean = (total_days / total_rain)
+print(rainfall_mean)
