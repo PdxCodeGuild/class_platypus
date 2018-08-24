@@ -39,14 +39,20 @@ import ast
 def get_date(path):
     with open(path, 'r') as f:
         contents = f.read()
-
+    get_date_dict = {}
     date = re.findall(r'\d\d\-\D\D\D\-\d\d\d\d', contents)
-    date = ' '.join(date)
+    # date = ' '.join(date).split()
+    daily_total = re.findall(r'\     \d    ', contents)
+    daily_total = [x.strip(' ') for x in daily_total]
+    # get_date_dict = dict([date, daily_total])
+    # print(date_dict)
+    print(daily_total)
+    print(date)
+    return daily_total
 
-    return date
-date_dict = {(get_date('rain_test.txt'))}
-print(get_date('rain_test.txt'))
-print(date_dict)
+get_date('rain_test.txt')
+
+
 
 
 #
