@@ -1,4 +1,4 @@
-#lab 24 version 1
+#lab 24 version 1 with user input
 
 import re
 import datetime
