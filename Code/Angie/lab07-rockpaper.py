@@ -41,6 +41,9 @@ while True:
     elif user == 'scissors' and compy == 'spock':
         print('scissors vs. spock! spock wins!')
 
+    elif user == 'scissors' and compy == 'scissors':
+        print('scissors vs. scissors! it is a tie!')
+
     play_again = input('Do you want to play again?').lower()
     if play_again == 'no':
         break

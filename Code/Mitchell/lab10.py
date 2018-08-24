@@ -18,3 +18,16 @@ if len(nums) % 2 == 1:
 else:
     median = (nums[int(len(nums) / 2)] + nums[int(len(nums) / 2 - 1)]) / 2
 print('Median: ' + str(median))
+#Calculate mode
+mode = ''
+maxCount = 0
+for i in range(len(nums)):
+    j = 1
+    count = 1
+    while nums[i] == nums[i + j] and (i + j) < (len(nums) - 1):
+        count = count + 1
+        j += 1
+    if count > maxCount:
+        maxCount = count
+        mode = str(nums[i])
+print('Mode: ' + mode)
