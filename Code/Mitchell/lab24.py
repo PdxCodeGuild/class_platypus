@@ -38,17 +38,23 @@ for i in range(len(data_list)):
 years = {drr[0].year for drr in daily_rain}
 years = list(years)
 years.sort()
-print(years)
 # Variables used for finding yearly total and average
-yearly_rain = [0] * 21
+yearly_total = [0] * 21
 days_in_year = [0] * 21
 # Loop through the days & add its total to the appropriate year
 for m in range(len(daily_rain)):
     for n in range(len(years)):
         # If correct year increment yearly_rain and days in year
         if daily_rain[m][0].year == years[n]:
-            yearly_rain[n] = yearly_rain[n] + daily_rain[m][1]
+            yearly_total[n] = yearly_total[n] + daily_rain[m][1]
             days_in_year[n] = days_in_year[n] + 1
-print(years)
-print(days_in_year)
-print(yearly_rain)
+yearly_average = [yearly_total[l] / days_in_year[l] for l in range(len(yearly_total))]
+yearly_rain = list(zip(years, yearly_average))
+print(yearly_average)
+print('Hayden Island Rain Gage - 1740 N. Jantzen Beach Ctr.')
+print('Daily rainfall mean: ' + str(mean_finder(daily_rain)))
+print('Daily rainfall variance: ')
+print('Day with the most rain is: ' + str(most_rain(daily_rain)))
+print('Yearly rainfall mean: ' + str(mean_finder(yearly_rain)))
+print('Yearly rainfall variance: ')
+print('Year with the most rain is: ' + str(most_rain(yearly_rain)))
