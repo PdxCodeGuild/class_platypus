@@ -9,16 +9,16 @@ digit_1 = int(input("How many numbers do you need? "))
 punc_1 = int(input("How many special characters?"))
 
 for i in range(lower_1):
-    i=+1
+    i += 1
     lower_2 = random.choice(string.ascii_lowercase)
     for i in range(upper_1):
-        i = +1
+        i += 1
         upper_2 = random.choice(string.ascii_uppercase)
         for i in range(digit_1):
-            i = +1
+            i  += 1
             digit_2 = random.choice(string.digits)
     for i in range(punc_1):
-        i = +1
+        i += 1
     punc_2 = random.choice(string.punctuation)
     random_password = lower_2 + upper_2 + digit_2 + punc_2
     random_password = list(random_password)
