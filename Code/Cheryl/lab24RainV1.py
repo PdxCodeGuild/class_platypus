@@ -72,47 +72,6 @@ def row_search(text_data, search_value):
 print(row[1])
 print(row_search(text_data, '22-AUG-2018'))
 
-#
-# print(type(data))
-# print(row[0])
-# print(date)
-
-
-
-
-
-
-
-
-
-
-
-
-#
-# print(f'printint row {row}')
-#
-# print(date.year)   # 2016
-# print(date.month)  # 3
-# print(date.day)    # 25
-# print(date)  # 2016-03-25 00:00:00
-# print(date.strftime('%d-%b-%Y'))  # 25-Mar-2016
-
-
-
-#
-# data = []
-# for i in range(len(data)):
-#     date = datetime.datetime.strptime(date[i], '%d-%b-%Y')
-#     dt = dt[i]
-#     row = {
-#         'date': date,
-#         'daily_total': dt
-#     }
-# print(f'printing data {data}')
-# print(f'printing date {date}')
-# # print(f'print the motnh {date.month}')
-
-
 
 # data = [{
 #     'date': '2018-08-14',
