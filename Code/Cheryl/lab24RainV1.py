@@ -36,21 +36,31 @@ import ast
 ########################################################################
 
 
-def get_date(path):
+def get_info(path):
     with open(path, 'r') as f:
         contents = f.read()
-    get_date_dict = {}
+
     date = re.findall(r'\d\d\-\D\D\D\-\d\d\d\d', contents)
     # date = ' '.join(date).split()
     daily_total = re.findall(r'\     \d    ', contents)
     daily_total = [x.strip(' ') for x in daily_total]
-    # get_date_dict = dict([date, daily_total])
-    # print(date_dict)
-    print(daily_total)
-    print(date)
+    k = list(zip(date, daily_total))
+    get_info_dict = {}
+    ########
+    for (x, y) in k:
+        if x in get_info_dict:
+            get_info_dict[x] = d[x] + y
+        else:
+            get_info_dict[x] = y
+    ########
+    
+    print(get_info_dict)
     return daily_total
 
-get_date('rain_test.txt')
+get_info('rain_test.txt')
+
+
+
 
 
 
