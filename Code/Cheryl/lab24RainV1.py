@@ -1,20 +1,41 @@
-#lab 24 version 1
+#lab 24 version 1 with user input
 
-import datetime
 import re
+import datetime
 
-with open('rain_data.txt', 'r') as f:
-    contents = f.read()
 
-#trying to figure out regex
-matchObject = re.search(' ', contents, flags=0)
-print(matchObject)
+def rain_file(path):
+    with open(path, 'r') as f:
+        return f.read()
 
-#
-#
-# date = datetime.datetime.strptime('25-MAR-2016', '%d-%b-%Y')
-# print(date.year)   # 2016
-# print(date.month)  # 3
-# print(date.day)    # 25
-# print(date)  # 2016-03-25 00:00:00
-# print(date.strftime('%d-%b-%Y'))  # 25-Mar-2016
+
+contents = rain_file('rain_data.txt')
+
+text_data = re.findall(r'(\d{2}\-\w{3}\-\d{4}) +(\d+)', contents)
+
+data = []
+for row in text_data:
+    date = datetime.datetime.strptime(row[0], '%d-%b-%Y')
+    dt = int(row[1])
+
+for i in range(len(data)):
+    date = datetime.datetime.strptime(date[i], '%d-%b-%Y')
+    dt = dt[i]
+    row = {
+        'date': date,
+        'daily_total': dt
+    }
+
+search_value = input("Enter a date: ")
+
+
+def row_search(text_data, search_value):
+    for x in text_data:
+        if x[0] == search_value:
+            return x[1]
+
+
+row_search(text_data, search_value)
+rainfall = int(row_search(text_data, search_value)) * .01
+
+print(f'The rain on {search_value} was: {rainfall} of an inch.  ')
