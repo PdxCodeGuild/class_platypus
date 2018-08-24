@@ -40,3 +40,10 @@ rainfall_mean = 0
 for row in data:
     rainfall_mean = (total_days / total_rain)
 print(rainfall_mean)
+
+#which day had the most rain?
+most_rain_day = 0
+for row in data:
+    most_rain_day = r
+#which year had the most rain?
+
