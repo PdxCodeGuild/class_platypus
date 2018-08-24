@@ -36,58 +36,48 @@ import ast
 ########################################################################
 
 
-# def get_info(path):
-#     with open(path, 'r') as f:
-#         contents = f.read()
-#
-#     date = re.findall(r'\d\d\-\D\D\D\-\d\d\d\d', contents)
-#     # date = ' '.join(date).split()
-#     daily_total = re.findall(r'\     \d    ', contents)
-#     daily_total = [x.strip(' ') for x in daily_total]
-#     k = list(zip(date, daily_total))
-#     get_info_dict = {}
-#     ########
-#     for (x, y) in k:
-#         if x in get_info_dict:
-#             get_info_dict[x] = d[x] + y
-#         else:
-#             get_info_dict[x] = y
-#     ########
-#
-#     return get_info_dict
-#
-# get_info('rain_test.txt')
-
 def rain_file(path):
     with open(path, 'r') as f:
         return f.read()
+
+
 contents = rain_file('rain_test.txt')
+
 data = re.findall(r'(\d{2}\-\w{3}\-\d{4}) +(\d+)', contents)
-print(data)
+print(f'printing the data: {data}')
+
 
 for row in data:
-    date = row[0]
-    dt = row[1]
+    date = datetime.datetime.strptime(row[0], '%d-%b-%Y')
+    dt = int(row[1])
 
-# dates = re.findall(r'\d\d\-\D\D\D\-\d\d\d\d', contents)
-# daily_totals = re.findall(r'(?:\d{4})( +[0-9]+)', contents)
-# daily_totals = [x.strip() for x in daily_totals]
+print(f'printint row {row}')
+
+print(f'printing data {data}')
+print(f'printing date {date}')
+print(f'print the motnh {date.month}')
 
 
-# print(f"Dates: {dates}")
-# print(f'Daily Totals: {daily_totals}')
 
-data = []
-for i in range(len(dates)):
-    date = datetime.datetime.strptime(dates[i], '%d-%b-%Y')
-    daily_total = daily_totals[i]
-    row = {
-        'date': date,
-        'daily_total': daily_total
-    }
-print(row)
-# print(date)
-# print(date.month)
+
+
+
+
+
+
+
+#
+# data = []
+# for i in range(len(data)):
+#     date = datetime.datetime.strptime(date[i], '%d-%b-%Y')
+#     dt = dt[i]
+#     row = {
+#         'date': date,
+#         'daily_total': dt
+#     }
+# print(f'printing data {data}')
+# print(f'printing date {date}')
+# # print(f'print the motnh {date.month}')
 
 
 
