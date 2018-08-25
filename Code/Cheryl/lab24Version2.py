@@ -9,7 +9,7 @@ def rain_file(path):
         return f.read()
 
 
-contents = rain_file('rain_data.txt')
+contents = rain_file('rain_data_copy.txt')
 
 text_data = re.findall(r'(\d{2}\-\w{3}\-\d{4}) +(\d+)', contents)
 
@@ -42,8 +42,10 @@ for row in data:
 print(rainfall_mean)
 
 #which day had the most rain?
-most_rain_day = 0
-for row in data:
-    most_rain_day = r
+# most_rain_day = 0
+# for row in data:
+#     most_rain_day = r
+print(text_data)
+print(f'Max data: {max(text_data[1])}')
 #which year had the most rain?
 
