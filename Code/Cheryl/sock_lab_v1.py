@@ -11,12 +11,20 @@ import random
 sock_types = ['ankle', 'crew', 'calf', 'thigh']
 
 
-print(type(sock_types))
-
 eye = 0
 while eye < 100:
     sock_types.append(random.choice(sock_types))
     eye += 1
 
+ankle_list = []
+i = 0
+ankle_count = 0
+crew_count = 0
+for i in sock_types:
+    if 'ankle' in sock_types:
+        ankle_count += 1
+    if 'crew' in sock_types:
+        crew_count += 1
+print(f'There are {ankle_count} ankle socks in your box.')
+print(f'There are {crew_count} crew socks in your box. ')
 
-print(sock_types)
