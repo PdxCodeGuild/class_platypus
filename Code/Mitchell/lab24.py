@@ -84,3 +84,15 @@ plt.xlabel('years')
 plt.ylabel('total rainfall (ticks)')
 plt.title('Total Rainfall Per Year')
 plt.show()
+
+# Prints a matplot for each daily rainfall total
+days = []
+daily_total = []
+for day in range(len(daily_rain)):
+    days.append(daily_rain[day][0])
+    daily_total.append(daily_rain[day][1])
+plt.plot(days, daily_total)
+plt.xlabel('days')
+plt.ylabel('total rainfall (ticks)')
+plt.title('Total Rainfall Per Day')
+plt.show()
