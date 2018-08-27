@@ -42,6 +42,13 @@ for row in data:
     rainfall_mean = (total_days / total_rain)
 print(f'The mean rainfall is: {rainfall_mean}')
 
+#variance, subtract mean from each result then square it
+variance_one = 0
+for row in data:
+    variance_one = (row['daily_total'] - rainfall_mean) ** 2
+print(f'The variance is: {variance_one}')
+
+
 #makes a list to call the most rainfall
 text_data_two = re.findall(r'(?:\d{4})( +[0-9]+)', contents)
 text_data_two = [x.strip(' ') for x in text_data_two]
@@ -54,6 +61,8 @@ max_rainfall_day = text_data_two.index(max(text_data_two))
 #tha date for the most rainfall
 text_data_three = re.findall(r'(\d{2}-\D{3}-\d{4})', contents)
 print(f'The date that had the most rainfall is: {text_data_three[max_rainfall_day]}')
+
+
 
 
 #which year had the most rain?
