@@ -21,7 +21,7 @@ for i in range(len(text)):
         num_sentence += 1
 
 
-char_count = len(text) - text.find(' ')
+char_count = len(text) - text.count(' ')
 word_count = len(text)
 sentence_count = len(text)
 
@@ -42,7 +42,7 @@ print(f'Characters = {char_count}, Words = {word_count}, Sentences = {sentence_c
 
 def ari_read(word_cnt):
     if word_cnt > 0.0:
-        score = (4.71 * 'float(char_cnt)' / 'word_cnt' + 0.5 * (['word_cnt'] / ['sentence_cnt'] - 21.43))
+        score = (4.71 * 'float(char_cnt)' / 'word_cnt') + 0.5 * (['word_cnt'] / ['sentence_cnt'] - 21.43))
     return score
 
 ari_read(word_count)

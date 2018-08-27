@@ -1,18 +1,21 @@
+import matplotlib.pyplot as plt
+import numpy as np
 import datetime
+import math
 
 # Calculates the mean for a tuple list of rain
 def mean_finder(tups):
     sum_total = 0
-    for j in range(len(tups)):
-        sum_total += tups[j][1]
+    for i in range(len(tups)):
+        sum_total += tups[i][1]
     return sum_total / len(tups)
 
 # Calculates the variance for a tuple list of rain
 def variance_finder(tups, mean):
     var_total = 0
     for v in range(len(tups)):
-        var_total = var_total + ((tups[v][1] - mean) ** 2)
-    return (var_total / len(tups))
+        var_total += (tups[v][1] - mean) ** 2
+    return var_total / (len(tups) - 1)
 
 # Finds the day/year with the most daily rain in list
 def most_rain(tups):
@@ -71,3 +74,13 @@ print('Day with the most rain is: ' + str(most_rain(daily_rain)))
 print('Yearly rainfall mean: ' + str(mean_finder(yearly_rain)))
 print('Yearly rainfall variance: ' + str(variance_finder(yearly_rain, mean_finder(yearly_rain))))
 print('Year with the most rain is: ' + str(most_rain(yearly_rain)))
+
+# Prints a matplot for total yearly rainfall
+xint = range(min(years), math.ceil(max(years))+1)
+plt.xticks(xint)
+plt.xticks(rotation=70)
+plt.plot(xint, yearly_total)
+plt.xlabel('years')
+plt.ylabel('total rainfall (ticks)')
+plt.title('Total Rainfall Per Year')
+plt.show()

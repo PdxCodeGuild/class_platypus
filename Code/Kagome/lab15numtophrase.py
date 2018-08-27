@@ -9,7 +9,7 @@
 
 
 
-ones = ['and zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+ones = [' ', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
 tens = ['and zero', 'one', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 
@@ -31,7 +31,7 @@ def get_hundreds_phrase(num):
     tens_num = num % 100
     hundreds_digit = num // 100
 
-    hundreds_phrase = ones[hundreds_digit]+' hundred'
+    hundreds_phrase = ones[hundreds_digit]
 
     return hundreds_phrase + ' ' + get_tens_phrase(tens_num)
 
