@@ -23,7 +23,7 @@ while True:
     if player == "scissors":
         if computer == "paper":
             print("You win!")
-    elif player == computer:
+    else:
         print("Tie!")
 
 
