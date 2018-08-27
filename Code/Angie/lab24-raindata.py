@@ -1,5 +1,6 @@
 
 import datetime
+import matplotlib.pyplot as plt
 
 # open the data file
 with open('rain.txt', 'r') as f:
@@ -45,11 +46,22 @@ variance = v / len(data)
 std = variance ** 0.5  # square root
 # print(std)
 
+
 # find the day that had the most rain
-max_value = 0
-for row in data:
-    max_value += data[row['daily_total']] > data[row['daily_total']]
-print(max_value)
-
-
 # Find the year which had the most rain on average
+max_rain = 0
+max_day = 0
+for i in range(len(data)):
+    if data[i]['daily_total'] > max_rain:
+        max_rain = data[i]['daily_total']
+        max_day = data[i]['date']
+        value = max_rain * .01
+
+print(f'the day with the most rain on average is {max_day.month}/{max_day.day}/{max_day.year} with {max_rain} tips or {value} in.')
+
+
+# all the data, date vs daily total
+
+# plt.plot(x_values, y_values)
+# plt.show()
+

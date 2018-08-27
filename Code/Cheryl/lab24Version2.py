@@ -18,11 +18,11 @@ data = []
 for row in text_data:
     date = datetime.datetime.strptime(row[0], '%d-%b-%Y')
     dt = int(row[1])
-    row = {
+    d = {
         'date': date,
         'daily_total': dt
     }
-    data.append(row)
+    data.append(d)
 
 #total rainfall of all data
 total_rain = 0
@@ -65,6 +65,42 @@ print(f'The date that had the most rainfall is: {text_data_three[max_rainfall_da
 
 
 
-#which year had the most rain?
-print(row['date'])
+#which year had the most rain? d is my dictionary from above
+
+year_most_rain = []
+print(d['date'].year)
+if d['date'].year == '2012':
+    print('yes')
+    year_most_rain = d['daily_total']
+print(year_most_rain)
+
+data = []
+for row in text_data:
+    date = datetime.datetime.strptime(row[0], '%d-%b-%Y')
+    date = print(date.year)
+    dt = int(row[1])
+    d = {
+        'date': date,
+        'daily_total': dt
+    }
+    data.append(d)
+
+#total rainfall of all d
+
+# while True:
+#     command = input('would you like to create, retrieve, update, delete or list? ')
+#     if command == 'create':
+#         key = input('what is the fruit? ')
+#         if key in product_to_price:
+#             print('that\'s already in there!')
+#             continue
+#         value = float(input('what is the price? '))
+#         product_to_price[key] = value
+#
+#     elif command == 'list':
+#         for key in product_to_price:
+#             print(f'{key}: {product_to_price[key]}')
+#
+# print(row['date'])
+
 
