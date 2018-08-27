@@ -48,8 +48,8 @@ print(months)
 monthly_totals = [0]*len(months)
 count = 0
 for i in range(len(months)):
-    if months[i] == months[i]:
-        monthly_totals += totals['daily_totals']
+    if months[i] == months[i-1]:
+        monthly_totals +=
         count += 1
 print(monthly_totals)
 
