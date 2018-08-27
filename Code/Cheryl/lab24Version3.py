@@ -23,8 +23,13 @@ for row in text_data:
     }
     data.append(row)
 
-plt.plot([row['date'] for row in data if row['date'].year == 2015],
-         [row['daily_total'] for row in data if row['date'].year == 2015])
+#green triangles show the same months over all of the years.
+plt.plot([row['date'] for row in data if row['date'].month == 8],
+         [row['daily_total'] for row in data if row['date'].month == 8], 'g^')
+
+#red dots shows rain over a specific year
+plt.plot([row['date'] for row in data if row['date'].year == 2018],
+         [row['daily_total'] for row in data if row['date'].year == 2018], 'ro')
 
 plt.show()
 
