@@ -7,8 +7,8 @@ print(random.choice(eight_ball))
 
 while True:
     input('Ask Another Question...')
-    print(random.choice(answers))
-    if input('Ask Another Question...') != 'yes':
+    print(random.choice(eight_ball))
+    if input('Type yes to continue...') != 'yes':
         break
 
 
