@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
+import numpy as np
 import datetime
+import math
 
 # Calculates the mean for a tuple list of rain
 def mean_finder(tups):
@@ -73,9 +75,12 @@ print('Yearly rainfall mean: ' + str(mean_finder(yearly_rain)))
 print('Yearly rainfall variance: ' + str(variance_finder(yearly_rain, mean_finder(yearly_rain))))
 print('Year with the most rain is: ' + str(most_rain(yearly_rain)))
 
-# Prints a matplot for average yearly rain
-plt.plot(years, yearly_average)
+# Prints a matplot for total yearly rainfall
+xint = range(min(years), math.ceil(max(years))+1)
+plt.xticks(xint)
+plt.xticks(rotation=70)
+plt.plot(xint, yearly_total)
 plt.xlabel('years')
-plt.ylabel('average (ticks)')
-plt.title('Average Rainfall Per Year')
+plt.ylabel('total rainfall (ticks)')
+plt.title('Total Rainfall Per Year')
 plt.show()
