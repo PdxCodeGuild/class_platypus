@@ -28,19 +28,28 @@ for line in contents:
 total = 0
 for row in data:
     total += row['daily_total']
+# for i in range(len(data)):
+#     total += data[i]['daily_total']
 
 mean = total / len(data)
 # print(mean)
 # print(total)
 # print(len(data))
 
+# Use the mean to calculate the variance:
 v = 0
-for column in data:
-    v -= float(mean) ** 2
+for row in data:
+    v += (row['daily_total'] - mean) ** 2
 
-variance = len(data) / v
+variance = v / len(data)
+std = variance ** 0.5  # square root
+# print(std)
 
-print(variance)
+# find the day that had the most rain
+max_value = 0
+for row in data:
+    max_value += data[row['daily_total']] > data[row['daily_total']]
+print(max_value)
 
-# for i in range(len(data)):
-#     total += data[i]['daily_total']
+
+# Find the year which had the most rain on average
