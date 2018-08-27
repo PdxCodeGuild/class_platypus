@@ -21,9 +21,11 @@ while playing:
         if chips[i] + center == len(chips) * 3:
             print(players[i] + ' won this game of LCR!')
             exit()
+        print(f'On {players[i]}\'s turn they started with {chips[i]} and rolled: (', end='')
         # Rolls the # of dice equal to their # of chips
         for j in range(chips[i]):
             die = dice[random.randint(0, 5)]
+            print(die, end=' ')
             # If a L is rolled, give chip to player on left
             if die == 'L':
                 left_spot = len(chips) - 1 - i
@@ -41,4 +43,5 @@ while playing:
                     chips[0] += 1
                 # Otherwise pass the chip to player to right
                 else:
-                    chips[i+1] +=1
+                    chips[i+1] += 1
+        print(f'). Ending their turn with {chips[i]} chips.')
