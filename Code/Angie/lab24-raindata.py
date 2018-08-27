@@ -62,6 +62,17 @@ print(f'the day with the most rain on average is {max_day.month}/{max_day.day}/{
 
 # all the data, date vs daily total
 
-# plt.plot(x_values, y_values)
-# plt.show()
+
+days = []
+daily_rain = []
+for day in range(len(data)):
+    days.append(data[day]['date'])
+    daily_rain.append(data[day]['daily_total'])
+    print(days)
+    print(daily_rain)
+
+    plt.plot('daily_total', 'date')
+    plt.ylabel('Date')
+    plt.xlabel('Total Rain')
+    plt.show()
 
