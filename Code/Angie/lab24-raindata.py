@@ -7,29 +7,40 @@ with open('rain.txt', 'r') as f:
 contents = contents[11:]
 
 data = []
-
 for line in contents:
+    if line == '':
+        continue
     date = line[:11]
+    date = datetime.datetime.strptime(date, '%d-%b-%Y')
     daily_total = line[11:17].strip()
-    #print(f'{date} {daily_total}')
+    # print(daily_total)
+    if daily_total == '-':
+        continue
+    daily_total = int(daily_total)
     my_dict = {
         'date': date,
         'daily_total': daily_total
     }
     data.append(my_dict)
-    sep_date = datetime.datetime.strptime(date, '%d-%b-%Y')
-    # print(sep_date.year)   # 2016
-    # print(sep_date.month)  # 3
-    # print(sep_date.day)    # 25
-    # print(sep_date)  # 2016-03-25 00:00:00
-    # print(sep_date.strftime('%d-%b-%Y'))  # 25-Mar-2016
-    counter = str(0)
-    for num in daily_total:
-        counter += num
-    print(daily_total)
 
 
+# find the sum of the rain to find the average
+total = 0
+for row in data:
+    total += row['daily_total']
 
+mean = total / len(data)
+# print(mean)
+# print(total)
+# print(len(data))
 
+v = 0
+for column in data:
+    v -= float(mean) ** 2
 
+variance = len(data) / v
 
+print(variance)
+
+# for i in range(len(data)):
+#     total += data[i]['daily_total']
