@@ -1,5 +1,7 @@
 grades = int (input('What grade percentage did student receive? \n:'))
 grades = int(grades)
+
+
 if grades <= 100 and grades >= 90:
     print('You received an A!')
 elif grades <= 89 and grades >= 80 :
