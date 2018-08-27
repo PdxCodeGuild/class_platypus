@@ -1,10 +1,19 @@
 import datetime
-# Calculates the mean for a tuple list of daily rain
+
+# Calculates the mean for a tuple list of rain
 def mean_finder(tups):
     sum_total = 0
     for j in range(len(tups)):
         sum_total += tups[j][1]
     return sum_total / len(tups)
+
+# Calculates the variance for a tuple list of rain
+def variance_finder(tups, mean):
+    var_total = 0
+    for v in range(len(tups)):
+        var_total = var_total + ((tups[v][1] - mean) ** 2)
+    return (var_total / len(tups))
+
 # Finds the day/year with the most daily rain in list
 def most_rain(tups):
     most = 0
@@ -14,6 +23,7 @@ def most_rain(tups):
             most = tups[k][1]
             most_day = tups[k][0]
     return (most_day, most)
+
 # Opens and copies the text of a book's .txt file
 with open('hayden_island.rain.txt', 'r') as f:
     input_text = f.read()
@@ -21,6 +31,7 @@ with open('hayden_island.rain.txt', 'r') as f:
 data_list = input_text.splitlines()
 data_list = data_list[11:]
 daily_rain = []
+
 # Loops through each line and removes date and daily total
 for i in range(len(data_list)):
     curr_line = data_list[i]
@@ -34,6 +45,7 @@ for i in range(len(data_list)):
     else:
         daily_total = float(curr_line[11:20])
         daily_rain.append((date, daily_total))
+
 # Puts all included years in an ordered list
 years = {drr[0].year for drr in daily_rain}
 years = list(years)
@@ -48,13 +60,14 @@ for m in range(len(daily_rain)):
         if daily_rain[m][0].year == years[n]:
             yearly_total[n] = yearly_total[n] + daily_rain[m][1]
             days_in_year[n] = days_in_year[n] + 1
+
+# Calculates yearly_average and makes it a tuple list with years
 yearly_average = [yearly_total[l] / days_in_year[l] for l in range(len(yearly_total))]
-yearly_rain = list(zip(years, yearly_average))
-print(yearly_average)
+yearly_rain = list(zip(years, yearly_total))
 print('Hayden Island Rain Gage - 1740 N. Jantzen Beach Ctr.')
 print('Daily rainfall mean: ' + str(mean_finder(daily_rain)))
-print('Daily rainfall variance: ')
+print('Daily rainfall variance: ' + str(variance_finder(daily_rain, mean_finder(daily_rain))))
 print('Day with the most rain is: ' + str(most_rain(daily_rain)))
 print('Yearly rainfall mean: ' + str(mean_finder(yearly_rain)))
-print('Yearly rainfall variance: ')
+print('Yearly rainfall variance: ' + str(variance_finder(yearly_rain, mean_finder(yearly_rain))))
 print('Year with the most rain is: ' + str(most_rain(yearly_rain)))
