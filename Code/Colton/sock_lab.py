@@ -13,9 +13,6 @@ while i < 100:
 sock_dict = {}
 
 for key, val in socks:
-    for key, val in to_add.items():
-        if key in socks:
-            sock[key] = [socks[key], val]
-    else:
-        sock_dict = sock
-print(socks)
+    if key in socks:
+            [key] = [sock_dict[key], val]
+print(sock_dict)
