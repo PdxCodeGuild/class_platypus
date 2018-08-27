@@ -54,3 +54,9 @@ def main():
     output = f'{distance} {units_in} is {distance_out_m} {units_out}'
     print(output)
 main()
+
+
+# 1 yard is 0.9144 m
+# 1 inch is 0.0254 m
+
+#def yard_in(distance, units)
