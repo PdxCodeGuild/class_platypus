@@ -1,13 +1,14 @@
 filename = "1338.txt.utf-8.txt"
 file = open(filename, "r")
 text = file.read()
-wordcount = {}
+word_count = {}
+pair_count = {}
 for word in text.split():
-    if word not in wordcount:
-        wordcount[word] = 1
+    if word not in word_count:
+        word_count[word] = 1
     else:
-        wordcount[word] += 1
-print(wordcount)
+        word_count[word] += 1
+print(word_count)
 file.close()
 
 
@@ -19,8 +20,6 @@ for char in text:
         no_punc += char
     else:
         no_punc += ' '
-
-
 
 text = text.lower()
 text = text.split()
