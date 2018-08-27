@@ -4,6 +4,7 @@ import re
 import datetime
 
 
+
 def rain_file(path):
     with open(path, 'r') as f:
         return f.read()
@@ -52,19 +53,9 @@ max_rainfall_day = text_data_two.index(max(text_data_two))
 
 #tha date for the most rainfall
 text_data_three = re.findall(r'(\d{2}-\D{3}-\d{4})', contents)
-print(f'date that goes with most rainfall: {text_data_three[max_rainfall_day]}')
+print(f'The date that had the most rainfall is: {text_data_three[max_rainfall_day]}')
 
 
 #which year had the most rain?
 
 
-
-
-######## DELETE ############
-#which day had the most rain?
-# most_rain_day = 0
-# for row in data:
-#     most_rain_day = max(max_rain)
-# print(f'The most rainy day had this much rain: {most_rain_day}\n\n')
-# print(f'The max data', end=' ')
-# #print(max(text_data))
