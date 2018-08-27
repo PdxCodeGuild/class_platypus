@@ -46,10 +46,16 @@ std = variance ** 0.5  # square root
 # print(std)
 
 # find the day that had the most rain
-max_value = 0
-for row in data:
-    max_value += data[row['daily_total']] > data[row['daily_total']]
-print(max_value)
+
+max_rain = 0
+max_day = 0
+for i in range len((data)):
+    if data[i] > max_rain:
+        max_rain = data[i]
+        max_day = data[i]
+print(max_rain)
+
+
 
 
 # Find the year which had the most rain on average
