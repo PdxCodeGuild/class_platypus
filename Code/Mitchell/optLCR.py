@@ -1,23 +1,44 @@
+import random
 dice = 'LCR...'
 center = 0
 # User enters player's names into dictionary with 3 chips each
 name = input('Welcome to LCR Simulator, please enter the name of a the first player: ')
-players = {name: 3}
+players = [name]
 while name != 'done':
     name = input('Enter another player\'s name or type "done" if all players are entered: ')
     if name == 'done':
         break
-    players[name] = 3
-# Game is simulated until all players but one are out of chips
-total_chips = len(players) * 3
+    else:
+        players.append(name)
+# Each player starts with 3 chips
+chips = [3] * len(players)
 playing = True
-for i in range(len(players)):
-#while playing:
-    for key, value in players.items():
+# Loops while game is going on
+while playing:
+    # Go through list of players giving each a turn
+    for i in range(len(players)):
         # Checks if there is a winner if so end
-        if (value) + center == total_chips:
-            print(key + ' won this round of LCR!')
-            break
-    print(value)
-        # for value in range(value):
-        #     print(f'{key} has {value} chips.')
+        if chips[i] + center == len(chips) * 3:
+            print(players[i] + ' won this game of LCR!')
+            exit()
+        # Rolls the # of dice equal to their # of chips
+        for j in range(chips[i]):
+            die = dice[random.randint(0, 5)]
+            # If a L is rolled, give chip to player on left
+            if die == 'L':
+                left_spot = len(chips) - 1 - i
+                chips[i] -= 1
+                chips[left_spot] += 1
+            # If a C is rolled, put a chip in the center
+            elif die == 'C':
+                chips[i] -= 1
+                center += 1
+            # If a R is rolled, give a chip to player on right
+            elif die == 'R':
+                chips[i] -= 1
+                # If last spot in array pass chip to first spot
+                if i + 1 == len(chips):
+                    chips[0] += 1
+                # Otherwise pass the chip to player to right
+                else:
+                    chips[i+1] +=1
