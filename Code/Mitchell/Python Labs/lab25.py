@@ -33,12 +33,30 @@ class ATM:
         for i in range(len(self.history)):
             print(self.history[i])
         print('-------------------')
-# Print statements for debugging
+
+# Declares ATM class and action that user will enter
 atm = ATM()
-print(atm.check_balance())  # "your balance is $0"
-atm.deposit(5)
-print(atm.check_balance())  # "your balance is $5"
-print(atm.check_withdrawal(10))  # False
-print(atm.withdraw(2))  # 2
-print(atm.check_balance())  # "your balance is $3"
-print(atm.print_transactions())
+action = ''
+# Continuously asks user for action until they quit
+while action != 'quit':
+    action = input('What would you like to do? (Type "deposit", "withdraw", "check balance", "history" or "quit") ').lower()
+    # Deposit the amount given into users ATM account
+    if action == 'deposit':
+        amount = input('How much would you like to deposit? ')
+        atm.deposit(int(amount))
+    # Withdraws passed amount from balance if possible
+    elif action == 'withdraw':
+        amount = input('How much would you like to withdraw? ')
+        atm.withdraw(int(amount))
+    # Returns the current balance of the account
+    elif action == 'check balance':
+        print(f'Current balance is ${atm.check_balance()}.')
+    # Prints out a user's transaction history
+    elif action == 'history':
+        atm.print_transactions()
+    # If user types quit, exit program
+    elif action == 'quit':
+        break
+    # Else the user typed an invalid option
+    else:
+        print('ERROR: You did not type a valid option, pleas type ether "deposit", "withdraw", "check balance", "history" or "quit".')
