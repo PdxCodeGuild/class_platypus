@@ -57,21 +57,19 @@ for i in range(len(data)):
         max_day = data[i]['date']
         value = max_rain * .01
 
-print(f'the day with the most rain on average is {max_day.month}/{max_day.day}/{max_day.year} with {max_rain} tips or {value} in.')
+print(f'The day with the most rain on average is {max_day.month}/{max_day.day}/{max_day.year} with {max_rain} tips or {value} in.')
 
 
-# all the data, date vs daily total
-
-
+# all the data, date vs daily total (doesnt work!)
 days = []
 daily_rain = []
 for day in range(len(data)):
-    days.append(data[day]['date'])
+    days.append(data[day]['date'].year)
     daily_rain.append(data[day]['daily_total'])
     print(days)
     print(daily_rain)
 
-    plt.plot('daily_total', 'date')
+    plt.plot('daily_total', 'days')
     plt.ylabel('Date')
     plt.xlabel('Total Rain')
     plt.show()
