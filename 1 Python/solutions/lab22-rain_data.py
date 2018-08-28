@@ -27,7 +27,10 @@ text = get_file(locations[1])
 
 print('parsing text...')
 data = re.findall('(\d{2}-\w{3}-\d{4}) +(\d+)', text)
+
 data = [(parse_date(data[i][0]), int(data[i][1]) * 0.01 * 2.54) for i in range(len(data))]
+
+
 
 total = sum([row[1] for row in data])
 print(total / len(data))
@@ -47,7 +50,7 @@ years = [2018, 2017, 2016]
 totals = [450, 432, 242]
 counts = [365, 365, 330]
 
-print(f'for {years[0]} the average was {totals[0]/counts[0]}')
+print(f'for {years[2]} the average was {totals[2]/counts[2]}')
 
 
 yearly_data = {
