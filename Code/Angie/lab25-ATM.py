@@ -14,31 +14,36 @@ class ATM:
     #     for deposit in :
     #         transact.append(deposit)
     #
-    #
 
     def deposit(self, amount):  # deposits the given amount into account
         self.balance += amount
+        return f'you have deposited ${amount} into your account'
 
     def check_withdrawal(self, amount):  # returns true if the withdrawn amount wont put the account in the negative
-        self.balance -= amount <= 0
-        return False
+        if self.balance < amount - self.balance:
+            return f'you have overdrawn your account by {amount - self.balance}'
+        else:
+            return f''
 
     def withdraw(self, amount):  # withdraws the amount from the account and returns it
-        pass
+        self.balance -= amount
+        return f'your withdrawal amount is ${amount}'
 
-    # def calc_interest(self, interest):  # returns the amount of interest
-    #     interest = (balance * .001) + balance
+    def calc_interest(self, interest):  # returns the amount of interest
+        (self.balance * interest) + self.balance
+        return f'you have gained {interest} on your account'
 
 
 
 
 atm = ATM()
 print(atm.check_balance())  # "your balance is $0"
-atm.deposit(5)
+atm.deposit(25)
 print(atm.check_balance())  # "your balance is $5"
-print(atm.check_withdrawal(10))  # False
-# print(atm.withdraw(2))  # 2
-# print(atm.check_balance())  # "your balance is $3"
+print(atm.check_withdrawal(0))  # False
+print(atm.withdraw(30))  # 2
+print(atm.check_balance())  # "your balance is $3"
+print(atm.calc_interest(.001))
 #
 #
 # while True:
