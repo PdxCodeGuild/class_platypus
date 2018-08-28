@@ -11,10 +11,8 @@ class ATM:
         return f'Your balance is currently at ${self.balance}'
 
     def print_transactions(self):  # maintains a list of transactions
-        self.balance
-    #     for deposit in :
-    #         transact.append(deposit)
-    #
+        print('\n'.join(self.transactions))
+
 
     def deposit(self, amount):  # deposits the given amount into account
         self.balance += amount
