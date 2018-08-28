@@ -20,10 +20,7 @@ class ATM:
         return f'you have deposited ${amount} into your account'
 
     def check_withdrawal(self, amount):  # returns true if the withdrawn amount wont put the account in the negative
-        if self.balance < amount:
-            return False
-        else:
-            return True
+        return amount < self.balance
 
     def withdraw(self, amount):  # withdraws the amount from the account and returns it
         self.balance -= amount
@@ -48,9 +45,15 @@ print(atm.check_balance())  # "your balance is $3"
 
 #
 # while True:
-#     user = input('what would you like to do (deposit, withdraw, check balance, history)?')
-# deposit
-# how much would you like to deposit?
+#     user = input('what would you like to do (deposit, withdraw, check balance, history)?').lower()
+#     if user == deposit:
+        # input('how much would you like to deposit? ')
+#       elif user ==withdraw:
+#       input('how much would you like to withdraw? ')
+
+
+
+
 # $5
 # what would you like to do (deposit, withdraw, check balance, history)?
 # check balance
