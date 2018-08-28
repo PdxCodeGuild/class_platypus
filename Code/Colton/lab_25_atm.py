@@ -18,8 +18,7 @@ class ATM:
 
     def withdraw(self, y):
         if self.x < y:
-            print(f'You will overdraft you only have {self.x}')
-            return
+            return (f'You will overdraft you only have {self.x}')
         else:
             self.x -= y
             return y
