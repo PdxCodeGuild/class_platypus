@@ -1,6 +1,6 @@
 class ATM:
     # Initializes ATM account no history & balance of 0
-    def __init__(self, balance = 0, history = []):
+    def __init__(self, balance = 0.00, history = []):
         self.balance = balance
         self.history = history
     # Method that checks the current balance of ATM
@@ -43,14 +43,14 @@ while action != 'quit':
     # Deposit the amount given into users ATM account
     if action == 'deposit':
         amount = input('How much would you like to deposit? ')
-        atm.deposit(int(amount))
+        atm.deposit(float(amount))
     # Withdraws passed amount from balance if possible
     elif action == 'withdraw':
         amount = input('How much would you like to withdraw? ')
-        atm.withdraw(int(amount))
+        atm.withdraw(float(amount))
     # Returns the current balance of the account
     elif action == 'check balance':
-        print(f'Current balance is ${atm.check_balance()}.')
+        print(f'Current balance is ${round(atm.check_balance(), 2)}.')
     # Prints out a user's transaction history
     elif action == 'history':
         atm.print_transactions()
