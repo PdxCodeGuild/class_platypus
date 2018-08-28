@@ -60,7 +60,7 @@ for i in range(len(data)):
 print(f'The day with the most rain on average is {max_day.month}/{max_day.day}/{max_day.year} with {max_rain} tips or {value} in.')
 
 
-# all the data, date vs daily total
+# all the data, date vs daily total (doesnt work!)
 days = []
 daily_rain = []
 for day in range(len(data)):
