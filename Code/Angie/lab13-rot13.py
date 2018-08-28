@@ -5,8 +5,12 @@ rot = {'a': 'n', 'b': 'o', 'c': 'p', 'd': 'q', 'e': 'r', 'f': 's', 'g': 't', 'h'
 input_string = input('what is the word you would like to encrypt? ').lower()
 output_string = ''
 for letter in input_string:
-    encrypt = rot[letter]
-    output_string = output_string + encrypt
+    if letter in output_string:
+        encrypt = rot[letter]
+        output_string += encrypt
+    else:
+        encrypt = rot[letter]
+        output_string += encrypt
 
 #if input_string in extra:
 
