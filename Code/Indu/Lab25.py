@@ -29,7 +29,7 @@ atm = ATM()
 transact_history = []
 
 choice = input(f' Choose:(deposit, withdraw, check balance,calculate interest, history, exit)\n')
-
+choice = choice.lower()
 if choice == 'history':
         print(atm.print_transactions())
 elif choice == 'calculate interest':
