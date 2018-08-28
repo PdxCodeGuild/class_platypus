@@ -18,25 +18,31 @@ class ATM:
 
     def withdraw(self, y):
         if self.x < y:
-            return (f'You will overdraft you only have {self.x}')
+            return f'You will overdraft you have {self.x}'
         else:
             self.x -= y
             return y
 
+    def print_transactions(self):
+        return history
+
 atm = ATM()
 
-
+history = []
 
 while True:
-    user = input(f' What would you like to do? (deposit, withdraw, check balance,calculate interest, exit)')
+    user = input(f' What would you like to do? (deposit, withdraw, check balance,calculate interest, history, exit)')
     if user == 'exit':
         print('Goodbye')
         break
+    if user == 'history':
+        print(atm.print_transactions())
     if user == 'calculate interest':
         print(f' You have {atm.check_balance()} and have {atm.calc_interest()} after interest')
     if user == 'deposit':
         d_user = int(input(f'How much?'))
         atm.deposit(d_user)
+        history.append(f'you deposited {d_user}')
         print(f' You now have {atm.check_balance()}')
     if user == 'withdraw':
         w_user = int(input(f'How much?'))
@@ -44,6 +50,7 @@ while True:
             print(atm.withdraw(w_user))
         else:
             atm.withdraw(w_user)
+            history.append(f'you withdrew {w_user}')
             print(f'You have {atm.check_balance()} left.')
     if user == 'check balance':
         print(atm.check_balance())
