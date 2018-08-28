@@ -1,3 +1,4 @@
+
 #Hangman game with Indu and Angie
 
 import random
@@ -13,16 +14,7 @@ def load_words(path):
 
 
 words = load_words('english.txt')
-secret = random.choice(words)
-# secret = "hippopotamus"
-#print(secret)
-secret = list(secret)
-#print(secret)
-print(f"The length of word you have to guess is {len(secret)}")
-already_guessed = []
-correct_letter = len(secret)*['_']
-print(' '.join(correct_letter))
-count = 0
+
 
 hangman_pics = ['''
   +---+
@@ -103,9 +95,18 @@ hangman_pics = ['''
       |
 =========''']
 quit_string = ''
-while quit_string != 'quit':
-    while True:
-        user_guess = input("Guess a letter?  ").lower()
+while quit_string != 'quit': # game loop
+    secret = random.choice(words)
+    # secret = "hippopotamus"
+    secret = list(secret)
+    # print(secret)
+    print(f"The length of word you have to guess is {len(secret)}")
+    already_guessed = []
+    correct_letter = len(secret) * ['_']
+    count = 0
+    while True: # turn
+        print(' '.join(correct_letter))
+        user_guess = input("Guess a letter?  ")
         if user_guess in already_guessed:
             print('You\'ve already tried this letter. ')
             continue
@@ -116,10 +117,11 @@ while quit_string != 'quit':
             if user_guess == secret[i]:
                 found_letter = True
                 correct_letter[i] = user_guess
-                #print(' '.join(correct_letter))
                 already_guessed.append(user_guess)
         if correct_letter == secret:
+            print(''.join(secret))
             print("You win")
+
             break
 
         if not found_letter:
@@ -131,6 +133,7 @@ while quit_string != 'quit':
                 print(f"not a letter in the word. You have {10-count} guesses left. \n{already_guessed} \n{hangman_pics[count - 1]}")
 
                 if count == 10:
+                    print(''.join(secret))
                     print('You lose')
                     # quit_string = input('Hit return to play again or type \'quit\' to leave the game. > ').lower()
                     break
