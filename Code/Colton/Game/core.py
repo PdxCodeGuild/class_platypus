@@ -55,6 +55,9 @@ for i in range(10):
     enemies.append(enemy)
 with open('welcome.txt', 'r') as f:
     welcome = f.read()
+with open('death.txt', 'r') as f:
+    death = f.read()
+
 print(welcome)
 print('We all live in this cave. But some bad guys have tried to take it over.')
 name = input(f" Thanks for agreeing to kill them all, but first what should I call you? ")
@@ -96,6 +99,7 @@ while True:
                                 enemies.remove(enemy)
                                 break
                     else:
+                        print(death)
                         print(f'thanks for trying {name} but your dead.')
                         exit()
 
