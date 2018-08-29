@@ -1,41 +1,6 @@
 import random
-from termcolor import colored
-import time
-
-from colorama import Fore, Back, Style
-
-def style_files(path):
-    with open(path, 'r') as f:
-        # print(Style.DIM)
-        print(Fore.YELLOW + Back.LIGHTBLACK_EX)
-        return f.read()
 
 
-print(style_files('title.txt'))
-print(Style.RESET_ALL)
-print(Back.LIGHTBLACK_EX)
-
-#write out the rules of the game. 
-
-#Choose your race: Klingon or Federation
-user_race = input('Choose your race: Klingon or Federation. >   ').upper()
-if user_race == 'KLINGON':
-    print(style_files('klingon.txt') + '\n\n\tYou chose to be a Klingon! \n\n')
-else:
-    print(style_files('federation.txt') + '\n\n\tYou chose to be a member of the Federation! \n\n')
-
-time.sleep(3)
-
-#Choose your enemy: Romulan or Borg
-user_enemy = input('\nChoose your enemy: Romulan or Borg. >   \n\n').upper()
-
-if user_enemy == 'BORG':
-    print(style_files('borg.txt') + '\n\n\tYou chose to fight the Borg! \n\n')
-else:
-    print(style_files('romulan.txt') + '\n\n\tYou chose to fight the Romulans! \n\n')
-
-time.sleep(3)
-##############
 class Entity:
     def __init__(self, location_i, location_j, character):
         self.location_i = location_i
@@ -45,18 +10,16 @@ class Entity:
 
 class Enemy(Entity):
     def __init__(self, location_i, location_j):
-        # super().__init__(location_i, location_j, '§')
-        if user_enemy == "BORG":
-            super().__init__(location_i, location_j, style_files('borg.txt'))
-        else:
-            super().__init__(location_i, location_j, style_files('romulan.txt'))
-
+        super().__init__(location_i, location_j, '🔥')
 
 
 class Player(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '☺')
+        super().__init__(location_i, location_j, '👨‍🚒')
 
+class Fountain(Entity):
+    def __init__(self, location_i, location_j):
+        super().__init__(location_i, location_j, '⛲️')
 
 class Board:
     def __init__(self, width, height):
@@ -82,13 +45,17 @@ class Board:
 
 
 
-board = Board(10, 10)
+board = Board(15, 15)
 
 pi, pj = board.random_location()
 player = Player(pi, pj)
+water_level = 5
 
-entities = [player]
+fountain = Fountain(3,6)
+
+entities = [player, fountain]
 enemies = []
+waters = [fountain]
 
 for i in range(10):
     ei, ej = board.random_location()
@@ -96,36 +63,51 @@ for i in range(10):
     entities.append(enemy)
     enemies.append(enemy)
 
-
+print('Welcome Fire Fighter')
 while True:
-
     board.print(entities)
-
-    command = input('what is your command? ')  # get the command from the user
+    print('Water Level: ', end='')
+    for i in range(water_level):
+        print('💧', end='')
+    print()
+    command = input('What is your command? ')  # get the command from the user
 
     if command == 'done':
         break  # exit the game
-    elif command in ['l', 'left', 'w', 'west']:
+    elif command in ['l', 'left', 'w', 'west', '\x1b[D']:
         player.location_j -= 1  # move left
-    elif command in ['r', 'right', 'e', 'east']:
+    elif command in ['r', 'right', 'e', 'east', '\x1b[C']:
         player.location_j += 1  # move right
-    elif command in ['u', 'up', 'n', 'north']:
+    elif command in ['u', 'up', 'n', 'north', '\x1b[A']:
         player.location_i -= 1  # move up
-    elif command in ['d', 'down', 's', 'south']:
+    elif command in ['d', 'down', 's', 'south', '\x1b[B']:
         player.location_i += 1  # move down
 
     for enemy in enemies:
         if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
-            print('you\'ve encountered an enemy!')
-            action = input('what will you do? ')
-            if action == 'attack':
-                print('you\'ve slain the enemy')
+            print('You\'ve encountered a fire!')
+            action = input('Press space bar to shoot fire hose! ')
+            if action == ' ' and water_level >= 0:
+                print('You faught the fire!')
+                water_level -= 1
                 entities.remove(enemy)
                 enemies.remove(enemy)
                 break
             else:
-                print('you hestitated and were slain')
+                print('You ran out of water and got burned!')
                 exit()
+
+    for water in waters:
+        if fountain.location_i == player.location_i and fountain.location_j == player.location_j:
+            print('You found a water source.')
+            fill = input('Do you want to fill your hose? (Type "yes" or "no") ').lower()
+            while (fill == 'yes' or fill == 'y') and water_level < 5:
+                water_level += 1
+                print('Water Level: ', end='')
+                for i in range(water_level):
+                    print('💧', end='')
+                print()
+                fill = input('Do you want to keep filling? (Type "yes" or "no") ').lower()
 
 
     # for enemy in enemies:
