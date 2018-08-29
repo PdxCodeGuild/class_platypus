@@ -3,7 +3,6 @@ import random
 x = random.randint(1, 10)
 counter = 0
 
-
 while True:
 
     user = int(input('Guess the number between 1 and 10, you get 10 tries.\n'))
