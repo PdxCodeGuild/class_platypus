@@ -3,9 +3,9 @@ class ATM:
         self.x = x
         self.y = y
         self.history = []
+
     def check_balance(self):
-        dx = self.x
-        return dx
+        return self.x
 
     def calc_interest(self):
         v = self.x * .001
@@ -27,6 +27,7 @@ class ATM:
 
     def print_transactions(self):
         return self.history
+
 
 atm = ATM()
 
