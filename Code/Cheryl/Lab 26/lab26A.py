@@ -1,5 +1,6 @@
 import random
 from termcolor import colored
+import time
 
 from colorama import Fore, Back, Style
 
@@ -14,22 +15,27 @@ print(style_files('title.txt'))
 print(Style.RESET_ALL)
 print(Back.LIGHTBLACK_EX)
 
+#write out the rules of the game. 
+
 #Choose your race: Klingon or Federation
+user_race = input('Choose your race: Klingon or Federation. >   ').upper()
+if user_race == 'KLINGON':
+    print(style_files('klingon.txt') + '\n\n\tYou chose to be a Klingon! \n\n')
+else:
+    print(style_files('federation.txt') + '\n\n\tYou chose to be a member of the Federation! \n\n')
+
+time.sleep(3)
 
 #Choose your enemy: Romulan or Borg
-user_enemy = input('Choose your enemy: Romulan or Borg. >   ').upper()
+user_enemy = input('\nChoose your enemy: Romulan or Borg. >   \n\n').upper()
 
 if user_enemy == 'BORG':
-    print(style_files('borg.txt') + '\tYou chose Borg! ')
+    print(style_files('borg.txt') + '\n\n\tYou chose to fight the Borg! \n\n')
 else:
-    print(style_files('romulan.txt') + '\tYou chose Romulan! ')
-#
-# def enemy_choice(enemy):
-#     if user_enemy == 'BORG':
-#         return('borg_enemy.txt')
-#     return('romulan.txt')
+    print(style_files('romulan.txt') + '\n\n\tYou chose to fight the Romulans! \n\n')
 
-
+time.sleep(3)
+##############
 class Entity:
     def __init__(self, location_i, location_j, character):
         self.location_i = location_i
