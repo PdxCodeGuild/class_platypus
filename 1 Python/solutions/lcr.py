@@ -5,7 +5,8 @@ class Player:
         self.chips = chips
 
     def __str__(self):
-        return self.name
+        emojis = '😫😒😴😊😆😎'
+        return emojis[min(len(emojis)-1, self.chips)]
 
     def __repr__(self):
         return self.name
@@ -22,7 +23,8 @@ class Game:
         #         break
         #     player = Player(user)
         #     self.players.append(player)
-        self.players = [Player(name) for name in ['Al', 'Mitchell', 'Kagome', 'Indu', 'Angle', 'Colton', 'Matthew']]
+        self.players = [Player(name) for name in ['Al', 'Mitchell', 'Kagome', 'Indu', 'Angle', 'Colton', 'Matthew', 'Cheryl']]
+
 
 
     def roll_die(self):
@@ -42,14 +44,17 @@ class Game:
 
     def check_win(self):
         counter = 0
-        winner = None
         for i in range(len(self.players)):
             if self.players[i].chips > 0:
                 counter += 1
-                winner = i
-        if counter == 1:
-            return winner
-        return None
+        return counter == 1
+
+    def check_winner(self):
+        if self.check_win():
+            for i in range(len(self.players)):
+                if self.players[i].chips > 0:
+                    return i
+        return -1
 
     def run(self):
         while True:
@@ -59,17 +64,27 @@ class Game:
             for i in range(rolls):
                 self.roll_die()
             if self.check_win():
+                winner = self.check_winner()
+                self.players[winner].chips += self.center
+                self.center = 0
                 break
             self.player_index += 1
             self.player_index %= len(self.players)
 
+            print(self)
         print(self)
 
     def __str__(self):
-        return ', '.join([f'{player.name}: {player.chips}' for player in self.players])
+        return ' '.join([str(player) for player in self.players])
 
 game = Game()
+
 game.run()
+# Game.run(game)
+
+
+
+
 
 
 
