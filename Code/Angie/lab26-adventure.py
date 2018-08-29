@@ -1,5 +1,6 @@
 import random
 import time
+import chalk
 # re-use previous labs (guess the number, rock-paper-scissors)
 
 
@@ -12,13 +13,13 @@ class Entity:
 
 class Cat(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '🐱')
+        super().__init__(location_i, location_j, chalk.blue('🐱'))
         self.name = ''
 
 
 class Player(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '👧')
+        super().__init__(location_i, location_j, chalk.yellow('👧'))
         self.cats = []
 
 
@@ -47,7 +48,6 @@ class Board:
 
 
 board = Board(10, 10)
-
 pi, pj = board.random_location()
 player = Player(pi, pj)
 
@@ -61,7 +61,7 @@ for i in range(10):
     cats.append(cat)
 
 # x = random.randint(1, 10)
-print('''
+print(chalk.cyan('''
         ,----,                                                                                                                                            
       ,/   .`|                                                                                                                                            
     ,`   .'  :  ,---,                        ,----..                 ___              ,---,                                                               
@@ -80,14 +80,14 @@ print('''
 
 
 '''
+     ))
 
-      )
 time.sleep(2)
 
 while True:
     board.print(entities)
 
-    command = input('what is your command? ')  # get the command from the user
+    command = input('what is your command? ').lower()  # get the command from the user
 
     if command == 'done':
         break  # exit the game
@@ -100,20 +100,19 @@ while True:
     elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
 
-    collector = 0
-    names = []
+    counter = 0
     for cat in cats:
         if cat.location_i == player.location_i and cat.location_j == player.location_j:
             print('you\'ve encountered a kitty!')
             action = input('what will you do? ')
             if action == 'collect':
-                collector += 1
+                counter += 1
                 print('you\'ve captured a kitty')
 
                 name = input('what will you name the kitty?')
-                self.name[name]
-                # names.append[input]
-                # put the kitty name in a list
+                cat.name = name
+                player.cats.append(cat)
+                # put the kitty name in your inventory
                 entities.remove(cat)
                 cats.remove(cat)
                 break
