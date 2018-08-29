@@ -16,7 +16,7 @@ class Enemy(Entity):
 class Player(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '😎')
-        self.health = 10
+        self.health = 2
 
 class Board:
     def __init__(self, width, height):
@@ -57,7 +57,7 @@ with open('welcome.txt', 'r') as f:
     welcome = f.read()
 print(welcome)
 print('We all live in this cave. But some bad guys have tried to take it over.')
-name = input(f" Thanks for agreeing to do kill them all, but first what should I call you? ")
+name = input(f" Thanks for agreeing to kill them all, but first what should I call you? ")
 while True:
 
     board.print(entities)
@@ -81,19 +81,24 @@ while True:
             print('you\'ve encountered an enemy!')
             action = input('what will you do? ')
             if action == 'attack':
-                if random.randint(1, 1) == 0:
+                if random.randint(0, 1) == 0:
                     entities.remove(enemy)
                     enemies.remove(enemy)
                     break
-                else:
-                    while player.health > 0:
-                        player.health -= 1
-                        fight = input(f'You have {player.health} left. Attack or flee?').lower
+                elif player.health > 0:
+                    player.health -= 1
+                    print('They got you.')
+                    if player.health > 0:
+                        fight = input(f'You have {player.health} left. Attack or flee?')
                         if fight == 'attack':
                             if random.randint(0, 1) == 0:
                                 entities.remove(enemy)
                                 enemies.remove(enemy)
                                 break
+                    else:
+                        print(f'thanks for trying {name} but your dead.')
+                        exit()
+
             else:
                 print(f'you ran but they got a swipe on you {player.health} left.')
                 break
