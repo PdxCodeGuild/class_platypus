@@ -1,12 +1,28 @@
 import random
+from termcolor import colored
 
+from colorama import Fore, Back, Style
 
-def title_file(path):
+def style_files(path):
     with open(path, 'r') as f:
+        # print(Style.DIM)
+        print(Fore.YELLOW + Back.LIGHTBLACK_EX)
         return f.read()
 
-print(title_file('title.txt'))
 
+print(style_files('title.txt'))
+print(Style.RESET_ALL)
+print(Back.LIGHTBLACK_EX)
+
+#Choose your race: Klingon or Federation
+
+#Choose your enemy: Romulan or Borg
+user_enemy = input('Choose your enemy: Romulan or Borg. >   ')
+
+if user_enemy == 'Borg':
+    print(style_files('borg.txt') + '\tYou chose Borg! ')
+else:
+    print(style_files('romulan.txt' + '\tYou chose Romulan! '))
 
 
 class Entity:
@@ -18,7 +34,8 @@ class Entity:
 
 class Enemy(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '§')
+        # super().__init__(location_i, location_j, '§')
+        super().__init__(location_i, location_j, chr(00))
 
 
 class Player(Entity):
