@@ -1,4 +1,6 @@
 import random
+import time
+# re-use previous labs (guess the number, rock-paper-scissors)
 
 
 class Entity:
@@ -8,14 +10,16 @@ class Entity:
         self.character = character
 
 
-class Enemy(Entity):
+class Cat(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '§')
+        super().__init__(location_i, location_j, '🐱')
+        self.name = ''
 
 
 class Player(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '☺')
+        super().__init__(location_i, location_j, '👧')
+        self.cats = []
 
 
 class Board:
@@ -48,17 +52,39 @@ pi, pj = board.random_location()
 player = Player(pi, pj)
 
 entities = [player]
-enemies = []
+cats = []
 
 for i in range(10):
     ei, ej = board.random_location()
-    enemy = Enemy(ei, ej)
-    entities.append(enemy)
-    enemies.append(enemy)
+    cat = Cat(ei, ej)
+    entities.append(cat)
+    cats.append(cat)
 
+# x = random.randint(1, 10)
+print('''
+        ,----,                                                                                                                                            
+      ,/   .`|                                                                                                                                            
+    ,`   .'  :  ,---,                        ,----..                 ___              ,---,                                                               
+  ;    ;     /,--.' |                       /   /   \              ,--.'|_          ,--.' |                                      ,---,                    
+.'___,/    ,' |  |  :                      |   :     :             |  | :,'         |  |  :       ,---.               __  ,-.  ,---.'|            __  ,-. 
+|    :     |  :  :  :                      .   |  ;. /             :  : ' :         :  :  :      '   ,'\            ,' ,'/ /|  |   | :          ,' ,'/ /| 
+;    |.';  ;  :  |  |,--.   ,---.          .   ; /--`   ,--.--.  .;__,'  /          :  |  |,--. /   /   |  ,--.--.  '  | |' |  |   | |   ,---.  '  | |' | 
+`----'  |  |  |  :  '   |  /     \         ;   | ;     /       \ |  |   |           |  :  '   |.   ; ,. : /       \ |  |   ,',--.__| |  /     \ |  |   ,' 
+    '   :  ;  |  |   /' : /    /  |        |   : |    .--.  .-. |:__,'| :           |  |   /' :'   | |: :.--.  .-. |'  :  / /   ,'   | /    /  |'  :  /   
+    |   |  '  '  :  | | |.    ' / |        .   | '___  \__\/: . .  '  : |__         '  :  | | |'   | .; : \__\/: . .|  | ' .   '  /  |.    ' / ||  | '    
+    '   :  |  |  |  ' | :'   ;   /|        '   ; : .'| ," .--.; |  |  | '.'|        |  |  ' | :|   :    | ," .--.; |;  : | '   ; |:  |'   ;   /|;  : |    
+    ;   |.'   |  :  :_:,''   |  / |        '   | '/  :/  /  ,.  |  ;  :    ;        |  :  :_:,' \   \  / /  /  ,.  ||  , ; |   | '/  ''   |  / ||  , ;    
+    '---'     |  | ,'    |   :    |        |   :    /;  :   .'   \ |  ,   /         |  | ,'      `----' ;  :   .'   \---'  |   :    :||   :    | ---'     
+              `--''       \   \  /          \   \ .' |  ,     .-./  ---`-'          `--''               |  ,     .-./       \   \  /   \   \  /           
+                           `----'            `---`    `--`---'                                           `--`---'            `----'     `----'            
+
+
+'''
+
+      )
+time.sleep(2)
 
 while True:
-
     board.print(entities)
 
     command = input('what is your command? ')  # get the command from the user
@@ -74,17 +100,25 @@ while True:
     elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
 
-    for enemy in enemies:
-        if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
-            print('you\'ve encountered an enemy!')
+    collector = 0
+    names = []
+    for cat in cats:
+        if cat.location_i == player.location_i and cat.location_j == player.location_j:
+            print('you\'ve encountered a kitty!')
             action = input('what will you do? ')
-            if action == 'attack':
-                print('you\'ve slain the enemy')
-                entities.remove(enemy)
-                enemies.remove(enemy)
+            if action == 'collect':
+                collector += 1
+                print('you\'ve captured a kitty')
+
+                name = input('what will you name the kitty?')
+                self.name[name]
+                # names.append[input]
+                # put the kitty name in a list
+                entities.remove(cat)
+                cats.remove(cat)
                 break
             else:
-                print('you hestitated and were slain')
+                print('you hestitated and the kitty ran off')
                 exit()
 
 
