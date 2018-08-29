@@ -8,12 +8,6 @@ class Entity:
         self.character = character
 
 
-class InanimateObject(Entity):
-    def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '')
-        self.character = random.choice(['❀', '🎄'])
-
-
 class Enemy(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '§')
@@ -48,16 +42,16 @@ class Board:
 
 
 
-b = Board(10, 10)
+board = Board(10, 10)
 
-pi, pj = b.random_location()
+pi, pj = board.random_location()
 player = Player(pi, pj)
 
 entities = [player]
 enemies = []
 
 for i in range(10):
-    ei, ej = b.random_location()
+    ei, ej = board.random_location()
     enemy = Enemy(ei, ej)
     entities.append(enemy)
     enemies.append(enemy)
@@ -65,7 +59,7 @@ for i in range(10):
 
 while True:
 
-    b.print(entities)
+    board.print(entities)
 
     command = input('what is your command? ')  # get the command from the user
 
@@ -81,7 +75,24 @@ while True:
         player.location_i += 1  # move down
 
     for enemy in enemies:
-        if random.randint(0, 1) == 0:
-            enemy.location_i += random.randint(-1, 1)
-        else:
-enemy.location_j += random.randint(-1, 1)
+        if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
+            print('you\'ve encountered an enemy!')
+            action = input('what will you do? ')
+            if action == 'attack':
+                print('you\'ve slain the enemy')
+                entities.remove(enemy)
+                enemies.remove(enemy)
+                break
+            else:
+                print('you hestitated and were slain')
+                exit()
+
+
+    # for enemy in enemies:
+    #     if random.randint(0, 1) == 0:
+    #         enemy.location_i += random.randint(-1, 1)
+    #     else:
+    #         enemy.location_j += random.randint(-1, 1)
+
+
+
