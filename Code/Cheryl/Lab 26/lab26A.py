@@ -17,12 +17,17 @@ print(Back.LIGHTBLACK_EX)
 #Choose your race: Klingon or Federation
 
 #Choose your enemy: Romulan or Borg
-user_enemy = input('Choose your enemy: Romulan or Borg. >   ')
+user_enemy = input('Choose your enemy: Romulan or Borg. >   ').upper()
 
-if user_enemy == 'Borg':
+if user_enemy == 'BORG':
     print(style_files('borg.txt') + '\tYou chose Borg! ')
 else:
-    print(style_files('romulan.txt' + '\tYou chose Romulan! '))
+    print(style_files('romulan.txt') + '\tYou chose Romulan! ')
+#
+# def enemy_choice(enemy):
+#     if user_enemy == 'BORG':
+#         return('borg_enemy.txt')
+#     return('romulan.txt')
 
 
 class Entity:
@@ -35,7 +40,11 @@ class Entity:
 class Enemy(Entity):
     def __init__(self, location_i, location_j):
         # super().__init__(location_i, location_j, '§')
-        super().__init__(location_i, location_j, chr(00))
+        if user_enemy == "BORG":
+            super().__init__(location_i, location_j, style_files('borg.txt'))
+        else:
+            super().__init__(location_i, location_j, style_files('romulan.txt'))
+
 
 
 class Player(Entity):
