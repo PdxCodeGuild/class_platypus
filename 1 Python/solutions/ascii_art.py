@@ -12,8 +12,6 @@ from colorama import Fore, Back, Style
 # print('back to normal now')
 
 
-
-
 class DrawPattern1:
     def __init__(self, bounce=True, width=20, direction=True, column=0):
         self.bounce = bounce
