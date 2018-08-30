@@ -17,3 +17,5 @@
                        |      |    |      |
                         \,---_|    |_---./
                         ooOO(_)    (_)OOoo
+
+You have almost cleared out the cave! Looks like this giant ogre is the only thing left. Good luck.
