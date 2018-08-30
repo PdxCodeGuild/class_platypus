@@ -37,6 +37,9 @@ class Sword(Entity):
         super().__init__(location_i, location_j, '🗡️')
 
 
+# class Fight:
+#     def __init__(self):
+
 class Board:
     def __init__(self, width, height):
         self.width = width
@@ -92,7 +95,7 @@ print('What do you mean you didn\'t bring armor? maybe you will find some in the
 while True:
 
     board.print(entities)
-    print(f' you have {player.health} health left.')
+    print(f' you have {player.health} health left and you are currently at {player.strength} strength.')
 
     command = input(f'{name}, what is your command? ')  # get the command from the user
 # movement controls
@@ -107,20 +110,20 @@ while True:
     elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
 # encounters
+    if armor.location_i == player.location_i and armor.location_j == player.location_j:
+        player.health += 2
+        entities.remove(armor)
+        print('You found some armor. Your health went up!')
+    if sword.location_i == player.location_i and sword.location_j == player.location_j:
+        entities.remove(sword)
+        player.strength += 1
+        print('You found a sword. Your strength went up!')
     for enemy in enemies:
-        if armor.location_i == player.location_i and armor.location_j == player.location_j:
-            player.health += 2
-            entities.remove(armor)
-            print('You found some armor. Your health went up!')
-            break
-        if sword.location_i == player.location_i and sword.location_j == player.location_j:
-            player.strength += 1
-
         if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
             print('you\'ve encountered an enemy!')
             action = input('what will you do? ')
             if action == 'attack':
-                if random.randint(0, 1) == 0:
+                if random.randint(0, 1) == 0 and player.strength > enemy.health:
                     entities.remove(enemy)
                     enemies.remove(enemy)
                     break

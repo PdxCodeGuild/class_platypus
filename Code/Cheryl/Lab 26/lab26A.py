@@ -1,8 +1,25 @@
+#ST audio files from http://www.trekcore.com/audio/
+
 import random
 from termcolor import colored
 import time
 
 from colorama import Fore, Back, Style
+import pygame
+import time
+
+def audio(audio_file):
+    pygame.init()
+    pygame.mixer.init()
+    sounda = pygame.mixer.Sound(audio_file)
+    sounda.play()
+    time.sleep(3)
+    # sounda.stop()
+    return sounda
+
+audio("st_audio/tos_bridge_1_activate.wav")
+
+
 
 def style_files(path):
     with open(path, 'r') as f:
@@ -15,7 +32,14 @@ print(style_files('title.txt'))
 print(Style.RESET_ALL)
 print(Back.LIGHTBLACK_EX)
 
-#write out the rules of the game. 
+#write out the rules of the game.
+#1. after attacking and killing a cube, add 10 points
+#2. find a way to get health (5 points each time_
+#3. every random time you attack, you get points taken away 5 points
+#... make multiple ways to attack
+#4. when you win, by clearing the board, have something happen
+#5. havesomething happen when you lose.
+
 
 #Choose your race: Klingon or Federation
 user_race = input('Choose your race: Klingon or Federation. >   ').upper()
@@ -34,7 +58,7 @@ if user_enemy == 'BORG':
 else:
     print(style_files('romulan.txt') + '\n\n\tYou chose to fight the Romulans! \n\n')
 
-time.sleep(3)
+time.sleep(2)
 ##############
 class Entity:
     def __init__(self, location_i, location_j, character):
@@ -45,17 +69,18 @@ class Entity:
 
 class Enemy(Entity):
     def __init__(self, location_i, location_j):
-        # super().__init__(location_i, location_j, '§')
         if user_enemy == "BORG":
-            super().__init__(location_i, location_j, style_files('borg.txt'))
+            super().__init__(location_i, location_j, '🕋') #borg
         else:
-            super().__init__(location_i, location_j, style_files('romulan.txt'))
-
+            super().__init__(location_i, location_j, '👿') #romulan
 
 
 class Player(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '☺')
+        if user_race == "KLINGON":
+            super().__init__(location_i, location_j, '👹') #klingon
+        else:
+            super().__init__(location_i, location_j, '👽') #federation
 
 
 class Board:
@@ -120,11 +145,22 @@ while True:
             action = input('what will you do? ')
             if action == 'attack':
                 print('you\'ve slain the enemy')
+                time.sleep(1.5)
                 entities.remove(enemy)
                 enemies.remove(enemy)
                 break
             else:
                 print('you hestitated and were slain')
+                if user_enemy == "BORG":
+                    print('You have been assimilated.')
+                    time.sleep(3)
+                    print(style_files('borg.txt') + '\t\tYou are now Borg...')
+                else:
+                    if user_race == 'KLINGON':
+                        print(style_files('romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
+                    else:
+                        print(style_files('romulan.text') + 'test')
+
                 exit()
 
 
