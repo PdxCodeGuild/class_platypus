@@ -1,19 +1,15 @@
 import random
 import time
 import chalk
-import pygame
+import winsound
 # re-use previous labs (guess the number, rock-paper-scissors)
 
 #function for audio
 def audio(audio_file):
-    pygame.init()
-    pygame.mixer.init()
-    sounda = pygame.mixer.Sound(audio_file)
-    sounda.play()
-    #time.sleep(3)
-    #sounda.stop()
-    return sounda
-audio('audio/Cat-meow-3.wav')
+    winsound.PlaySound(audio_file, 0)
+
+
+
 class Entity:
     def __init__(self, location_i, location_j, character):
         self.location_i = location_i
@@ -162,7 +158,7 @@ while True:
             action = input('what will you do? ')
             if action == 'collect':
                 print('you\'ve captured a kitty')
-                audio('audio/Cat-meow-3.wav')
+                audio('./audio/Cat-meow-3.wav')
                 name = input('what will you name the kitty?')
                 cat.name = name
                 player.cats.append(cat)
@@ -213,6 +209,7 @@ while True:
     # check if the cats list is empty, if so, tell the user won
     if len(cats) == 0:
         print(f'You collected all the cats! you won! Here are your cats {player.cats}')
+        audio('./audio/Cat-purring-2.wav')
         break
     else:
         print('You did not collect all the cats, you lose!')
