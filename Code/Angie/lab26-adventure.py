@@ -6,9 +6,9 @@ import winsound
 
 #function for audio
 def audio(audio_file):
-    winsound.PlaySound('./audio/Cat-meow-3.wav', 0)
+    winsound.PlaySound(audio_file, 0)
 
-    audio('./audio/Cat-meow-3.wav', './audio/Cat-purring-2.wav')
+
 
 class Entity:
     def __init__(self, location_i, location_j, character):
