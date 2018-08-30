@@ -2,6 +2,7 @@
 #extra emojis ☄️
 
 import random
+
 from termcolor import colored
 import time
 
@@ -140,6 +141,11 @@ for i in range(5):
     shields.append(shield)
 
 
+#sets points for game
+points = 0
+new_points = points
+
+
 while True:
 
     board.print(entities)
@@ -163,16 +169,36 @@ while True:
 
     for enemy in enemies:
         if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
+            audio('st_audio/tactalertvesselapproach.wav')
             print('you\'ve encountered an enemy!')
             action = input('what will you do? ')
             if action == 'attack':
-                print('you\'ve slain the enemy')
+                #adds random weapon sounds on attack
+                attack_audio = ["st_audio/tng_weapons.wav", "st_audio/tos_photon_torpedo.wav", "st_audio/tng_torpedo.wav", "st_audio/tng_torpedo2.wav", "st_audio/tng_torpedo3.wav"]
+                random_attack_audio = random.choice(attack_audio)
+                audio(random_attack_audio)
+
+                #adds points or deducts random points based on who wins the attack
+                win_lose = ['WIN', 'LOSE']
+                win_lose = random.choice(win_lose)
+                if win_lose == 'LOSE':
+                    print('You\'ve lost the fight. ')
+                    new_points -= 5
+                    print(f'You now have: {new_points} points')
+                    # if new_points < -5:
+                    #     ########### INSERT LOSING FUNCTION ###############
+
+                else:
+                    print('you\'ve destroyed their ship!')
+                    new_points += 5
+                    print(f'You now have: {new_points} points')
+
                 time.sleep(1.5)
                 entities.remove(enemy)
                 enemies.remove(enemy)
                 break
             else:
-                print('you hestitated and were slain')
+                print('you hesitated and were slain')
                 if user_enemy == "BORG":
                     print('You have been assimilated.')
                     time.sleep(3)
