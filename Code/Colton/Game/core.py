@@ -25,23 +25,25 @@ class Boss(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '👺')
         self.health = 5
-        self.strength = 2
+        self.strength = 3
 
 class Player(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '😎')
-        self.health = 100
+        self.health = 20
         self.strength = 1
 
 
 class Armor(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '🛡️')
+        self.health = 5
 
 
 class Sword(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '🗡️')
+        self.strength = 2
 
 
 class Board:
@@ -112,10 +114,11 @@ def boss_fight():
                                 fight = input(f'You have {player.health} left. Attack or flee?')
                                 if fight == 'attack':
                                     if random.randint(0, 1) == 0 and player.strength >= boss.health:
+                                        print('You killed them!')
+                                        print(win)
                                         entities.remove(boss)
                                         bosses.remove(boss)
-                                        print('You killed them!')
-                                        break
+                                        quit()
                                 else:
                                     player.health -= 1
                                     print(f'you ran but they got a swipe on you {player.health} left.')
@@ -131,26 +134,27 @@ def boss_fight():
 
 
 board = Board(15, 15)
-
 pi, pj = board.random_location()
-bi, bj = board.random_location()
 player = Player(pi, pj)
 entities = [player]
 enemies = []
+items = []
 for i in range(2):
     si, sj = board.random_location()
     sword = Sword(si, sj)
     entities.append(sword)
+    items.append(sword)
 for i in range(3):
     ai, aj = board.random_location()
     armor = Armor(ai, aj)
     entities.append(armor)
-for i in range(0):
+    items.append(armor)
+for i in range(3):
     ei, ej = board.random_location()
     enemy = Enemy(ei, ej)
     entities.append(enemy)
     enemies.append(enemy)
-for i in range(0):
+for i in range(2):
     bi, bj = board.random_location()
     benemy = Big_Enemy(bi, bj)
     entities.append(benemy)
@@ -174,6 +178,7 @@ print('What do you mean you didn\'t bring armor? maybe you will find some in the
 while True:
 
     board.print(entities)
+
     print(f' you have {player.health} health left and you are currently at {player.strength} strength.')
 
     command = input(f'{name}, what is your command? ')  # get the command from the user
@@ -190,48 +195,55 @@ while True:
     elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
 # encounters
-    if armor.location_i == player.location_i and armor.location_j == player.location_j:
-        player.health += 2
-        entities.remove(armor)
-        print('You found some armor. Your health went up!')
+    for armor in items:
+        if armor.location_i == player.location_i and armor.location_j == player.location_j:
+            player.health += armor.health
+            items.remove(armor)
+            entities.remove(armor)
+            print('You found some armor. Your health went up!')
+            break
     if sword.location_i == player.location_i and sword.location_j == player.location_j:
-        entities.remove(sword)
-        player.strength += 1
-        print('You found a sword. Your strength went up!')
+            items.remove(sword)
+            entities.remove(sword)
+            player.strength += sword.strength
+            print('You found a sword. Your strength went up!')
+            break
+
     for enemy in enemies:
             if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
                 print('you\'ve encountered an enemy!')
                 action = input('what will you do? ')
-                if action == 'attack':
-                    if random.randint(0, 1) == 0 and player.strength >= enemy.health:
-                        print('You killed them!')
-                        entities.remove(enemy)
-                        enemies.remove(enemy)
-                        break
-                    elif player.health > 0:
-                        player.health -= enemy.strength
-                        enemy.health -= player.strength
-                        print('They got you.')
-                        if player.health > 0:
-                            fight = input(f'You have {player.health} left. Attack or flee?')
-                            if fight == 'attack':
-                                if random.randint(0, 1) == 0 and player.strength >= enemy.health:
-                                    entities.remove(enemy)
-                                    enemies.remove(enemy)
-                                    print('You killed them!')
+                while True:
+                    if action == 'attack':
+                        if random.randint(0, 1) == 0 and player.strength >= enemy.health:
+                            print('You killed them!')
+                            entities.remove(enemy)
+                            enemies.remove(enemy)
+                            break
+                        elif player.health > 0:
+                            player.health -= enemy.strength
+                            enemy.health -= player.strength
+                            print('They got you.')
+                            if player.health > 0:
+                                fight = input(f'You have {player.health} left. Attack or flee?')
+                                if fight == 'attack':
+                                    if random.randint(0, 1) == 0 and player.strength >= enemy.health:
+                                        entities.remove(enemy)
+                                        enemies.remove(enemy)
+                                        print('You killed them!')
+                                        break
+                                else:
+                                    player.health -= 1
+                                    print(f'you ran but they got a swipe on you {player.health} left.')
                                     break
-                            else:
-                                player.health -= 1
-                                print(f'you ran but they got a swipe on you {player.health} left.')
-                                break
+                        else:
+                            print(death)
+                            print(f'thanks for trying {name} but your dead.')
+                            exit()
                     else:
-                        print(death)
-                        print(f'thanks for trying {name} but your dead.')
-                        exit()
-                else:
-                    player.health -= 1
-                    print(f'you ran but they got a swipe on you {player.health} left.')
-                    break
+                        player.health -= 1
+                        print(f'you ran but they got a swipe on you {player.health} left.')
+                        break
 
     if not enemies:
         break
