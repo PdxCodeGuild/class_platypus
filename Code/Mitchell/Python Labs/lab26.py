@@ -10,6 +10,8 @@ class Entity:
 class Fire(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '🔥')
+    def __repr__(self):
+        return f'({self.location_i},{self.location_j})'
 # Water sources that can refill Water Tank
 class Firetruck(Entity):
     def __init__(self, location_i, location_j):
@@ -83,6 +85,17 @@ class Board:
     # Returns a random location on the board
     def random_location(self):
         return random.randint(0, self.width - 1), random.randint(0, self.height - 1)
+    # Returns a random location on the board
+    def random_location_safe(self, entities):
+        while True:
+            location_i = random.randint(0, self.width - 1)
+            location_j = random.randint(0, self.height - 1)
+            for entity in entities:
+                if entity.location_i == location_i and entity.location_j == location_j:
+                    break
+            else:
+                break
+        return location_i, location_j
     # Gets an item at a certain spot on the board
     def __getitem__(self, j):
         return self.board[j]
@@ -173,8 +186,8 @@ fires = []
 
 # GAME'S ACTIONS & FUNCTIONALITY
 # Sets fire at random posistions to start game
-for i in range(15):
-    ei, ej = board.random_location()
+for i in range(20):
+    ei, ej = board.random_location_safe(entities)
     fire = Fire(ei, ej)
     entities.append(fire)
     fires.append(fire)
@@ -184,9 +197,18 @@ print('🔥🔥 EMOJI 👨‍🚒 FIRE 🚒 FIGHTER 🔥🔥')
 print('-----------------------------------')
 # Loops while game is being plaid
 while True:
+    # Every action taken has a 1 in 5 chance of starting a fire
+    fire_starter = random.randint(1,5)
+    if fire_starter == 1:
+        # Adds fire to board at random location
+        ei, ej = board.random_location_safe(entities)
+        fire = Fire(ei, ej)
+        entities.append(fire)
+        fires.append(fire)
     # Prints out the board
     board.print(entities)
     print('-----------------------------------')
+    print(fires)
     # Displays water level bellow board
     print('WATER TANK: ', end='')
     for i in range(water_level):
@@ -219,14 +241,10 @@ while True:
                 print('💀💀💀💀💀💀 GAME OVER 💀💀💀💀💀💀')
                 print('-----------------------------------')
                 exit()
-    # code for if player encounters water source 
+    # code for if player encounters water source
     for water in waters:
-        if (fountain.location_i == player.location_i and fountain.location_j == player.location_j) \
-         or (ocean1.location_i == player.location_i and ocean1.location_j == player.location_j) \
-         or (ocean2.location_i == player.location_i and ocean2.location_j == player.location_j) \
-         or (ocean3.location_i == player.location_i and ocean3.location_j == player.location_j) \
-          or (firetruck.location_i == player.location_i and firetruck.location_j == player.location_j):
-            print('🚰You found a water source!🚰')
+        if (water.location_i == player.location_i and water.location_j == player.location_j):
+            print('🚰 You found a water source! 🚰')
             fill = input('Type "F" to refill or "C" to cancel: ').lower()
             # If the user fills there tank add water drop to it, 3 drops max
             if fill == 'fill' or fill == 'f':
@@ -237,4 +255,8 @@ while True:
                         print('💧', end='')
                     print()
                     fill = input('Hit "F" to fill again or "C" to cancel: ').lower()
-        break
+
+    if len(fires) == 0:
+        print('🎖🏅🎖🏅🎖 YOU 👨‍🚒 WON! 🎖🏅🎖🏅🎖')
+        print('-----------------------------------')
+        exit()

@@ -1,6 +1,8 @@
 #ST audio files from http://www.trekcore.com/audio/
+#extra emojis ☄️
 
 import random
+
 from termcolor import colored
 import time
 
@@ -24,21 +26,13 @@ audio("st_audio/tos_bridge_1_activate.wav")
 def style_files(path):
     with open(path, 'r') as f:
         # print(Style.DIM)
-        print(Fore.YELLOW + Back.LIGHTBLACK_EX)
+        print(Fore.BLUE + Back.LIGHTBLACK_EX)
         return f.read()
 
 
 print(style_files('title.txt'))
 print(Style.RESET_ALL)
 print(Back.LIGHTBLACK_EX)
-
-#write out the rules of the game.
-#1. after attacking and killing a cube, add 10 points
-#2. find a way to get health (5 points each time_
-#3. every random time you attack, you get points taken away 5 points
-#... make multiple ways to attack
-#4. when you win, by clearing the board, have something happen
-#5. havesomething happen when you lose.
 
 
 #Choose your race: Klingon or Federation
@@ -59,7 +53,8 @@ else:
     print(style_files('romulan.txt') + '\n\n\tYou chose to fight the Romulans! \n\n')
 
 time.sleep(2)
-##############
+
+
 class Entity:
     def __init__(self, location_i, location_j, character):
         self.location_i = location_i
@@ -80,7 +75,12 @@ class Player(Entity):
         if user_race == "KLINGON":
             super().__init__(location_i, location_j, '👹') #klingon
         else:
-            super().__init__(location_i, location_j, '👽') #federation
+            super().__init__(location_i, location_j, '🖖') #federation
+
+
+class Shield(Entity):
+    def __init__(self, location_i, location_j):
+        super().__init__(location_i, location_j, '🌟') #shield
 
 
 class Board:
@@ -90,6 +90,18 @@ class Board:
 
     def random_location(self):
         return random.randint(0, self.width - 1), random.randint(0, self.height - 1)
+
+    # Returns a random location on the board
+    def random_location_safe(self, entities):
+        while True:
+            location_i = random.randint(0, self.width - 1)
+            location_j = random.randint(0, self.height - 1)
+            for entity in entities:
+                if entity.location_i == location_i and entity.location_j == location_j:
+                    break
+            else:
+                break
+        return location_i, location_j
 
     def __getitem__(self, j):
         return self.board[j]
@@ -114,12 +126,24 @@ player = Player(pi, pj)
 
 entities = [player]
 enemies = []
+shields = []
 
 for i in range(10):
     ei, ej = board.random_location()
     enemy = Enemy(ei, ej)
     entities.append(enemy)
     enemies.append(enemy)
+
+for i in range(5):
+    ei, ej = board.random_location()
+    shield = Shield(ei, ej)
+    entities.append(shield)
+    shields.append(shield)
+
+
+#sets points for game
+points = 15
+new_points = points
 
 
 while True:
@@ -139,18 +163,47 @@ while True:
     elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
 
+    for shield in shields:
+        if shield.location_i == player.location_i and shield.location_j == player.location_j:
+            print('you\'ve encountered a shield.')
+
     for enemy in enemies:
         if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
+            audio('st_audio/tactalertvesselapproach.wav')
             print('you\'ve encountered an enemy!')
             action = input('what will you do? ')
             if action == 'attack':
-                print('you\'ve slain the enemy')
+                #adds random weapon sounds on attack
+                attack_audio = ["st_audio/tng_weapons.wav", "st_audio/tos_photon_torpedo.wav", "st_audio/tng_torpedo.wav", "st_audio/tng_torpedo2.wav", "st_audio/tng_torpedo3.wav"]
+                random_attack_audio = random.choice(attack_audio)
+                audio(random_attack_audio)
+
+                #adds points or deducts random points based on who wins the attack
+                # win_lose = 'LOSE'
+                win_lose = ['WIN', 'LOSE']
+                win_lose = random.choice(win_lose)
+                if win_lose == 'LOSE':
+                    print('You\'ve lost the fight. ')
+                    new_points -= 5
+                    print(f'You now have: {new_points} points')
+                    if new_points == 10:
+                        audio('st_audio/primaryshieldsfailing.wav')
+                    elif new_points == 5:
+                        audio('st_audio/lifesupportfailureabandon.wav')
+                    # if new_points < -5:
+                    #     ########### INSERT LOSING FUNCTION ###############
+
+                else:
+                    print('you\'ve destroyed their ship!')
+                    new_points += 5
+                    print(f'You now have: {new_points} points')
+
                 time.sleep(1.5)
                 entities.remove(enemy)
                 enemies.remove(enemy)
                 break
             else:
-                print('you hestitated and were slain')
+                print('you hesitated and were slain')
                 if user_enemy == "BORG":
                     print('You have been assimilated.')
                     time.sleep(3)
