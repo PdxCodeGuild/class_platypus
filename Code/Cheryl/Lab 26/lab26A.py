@@ -16,12 +16,12 @@ def audio(audio_file):
     sounda = pygame.mixer.Sound(audio_file)
     sounda.play()
     time.sleep(3)
-    # sounda.stop()
-    return sounda
 
 audio("st_audio/tos_bridge_1_activate.wav")
 
-
+def end_credits(audio):
+    audio('st_audio/credits.wav')
+    time.sleep(44)
 
 def style_files(path):
     with open(path, 'r') as f:
@@ -142,7 +142,7 @@ for i in range(5):
 
 
 #sets points for game
-points = 15
+points = 5
 new_points = points
 
 
@@ -179,9 +179,9 @@ while True:
                 audio(random_attack_audio)
 
                 #adds points or deducts random points based on who wins the attack
-                # win_lose = 'LOSE'
-                win_lose = ['WIN', 'LOSE']
-                win_lose = random.choice(win_lose)
+                win_lose = 'LOSE'
+                # win_lose = ['WIN', 'LOSE']
+                # win_lose = random.choice(win_lose)
                 if win_lose == 'LOSE':
                     print('You\'ve lost the fight. ')
                     new_points -= 5
@@ -190,8 +190,24 @@ while True:
                         audio('st_audio/primaryshieldsfailing.wav')
                     elif new_points == 5:
                         audio('st_audio/lifesupportfailureabandon.wav')
-                    # if new_points < -5:
+                    if new_points == 0:
                     #     ########### INSERT LOSING FUNCTION ###############
+                        audio('st_audio/largeexplosion.wav')
+                        if user_enemy == "BORG":
+                            print('You have been assimilated.')
+                            time.sleep(3)
+                            print(style_files('borg.txt') + '\t\tYou are now Borg...')
+                            end_credits(audio)
+                        else:
+                            if user_race == 'KLINGON':
+                                print(style_files(
+                                    'romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
+                                end_credits(audio)
+                            else:
+                                print(style_files('romulan.text') + 'test')
+                                end_credits(audio)
+                        end_credits(audio)
+                        exit()
 
                 else:
                     print('you\'ve destroyed their ship!')
@@ -212,7 +228,7 @@ while True:
                     if user_race == 'KLINGON':
                         print(style_files('romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
                     else:
-                        print(style_files('romulan.text') + 'test')
+                        print(style_files('romulan.txt') + 'test')
 
                 exit()
 
