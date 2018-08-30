@@ -22,6 +22,14 @@ class Cat(Entity):
         super().__init__(location_i, location_j, chalk.blue('🐱'))
         self.name = []
 
+    def run_away(self):
+        self.location_i += random.choice([-2, -1, 1, 2])
+        while self.location_i not in range(10):  # bad thing
+            self.location_i += random.choice([-2, -1, 1, 2])
+        self.location_j += random.choice([-2, -1, 1, 2])
+        while self.location_j not in range(10):  # bad thing
+            self.location_j += random.choice([-2, -1, 1, 2])
+
     def __repr__(self):
         return self.name
 
@@ -166,8 +174,9 @@ while True:
                 entities.remove(cat)
                 cats.remove(cat)
             else:
+                cat.run_away()
                 print('you hesitated and the kitty ran off')
-                exit()
+
 
     for food in foods:
         if food.location_i == player.location_i and food.location_j == player.location_j:
@@ -182,7 +191,7 @@ while True:
             else:
                 print('you hesitated and another kitty stole the food')
                 player.fish -= 1
-                exit()
+
 
     for special in specials:
         if special.location_i == player.location_i and special.location_j == player.location_j:
@@ -197,7 +206,7 @@ while True:
             else:
                 print('you lost some catnip')
                 player.catnip -= 1
-                exit()
+
 
     # for enemy in enemies:
     #     if random.randint(0, 1) == 0:
@@ -211,5 +220,5 @@ while True:
         print(f'You collected all the cats! you won! Here are your cats {player.cats}')
         audio('./audio/Cat-purring-2.wav')
         break
-    else:
-        print('You did not collect all the cats, you lose!')
+if len(cats) > 0:
+    print('You did not collect all the cats, you lose!')
