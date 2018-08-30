@@ -1,7 +1,13 @@
 import random
 import time
 import chalk
+import winsound
 # re-use previous labs (guess the number, rock-paper-scissors)
+
+#function for audio
+def audio(audio_file):
+    winsound.PlaySound(audio_file, 0)
+
 
 
 class Entity:
@@ -152,7 +158,7 @@ while True:
             action = input('what will you do? ')
             if action == 'collect':
                 print('you\'ve captured a kitty')
-
+                audio('./audio/Cat-meow-3.wav')
                 name = input('what will you name the kitty?')
                 cat.name = name
                 player.cats.append(cat)
@@ -160,7 +166,7 @@ while True:
                 entities.remove(cat)
                 cats.remove(cat)
             else:
-                print('you hestitated and the kitty ran off')
+                print('you hesitated and the kitty ran off')
                 exit()
 
     for food in foods:
@@ -175,6 +181,7 @@ while True:
                 foods.remove(food)
             else:
                 print('you hesitated and another kitty stole the food')
+                player.fish -= 1
                 exit()
 
     for special in specials:
@@ -189,6 +196,7 @@ while True:
                 specials.remove(special)
             else:
                 print('you lost some catnip')
+                player.catnip -= 1
                 exit()
 
     # for enemy in enemies:
@@ -199,3 +207,9 @@ while True:
 
 
     # check if the cats list is empty, if so, tell the user won
+    if len(cats) == 0:
+        print(f'You collected all the cats! you won! Here are your cats {player.cats}')
+        audio('./audio/Cat-purring-2.wav')
+        break
+    else:
+        print('You did not collect all the cats, you lose!')
