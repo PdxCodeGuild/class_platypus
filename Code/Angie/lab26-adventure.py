@@ -199,3 +199,8 @@ while True:
 
 
     # check if the cats list is empty, if so, tell the user won
+    if len(cats) == 0:
+        print(f'You collected all the cats! you won! Here are your cats {player.cats}')
+        break
+    else:
+        print('You did not collect all the cats, you lose!')
