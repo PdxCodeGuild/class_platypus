@@ -14,13 +14,31 @@ class Entity:
 class Cat(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, chalk.blue('🐱'))
-        self.name = ''
+        self.name = []
+
+    def __repr__(self):
+        return self.name
+
+
+class Food(Entity):
+    def __init__(self, location_i, location_j):
+        super().__init__(location_i, location_j, chalk.green('🐟'))
+        self.fish = []
 
 
 class Player(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, chalk.yellow('👧'))
+        super().__init__(location_i, location_j, '👧')
+        self.inventory = []
         self.cats = []
+
+    def inventory(self):  # maintains a list of items
+        print(', '.join(self.inventory))
+        print(', '.join(self.cats))
+
+    def check_inventory(self):
+        return f'You currently have {self.fish} fish in your inventory'
+
 
 
 class Board:
@@ -53,12 +71,19 @@ player = Player(pi, pj)
 
 entities = [player]
 cats = []
+foods = []
 
 for i in range(10):
     ei, ej = board.random_location()
     cat = Cat(ei, ej)
     entities.append(cat)
     cats.append(cat)
+
+for i in range(10):
+    ei, ej = board.random_location()
+    food = Food(ei, ej)
+    entities.append(food)
+
 
 # x = random.randint(1, 10)
 print(chalk.cyan('''
@@ -99,6 +124,10 @@ while True:
         player.location_i -= 1  # move up
     elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
+    elif command in ['check cats', 'cats']:
+        print(player.cats)
+    elif command in ['check inventory', 'inventory']:
+        print(player.inventory)
 
     counter = 0
     for cat in cats:
@@ -120,6 +149,22 @@ while True:
                 print('you hestitated and the kitty ran off')
                 exit()
 
+    fish = 0
+    for food in foods:
+        if food.location_i == player.location_i and food.location_j == player.location_j:
+            print('you\'ve encountered a fish')
+            action = input('what will you do? ')
+            if action == 'collect':
+                fish += 1
+                print('you\'ve collected some food')
+                player.inventory.append(food)
+                # put the food in your inventory
+                entities.remove(food)
+
+                break
+            else:
+                print('you hestitated and another kitty stole the food')
+                exit()
 
     # for enemy in enemies:
     #     if random.randint(0, 1) == 0:
