@@ -111,7 +111,7 @@ class Board:
                 else:
                     print(' ', end='')
             print()
-            
+
 # VARIABLES, CORDINATES & GROUPED OBJECTS
 # Possible movement commands
 left = ['left', 'west', '\x1b[D', 'a']
@@ -126,20 +126,24 @@ board = Board(25, 10)
 pi = 9
 pj = 21
 player = Player(pi, pj)
-water_level = 5
-# Water posistions
+max_water = 5
+water_level = max_water
+# Firetruck variables
+in_firetruck = False
 firetruck = Firetruck(9,22)
+gas = 8
+# Water posistions
 fountain = Fountain(4,15)
 ocean1 = Ocean(9,0)
 ocean2 = Ocean(9,0)
 ocean3 = Ocean(9,0)
 # Obsticle posistions
 mointain1 = Mountain(0,1) # left range
-mointain2 = Mountain(1,2)
-mointain3 = Mountain(0,2)
-mointain4 = Mountain(0,2)
+mointain2 = Mountain(1,1)
+mointain3 = Mountain(0,1)
+mointain4 = Mountain(0,1)
 mointain5 = Mountain(1,6)
-mointain6 = Mountain(0,2)
+mointain6 = Mountain(0,1)
 mointain7 = Mountain(0,19) #right range
 mointain8 = Mountain(1,22)
 mointain9 = Mountain(0,19)
@@ -177,7 +181,7 @@ obstacles = [mointain1, mointain2, mointain3, mointain4, mointain5, mointain6, m
 tree7, tree8, tree9, tree10, building1, building2, building3, building4, building5, building6, building7, building8, store1, store2, store3,
 house1, house2, house3]
 # Waters are water sources that can fill Water Tank
-waters = [firetruck, fountain, ocean1, ocean2, ocean3]
+waters = [fountain, ocean1, ocean2, ocean3]
 # List of all current fires
 fires = []
 
@@ -204,6 +208,19 @@ while True:
         fire = Fire(ei, ej)
         entities.append(fire)
         fires.append(fire)
+
+    if (firetruck.location_i == player.location_i and firetruck.location_j == player.location_j):
+        if gas > 0:
+            use_firetruck = input('🚒Hit space to get in firetruck?🚒 ')
+            if use_firetruck == ' ':
+                player.character = firetruck.character
+                entities.remove(firetruck)
+        else:
+            waters.append(firetruck)
+    # if in_firetruck:
+    #     water_level = max_water
+    #     gas -= 1
+        
     # Prints out the board
     board.print(entities)
     print('-----------------------------------')
@@ -236,7 +253,9 @@ while True:
             # If they fail at fighting it, GAME OVER
             else:
                 print('🔥You\'re out of water or burned!🔥')
-                print('💀💀💀💀💀💀 GAME OVER 💀💀💀💀💀💀')
+                print('💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀')
+                print('💀💀💀💀💀 GAME 💀 OVER 💀💀💀💀💀💀')
+                print('💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀')
                 print('-----------------------------------')
                 exit()
     # code for if player encounters water source
@@ -246,15 +265,19 @@ while True:
             fill = input('Type "F" to refill or "C" to cancel: ').lower()
             # If the user fills there tank add water drop to it, 3 drops max
             if fill == 'fill' or fill == 'f':
-                while (fill == 'fill' or fill == 'f') and water_level < 5:
+                while (fill == 'fill' or fill == 'f') and water_level < max_water:
                     water_level += 1
                     print('WATER TANK: ', end='')
                     for i in range(water_level):
                         print('💧', end='')
                     print()
                     fill = input('Hit "F" to fill again or "C" to cancel: ').lower()
-
+    # Checks if player has won yet
     if len(fires) == 0:
-        print('🎖🏅🎖🏅🎖 YOU 👨‍🚒 WON! 🎖🏅🎖🏅🎖')
+        # If they won prints this then closes
+        print('💦 You put out all the fires! 💦')
+        print('🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖')
+        print('🏅🎖🏅🎖🏅🎖🏅 YOU 👨‍🚒 WON! 🏅🎖🏅🎖🏅🎖')
+        print('🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖🏅🎖')
         print('-----------------------------------')
         exit()
