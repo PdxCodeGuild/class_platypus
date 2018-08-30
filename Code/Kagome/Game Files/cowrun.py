@@ -9,7 +9,8 @@ def print_ascii_art(cowlogo):
     with open(cowlogo + '.txt', 'r') as f:
         print(f.read())
 print(Fore.RED + Back.LIGHTBLACK_EX +Style.NORMAL)
-print_ascii_art('cowlogo')
+print_ascii_art('cowlogo2')
+print_ascii_art('cowart')
 
 
 os.system("afplay train.mp3")
