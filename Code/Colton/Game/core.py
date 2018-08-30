@@ -109,8 +109,9 @@ def boss_fight():
 
         for boss in bosses:
             if boss.location_i == player.location_i and boss.location_j == player.location_j:
+                print('you\'ve encountered the ogre!')
+                print('{player.health} health left.{boss.health} health left.')
                 while True:
-                    print('you\'ve encountered the ogre!')
                     action = input('what will you do? ')
                     if action == 'attack':
                         roll = random.randint(0, 1)
@@ -126,7 +127,7 @@ def boss_fight():
                         elif roll == 0 and player.strength < boss.health:
                             player.health -= boss.strength
                             boss.health -= player.strength
-                            print(f'You hit him but his hide is too tough and he hit you, you have {player.health} health left. He has {boss.health} health left.')
+                            print(f'You hit him but his hide is too tough and he hit you.')
                         elif roll == 1 and player.health > 0 and boss.strength < player.health:
                             player.health -= boss.strength
                             print(f'You missed and he got in a counter attack.')
