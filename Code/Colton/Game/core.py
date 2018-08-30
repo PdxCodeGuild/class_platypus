@@ -134,27 +134,23 @@ def boss_fight():
 
 
 board = Board(15, 15)
+si, sj = board.random_location()
+sword = Sword(si, sj)
+ai, aj = board.random_location()
+armor = Armor(ai, aj)
 pi, pj = board.random_location()
 player = Player(pi, pj)
-entities = [player]
+entities = [player, sword, armor]
 enemies = []
-items = []
-for i in range(2):
-    si, sj = board.random_location()
-    sword = Sword(si, sj)
-    entities.append(sword)
-    items.append(sword)
-for i in range(3):
-    ai, aj = board.random_location()
-    armor = Armor(ai, aj)
-    entities.append(armor)
-    items.append(armor)
-for i in range(3):
+items = [sword, armor]
+
+
+for i in range(1):
     ei, ej = board.random_location()
     enemy = Enemy(ei, ej)
     entities.append(enemy)
     enemies.append(enemy)
-for i in range(2):
+for i in range(1):
     bi, bj = board.random_location()
     benemy = Big_Enemy(bi, bj)
     entities.append(benemy)
@@ -195,19 +191,17 @@ while True:
     elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
 # encounters
-    for armor in items:
-        if armor.location_i == player.location_i and armor.location_j == player.location_j:
-            player.health += armor.health
-            items.remove(armor)
-            entities.remove(armor)
-            print('You found some armor. Your health went up!')
-            break
+    if armor.location_i == player.location_i and armor.location_j == player.location_j:
+        player.health += armor.health
+        items.remove(armor)
+        entities.remove(armor)
+        print('You found some armor. Your health went up!')
+
     if sword.location_i == player.location_i and sword.location_j == player.location_j:
-            items.remove(sword)
-            entities.remove(sword)
-            player.strength += sword.strength
-            print('You found a sword. Your strength went up!')
-            break
+        items.remove(sword)
+        entities.remove(sword)
+        player.strength += sword.strength
+        print('You found a sword. Your strength went up!')
 
     for enemy in enemies:
             if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
@@ -247,12 +241,12 @@ while True:
 
     if not enemies:
         break
-
+# move enemy on board
+    for enemy in enemies:
+        if random.randint(0, 1) == 0:
+            enemy.location_i += random.randint(-1, 1)
+        else:
+            enemy.location_j += random.randint(-1, 1)
 boss_fight()
 
-# move enemy on board
-# for enemy in enemies:
-#     if random.randint(0, 1) == 0:
-#         enemy.location_i += random.randint(-1, 1)
-#     else:
-#         enemy.location_j += random.randint(-1, 1)
+
