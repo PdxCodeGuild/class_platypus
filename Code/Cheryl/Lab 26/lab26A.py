@@ -1,8 +1,25 @@
+#ST audio files from http://www.trekcore.com/audio/
+
 import random
 from termcolor import colored
 import time
 
 from colorama import Fore, Back, Style
+import pygame
+import time
+
+def audio(path):
+    with open(path, 'r') as g:
+        pygame.init()
+        pygame.mixer.init()
+        sounda = pygame.mixer.Sound("access_library_computer.wav")
+
+        sounda.play()
+
+        time.sleep(3)
+        # sounda.stop()
+        return g.read()
+
 
 def style_files(path):
     with open(path, 'r') as f:
@@ -19,6 +36,7 @@ print(Back.LIGHTBLACK_EX)
 #1. after attacking and killing a cube, add 10 points
 #2. find a way to get health (5 points each time_
 #3. every random time you attack, you get points taken away 5 points
+#... make multiple ways to attack
 #4. when you win, by clearing the board, have something happen
 #5. havesomething happen when you lose.
 
