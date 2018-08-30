@@ -40,19 +40,29 @@ class Tree(Entity):
 class Player(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '👨‍🚒')
-    def check_move(self, location_i, location_j, move):
+    def check_move(self, command, obsticles):
+        # calculate the next position
+        next_i = self.location_i
+        next_j = self.location_j
+        if command == 'left':
+            next_j -= 1
+        # loop over obstacles, check if location is empty
         if command == 'done' or command == 'quit':
             exit()  # exit the game
         elif command in left:
-            player.location_j -= 1
+            next_j -= 1
         elif command in right:
-            player.location_j += 1  # move right
+            next_j += 1
         elif command in up:
-            player.location_i -= 1  # move up
+            next_i -= 1
         elif command in down:
-            player.location_i += 1  # move down
-
+            next_i += 1
+        for obsticle in obstacles:
+            if obsticle.location_i == next_i and obsticle.location_j == next_j:
+                return False
+        return True
     def make_move(self, location_i, location_j, move):
+        print('-----------------------------------')
         if command == 'done' or command == 'quit':
             exit()  # exit the game
         elif command in left:
@@ -89,7 +99,7 @@ left = ['left', 'west', '\x1b[D', 'a']
 right = ['right', 'east', '\x1b[C', 'd']
 up = ['up', 'north', '\x1b[A', 'w']
 down = ['down', 'south', '\x1b[B', 's']
-
+# Used for fighting fire
 letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 # Board dimmensions: board(col, row)
@@ -151,47 +161,49 @@ entities = [player, firetruck, fountain, ocean1, ocean2, ocean3, mointain1, moin
  building5, building6, building7, building8, store1, store2, store3, store4, house1, house2, house3, house4]
 # Obsticles
 obstacles = [mointain1, mointain2, mointain3, mointain4, mointain5, mointain6, mointain7, mointain8, mointain9, tree1, tree2, tree3, tree4, tree5, tree6,
-tree7, tree8, tree9, building1, building2, building3, building4, building5, building6, building7, building8, store1, store2, store3, store4,
+tree7, tree8, tree9, tree10, tree11, tree12, building1, building2, building3, building4, building5, building6, building7, building8, store1, store2, store3, store4,
 house1, house2, house3, house4]
 # Waters and fires
 waters = [firetruck, fountain, ocean1, ocean2, ocean3]
 fires = []
 
-for i in range(10):
+for i in range(15):
     ei, ej = board.random_location()
     fire = Fire(ei, ej)
     entities.append(fire)
     fires.append(fire)
 
-print('----------------------------------')
+print('-----------------------------------')
 print('🔥 EMOJI 👨‍🚒 FIRE 🚒 FIGHTER 🔥')
-print('----------------------------------')
+print('-----------------------------------')
 while True:
     board.print(entities)
-    print('----------------------------------')
+    print('-----------------------------------')
     print('Water Level: ', end='')
     for i in range(water_level):
         print('💧', end='')
     print()
 
     command = input('Use the arrow keys to move: ')  # get the command from the user
-    player.make_move(player.location_i, player.location_j, command)
+    if player.check_move(command, obstacles):
+        player.make_move(player.location_i, player.location_j, command)
 
     for fire in fires:
         if fire.location_i == player.location_i and fire.location_j == player.location_j:
-            print('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥')
+            print('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥')
             letter = letters[random.randint(1,len(letters))]
-            action = input('Quick! Press the "' + letter + '" key to spray the fire! ').upper()
-            print('----------------------------------')
+            action = input('Press the "' + letter + '" key to spray the fire! ').upper()
             if action == letter and water_level >= 0:
                 print('💦You successfuly faught the fire!💦')
                 water_level -= 1
                 entities.remove(fire)
                 fires.remove(fire)
+                print('-----------------------------------')
                 break
             else:
-                print('🔥You ran out of water or got burned!🔥')
-                print('💀GAME OVER💀')
+                print('🔥You\'re out of water or burned!🔥')
+                print('💀💀💀💀💀💀 GAME OVER 💀💀💀💀💀💀')
+                print('-----------------------------------')
                 exit()
 
     for water in waters:
@@ -200,14 +212,14 @@ while True:
          or (ocean2.location_i == player.location_i and ocean2.location_j == player.location_j) \
          or (ocean3.location_i == player.location_i and ocean3.location_j == player.location_j) \
           or (firetruck.location_i == player.location_i and firetruck.location_j == player.location_j):
-            print('You found a water source.')
-            fill = input('Do you want to fill your Water Tank? (Type "yes" or "no") ').lower()
-            if fill == 'yes' or fill == 'y':
-                while (fill == 'yes' or fill == 'y') and water_level < 3:
+            print('🚰You found a water source!🚰')
+            fill = input('Type "F" to refill or "C" to cancel: ').lower()
+            if fill == 'fill' or fill == 'f':
+                while (fill == 'fill' or fill == 'f') and water_level < 3:
                     water_level += 1
                     print('Water Tank: ', end='')
                     for i in range(water_level):
                         print('💧', end='')
                     print()
-                    fill = input('Do you want to keep filling? (Type "yes" or "no") ').lower()
+                    fill = input('Hit "F" to fill again or "C" to cancel: ').lower()
         break
