@@ -1,9 +1,19 @@
 import random
 import time
 import chalk
+import pygame
 # re-use previous labs (guess the number, rock-paper-scissors)
 
-
+#function for audio
+def audio(audio_file):
+    pygame.init()
+    pygame.mixer.init()
+    sounda = pygame.mixer.Sound(audio_file)
+    sounda.play()
+    #time.sleep(3)
+    #sounda.stop()
+    return sounda
+audio('audio/Cat-meow-3.wav')
 class Entity:
     def __init__(self, location_i, location_j, character):
         self.location_i = location_i
@@ -152,7 +162,7 @@ while True:
             action = input('what will you do? ')
             if action == 'collect':
                 print('you\'ve captured a kitty')
-
+                audio('audio/Cat-meow-3.wav')
                 name = input('what will you name the kitty?')
                 cat.name = name
                 player.cats.append(cat)
@@ -160,7 +170,7 @@ while True:
                 entities.remove(cat)
                 cats.remove(cat)
             else:
-                print('you hestitated and the kitty ran off')
+                print('you hesitated and the kitty ran off')
                 exit()
 
     for food in foods:
@@ -175,6 +185,7 @@ while True:
                 foods.remove(food)
             else:
                 print('you hesitated and another kitty stole the food')
+                player.fish -= 1
                 exit()
 
     for special in specials:
@@ -189,6 +200,7 @@ while True:
                 specials.remove(special)
             else:
                 print('you lost some catnip')
+                player.catnip -= 1
                 exit()
 
     # for enemy in enemies:
