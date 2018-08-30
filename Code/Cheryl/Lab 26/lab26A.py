@@ -2,6 +2,7 @@
 #extra emojis ☄️
 
 import random
+
 from termcolor import colored
 import time
 
@@ -166,6 +167,10 @@ while True:
             print('you\'ve encountered an enemy!')
             action = input('what will you do? ')
             if action == 'attack':
+                attack_audio = ["st_audio/tng_weapons.wav", "st_audio/tos_photon_torpedo", "st_audio/tng_torpedo.wav", "st_audio/tng_torpedo2.wav", "st_audio/tng_torpedo3.wav"]
+                random_attack_audio = random.choice(attack_audio)
+                audio(random_attack_audio)
+
                 print('you\'ve slain the enemy')
                 time.sleep(1.5)
                 entities.remove(enemy)
