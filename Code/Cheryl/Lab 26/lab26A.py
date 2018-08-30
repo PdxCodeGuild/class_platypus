@@ -142,7 +142,7 @@ for i in range(5):
 
 
 #sets points for game
-points = 0
+points = 15
 new_points = points
 
 
@@ -179,12 +179,17 @@ while True:
                 audio(random_attack_audio)
 
                 #adds points or deducts random points based on who wins the attack
+                # win_lose = 'LOSE'
                 win_lose = ['WIN', 'LOSE']
                 win_lose = random.choice(win_lose)
                 if win_lose == 'LOSE':
                     print('You\'ve lost the fight. ')
                     new_points -= 5
                     print(f'You now have: {new_points} points')
+                    if new_points == 10:
+                        audio('st_audio/primaryshieldsfailing.wav')
+                    elif new_points == 5:
+                        audio('st_audio/lifesupportfailureabandon.wav')
                     # if new_points < -5:
                     #     ########### INSERT LOSING FUNCTION ###############
 
