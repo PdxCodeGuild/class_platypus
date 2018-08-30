@@ -1,5 +1,7 @@
 import random
 import time
+from colorama import Fore
+
 
 class Entity:
     def __init__(self, location_i, location_j, character):
@@ -25,14 +27,14 @@ class Big_Enemy(Entity):
 class Boss(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '👺')
-        self.health = 5
+        self.health = 10
         self.strength = 3
 
 
 class Player(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '😎')
-        self.health = 20
+        super().__init__(location_i, location_j, '🤠')
+        self.health = 25
         self.strength = 1
 
 
@@ -72,12 +74,13 @@ class Board:
 
 
 def boss_fight():
+    bi, bj = board.random_location()
     boss = Boss(bi, bj)
     bosses = [boss]
     entities = [player, armor, boss]
-    print(end_fight)
+    print(Fore.GREEN + end_fight)
     time.sleep(5)
-    print('Once you start this fight you wont be able to flee!')
+    print(Fore.RED + 'Once you start this fight you wont be able to flee!')
     time.sleep(2)
     while True:
 
@@ -97,6 +100,13 @@ def boss_fight():
             player.location_i -= 1  # move up
         elif command in ['d', 'down', 's', 'south']:
             player.location_i += 1  # move down
+
+        if armor in entities and armor.location_i == player.location_i and armor.location_j == player.location_j:
+            player.health += armor.health
+            items.remove(armor)
+            entities.remove(armor)
+            print('You found some armor. Your health went up!')
+
         for boss in bosses:
             if boss.location_i == player.location_i and boss.location_j == player.location_j:
                 while True:
@@ -116,14 +126,14 @@ def boss_fight():
                         elif roll == 0 and player.strength < boss.health:
                             player.health -= boss.strength
                             boss.health -= player.strength
-                            print(f'You hit him but his hide is too tough and he hit you. He has {boss.health} health left.')
+                            print(f'You hit him but his hide is too tough and he hit you, you have {player.health} health left. He has {boss.health} health left.')
                         elif roll == 1 and player.health > 0 and boss.strength < player.health:
                             player.health -= boss.strength
                             print(f'You missed and he got in a counter attack.')
-                        else:
-                            print(death)
-                            print(f'thanks for trying {name} but your dead.')
-                            exit()
+                            if player.health == 0:
+                                print(death)
+                                print(f'thanks for trying {name} but your dead.')
+                                exit()
 
 
 board = Board(15, 15)
@@ -160,7 +170,7 @@ with open('win.txt', 'r') as f:
         win2 = f.read()
 # instructions
 print("Move: L(left), R(right), U(up), D(down) Encounter: Attack, Flee")
-print(welcome)
+print(Fore.RED + welcome)
 print('We all live in this cave. But some bad guys have tried to take it over.')
 name = input(f" Thanks for agreeing to kill them all, but first what should I call you? ")
 time.sleep(1)
@@ -242,12 +252,12 @@ while True:
     if not enemies:
         time.sleep(2)
         break
-# move enemy on board
-#     for enemy in enemies:
-#         if random.randint(0, 1) == 0:
-#             enemy.location_i += random.randint(-1, 1)
-#         else:
-#             enemy.location_j += random.randint(-1, 1)
+    # move enemy on board
+    for enemy in enemies:
+        if random.randint(0, 1) == 0:
+            enemy.location_i += random.randint(-1, 1) % board.width
+        else:
+            enemy.location_j += random.randint(-1, 1) % board.height
 boss_fight()
 
 
