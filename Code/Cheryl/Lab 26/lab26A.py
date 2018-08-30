@@ -8,17 +8,17 @@ from colorama import Fore, Back, Style
 import pygame
 import time
 
-def audio(path):
-    with open(path, 'r') as g:
-        pygame.init()
-        pygame.mixer.init()
-        sounda = pygame.mixer.Sound("access_library_computer.wav")
+def audio(audio_file):
+    pygame.init()
+    pygame.mixer.init()
+    sounda = pygame.mixer.Sound(audio_file)
+    sounda.play()
+    time.sleep(3)
+    # sounda.stop()
+    return sounda
 
-        sounda.play()
+audio("st_audio/tos_bridge_1_activate.wav")
 
-        time.sleep(3)
-        # sounda.stop()
-        return g.read()
 
 
 def style_files(path):
