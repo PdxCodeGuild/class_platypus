@@ -1,6 +1,6 @@
 import  random
 import os
-#import pychalk
+from colorama import Fore, Back, Style
 
 ''' Train engineers don't like cows in the way of their tracks, so what else can they do?...
 Run them over!'''
@@ -8,7 +8,7 @@ Run them over!'''
 def print_ascii_art(cowlogo):
     with open(cowlogo + '.txt', 'r') as f:
         print(f.read())
-
+print(Fore.RED + Back.LIGHTBLACK_EX +Style.NORMAL)
 print_ascii_art('cowlogo')
 
 
@@ -50,11 +50,7 @@ class Board:
 #        self.art = " "
         self.width = 20
         self.height = 20
-        # board = []
-        # for i in range(80):
-        #     board.append([])
-        #     for j in range(80):
-        #         board[i].append('#')
+
 
     def board_locations(self):
         return random.randint(0, self.width - 1), random.randint(0, self.height - 1)
