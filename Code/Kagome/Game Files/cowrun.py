@@ -10,9 +10,10 @@ def print_ascii_art(cowlogo):
         print(f.read())
 print(Fore.RED + Back.LIGHTBLACK_EX +Style.NORMAL)
 print_ascii_art('cowlogo2')
+print(Fore.WHITE + Back.LIGHTBLACK_EX +Style.NORMAL)
 print_ascii_art('cowart')
 
-
+print(Fore.RED + Back.LIGHTBLACK_EX +Style.NORMAL)
 os.system("afplay train.mp3")
 
 def get_file(location):
@@ -60,6 +61,7 @@ class Board:
         return self.board_locations()
 
     def print(self, entities):
+        print(Fore.RED + Back.LIGHTBLACK_EX + Style.NORMAL)
         for i in range(self.height):
             for j in range(self.width):
                 for k in range(len(entities)):
@@ -76,7 +78,9 @@ cow = Cow(random.randint(0,19),random.randint(0,19))
 
 board = Board()
 board.print([theplayer, cow])
+
 while True:
+    print(Fore.WHITE + Back.LIGHTBLACK_EX + Style.NORMAL)
     cow.move()
     print(f'You\'ve killed {theplayer.kills} cows!')
     command = input('What direction would you like to go?  Left, right, up, or down? \n').lower()
