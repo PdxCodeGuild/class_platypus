@@ -129,7 +129,7 @@ for i in range(2):
     entities.append(special)
     specials.append(special)
 
-# x = random.randint(1, 10)
+win_num = random.randint(1, 10)
 print(chalk.red('''
 
    ____      _      ____      _ _           _             
@@ -162,7 +162,7 @@ while True:
 
     if command == 'done':
         break  # exit the game
-    elif command in ['l', 'left', 'w', 'west']:
+    elif command in ['l', 'left', 'w', 'west', '\x1b[D']:
         player.location_j -= 1  # move left
     elif command in ['r', 'right', 'e', 'east']:
         player.location_j += 1  # move right
@@ -236,9 +236,9 @@ while True:
 
 
     # check if the cats list is empty, if so, tell the user won
-    if len(cats) == 0:
+    if len(cats) <= win_num:
         print(f'You collected all the cats! you won! Here are your cats {player.cats}')
         audio('./audio/Cat-purring-2.wav')
         break
-if len(cats) > 0:
+if len(cats) > win_num:
     print('You did not collect all the cats, you lose!')
