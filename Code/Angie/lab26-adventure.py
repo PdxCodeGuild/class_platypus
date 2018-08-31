@@ -1,19 +1,15 @@
 import random
 import time
 import chalk
-import pygame
+import winsound
 # re-use previous labs (guess the number, rock-paper-scissors)
 
 #function for audio
 def audio(audio_file):
-    pygame.init()
-    pygame.mixer.init()
-    sounda = pygame.mixer.Sound(audio_file)
-    sounda.play()
-    #time.sleep(3)
-    #sounda.stop()
-    return sounda
-audio('audio/Cat-meow-3.wav')
+    winsound.PlaySound(audio_file, 0)
+
+
+
 class Entity:
     def __init__(self, location_i, location_j, character):
         self.location_i = location_i
@@ -25,6 +21,22 @@ class Cat(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, chalk.blue('🐱'))
         self.name = []
+
+    def run_away(self):
+        self.location_i += random.choice([-2, -1, 1, 2])
+        while self.location_i not in range(10):  # bad thing
+            self.location_i += random.choice([-2, -1, 1, 2])
+        self.location_j += random.choice([-2, -1, 1, 2])
+        while self.location_j not in range(10):  # bad thing
+            self.location_j += random.choice([-2, -1, 1, 2])
+
+    def run_toward(self):
+        self.location_i += random.choice([-2, -1, 1, 2])
+        while self.location_i not in range(10):  # bad thing
+            self.location_i += random.choice([-2, -1, 1, 2])
+        self.location_j += random.choice([-2, -1, 1, 2])
+        while self.location_j not in range(10):  # bad thing
+            self.location_j += random.choice([-2, -1, 1, 2])
 
     def __repr__(self):
         return self.name
@@ -38,7 +50,6 @@ class Special(Entity):
 class Food(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, chalk.green('🐟'))
-
 
 
 class Player(Entity):
@@ -140,16 +151,16 @@ while True:
     board.print(entities)
 
     command = input('what is your command? make a move, check cats, or check inventory').lower()  # get the command from the user
-
+   
     if command == 'done':
         break  # exit the game
-    elif command in ['l', 'left', 'w', 'west']:
+    elif command in ['l', 'left', 'w', 'west', '\x1b[D']:
         player.location_j -= 1  # move left
-    elif command in ['r', 'right', 'e', 'east']:
+    elif command in ['r', 'right', 'e', 'east', '\x1b[C']:
         player.location_j += 1  # move right
-    elif command in ['u', 'up', 'n', 'north']:
+    elif command in ['u', 'up', 'n', 'north', '\x1b[A']:
         player.location_i -= 1  # move up
-    elif command in ['d', 'down', 's', 'south']:
+    elif command in ['d', 'down', 's', 'south', '\x1b[B']:
         player.location_i += 1  # move down
     elif command in ['check cats', 'cats']:
         print(f'{player.cats} you have collected {len(player.cats)} cats.')
@@ -162,16 +173,20 @@ while True:
             action = input('what will you do? ')
             if action == 'collect':
                 print('you\'ve captured a kitty')
-                audio('audio/Cat-meow-3.wav')
+                audio('./audio/Cat-meow-3.wav')
                 name = input('what will you name the kitty?')
                 cat.name = name
                 player.cats.append(cat)
                 # put the kitty name in your inventory
                 entities.remove(cat)
                 cats.remove(cat)
+
+
             else:
+                cat.run_away()
                 print('you hesitated and the kitty ran off')
-                exit()
+
+
 
     for food in foods:
         if food.location_i == player.location_i and food.location_j == player.location_j:
@@ -186,7 +201,7 @@ while True:
             else:
                 print('you hesitated and another kitty stole the food')
                 player.fish -= 1
-                exit()
+
 
     for special in specials:
         if special.location_i == player.location_i and special.location_j == player.location_j:
@@ -198,10 +213,14 @@ while True:
                 # put the food in your inventory
                 entities.remove(special)
                 specials.remove(special)
+
             else:
                 print('you lost some catnip')
                 player.catnip -= 1
-                exit()
+
+        if len(specials) > 0:
+            cat.run_toward()
+
 
     # for enemy in enemies:
     #     if random.randint(0, 1) == 0:
@@ -213,6 +232,7 @@ while True:
     # check if the cats list is empty, if so, tell the user won
     if len(cats) == 0:
         print(f'You collected all the cats! you won! Here are your cats {player.cats}')
+        audio('./audio/Cat-purring-2.wav')
         break
-    else:
-        print('You did not collect all the cats, you lose!')
+if len(cats) > 0:
+    print('You did not collect all the cats, you lose!')
