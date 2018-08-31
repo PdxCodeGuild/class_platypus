@@ -98,11 +98,11 @@ class Board:
         while True:
             location_i = random.randint(0, self.width - 1)
             location_j = random.randint(0, self.height - 1)
-            for entity in entities:
-                if entity.location_i == location_i and entity.location_j == location_j:
-                    break
-            else:
-                break
+            # for entity in entities:
+            #     if entity.location_i == location_i and entity.location_j == location_j:
+            #         break
+            # else:
+            #     break
         return location_i, location_j
 
     def __getitem__(self, j):
@@ -259,6 +259,13 @@ while True:
                                 end_credits(audio)
                             else:
                                 print(style_files('romulan.txt'))
+                                print('\tYou have been captured by the Romulans.')
+                                time.sleep(2)
+                                print('\n\tYou hold out hope and are eventually rescued')
+                                time.sleep(2)
+                                print('\n\tby Spock and his Romulan friends who are')
+                                time.sleep(2)
+                                print('\n\tattempting to reform the Romulan government.')
                                 end_credits(audio)
                         end_credits(audio)
                         exit()
@@ -290,10 +297,3 @@ while True:
                         end_credits(audio)
                 end_credits(audio)
                 exit()
-
-
-    # for enemy in enemies:
-    #     if random.randint(0, 1) == 0:
-    #         enemy.location_i += random.randint(-1, 1)
-    #     else:
-    #         enemy.location_j += random.randint(-1, 1)
