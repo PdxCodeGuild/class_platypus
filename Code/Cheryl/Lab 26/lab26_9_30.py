@@ -1,21 +1,15 @@
-# ST audio files from http://www.trekcore.com/audio/
-# extra emojis ☄️
+#ST audio files from http://www.trekcore.com/audio/
+#extra emojis ☄️
 
 import random
-import PIL
+
+from termcolor import colored
+import time
 
 from colorama import Fore, Back, Style
 import pygame
 import time
-from PIL import Image
 
-
-#image
-def bg_image():
-    img_filename = "enterprise.png"
-    im = Image.open(img_filename)
-    im.show()
-# audio
 def audio(audio_file):
     pygame.init()
     pygame.mixer.init()
@@ -23,14 +17,11 @@ def audio(audio_file):
     sounda.play()
     time.sleep(3)
 
-
 audio("st_audio/tos_bridge_1_activate.wav")
-
 
 def end_credits(audio):
     audio('st_audio/credits.wav')
     time.sleep(44)
-
 
 def style_files(path):
     with open(path, 'r') as f:
@@ -43,7 +34,8 @@ print(style_files('title.txt'))
 print(Style.RESET_ALL)
 print(Back.LIGHTBLACK_EX)
 
-# Choose your race: Klingon or Federation
+
+#Choose your race: Klingon or Federation
 user_race = input('Choose your race: Klingon or Federation. >   ').upper()
 if user_race == 'KLINGON':
     print(style_files('klingon.txt') + '\n\n\tYou chose to be a Klingon! \n\n')
@@ -52,7 +44,7 @@ else:
 
 time.sleep(3)
 
-# Choose your enemy: Romulan or Borg
+#Choose your enemy: Romulan or Borg
 user_enemy = input('\nChoose your enemy: Romulan or Borg. >   \n\n').upper()
 
 if user_enemy == 'BORG':
@@ -73,30 +65,27 @@ class Entity:
 class Enemy(Entity):
     def __init__(self, location_i, location_j):
         if user_enemy == "BORG":
-            super().__init__(location_i, location_j, '🕋')  # borg
+            super().__init__(location_i, location_j, '🕋') #borg
 
         else:
-            super().__init__(location_i, location_j, '👿')  # romulan
+            super().__init__(location_i, location_j, '👿') #romulan
+
 
 
 class Player(Entity):
     def __init__(self, location_i, location_j):
         if user_race == "KLINGON":
-            super().__init__(location_i, location_j, '👹')  # klingon
+            super().__init__(location_i, location_j, '👹') #klingon
         else:
-            super().__init__(location_i, location_j, '🖖')  # federation
+            super().__init__(location_i, location_j, '🖖') #federation
 
 
 class Shield(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '🌟')  # shield
-
+        super().__init__(location_i, location_j, '🌟') #shield
 
 print(Fore.BLACK + Back.CYAN)
-
-
 class Board:
-
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -131,6 +120,7 @@ class Board:
             print()
 
 
+
 board = Board(10, 10)
 
 pi, pj = board.random_location()
@@ -152,12 +142,14 @@ for i in range(3):
     entities.append(shield)
     shields.append(shield)
 
-# sets points for game
+
+#sets points for game
 points = 0
 # shield_points = 0
 new_points = points
 # new_points = points + shield_points
 enemy_count = 0
+
 
 while True:
 
@@ -187,6 +179,7 @@ while True:
             break
             time.sleep(3)
 
+
     for enemy in enemies:
         if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
             proximity_fire_audio = ["st_audio/phasersready.wav", 'st_audio/tactalertvesselapproach.wav']
@@ -197,9 +190,8 @@ while True:
             # enemy_count = 0
             if action == 'fire':
                 enemy_count += 1
-                # adds random weapon sounds on fire
-                fire_audio = ["st_audio/tng_weapons.wav", "st_audio/tos_photon_torpedo.wav", "st_audio/tng_torpedo.wav",
-                              "st_audio/tng_torpedo2.wav", "st_audio/tng_torpedo3.wav"]
+                #adds random weapon sounds on fire
+                fire_audio = ["st_audio/tng_weapons.wav", "st_audio/tos_photon_torpedo.wav", "st_audio/tng_torpedo.wav", "st_audio/tng_torpedo2.wav", "st_audio/tng_torpedo3.wav"]
                 random_fire_audio = random.choice(fire_audio)
                 audio(random_fire_audio)
                 print(enemy_count)
@@ -240,7 +232,7 @@ while True:
                         end_credits(audio)
                         exit()
 
-                # adds points or deducts random points based on who wins the attack
+                #adds points or deducts random points based on who wins the attack
                 # win_lose = 'WIN'
                 win_lose = ['WIN', 'LOSE']
                 win_lose = random.choice(win_lose)
@@ -253,7 +245,7 @@ while True:
                     elif new_points == 5:
                         audio('st_audio/lifesupportfailureabandon.wav')
                     if new_points <= 0:
-                        # IF YOU LOSE
+                    # IF YOU LOSE
                         audio('st_audio/largeexplosion.wav')
                         if user_enemy == "BORG":
                             print('You have been assimilated.')
@@ -266,7 +258,7 @@ while True:
                                     'romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
                                 end_credits(audio)
                             else:
-                                print(style_files('romulan.txt')
+                                print(style_files('romulan.text') + 'test')
                                 end_credits(audio)
                         end_credits(audio)
                         exit()
@@ -292,13 +284,13 @@ while True:
                     end_credits(audio)
                 else:
                     if user_race == 'KLINGON':
-                        print(style_files(
-                            'romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
+                        print(style_files('romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
                     else:
-                        print(style_files('romulan.txt') + 'test')
+                        print(style_files('romulan.txt'))
                         end_credits(audio)
                 end_credits(audio)
                 exit()
+
 
     # for enemy in enemies:
     #     if random.randint(0, 1) == 0:
