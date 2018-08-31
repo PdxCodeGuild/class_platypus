@@ -10,6 +10,14 @@ class Entity:
         self.location_i = location_i
         self.location_j = location_j
         self.character = character
+
+    def on_board(self, coord, board_range):
+        while coord not in board_range:
+            if coord > board_range[-1]:
+                coord -= 1
+            elif coord < board_range[0]:
+                coord += 1
+
 zoo_animals = ['🐺','🦁','🐘','🐒','🦍']
 
 class Animal(Entity):
@@ -29,14 +37,14 @@ class Board:
         self.height = height
 
     def random_location(self):
-        return random.randint(0, self.width - 1), random.randint(0, self.height - 1)
+        return random.randint(0, self.width), random.randint(0, self.height)
 
     def __getitem__(self, j):
         return self.board[j]
 
     def print(self, entities):
-        for i in range(self.height-1):
-            for j in range(self.width-1):
+        for i in range(self.height):
+            for j in range(self.width):
                 for k in range(len(entities)):
                     if entities[k].location_i == i and entities[k].location_j == j:
                         print(entities[k].character, end='')
@@ -53,7 +61,7 @@ rescue = Rescue(pi, pj)
 entities = [rescue]
 animals = []
 
-for i in range(random.randint(1,2)):
+for i in range(random.randint(5,10)):
     ei, ej = board.random_location()
     animal = Animal(ei, ej)
     entities.append(animal)
@@ -63,7 +71,8 @@ for i in range(random.randint(1,2)):
 while True:
 
     board.print(entities)
-
+    for animal in animals:
+        print(animal.location_i, animal.location_j)
     print(chalk.bold('Some dangerous animals broke out of Portland zoo and hiding in Forst park. Help animal control to tranquilize and bring them back'))
     print(chalk.bold(len(animals)),'animals are out there')
     command = input('Whih direction do you want to move? l,r,u,d ')  # get the command from the user
@@ -83,19 +92,22 @@ while True:
     for animal in animals:
         if animal.location_i == rescue.location_i and animal.location_j == rescue.location_j:
             print('you got an animal!')
-            action = input('Ready to use tranquilizer gun? yes/no ')
-            if action == 'yes':
-                os.system("dartsound.mp3")
+            action = input('Ready to use tranquilizer gun? y/n ')
+            action=action.lower()
+            if action in ['y','yes']:
+                #os.system("dartsound.mp3")
                 print(f'The wild animal will sleep for next 4 hours')
                 entities.remove(animal)
                 animals.remove(animal)
-                if len(animals)==0:
-                    print('You have successfully captured all animals')
-                    break
+
             else:
                 print('you hestitated and eaten')
                 exit()
-
+    if len(animals) > 0:
+        continue
+    else:
+        print("You have captured all animals")
+        break
 
     # for enemy in enemies:
     #     if random.randint(0, 1) == 0:
