@@ -1,4 +1,4 @@
-import  random
+import random
 import os
 from colorama import Fore, Back, Style
 
@@ -82,20 +82,20 @@ board.print([theplayer, cow])
 while True:
     print(Fore.WHITE + Back.LIGHTBLACK_EX + Style.NORMAL)
     cow.move()
-    print(f'Cow death count... {theplayer.kills}'
-          f'!')
+    print(f'Cow death count... {theplayer.kills}!')
     command = input('What direction would you like to go?  Left (l), right (r), up (u), or down (d)? \n').lower()
 
 
-    if command in ['l', 'left']:
+    if command in ['l', 'left', '\x1b[D']:
         theplayer.x -= 1
-    elif command in ['r', 'right']:
+
+    elif command in ['r', 'right', '\x1b[C']:
         theplayer.x += 1
 
-    elif command in ['u', 'up']:
+    elif command in ['u', 'up', '\x1b[A']:
         theplayer.y -= 1
 
-    elif command in ['d', 'down']:
+    elif command in ['d', 'down', '\x1b[B']:
         theplayer.y += 1
     elif command == 'done':
         break
@@ -108,4 +108,8 @@ while True:
         theplayer.kills += 1
 
 
-
+#arrow keys
+    # left = ['left', 'l', '\x1b[D']
+    # right = ['right', 'r', '\x1b[C']
+    # up = ['up', 'u', '\x1b[A']
+    # down = ['down', 'd', '\x1b[B']
