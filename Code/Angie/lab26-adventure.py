@@ -30,6 +30,14 @@ class Cat(Entity):
         while self.location_j not in range(10):  # bad thing
             self.location_j += random.choice([-2, -1, 1, 2])
 
+    def run_toward(self):
+        self.location_i += random.choice([-2, -1, 1, 2])
+        while self.location_i not in range(10):  # bad thing
+            self.location_i += random.choice([-2, -1, 1, 2])
+        self.location_j += random.choice([-2, -1, 1, 2])
+        while self.location_j not in range(10):  # bad thing
+            self.location_j += random.choice([-2, -1, 1, 2])
+
     def __repr__(self):
         return self.name
 
@@ -42,7 +50,6 @@ class Special(Entity):
 class Food(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, chalk.green('🐟'))
-
 
 
 class Player(Entity):
@@ -173,9 +180,12 @@ while True:
                 # put the kitty name in your inventory
                 entities.remove(cat)
                 cats.remove(cat)
+
+
             else:
                 cat.run_away()
                 print('you hesitated and the kitty ran off')
+
 
 
     for food in foods:
@@ -203,9 +213,13 @@ while True:
                 # put the food in your inventory
                 entities.remove(special)
                 specials.remove(special)
+
             else:
                 print('you lost some catnip')
                 player.catnip -= 1
+
+        if len(specials) > 0:
+            cat.run_toward()
 
 
     # for enemy in enemies:
