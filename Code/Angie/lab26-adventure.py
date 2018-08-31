@@ -38,12 +38,13 @@ class Cat(Entity):
         if self.location_i > player.location_i:
             self.location_i -= random.randint(1, 2)
         elif self.location_i < player.location_i:
-            self.location_i -= random.randint(1, 2)
+            self.location_i += random.randint(1, 2)
         self.on_board(self.location_i, range(10))
         if self.location_j > player.location_j:
             self.location_j -= random.randint(1, 2)
         elif self.location_j < player.location_j:
-            self.location_j -= random.randint(1, 2)
+            self.location_j += random.randint(1, 2)
+        self.on_board(self.location_j, range(10))
 
     def __repr__(self):
         return self.name
@@ -192,7 +193,7 @@ while True:
                 cat.run_away()
                 print('you hesitated and the kitty ran off')
 
-        if len(specials) > 0:
+        if player.catnip > 0:
             cat.run_toward(player)
 
     for food in foods:
