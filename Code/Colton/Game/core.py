@@ -194,12 +194,16 @@ while True:
         break  # exit the game
     elif command in ['l', 'left', 'w', 'west']:
         player.location_j -= 1  # move left
+        player.location_j %= board.width
     elif command in ['r', 'right', 'e', 'east']:
         player.location_j += 1  # move right
+        player.location_j %= board.width
     elif command in ['u', 'up', 'n', 'north']:
         player.location_i -= 1  # move up
+        player.location_i %= board.height
     elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
+        player.location_i %= board.height
 # encounters
 
     if armor in entities and armor.location_i == player.location_i and armor.location_j == player.location_j:
@@ -256,9 +260,11 @@ while True:
     # move enemy on board
     for enemy in enemies:
         if random.randint(0, 1) == 0:
-            enemy.location_i += random.randint(-1, 1) % board.width
+            enemy.location_i += random.randint(-1, 1)
+            enemy.location_i %= board.width
         else:
-            enemy.location_j += random.randint(-1, 1) % board.height
+            enemy.location_j += random.randint(-1, 1)
+            enemy.location_j %= board.height
 boss_fight()
 
 
