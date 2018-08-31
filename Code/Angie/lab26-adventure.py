@@ -151,16 +151,16 @@ while True:
     board.print(entities)
 
     command = input('what is your command? make a move, check cats, or check inventory').lower()  # get the command from the user
-
+   
     if command == 'done':
         break  # exit the game
-    elif command in ['l', 'left', 'w', 'west']:
+    elif command in ['l', 'left', 'w', 'west', '\x1b[D']:
         player.location_j -= 1  # move left
-    elif command in ['r', 'right', 'e', 'east']:
+    elif command in ['r', 'right', 'e', 'east', '\x1b[C']:
         player.location_j += 1  # move right
-    elif command in ['u', 'up', 'n', 'north']:
+    elif command in ['u', 'up', 'n', 'north', '\x1b[A']:
         player.location_i -= 1  # move up
-    elif command in ['d', 'down', 's', 'south']:
+    elif command in ['d', 'down', 's', 'south', '\x1b[B']:
         player.location_i += 1  # move down
     elif command in ['check cats', 'cats']:
         print(f'{player.cats} you have collected {len(player.cats)} cats.')
