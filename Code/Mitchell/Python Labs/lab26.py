@@ -144,11 +144,10 @@ mointain1 = Mountain(0,1) # left range
 mointain2 = Mountain(1,1)
 mointain3 = Mountain(0,1)
 mointain4 = Mountain(0,1)
-mointain5 = Mountain(1,6)
-mointain6 = Mountain(0,1)
-mointain7 = Mountain(0,19) #right range
-mointain8 = Mountain(1,24)
-mointain9 = Mountain(0,19)
+mointain5 = Mountain(0,1)
+mointain6 = Mountain(0,19) #right range
+mointain7 = Mountain(1,24)
+mointain8 = Mountain(0,19)
 tree1 = Tree(4,0)
 tree2 = Tree(6,12)
 tree3 = Tree(7,2)
@@ -173,14 +172,16 @@ house1 = House(7,24)
 house2 = House(4,24)
 house3 = House(2,24)
 # Entities includes all printed emojis
-entities = [player, firetruck, fountain, ocean1, ocean2, ocean3, mointain1, mointain2, mointain3,
- mointain4, mointain5, mointain6, mointain7, mointain8, mointain9, tree1, tree2, tree3, tree4, tree5, tree6,
- tree7, tree8, tree9, building1, building2, building3, building4,
- building5, building6, building7, building8, store1, store2, store3, house1, house2, house3]
+entities = [player, firetruck, fountain, ocean1, ocean2, ocean3, mointain1,
+mointain2, mointain3, mointain4, mointain5, mointain6, mointain7, mointain8,
+tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, building1,
+building2, building3, building4, building5, building6, building7, building8,
+store1, store2, store3, house1, house2, house3]
 # Obsticles are objects that player can not move through
-obstacles = [mointain1, mointain2, mointain3, mointain4, mointain5, mointain6, mointain7, mointain8, mointain9, tree1, tree2, tree3, tree4, tree5, tree6,
-tree7, tree8, tree9, building1, building2, building3, building4, building5, building6, building7, building8, store1, store2, store3,
-house1, house2, house3]
+obstacles = [mointain1, mointain2, mointain3, mointain4, mointain5, mointain6,
+mointain7, mointain8, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8,
+tree9, building1, building2, building3, building4, building5,
+building6, building7,building8, store1, store2, store3, house1, house2, house3]
 # Waters are water sources that can fill Water Tank
 waters = [fountain, ocean1, ocean2, ocean3]
 # List of all current fires
@@ -214,7 +215,7 @@ print('-----------------------------------')
 start = None
 # Waits for the user to hit a key before starting game
 while start == None:
-    start = input('    :Press Any Key To Start: ')
+    start = input('     :Press Enter To Start: ')
 print('-----------------------------------')
 # Loops while game is being plaid
 while True:
@@ -290,7 +291,7 @@ while True:
                 print('💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀')
                 print('-----------------------------------')
                 exit()
-    # code for if player encounters water source
+    # Code for if player encounters water source
     for water in waters:
         if (water.location_i == player.location_i and water.location_j == player.location_j):
             print('🚰 You found a water source! 🚰')
