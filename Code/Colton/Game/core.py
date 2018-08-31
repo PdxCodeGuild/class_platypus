@@ -110,10 +110,10 @@ def boss_fight():
         for boss in bosses:
             if boss.location_i == player.location_i and boss.location_j == player.location_j:
                 print('you\'ve encountered the ogre!')
-                print('{player.health} health left.{boss.health} health left.')
                 while True:
-                    action = input('what will you do? ')
-                    if action == 'attack':
+                    print(f'{player.health} health left.{boss.health} health left.')
+                    action = input('what will you do? ').lower()
+                    if action == 'attack' or 'a':
                         roll = random.randint(0, 1)
                         if roll == 0 and player.strength >= boss.health:
                             print('You killed them!')
@@ -170,7 +170,7 @@ with open('win.txt', 'r') as f:
     with open('win2.txt', 'r') as f:
         win2 = f.read()
 # instructions
-print("Move: L(left), R(right), U(up), D(down) Encounter: Attack, Flee")
+print("Move: L(left), R(right), U(up), D(down) Encounter: A(Attack), Flee")
 print(Fore.RED + welcome)
 print('We all live in this cave. But some bad guys have tried to take it over.')
 name = input(f" Thanks for agreeing to kill them all, but first what should I call you? ")
