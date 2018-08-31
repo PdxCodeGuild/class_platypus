@@ -254,11 +254,11 @@ while True:
                                         print('You killed them!')
                                         break
                                 else:
-                                    player.health -= 1
+                                    player.health -= enemy.strength
                                     print(f'you ran but they got a swipe on you {player.health} left.')
                                     break
                     else:
-                        player.health -= 1
+                        player.health -= enemy.strength
                         print(f'you ran but they got a swipe on you {player.health} left.')
                         break
                 if player.health <= 0:
