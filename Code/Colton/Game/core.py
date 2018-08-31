@@ -161,7 +161,7 @@ enemies = []
 items = [sword, armor]
 
 
-for i in range(0):
+for i in range(2):
     ei, ej = board.random_location()
     enemy = Enemy(ei, ej)
     entities.append(enemy)
