@@ -83,7 +83,7 @@ while True:
     print(Fore.WHITE + Back.LIGHTBLACK_EX + Style.NORMAL)
     cow.move()
     print(f'You\'ve killed {theplayer.kills} cows!')
-    command = input('What direction would you like to go?  Left, right, up, or down? \n').lower()
+    command = input('What direction would you like to go?  Left (l), right (r), up (u), or down (d)? \n').lower()
 
 
     if command in ['l', 'left']:
