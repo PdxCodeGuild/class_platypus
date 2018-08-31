@@ -1,5 +1,6 @@
+#  🔥 EMOJI 👨‍🚒 FIRE 🚒 FIGHTER 🔥 - A Game By Mitchell Estes
+# A simple python game that can be run in terminal
 import random
-
 # CLASSES FOR ALL ENTITIES
 # Most genreal class, includes all emojis
 class Entity:
@@ -13,10 +14,11 @@ class Fire(Entity):
         super().__init__(location_i, location_j, '🔥')
     def __repr__(self):
         return f'({self.location_i},{self.location_j})'
-# Water sources that can refill Water Tank
+# Firetruck can be driven, acts as water when out of gas
 class Firetruck(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '🚒')
+# Water sources that can refill Water Tank
 class Fountain(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '⛲️')
@@ -107,7 +109,6 @@ class Board:
                 for k in range(len(entities)):
                     if entities[k].location_i == i and entities[k].location_j == j:
                         print(entities[k].character, end='')
-                        #break
                 else:
                     print(' ', end='')
             print()
@@ -123,6 +124,7 @@ letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # Board dimmensions: board(col, row)
 board = Board(25, 10)
 # Player information
+default_player = '👨‍🚒'
 pi = 9
 pj = 21
 player = Player(pi, pj)
@@ -131,7 +133,7 @@ water_level = max_water
 # Firetruck variables
 in_firetruck = False
 firetruck = Firetruck(9,22)
-gas = 8
+gas = 16
 # Water posistions
 fountain = Fountain(4,15)
 ocean1 = Ocean(9,0)
@@ -145,7 +147,7 @@ mointain4 = Mountain(0,1)
 mointain5 = Mountain(1,6)
 mointain6 = Mountain(0,1)
 mointain7 = Mountain(0,19) #right range
-mointain8 = Mountain(1,22)
+mointain8 = Mountain(1,24)
 mointain9 = Mountain(0,19)
 tree1 = Tree(4,0)
 tree2 = Tree(6,12)
@@ -155,8 +157,7 @@ tree5 = Tree(4,24)
 tree6 = Tree(0,8)
 tree7 = Tree(0,10)
 tree8 = Tree(8,20)
-tree9 = Tree(1,19)
-tree10 = Tree(7,17)
+tree9 = Tree(7,17)
 building1 = Building(3,9)
 building2 = Building(6,3)
 building3 = Building(3,3)
@@ -174,11 +175,11 @@ house3 = House(2,24)
 # Entities includes all printed emojis
 entities = [player, firetruck, fountain, ocean1, ocean2, ocean3, mointain1, mointain2, mointain3,
  mointain4, mointain5, mointain6, mointain7, mointain8, mointain9, tree1, tree2, tree3, tree4, tree5, tree6,
- tree7, tree8, tree9, tree10, building1, building2, building3, building4,
+ tree7, tree8, tree9, building1, building2, building3, building4,
  building5, building6, building7, building8, store1, store2, store3, house1, house2, house3]
 # Obsticles are objects that player can not move through
 obstacles = [mointain1, mointain2, mointain3, mointain4, mointain5, mointain6, mointain7, mointain8, mointain9, tree1, tree2, tree3, tree4, tree5, tree6,
-tree7, tree8, tree9, tree10, building1, building2, building3, building4, building5, building6, building7, building8, store1, store2, store3,
+tree7, tree8, tree9, building1, building2, building3, building4, building5, building6, building7, building8, store1, store2, store3,
 house1, house2, house3]
 # Waters are water sources that can fill Water Tank
 waters = [fountain, ocean1, ocean2, ocean3]
@@ -200,30 +201,35 @@ print('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥')
 print('-----------------------------------')
 # Loops while game is being plaid
 while True:
-    # Every action taken has a 1 in 15 chance of starting a fire
-    fire_starter = random.randint(1,15)
+    # Every action taken has a 1 in 20 chance of starting a fire
+    fire_starter = random.randint(1,20)
     if fire_starter == 1:
         # Adds fire to board at random location
         ei, ej = board.random_location_safe(entities)
         fire = Fire(ei, ej)
         entities.append(fire)
         fires.append(fire)
-
-    if (firetruck.location_i == player.location_i and firetruck.location_j == player.location_j):
-        if gas > 0:
-            use_firetruck = input('🚒Hit space to get in firetruck?🚒 ')
-            if use_firetruck == ' ':
-                player.character = firetruck.character
-                entities.remove(firetruck)
-        else:
-            waters.append(firetruck)
-    # if in_firetruck:
-    #     water_level = max_water
-    #     gas -= 1
-        
+    # Firetruck adds special states
+    if in_firetruck:
+        gas -= 1
+        # If gas reaches 0, player hops out and firetruck becomes water source
+        if gas < 0:
+            dead_firetruck = Firetruck(player.location_i,player.location_j+1)
+            waters.append(dead_firetruck)
+            entities.append(dead_firetruck)
+            player.character = default_player
+            in_firetruck = False
+        # Player has max water at all times while in firetruck
+        water_level = max_water
     # Prints out the board
     board.print(entities)
     print('-----------------------------------')
+    # Displays gas gauge if in firetruck
+    if in_firetruck:
+        print('GAS: ', end='')
+        for i in range(gas):
+            print('⛽️', end='')
+        print()
     # Displays water level bellow board
     print('WATER TANK: ', end='')
     for i in range(water_level):
@@ -231,6 +237,15 @@ while True:
     print()
     # Ask the player for directional input
     command = input('Use the arrow keys to move: ')
+    # Lets user get into firetruck if move to it
+    if (firetruck.location_i == player.location_i and firetruck.location_j == player.location_j):
+        use_firetruck = input('🚒Hit space to get in firetruck?🚒 ')
+        if use_firetruck == ' ':
+            in_firetruck = True
+            player.character = firetruck.character
+            entities.remove(firetruck)
+            firetruck.location_i = 27
+            firetruck.location_j = 27
     print('-----------------------------------')
     # Checks if it is a legal move and makes it if it is
     if player.check_move(command, obstacles):
