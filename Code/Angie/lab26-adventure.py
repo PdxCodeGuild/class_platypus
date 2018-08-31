@@ -208,7 +208,7 @@ while True:
                 foods.remove(food)
             else:
                 print('you hesitated and another kitty stole the food')
-                player.fish -= 1
+                # player.fish -= 1
 
     for special in specials:
         if special.location_i == player.location_i and special.location_j == player.location_j:
@@ -223,7 +223,7 @@ while True:
 
             else:
                 print('you lost some catnip')
-                player.catnip -= 1
+                # player.catnip -= 1
 
 
 
