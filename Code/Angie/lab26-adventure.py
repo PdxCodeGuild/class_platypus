@@ -129,7 +129,7 @@ for i in range(2):
     entities.append(special)
     specials.append(special)
 
-# x = random.randint(1, 10)
+win_num = random.randint(4, 10)
 print(chalk.red('''
 
    ____      _      ____      _ _           _             
@@ -172,14 +172,14 @@ while True:
         player.location_i += 1  # move down
     elif command in ['check cats', 'cats']:
         print(f'{player.cats} you have collected {len(player.cats)} cats.')
-    elif command in ['check inventory', 'inventory']:
+    elif command in ['check inventory', 'inventory', 'i', 'inv']:
         print(player)
 
     for cat in cats:
         if cat.location_i == player.location_i and cat.location_j == player.location_j:
             print('you\'ve encountered a kitty!')
-            action = input('what will you do? ')
-            if action == 'collect':
+            action = input('what will you do? ').lower()
+            if action in ['collect', 'c']:
                 print('you\'ve captured a kitty')
                 audio('./audio/Cat-meow-3.wav')
                 name = input('what will you name the kitty?')
@@ -199,8 +199,8 @@ while True:
     for food in foods:
         if food.location_i == player.location_i and food.location_j == player.location_j:
             print('you\'ve encountered a fish')
-            action = input('what will you do? ')
-            if action == 'collect':
+            action = input('what will you do? ').lower()
+            if action in ['collect', 'c']:
                 player.fish += 1
                 print('you\'ve collected some food')
                 # put the food in your inventory
@@ -208,13 +208,13 @@ while True:
                 foods.remove(food)
             else:
                 print('you hesitated and another kitty stole the food')
-                player.fish -= 1
+                # player.fish -= 1
 
     for special in specials:
         if special.location_i == player.location_i and special.location_j == player.location_j:
             print('you\'ve found catnip!')
-            action = input('what will you do? ')
-            if action == 'collect':
+            action = input('what will you do? ').lower()
+            if action in ['collect', 'c']:
                 player.catnip += 1
                 print('you\'ve collected some catnip')
                 # put the food in your inventory
@@ -223,7 +223,7 @@ while True:
 
             else:
                 print('you lost some catnip')
-                player.catnip -= 1
+                # player.catnip -= 1
 
 
 
@@ -236,9 +236,9 @@ while True:
 
 
     # check if the cats list is empty, if so, tell the user won
-    if len(cats) == 0:
-        print(f'You collected all the cats! you won! Here are your cats {player.cats}')
+    if len(cats) <= win_num:
+        print(f'You collected cats! you won! Here are your cats {player.cats} and inventory {player}')
         audio('./audio/Cat-purring-2.wav')
         break
-if len(cats) > 0:
+if len(cats) > win_num:
     print('You did not collect all the cats, you lose!')

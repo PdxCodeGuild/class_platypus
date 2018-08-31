@@ -1,0 +1,7 @@
+#intro to game play
+print('\tTo play \'Space Trek\', just type:\n\t \'U\' for up, \'D\' for down, \'L\' for left, and \'R\' for right.\n\t To quit, type \'done.\'')
+time.sleep(5)
+print('\n\tThe stars will give you 5 points and help reinforce your shields.\n\tEach enemy that you fight can take away, or give you, 5 points. ')
+time.sleep(5)
+print(f'\n\tHave fun fighting the {user_enemy}!')
+time.sleep(5)
