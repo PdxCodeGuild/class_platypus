@@ -162,7 +162,7 @@ while True:
 
     if command == 'done':
         break  # exit the game
-    elif command in ['l', 'left', 'w', 'west', '\x1b[D']:
+    elif command in ['l', 'left', 'w', 'west']:
         player.location_j -= 1  # move left
     elif command in ['r', 'right', 'e', 'east']:
         player.location_j += 1  # move right
@@ -172,14 +172,14 @@ while True:
         player.location_i += 1  # move down
     elif command in ['check cats', 'cats']:
         print(f'{player.cats} you have collected {len(player.cats)} cats.')
-    elif command in ['check inventory', 'inventory']:
+    elif command in ['check inventory', 'inventory', 'i', 'inv']:
         print(player)
 
     for cat in cats:
         if cat.location_i == player.location_i and cat.location_j == player.location_j:
             print('you\'ve encountered a kitty!')
-            action = input('what will you do? ')
-            if action == 'collect':
+            action = input('what will you do? ').lower()
+            if action in ['collect', 'c']:
                 print('you\'ve captured a kitty')
                 audio('./audio/Cat-meow-3.wav')
                 name = input('what will you name the kitty?')
@@ -199,8 +199,8 @@ while True:
     for food in foods:
         if food.location_i == player.location_i and food.location_j == player.location_j:
             print('you\'ve encountered a fish')
-            action = input('what will you do? ')
-            if action == 'collect':
+            action = input('what will you do? ').lower()
+            if action in ['collect', 'c']:
                 player.fish += 1
                 print('you\'ve collected some food')
                 # put the food in your inventory
@@ -213,8 +213,8 @@ while True:
     for special in specials:
         if special.location_i == player.location_i and special.location_j == player.location_j:
             print('you\'ve found catnip!')
-            action = input('what will you do? ')
-            if action == 'collect':
+            action = input('what will you do? ').lower()
+            if action in ['collect', 'c']:
                 player.catnip += 1
                 print('you\'ve collected some catnip')
                 # put the food in your inventory
