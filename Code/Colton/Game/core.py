@@ -27,7 +27,7 @@ class Big_Enemy(Entity):
 class Boss(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '👺')
-        self.health = 10
+        self.health = 8
         self.strength = 3
 
 
@@ -78,6 +78,7 @@ def boss_fight():
     boss = Boss(bi, bj)
     bosses = [boss]
     entities = [player, armor, boss]
+    items = [armor]
     print(Fore.GREEN + end_fight)
     time.sleep(5)
     print(Fore.RED + 'Once you start this fight you wont be able to flee!')
@@ -94,12 +95,16 @@ def boss_fight():
             break  # exit the game
         elif command in ['l', 'left', 'w', 'west']:
             player.location_j -= 1  # move left
+            player.location_j %= board.width
         elif command in ['r', 'right', 'e', 'east']:
             player.location_j += 1  # move right
+            player.location_j %= board.width
         elif command in ['u', 'up', 'n', 'north']:
             player.location_i -= 1  # move up
+            player.location_i %= board.height
         elif command in ['d', 'down', 's', 'south']:
             player.location_i += 1  # move down
+            player.location_i %= board.height
 
         if armor in entities and armor.location_i == player.location_i and armor.location_j == player.location_j:
             player.health += armor.health
@@ -110,10 +115,10 @@ def boss_fight():
         for boss in bosses:
             if boss.location_i == player.location_i and boss.location_j == player.location_j:
                 print('you\'ve encountered the ogre!')
-                while True:
-                    print(f'{player.health} health left.{boss.health} health left.')
+                while player.health > 0:
+                    print(f' You have {player.health} health left.He has {boss.health} health left.')
                     action = input('what will you do? ').lower()
-                    if action == 'attack' or 'a':
+                    if action in ['attack', 'a', 'hit']:
                         roll = random.randint(0, 1)
                         if roll == 0 and player.strength >= boss.health:
                             print('You killed them!')
@@ -131,10 +136,17 @@ def boss_fight():
                         elif roll == 1 and player.health > 0 and boss.strength < player.health:
                             player.health -= boss.strength
                             print(f'You missed and he got in a counter attack.')
-                            if player.health == 0:
-                                print(death)
-                                print(f'thanks for trying {name} but your dead.')
-                                exit()
+
+                print(death)
+                print(f'thanks for trying {name} but your dead.')
+                exit()
+        for boss in bosses:
+            if random.randint(0, 1) == 0:
+                boss.location_i += random.randint(-1, 1)
+                boss.location_i %= board.width
+            else:
+                boss.location_j += random.randint(-1, 1)
+                boss.location_j %= board.height
 
 
 board = Board(15, 15)
@@ -194,12 +206,16 @@ while True:
         break  # exit the game
     elif command in ['l', 'left', 'w', 'west']:
         player.location_j -= 1  # move left
+        player.location_j %= board.width
     elif command in ['r', 'right', 'e', 'east']:
         player.location_j += 1  # move right
+        player.location_j %= board.width
     elif command in ['u', 'up', 'n', 'north']:
         player.location_i -= 1  # move up
+        player.location_i %= board.height
     elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
+        player.location_i %= board.height
 # encounters
 
     if armor in entities and armor.location_i == player.location_i and armor.location_j == player.location_j:
@@ -218,8 +234,8 @@ while True:
             if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
                 print('you\'ve encountered an enemy!')
                 action = input('what will you do? ')
-                while True:
-                    if action == 'attack':
+                while player.health > 0:
+                    if action in ['attack', 'a', 'hit']:
                         if random.randint(0, 1) == 0 and player.strength >= enemy.health:
                             print('You killed them!')
                             entities.remove(enemy)
@@ -231,7 +247,7 @@ while True:
                             print('They got you.')
                             if player.health > 0:
                                 fight = input(f'You have {player.health} left. Attack or flee?')
-                                if fight == 'attack':
+                                if fight in ['attack', 'a', 'hit']:
                                     if random.randint(0, 1) == 0 and player.strength >= enemy.health:
                                         entities.remove(enemy)
                                         enemies.remove(enemy)
@@ -241,14 +257,14 @@ while True:
                                     player.health -= 1
                                     print(f'you ran but they got a swipe on you {player.health} left.')
                                     break
-                        else:
-                            print(death)
-                            print(f'thanks for trying {name} but your dead.')
-                            exit()
                     else:
                         player.health -= 1
                         print(f'you ran but they got a swipe on you {player.health} left.')
                         break
+                if player.health <= 0:
+                    print(death)
+                    print(f'thanks for trying {name} but your dead.')
+                    exit()
 
     if not enemies:
         time.sleep(2)
@@ -256,9 +272,11 @@ while True:
     # move enemy on board
     for enemy in enemies:
         if random.randint(0, 1) == 0:
-            enemy.location_i += random.randint(-1, 1) % board.width
+            enemy.location_i += random.randint(-1, 1)
+            enemy.location_i %= board.width
         else:
-            enemy.location_j += random.randint(-1, 1) % board.height
+            enemy.location_j += random.randint(-1, 1)
+            enemy.location_j %= board.height
 boss_fight()
 
 
