@@ -198,6 +198,23 @@ print('-----------------------------------')
 print('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥')
 print('🔥🔥 EMOJI 👨‍🚒 FIRE 🚒 FIGHTER 🔥🔥')
 print('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥')
+print('🔥  Your computer\'s Firewall has🔥')
+print('🔥failed, now fires are starting🔥')
+print('🔥all across your terminal! Use 🔥')
+print('🔥the emoji firefighter to fight🔥')
+print('🔥all the fires quickly! However🔥')
+print('🔥be careful to watch your water🔥')
+print('🔥level and be sure to refill it🔥')
+print('🔥when needed at a water source.🔥')
+print('🔥 Are you the digital defender 🔥')
+print('🔥your computer needs to save it🔥')
+print('🔥from overheating?!            🔥')
+print('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥')
+print('-----------------------------------')
+start = None
+# Waits for the user to hit a key before starting game
+while start == None:
+    start = input('    :Press Any Key To Start: ')
 print('-----------------------------------')
 # Loops while game is being plaid
 while True:

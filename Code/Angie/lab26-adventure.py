@@ -9,12 +9,18 @@ def audio(audio_file):
     winsound.PlaySound(audio_file, 0)
 
 
-
 class Entity:
     def __init__(self, location_i, location_j, character):
         self.location_i = location_i
         self.location_j = location_j
         self.character = character
+
+    def on_board(self, coord, board_range):
+        while coord not in board_range:
+            if coord > board_range[-1]:
+                coord -= 1
+            elif coord < board_range[0]:
+                coord += 1
 
 
 class Cat(Entity):
@@ -24,19 +30,20 @@ class Cat(Entity):
 
     def run_away(self):
         self.location_i += random.choice([-2, -1, 1, 2])
-        while self.location_i not in range(10):  # bad thing
-            self.location_i += random.choice([-2, -1, 1, 2])
+        self.on_board(self.location_i, range(10))
         self.location_j += random.choice([-2, -1, 1, 2])
-        while self.location_j not in range(10):  # bad thing
-            self.location_j += random.choice([-2, -1, 1, 2])
+        self.on_board(self.location_j, range(10))
 
-    def run_toward(self):
-        self.location_i += random.choice([-2, -1, 1, 2])
-        while self.location_i not in range(10):  # bad thing
-            self.location_i += random.choice([-2, -1, 1, 2])
-        self.location_j += random.choice([-2, -1, 1, 2])
-        while self.location_j not in range(10):  # bad thing
-            self.location_j += random.choice([-2, -1, 1, 2])
+    def run_toward(self, player):
+        if self.location_i > player.location_i:
+            self.location_i -= random.randint(1, 2)
+        elif self.location_i < player.location_i:
+            self.location_i -= random.randint(1, 2)
+        self.on_board(self.location_i, range(10))
+        if self.location_j > player.location_j:
+            self.location_j -= random.randint(1, 2)
+        elif self.location_j < player.location_j:
+            self.location_j -= random.randint(1, 2)
 
     def __repr__(self):
         return self.name
@@ -129,7 +136,7 @@ print(chalk.red('''
  | |   / _` | __| | |   / _ \| | |/ _ \/ __| __/ _ \| '__|
  | |__| (_| | |_  | |__| (_) | | |  __/ (__| || (_) | |    
   \____\__,_|\__|  \____\___/|_|_|\___|\___|\__\___/|_|   
-                                                   _
+                                          _
              |\___/|                      \\
              )     (    |\_/|              ||
             =\     /=   )a a `,_.-""""-.  //
@@ -151,16 +158,16 @@ while True:
     board.print(entities)
 
     command = input('what is your command? make a move, check cats, or check inventory').lower()  # get the command from the user
-   
+
     if command == 'done':
         break  # exit the game
-    elif command in ['l', 'left', 'w', 'west', '\x1b[D']:
+    elif command in ['l', 'left', 'w', 'west']:
         player.location_j -= 1  # move left
-    elif command in ['r', 'right', 'e', 'east', '\x1b[C']:
+    elif command in ['r', 'right', 'e', 'east']:
         player.location_j += 1  # move right
-    elif command in ['u', 'up', 'n', 'north', '\x1b[A']:
+    elif command in ['u', 'up', 'n', 'north']:
         player.location_i -= 1  # move up
-    elif command in ['d', 'down', 's', 'south', '\x1b[B']:
+    elif command in ['d', 'down', 's', 'south']:
         player.location_i += 1  # move down
     elif command in ['check cats', 'cats']:
         print(f'{player.cats} you have collected {len(player.cats)} cats.')
@@ -181,12 +188,12 @@ while True:
                 entities.remove(cat)
                 cats.remove(cat)
 
-
             else:
                 cat.run_away()
                 print('you hesitated and the kitty ran off')
 
-
+        if len(specials) > 0:
+            cat.run_toward(player)
 
     for food in foods:
         if food.location_i == player.location_i and food.location_j == player.location_j:
@@ -201,7 +208,6 @@ while True:
             else:
                 print('you hesitated and another kitty stole the food')
                 player.fish -= 1
-
 
     for special in specials:
         if special.location_i == player.location_i and special.location_j == player.location_j:
@@ -218,8 +224,7 @@ while True:
                 print('you lost some catnip')
                 player.catnip -= 1
 
-        if len(specials) > 0:
-            cat.run_toward()
+
 
 
     # for enemy in enemies:
