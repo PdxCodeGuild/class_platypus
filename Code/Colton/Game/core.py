@@ -142,11 +142,11 @@ def boss_fight():
                 exit()
         for boss in bosses:
             if random.randint(0, 1) == 0:
-                enemy.location_i += random.randint(-1, 1)
-                enemy.location_i %= board.width
+                boss.location_i += random.randint(-1, 1)
+                boss.location_i %= board.width
             else:
-                enemy.location_j += random.randint(-1, 1)
-                enemy.location_j %= board.height
+                boss.location_j += random.randint(-1, 1)
+                boss.location_j %= board.height
 
 
 board = Board(15, 15)
