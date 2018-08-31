@@ -1,6 +1,6 @@
 #ST audio files from http://www.trekcore.com/audio/
 #extra emojis ☄️
-
+import os
 import random
 
 from termcolor import colored
@@ -10,6 +10,7 @@ from colorama import Fore, Back, Style
 import pygame
 import time
 
+
 def audio(audio_file):
     pygame.init()
     pygame.mixer.init()
@@ -17,11 +18,16 @@ def audio(audio_file):
     sounda.play()
     time.sleep(3)
 
+
 audio("st_audio/tos_bridge_1_activate.wav")
 
-def end_credits(audio):
-    audio('st_audio/credits.wav')
-    time.sleep(44)
+# def end_credits(audio):
+#     audio('st_audio/credits.wav')
+#     time.sleep(44)
+
+def end_credits():
+    os.system('afplay st_audio/credits.wav &')
+
 
 def style_files(path):
     with open(path, 'r') as f:
@@ -33,6 +39,18 @@ def style_files(path):
 print(style_files('title.txt'))
 print(Style.RESET_ALL)
 print(Back.LIGHTBLACK_EX)
+
+#ending for roms vs feds
+def romulan_vs_federation():
+    end_credits()
+    print(style_files('romulan.txt'))
+    print('\tYou have been captured by the Romulans.')
+    time.sleep(2)
+    print('\n\tYou hold out hope and are eventually rescued')
+    time.sleep(2)
+    print('\n\tby Spock and his Romulan friends who are')
+    time.sleep(2)
+    print('\n\tattempting to reform the Romulan government.')
 
 
 #Choose your race: Klingon or Federation
@@ -185,16 +203,20 @@ while True:
             proximity_fire_audio = ["st_audio/phasersready.wav", 'st_audio/tactalertvesselapproach.wav']
             random_proximity_fire_audio = random.choice(proximity_fire_audio)
             audio(random_proximity_fire_audio)
-            print('you\'ve encountered an enemy!')
-            action = input('what will you do? ')
-            # enemy_count = 0
+            if user_enemy == 'BORG':
+                print('You\'ve encountered a Borg cube.')
+                action = input('Will you fire on it, or attempt to reason with them? ')
+            else:
+                print('You\'ve encountered a Romulan ship.')
+                action = input('Will you fire on it, or attempt to reason with them? ')
+
             if action == 'fire':
                 enemy_count += 1
                 #adds random weapon sounds on fire
                 fire_audio = ["st_audio/tng_weapons.wav", "st_audio/tos_photon_torpedo.wav", "st_audio/tng_torpedo.wav", "st_audio/tng_torpedo2.wav", "st_audio/tng_torpedo3.wav"]
                 random_fire_audio = random.choice(fire_audio)
                 audio(random_fire_audio)
-                print(enemy_count)
+                # print(enemy_count)
                 if enemy_count == 10:
                     print('You\'ve won the game! ')
                     if user_race == 'KLINGON':
@@ -206,7 +228,7 @@ while True:
                         print(style_files('klingon_ship_three.txt'))
                         time.sleep(0.25)
                         print(style_files('klingon_ship_four.txt'))
-                        end_credits(audio)
+                        # end_credits()
                         exit()
                     else:
                         audio('st_audio/livelong.wav')
@@ -229,13 +251,13 @@ while True:
                         print(style_files('federation_ship_nine.txt'))
                         time.sleep(0.25)
                         print(f"\n\n\n\n{style_files('federation_ship_ten.txt')}")
-                        end_credits(audio)
+                        # end_credits()
                         exit()
 
                 #adds points or deducts random points based on who wins the attack
-                # win_lose = 'WIN'
-                win_lose = ['WIN', 'LOSE']
-                win_lose = random.choice(win_lose)
+                win_lose = 'LOSE'
+                # win_lose = ['WIN', 'LOSE']
+                # win_lose = random.choice(win_lose)
                 if win_lose == 'LOSE':
                     print('You\'ve lost the fight. ')
                     new_points -= 5
@@ -251,23 +273,17 @@ while True:
                             print('You have been assimilated.')
                             time.sleep(3)
                             print(style_files('borg.txt') + '\t\tYou are now Borg...')
-                            end_credits(audio)
+                            # end_credits()
                         else:
                             if user_race == 'KLINGON':
                                 print(style_files(
                                     'romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
-                                end_credits(audio)
+                                # end_credits()
                             else:
-                                print(style_files('romulan.txt'))
-                                print('\tYou have been captured by the Romulans.')
-                                time.sleep(2)
-                                print('\n\tYou hold out hope and are eventually rescued')
-                                time.sleep(2)
-                                print('\n\tby Spock and his Romulan friends who are')
-                                time.sleep(2)
-                                print('\n\tattempting to reform the Romulan government.')
-                                end_credits(audio)
-                        end_credits(audio)
+
+                                print(romulan_vs_federation())
+                                # end_credits()
+                        # end_credits(audio)
                         exit()
 
                 else:
@@ -288,12 +304,12 @@ while True:
                     print('You have been assimilated.')
                     time.sleep(3)
                     print(style_files('borg.txt') + '\t\tYou are now Borg...')
-                    end_credits(audio)
+                    # end_credits()
                 else:
                     if user_race == 'KLINGON':
                         print(style_files('romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
                     else:
-                        print(style_files('romulan.txt') + 'test')
-                        end_credits(audio)
-                end_credits(audio)
+                        print(romulan_vs_federation())
+                        # end_credits()
+                # end_credits()
                 exit()
