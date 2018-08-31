@@ -26,7 +26,7 @@ def end_credits(audio):
 def style_files(path):
     with open(path, 'r') as f:
         # print(Style.DIM)
-        print(Fore.BLUE + Back.LIGHTBLACK_EX)
+        print(Fore.YELLOW + Back.LIGHTBLACK_EX)
         return f.read()
 
 
@@ -145,8 +145,9 @@ for i in range(3):
 
 #sets points for game
 points = 0
-shield_points = 0
-new_points = points + shield_points
+# shield_points = 0
+new_points = points
+# new_points = points + shield_points
 enemy_count = 0
 
 
@@ -171,8 +172,8 @@ while True:
         if shield.location_i == player.location_i and shield.location_j == player.location_j:
             print('you\'re shields are at full power.')
             time.sleep(2)
-            shield_points += 5
-            print(shield_points)
+            new_points += 5
+            # print(shield_points)
             entities.remove(shield)
             shields.remove(shield)
             break
@@ -181,24 +182,30 @@ while True:
 
     for enemy in enemies:
         if enemy.location_i == player.location_i and enemy.location_j == player.location_j:
-            proximity_attack_audio = ["st_audio/phasersready.wav", 'st_audio/tactalertvesselapproach.wav']
-            random_proximity_attack_audio = random.choice(proximity_attack_audio)
-            audio(random_proximity_attack_audio)
+            proximity_fire_audio = ["st_audio/phasersready.wav", 'st_audio/tactalertvesselapproach.wav']
+            random_proximity_fire_audio = random.choice(proximity_fire_audio)
+            audio(random_proximity_fire_audio)
             print('you\'ve encountered an enemy!')
             action = input('what will you do? ')
             # enemy_count = 0
-            if action == 'attack':
+            if action == 'fire':
                 enemy_count += 1
-                #adds random weapon sounds on attack
-                attack_audio = ["st_audio/tng_weapons.wav", "st_audio/tos_photon_torpedo.wav", "st_audio/tng_torpedo.wav", "st_audio/tng_torpedo2.wav", "st_audio/tng_torpedo3.wav"]
-                random_attack_audio = random.choice(attack_audio)
-                audio(random_attack_audio)
+                #adds random weapon sounds on fire
+                fire_audio = ["st_audio/tng_weapons.wav", "st_audio/tos_photon_torpedo.wav", "st_audio/tng_torpedo.wav", "st_audio/tng_torpedo2.wav", "st_audio/tng_torpedo3.wav"]
+                random_fire_audio = random.choice(fire_audio)
+                audio(random_fire_audio)
                 print(enemy_count)
-                if enemy_count == 3:
+                if enemy_count == 10:
                     print('You\'ve won the game! ')
                     if user_race == 'KLINGON':
                         audio('st_audio/largeexplosion.wav')
                         print(style_files('klingon_ship.txt'))
+                        time.sleep(0.25)
+                        print(style_files('klingon_ship_two.txt'))
+                        time.sleep(0.25)
+                        print(style_files('klingon_ship_three.txt'))
+                        time.sleep(0.25)
+                        print(style_files('klingon_ship_four.txt'))
                         end_credits(audio)
                         exit()
                     else:
@@ -226,9 +233,9 @@ while True:
                         exit()
 
                 #adds points or deducts random points based on who wins the attack
-                win_lose = 'WIN'
-                # win_lose = ['WIN', 'LOSE']
-                # win_lose = random.choice(win_lose)
+                # win_lose = 'WIN'
+                win_lose = ['WIN', 'LOSE']
+                win_lose = random.choice(win_lose)
                 if win_lose == 'LOSE':
                     print('You\'ve lost the fight. ')
                     new_points -= 5
@@ -237,7 +244,7 @@ while True:
                         audio('st_audio/primaryshieldsfailing.wav')
                     elif new_points == 5:
                         audio('st_audio/lifesupportfailureabandon.wav')
-                    if new_points == 0:
+                    if new_points <= 0:
                     # IF YOU LOSE
                         audio('st_audio/largeexplosion.wav')
                         if user_enemy == "BORG":
@@ -266,8 +273,8 @@ while True:
                 enemies.remove(enemy)
                 break
 
-            elif enemy_count == 0:
-                print('WORKING')
+            # elif enemy_count == 0:
+            #     print('WORKING')
             else:
                 print('You misfired and your ship has been destroyed.')
                 if user_enemy == "BORG":
