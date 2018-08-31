@@ -82,7 +82,8 @@ board.print([theplayer, cow])
 while True:
     print(Fore.WHITE + Back.LIGHTBLACK_EX + Style.NORMAL)
     cow.move()
-    print(f'You\'ve killed {theplayer.kills} cows!')
+    print(f'Cow death count... {theplayer.kills}'
+          f'!')
     command = input('What direction would you like to go?  Left (l), right (r), up (u), or down (d)? \n').lower()
 
 
@@ -100,7 +101,7 @@ while True:
         break
     board.print([theplayer, cow])
     if cow.x == theplayer.x and cow.y == theplayer.y:
-        print('You kill the cow! ')
+        print('You killed the cow! ')
         os.system("afplay cow.mp3")
         cow.x = random.randint(0, 19)
         cow.y = random.randint(0, 19)
