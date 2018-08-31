@@ -129,7 +129,7 @@ for i in range(2):
     entities.append(special)
     specials.append(special)
 
-win_num = random.randint(1, 10)
+win_num = random.randint(4, 10)
 print(chalk.red('''
 
    ____      _      ____      _ _           _             
@@ -237,7 +237,7 @@ while True:
 
     # check if the cats list is empty, if so, tell the user won
     if len(cats) <= win_num:
-        print(f'You collected all the cats! you won! Here are your cats {player.cats}')
+        print(f'You collected cats! you won! Here are your cats {player.cats} and inventory {player}')
         audio('./audio/Cat-purring-2.wav')
         break
 if len(cats) > win_num:
