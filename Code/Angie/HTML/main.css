@@ -1,0 +1,71 @@
+h1 {
+    margin:2%;
+    padding:1%;
+    text-align: left;
+    font: 4em 'Cinzel Decorative', cursive;
+    color:white;
+    text-shadow: 3px 3px black;
+}
+
+body {
+    background: url("http://s3.amazonaws.com/assets.vision.org/uploadedimages/Home/Articles/2011fall_forever-jung_1920x1080_1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+}
+
+#maindiv {
+    margin:2%;
+    padding:1%;
+    background-color: rgba(0, 0, 0, .2);
+    text-align:justify;
+    width: 50%;
+    color: white;
+    border:2px double;
+    border-radius:20px;
+    overflow:auto;
+
+}
+ul {
+    list-style:none;
+    }
+li{
+    list-style-type: none;
+}
+
+li:before {
+     content: '🧠';
+     margin-right: 10px;
+ }
+
+img {
+    padding: 1%;
+    height:270px;
+    width:220px;
+    float:right;
+    border-radius:20px;
+}
+
+blockquote {
+    font: 2em 'Tangerine', cursive;
+}
+
+
+a:link {
+    color: blue;
+}
+
+/* visited link */
+a:visited {
+    color: magenta;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+}
+
+/* selected link */
+a:active {
+    color: pink;
+}
