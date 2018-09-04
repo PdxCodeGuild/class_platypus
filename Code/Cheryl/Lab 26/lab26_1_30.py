@@ -1,6 +1,5 @@
 #ST audio files from http://www.trekcore.com/audio/
 #extra emojis ☄️
-
 import os
 import random
 
@@ -22,6 +21,9 @@ def audio(audio_file):
 
 audio("st_audio/tos_bridge_1_activate.wav")
 
+# def end_credits(audio):
+#     audio('st_audio/credits.wav')
+#     time.sleep(44)
 
 def end_credits():
     os.system('afplay st_audio/credits.wav &')
@@ -70,13 +72,6 @@ else:
 
 time.sleep(2)
 
-#intro to game play
-print('\tTo play \'Space Trek\', just type:\n\t \'U\' for up, \'D\' for down, \'L\' for left, and \'R\' for right.\n\t To quit, type \'done.\'')
-time.sleep(5)
-print('\n\tThe stars will give you 5 points and help reinforce your shields.\n\tEach enemy that you fight can take away, or give you, 5 points. ')
-time.sleep(5)
-print(f'\n\tHave fun fighting the {user_enemy}!')
-time.sleep(5)
 
 class Entity:
     def __init__(self, location_i, location_j, character):
@@ -121,11 +116,11 @@ class Board:
         while True:
             location_i = random.randint(0, self.width - 1)
             location_j = random.randint(0, self.height - 1)
-            for entity in entities:
-                if entity.location_i == location_i and entity.location_j == location_j:
-                    break
-            else:
-                break
+            # for entity in entities:
+            #     if entity.location_i == location_i and entity.location_j == location_j:
+            #         break
+            # else:
+            #     break
         return location_i, location_j
 
     def __getitem__(self, j):
@@ -138,20 +133,18 @@ class Board:
                     if entities[k].location_i == i and entities[k].location_j == j:
                         print(entities[k].character, end='')
                         break
-
-                    else:
-                        print(' ', end='')
+                else:
+                    print(' ', end='')
             print()
 
 
-print(Fore.BLACK + Back.CYAN)
+
 board = Board(10, 10)
 
 pi, pj = board.random_location()
 player = Player(pi, pj)
 
 entities = [player]
-empty_spaces = [player]
 enemies = []
 shields = []
 
@@ -170,7 +163,9 @@ for i in range(3):
 
 #sets points for game
 points = 0
+# shield_points = 0
 new_points = points
+# new_points = points + shield_points
 enemy_count = 0
 
 
@@ -178,7 +173,7 @@ while True:
 
     board.print(entities)
 
-    command = input('What is your command? ')  # get the command from the user
+    command = input('what is your command? ')  # get the command from the user
 
     if command == 'done':
         break  # exit the game
@@ -224,12 +219,8 @@ while True:
                 # print(enemy_count)
                 if enemy_count == 10:
                     print('You\'ve won the game! ')
-                    time.sleep(2)
                     if user_race == 'KLINGON':
                         audio('st_audio/largeexplosion.wav')
-                        audio('st_audio/largeexplosion.wav')
-                        time.sleep(0.5)
-                        end_credits()
                         print(style_files('klingon_ship.txt'))
                         time.sleep(0.25)
                         print(style_files('klingon_ship_two.txt'))
@@ -237,13 +228,10 @@ while True:
                         print(style_files('klingon_ship_three.txt'))
                         time.sleep(0.25)
                         print(style_files('klingon_ship_four.txt'))
-
+                        # end_credits()
                         exit()
                     else:
-                        time.sleep(0.5)
                         audio('st_audio/livelong.wav')
-                        time.sleep(0.5)
-                        end_credits()
                         print(style_files('federation_ship.txt'))
                         time.sleep(0.25)
                         print(style_files('federation_ship_two.txt'))
@@ -263,7 +251,7 @@ while True:
                         print(style_files('federation_ship_nine.txt'))
                         time.sleep(0.25)
                         print(f"\n\n\n\n{style_files('federation_ship_ten.txt')}")
-
+                        # end_credits()
                         exit()
 
                 #adds points or deducts random points based on who wins the attack
@@ -284,16 +272,13 @@ while True:
                         if user_enemy == "BORG":
                             print('You have been assimilated.')
                             time.sleep(3)
-                            end_credits()
                             print(style_files('borg.txt') + '\t\tYou are now Borg...')
-
+                            # end_credits()
                         else:
                             if user_race == 'KLINGON':
-                                time.sleep(1)
-                                end_credits()
                                 print(style_files(
                                     'romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
-
+                                # end_credits()
                             else:
 
                                 print(romulan_vs_federation())
@@ -315,19 +300,14 @@ while True:
             #     print('WORKING')
             else:
                 print('You misfired and your ship has been destroyed.')
-                time.sleep(3)
                 if user_enemy == "BORG":
                     print('You have been assimilated.')
                     time.sleep(3)
-                    end_credits()
                     print(style_files('borg.txt') + '\t\tYou are now Borg...')
-
+                    # end_credits()
                 else:
                     if user_race == 'KLINGON':
-                        time.sleep(1)
-                        end_credits()
-                        print(style_files(
-                            'romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
+                        print(style_files('romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
                     else:
                         print(romulan_vs_federation())
                         # end_credits()

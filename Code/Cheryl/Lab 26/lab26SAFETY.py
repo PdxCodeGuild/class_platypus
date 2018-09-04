@@ -70,13 +70,13 @@ else:
 
 time.sleep(2)
 
-#intro to game play
-print('\tTo play \'Space Trek\', just type:\n\t \'U\' for up, \'D\' for down, \'L\' for left, and \'R\' for right.\n\t To quit, type \'done.\'')
-time.sleep(5)
-print('\n\tThe stars will give you 5 points and help reinforce your shields.\n\tEach enemy that you fight can take away, or give you, 5 points. ')
-time.sleep(5)
-print(f'\n\tHave fun fighting the {user_enemy}!')
-time.sleep(5)
+# #intro to game play
+# print('\tTo play \'Space Trek\', just type:\n\t \'U\' for up, \'D\' for down, \'L\' for left, and \'R\' for right.\n\t To quit, type \'done.\'')
+# time.sleep(5)
+# print('\n\tThe stars will give you 5 points and help reinforce your shields.\n\tEach enemy that you fight can take away, or give you, 5 points. ')
+# time.sleep(5)
+# print(f'\n\tHave fun fighting the {user_enemy}!')
+# time.sleep(5)
 
 class Entity:
     def __init__(self, location_i, location_j, character):
@@ -106,6 +106,11 @@ class Player(Entity):
 class Shield(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '🌟') #shield
+#
+#
+# class Empty_Space(Entity):
+#     def __init__(self, location_i, location_j):
+#         super().__init__(location_i, location_j, '🌟') #empty space
 
 print(Fore.BLACK + Back.CYAN)
 class Board:
@@ -138,7 +143,6 @@ class Board:
                     if entities[k].location_i == i and entities[k].location_j == j:
                         print(entities[k].character, end='')
                         break
-
                     else:
                         print(' ', end='')
             print()
@@ -151,7 +155,7 @@ pi, pj = board.random_location()
 player = Player(pi, pj)
 
 entities = [player]
-empty_spaces = [player]
+# empty_spaces = []
 enemies = []
 shields = []
 
@@ -167,6 +171,11 @@ for i in range(3):
     entities.append(shield)
     shields.append(shield)
 
+# for i in range(10):
+#     ei, ej = board.random_location()
+#     empty_space = Empty_Space(ei, ej)
+#     entities.append(empty_space)
+#     empty_spaces.append(empty_space)
 
 #sets points for game
 points = 0
@@ -201,6 +210,16 @@ while True:
             shields.remove(shield)
             break
             time.sleep(3)
+
+
+    # for empty_space in empty_spaces:
+    #     if empty_space.location_i == player.location_i and empty_space.location_j == player.location_j:
+    #         print('.')
+    #         #
+    #         # entities.remove(empty_space)
+    #         # shields.remove(shield)
+    #         break
+    #         time.sleep(3)
 
 
     for enemy in enemies:
