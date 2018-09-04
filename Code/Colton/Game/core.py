@@ -161,7 +161,7 @@ enemies = []
 items = [sword, armor]
 
 
-for i in range(0):
+for i in range(2):
     ei, ej = board.random_location()
     enemy = Enemy(ei, ej)
     entities.append(enemy)
@@ -182,7 +182,7 @@ with open('win.txt', 'r') as f:
     with open('win2.txt', 'r') as f:
         win2 = f.read()
 # instructions
-print("Move: L(left), R(right), U(up), D(down) Encounter: A(Attack), Flee")
+print("Move: L(left), R(right), U(up), D(down) Encounter: A(Attack),Anything Else (Flee)")
 print(Fore.RED + welcome)
 print('We all live in this cave. But some bad guys have tried to take it over.')
 name = input(f" Thanks for agreeing to kill them all, but first what should I call you? ")
@@ -254,11 +254,11 @@ while True:
                                         print('You killed them!')
                                         break
                                 else:
-                                    player.health -= 1
+                                    player.health -= enemy.strength
                                     print(f'you ran but they got a swipe on you {player.health} left.')
                                     break
                     else:
-                        player.health -= 1
+                        player.health -= enemy.strength
                         print(f'you ran but they got a swipe on you {player.health} left.')
                         break
                 if player.health <= 0:

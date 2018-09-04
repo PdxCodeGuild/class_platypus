@@ -55,9 +55,9 @@ class Special(Entity):
         super().__init__(location_i, location_j, chalk.yellow('🌿'))
 
 
-class Food(Entity):
+class Dog(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, chalk.green('🐟'))
+        super().__init__(location_i, location_j, chalk.red('🐕'))
 
 
 class Player(Entity):
@@ -65,17 +65,17 @@ class Player(Entity):
         super().__init__(location_i, location_j, '👧')
         self.cats = []
         self.catnip = 0
-        self.fish = 0
+        self.dog = 0
 
     def inventory(self):  # maintains a list of items
         print(', '.join(self.cats))
         print(', '.join(self.special))
 
     def check_inventory(self):
-        return f'You currently have {self.fish} fish and a {self.special} in your inventory'
+        return f'You currently have {self.dog} dogs and a {self.special} in your inventory'
 
     def __str__(self):
-        return f'cats: {len(self.cats)}, fish: {self.fish}, catnip: {self.catnip}'
+        return f'cats: {len(self.cats)}, dogs: {self.dog}, catnip: {self.catnip}'
 
 
 class Board:
@@ -108,7 +108,7 @@ player = Player(pi, pj)
 
 entities = [player]
 cats = []
-foods = []
+dogs = []
 specials = []
 
 for i in range(10):
@@ -117,11 +117,11 @@ for i in range(10):
     entities.append(cat)
     cats.append(cat)
 
-for i in range(10):
+for i in range(3):
     ei, ej = board.random_location()
-    food = Food(ei, ej)
-    entities.append(food)
-    foods.append(food)
+    dog = Dog(ei, ej)
+    entities.append(dog)
+    dogs.append(dog)
 
 for i in range(2):
     ei, ej = board.random_location()
@@ -129,7 +129,7 @@ for i in range(2):
     entities.append(special)
     specials.append(special)
 
-win_num = random.randint(1, 10)
+win_num = random.randint(0, 7)
 print(chalk.red('''
 
    ____      _      ____      _ _           _             
@@ -196,19 +196,32 @@ while True:
         if player.catnip > 0:
             cat.run_toward(player)
 
-    for food in foods:
-        if food.location_i == player.location_i and food.location_j == player.location_j:
-            print('you\'ve encountered a fish')
+    for dog in dogs:
+        if dog.location_i == player.location_i and dog.location_j == player.location_j:
+            print('you\'ve encountered a dog')
             action = input('what will you do? ').lower()
             if action in ['collect', 'c']:
-                player.fish += 1
-                print('you\'ve collected some food')
-                # put the food in your inventory
-                entities.remove(food)
-                foods.remove(food)
+                player.dog += 1
+                print('Oh no! you\'ve collected a dog. All of your cats got scared and ran away!')
+                # put the dog in your inventory
+                entities.remove(dog)
+                dogs.remove(dog)
+                if player.dog > 0:
+                    cats.clear()
+                    player.cats.clear()
+                    for i in range(10):
+                        ei, ej = board.random_location()
+                        cat = Cat(ei, ej)
+                        entities.append(cat)
+                        cats.append(cat)
+                        break
+                    break
+
+
+
             else:
-                print('you hesitated and another kitty stole the food')
-                # player.fish -= 1
+                print('you hesitated and the dog ran away')
+
 
     for special in specials:
         if special.location_i == player.location_i and special.location_j == player.location_j:
@@ -217,7 +230,7 @@ while True:
             if action in ['collect', 'c']:
                 player.catnip += 1
                 print('you\'ve collected some catnip')
-                # put the food in your inventory
+                # put the nip in your inventory
                 entities.remove(special)
                 specials.remove(special)
 
@@ -237,8 +250,11 @@ while True:
 
     # check if the cats list is empty, if so, tell the user won
     if len(cats) <= win_num:
-        print(f'You collected all the cats! you won! Here are your cats {player.cats}')
+        print(f'You collected cats! you won! Here are your cats {player.cats} and inventory {player}')
         audio('./audio/Cat-purring-2.wav')
         break
+
+
+
 if len(cats) > win_num:
     print('You did not collect all the cats, you lose!')
