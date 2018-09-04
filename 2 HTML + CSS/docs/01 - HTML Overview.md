@@ -15,10 +15,10 @@ HTML elements (or 'tags') have three parts- the **element name**, **attributes**
 
 
 ```html
-<element attribute="value">inner text</element>
-<element attribute1="value1" attribute2="value2">
-    <innerelement></innerelement>
-</element>
+<div attribute="value">inner text</div>
+<div attribute1="value1" attribute2="value2">
+    <div>inner element</div>
+</div>
 ```
 
 ## Void Elements
