@@ -2,7 +2,7 @@ import math
 
 class ATM:
     '''''' """Keeping track of bank balance, deposits, withdrawals, and interest. """
-    def __init__(self, x=0, y=0.001):
+    def __init__(self, x=0, y=0.001):      #can use (self, balance=0, interest=0.001) instead of x,y
         self.x = x
         self.y = y
 
@@ -19,30 +19,20 @@ class ATM:
         self.x += d
         return d
 
-    def withdraw(self, y):
+    def withdrawal(self, y):
         self.x -= y
         return y
 
-    def print_history(self):
-        return history
+    def trans_history(self):
+        return trans_history
 
 ATM = ATM()
 
-history = []
+trans_history = []
 
-
-# class ATM:
-#     def __init__(self, balance, interest):  # this is the initializer
-#         self.balance = balance  # these are member variables
-#         self.interest = interest
-#
-#
-# a = ATM(0, 0.001)  # call the initializer, instantiate the class
-# print(a.balance)  # 0
-# print(a.interest)
 
 while True:
-    ans = input(f'What would you like to do? Deposit, Withdrawal, Check Balance, History... ')
+    ans = input('What would you like to do? Deposit, Withdrawal, Check Balance, History or Exit... ').lower()
     if ans == "deposit":
         ans = int(input('How much would you like to deposit? '))
 
@@ -51,10 +41,15 @@ while True:
     # if ans == withdrawal:
     #     ans == int(input('How much would you like to withdrawal? '))
     #     print(ATM.withdraw())
-    # if ans == balance:
+
+    # elif ans == balance:
     #     ans == int(input(f'Here is your balance{balance} '))
-    # if ans == history:
-    #     print(ATM.print_history())
+
+    # elif ans == history:
+    #     print(ATM.trans_history())
+
+    #elif ans == Exit:
+    #print('Goodbye.')
 
 
 
