@@ -1,5 +1,6 @@
 /*colors:*/
 /*lt. blue #e8f7f9*/
+/*dk. blue #09d3ef*/
 
 header {
     margin-top: 5em;
@@ -18,6 +19,7 @@ img {
     border-radius: 5%;
 }
 
+
 #about {
     display:none;
 }
@@ -28,6 +30,29 @@ img {
     border-radius: 0;
     margin-left: -1em;
 }
+
+#social_media {
+    display: flex;
+    width: 2em;
+    background-color:#09d3ef;
+    text-align:right;
+    border-radius: 5%;
+    position: fixed;
+    z-index: 1;
+}
+
+#social_media a {
+    color:black;
+}
+
+.fa {
+    padding-right: 5px;
+    margin-bottom: -10px;
+    font-size: 20px;
+    text-align: right;
+    text-decoration: none;
+}
+
 
 .wrapper {
     margin: 2em;
