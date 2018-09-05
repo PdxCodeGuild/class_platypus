@@ -1,0 +1,54 @@
+h1 {
+    font-family: 'BenchNine', sans-serif;
+    text-align: left;
+    padding:2px;
+    font-size: 3em;
+
+
+}
+
+img {
+    width: 125px;
+
+}
+
+header {
+    width: 70%;
+    margin-left: 20%;
+    margin-right:20%;
+    background-color: rgb(255, 157, 26);
+
+}
+
+body {
+    width: 70%;
+    margin-left: 20%;
+    margin-right:20%;
+    background-color: rgb(131, 210, 255);
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FFB01A;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #386CB2;
+}
