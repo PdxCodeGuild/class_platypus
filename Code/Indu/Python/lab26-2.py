@@ -1,5 +1,5 @@
 import random
-import colorama
+from colorama import Fore, Back, Style
 import chalk
 import os
 
@@ -71,9 +71,9 @@ for i in range(random.randint(5,10)):
 while True:
 
     board.print(entities)
-    for animal in animals:
-        print(animal.location_i, animal.location_j)
+    #int(animal.location_i, animal.location_j)
     print(chalk.bold('Some dangerous animals broke out of Portland zoo and hiding in Forst park. Help animal control to tranquilize and bring them back'))
+    print(Fore.RED + Back.LIGHTBLACK_EX + Style.NORMAL)
     print(chalk.bold(len(animals)),'animals are out there')
     command = input('Whih direction do you want to move? l,r,u,d ')  # get the command from the user
 
@@ -95,7 +95,7 @@ while True:
             action = input('Ready to use tranquilizer gun? y/n ')
             action=action.lower()
             if action in ['y','yes']:
-                #os.system("dartsound.mp3")
+                os.system("dartsound.mp3")
                 print(f'The wild animal will sleep for next 4 hours')
                 entities.remove(animal)
                 animals.remove(animal)
