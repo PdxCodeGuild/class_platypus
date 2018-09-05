@@ -139,3 +139,4 @@ while quit_string != 'quit': # game loop
                     break
 
     quit_string = input('Hit return to play again or type \'quit\' to leave the game. > ').lower()
+    #ETAOIN SHRDLU CMFWYP VBGKQJ XZ
