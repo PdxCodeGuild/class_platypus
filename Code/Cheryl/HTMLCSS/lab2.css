@@ -1,0 +1,36 @@
+/*colors:*/
+/*lt. blue #e8f7f9*/
+
+header {
+    margin-top: 5em;
+}
+
+div.relative {
+    position: relative;
+    width: 65%;
+}
+
+div.absolute {
+    position: absolute;
+    top: 0;
+    right: -40%;
+    width: 30%;
+}
+
+.blog_title {
+    width: 65%;
+    text-align: center;
+}
+.wrapper {
+    margin-left: 3em;
+}
+
+.box_style {
+    background-color: #e8f7f9;
+    padding: 1em;
+    border-radius: 1%;
+}
+.navbar-light {
+    background-color:#e8f7f9 !important;
+}
+
