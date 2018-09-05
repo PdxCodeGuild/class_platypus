@@ -1,6 +1,6 @@
 /*colors:*/
 /*lt. blue #e8f7f9*/
-/*dk. blue #bef0f7*/
+/*dk. blue #09d3ef*/
 
 header {
     margin-top: 5em;
@@ -34,12 +34,15 @@ img {
 #social_media {
     display: flex;
     width: 2em;
-    background-color:#bef0f7;
+    background-color:#09d3ef;
     text-align:right;
     border-radius: 5%;
     position: fixed;
     z-index: 1;
+}
 
+#social_media a {
+    color:black;
 }
 
 .fa {
