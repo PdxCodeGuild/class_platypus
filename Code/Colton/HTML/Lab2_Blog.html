@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Adventure!</title>
+
+    <nav>
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://i.giphy.com/media/VTxmwaCEwSlZm/200.gif">donate</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://i.giphy.com/media/Cx7yNo5TsPQru/giphy.webp">?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Profit</a>
+          </li>
+        </ul>
+    </nav>
+    <style>
+        * {
+            box-sizing: border-box;
+            background-color: black;
+        }
+        h1 {
+            font-size: 40px;
+        }
+
+        header {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+        }
+        nav {
+            background-color: darkred;
+            padding: 2px;
+            text-align: center;
+            ;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+        }
+        nav a:hover {
+            color: darkred;
+        }
+        /* aside */
+        aside {
+            padding: 10px;
+            width: 25%;
+            color: bisque;
+            text-align: center;
+        }
+        aside > div {
+            padding: 5px;
+            background-color: darkred;
+            border-radius: 4px;
+        }
+        article {
+            padding: 10px;
+            background-color: black;
+            margin: 5px;
+            border-radius: 4px;
+            width: 100%;
+        }
+        article > h1 {
+            color: bisque;
+            text-align: center;
+        }
+        /* footer */
+        footer {
+            text-align: center;
+        }
+        #maindiv {
+            display:flex;
+            flex-direction:row;
+            font-family: 'Playfair Display', serif;
+            width: 100%;
+            background-color: black;
+        }
+        ul{list-style: none;
+            color: white;
+        }
+        img{width: 200px;
+            padding: 5px
+        }
+        html{background-color: black }
+    </style>
+</head>
+
+
+
+
+
+
+
+    <body>
+        <div id="maindiv">
+            <aside>
+                <h1>Want Updates?</h1>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">10.00</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Credit Card</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Credit card info">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">E-Mail</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Email address">
+                </div>
+            </aside>
+            <article>
+                <h1>Home</h1>
+                    <ul>
+                        <li>
+                            <a href="https://en.wikipedia.org/wiki/Adventure_Time"</a> <img src="https://images.pexels.com/photos/891252/pexels-photo-891252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"> Who doesn't want to make money while travelling? </a>
+                        </li>
+                        <li>
+                            <a href="https://i.giphy.com/media/u4dDpVKUNxsLC/giphy.webp"</a>  <img src="https://images.pexels.com/photos/908295/pexels-photo-908295.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"> Make money at home! </a>
+                        </li>
+                        <li>
+                            <a> <img src="https://images.pexels.com/photos/39317/chihuahua-dog-puppy-cute-39317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"> Look at this dog! </a>
+                        </li>
+                        <li>
+                            <a href="https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" </a> <img src="https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"> Not into dogs? Here is a cat!? </a>
+                        </li>
+                    </ul>
+            </article>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
