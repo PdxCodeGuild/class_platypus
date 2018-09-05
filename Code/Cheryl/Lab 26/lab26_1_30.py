@@ -21,9 +21,6 @@ def audio(audio_file):
 
 audio("st_audio/tos_bridge_1_activate.wav")
 
-# def end_credits(audio):
-#     audio('st_audio/credits.wav')
-#     time.sleep(44)
 
 def end_credits():
     os.system('afplay st_audio/credits.wav &')
@@ -71,6 +68,15 @@ else:
     print(style_files('romulan.txt') + '\n\n\tYou chose to fight the Romulans! \n\n')
 
 time.sleep(2)
+
+#intro to game
+#intro to game play
+print('\tTo play \'Space Trek\', just type:\n\t \'U\' for up, \'D\' for down, \'L\' for left, and \'R\' for right.\n\t To quit, type \'done.\'')
+time.sleep(5)
+print('\n\tThe stars will give you 5 points and help reinforce your shields.\n\tEach enemy that you fight can take away, or give you, 5 points. ')
+time.sleep(5)
+print(f'\n\tHave fun fighting the {user_enemy}!')
+time.sleep(5)
 
 
 class Entity:
@@ -148,7 +154,7 @@ entities = [player]
 enemies = []
 shields = []
 
-for i in range(10):
+for i in range(3):
     ei, ej = board.random_location()
     enemy = Enemy(ei, ej)
     entities.append(enemy)
@@ -217,10 +223,13 @@ while True:
                 random_fire_audio = random.choice(fire_audio)
                 audio(random_fire_audio)
                 # print(enemy_count)
-                if enemy_count == 10:
+                if enemy_count == 3:
                     print('You\'ve won the game! ')
                     if user_race == 'KLINGON':
                         audio('st_audio/largeexplosion.wav')
+                        audio('st_audio/largeexplosion.wav')
+                        time.sleep(0.5)
+                        end_credits()
                         print(style_files('klingon_ship.txt'))
                         time.sleep(0.25)
                         print(style_files('klingon_ship_two.txt'))
@@ -228,10 +237,13 @@ while True:
                         print(style_files('klingon_ship_three.txt'))
                         time.sleep(0.25)
                         print(style_files('klingon_ship_four.txt'))
-                        # end_credits()
+
                         exit()
                     else:
+                        time.sleep(0.5)
                         audio('st_audio/livelong.wav')
+                        time.sleep(0.5)
+                        end_credits()
                         print(style_files('federation_ship.txt'))
                         time.sleep(0.25)
                         print(style_files('federation_ship_two.txt'))
@@ -251,11 +263,11 @@ while True:
                         print(style_files('federation_ship_nine.txt'))
                         time.sleep(0.25)
                         print(f"\n\n\n\n{style_files('federation_ship_ten.txt')}")
-                        # end_credits()
+
                         exit()
 
                 #adds points or deducts random points based on who wins the attack
-                win_lose = 'LOSE'
+                win_lose = 'WIN'
                 # win_lose = ['WIN', 'LOSE']
                 # win_lose = random.choice(win_lose)
                 if win_lose == 'LOSE':
@@ -272,19 +284,22 @@ while True:
                         if user_enemy == "BORG":
                             print('You have been assimilated.')
                             time.sleep(3)
+                            end_credits()
                             print(style_files('borg.txt') + '\t\tYou are now Borg...')
-                            # end_credits()
+
                         else:
                             if user_race == 'KLINGON':
+                                time.sleep(1)
+                                end_credits()
                                 print(style_files(
                                     'romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
-                                # end_credits()
+
                             else:
 
                                 print(romulan_vs_federation())
                                 # end_credits()
-                        # end_credits(audio)
-                        exit()
+                            # end_credits(audio)
+                    exit()
 
                 else:
                     print('you\'ve destroyed their ship!')
@@ -303,11 +318,15 @@ while True:
                 if user_enemy == "BORG":
                     print('You have been assimilated.')
                     time.sleep(3)
+                    end_credits()
                     print(style_files('borg.txt') + '\t\tYou are now Borg...')
-                    # end_credits()
+
                 else:
                     if user_race == 'KLINGON':
-                        print(style_files('romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
+                        time.sleep(1)
+                        end_credits()
+                        print(style_files(
+                            'romulan.txt') + '\t\tYou have been put in a Romulan Prison Camp where you will die a slow and dishonorable death.')
                     else:
                         print(romulan_vs_federation())
                         # end_credits()
