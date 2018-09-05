@@ -1,6 +1,6 @@
 /*colors:*/
 /*lt. blue #e8f7f9*/
-/*dk. blue #cff4f9*/
+/*dk. blue #bef0f7*/
 
 header {
     margin-top: 5em;
@@ -19,6 +19,7 @@ img {
     border-radius: 5%;
 }
 
+
 #about {
     display:none;
 }
@@ -33,7 +34,7 @@ img {
 #social_media {
     display: flex;
     width: 2em;
-    background-color:#cff4f9;
+    background-color:#bef0f7;
     text-align:right;
     border-radius: 5%;
     position: fixed;
@@ -42,7 +43,7 @@ img {
 }
 
 .fa {
-    padding: 5px;
+    padding-right: 5px;
     margin-bottom: -10px;
     font-size: 20px;
     text-align: right;
