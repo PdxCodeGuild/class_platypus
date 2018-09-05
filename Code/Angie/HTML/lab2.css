@@ -1,0 +1,86 @@
+h1 {
+    font-family: 'Fredericka the Great', cursive;
+    text-align: left;
+    padding:2px;
+    font-size: 4em;
+    color:#386CB2;
+
+
+}
+
+h3 {
+    background-color: #6AA9FF;
+    top-margin:4px;
+    padding: 3px;
+    border-radius:5px;
+
+}
+
+.dog {
+    float:left;
+    width: 125px;
+
+}
+
+header {
+
+    background-color: rgb(255, 157, 26);
+
+
+}
+
+body {
+    width: 70%;
+    margin-left: 20%;
+    margin-right:20%;
+    background: url('https://front.embarkvet.com/img/breeds/basset_hound.png');
+    background-attachment:fixed;
+    background-repeat: repeat;
+    background-size: 300px;
+
+
+    /*background-color: rgb(131, 210, 255);*/
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FFB01A;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+li a:hover {
+    background-color: #386CB2;
+}
+
+footer {
+    text-align: center;
+    color:#386CB2;
+}
+
+p {
+    background-color:#386CB2;
+    color:white;
+    padding:20px;
+
+    border-radius:20px;
+}
+
+img {
+
+}
