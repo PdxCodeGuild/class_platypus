@@ -39,6 +39,7 @@ img {
     border-radius: 5%;
     position: fixed;
     z-index: 1;
+    margin-left: 90%;
 }
 
 #social_media a {
@@ -113,6 +114,16 @@ img {
         width: 50%;
         border-radius: 5px;
     }
+    #social_media {
+        display: flex;
+        width: 2em;
+        background-color:#09d3ef;
+        text-align:right;
+        border-radius: 5%;
+        position: fixed;
+        z-index: 1;
+        margin-left: 0;
+}
 }
 
 
