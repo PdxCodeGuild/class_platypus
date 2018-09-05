@@ -7,16 +7,31 @@ header {
 
 div.relative {
     position: relative;
-    width: 65%;
 }
 
 div.absolute {
     position: absolute;
-    top: 0;
+    top: -2em;
     right: -40%;
     width: 30%;
 }
+footer {
+    background-color: #e8f7f9;
+    margin-top: 5%;
+    padding: 1em;
+    text-align: center;
+}
 
+img {
+    border-radius: 5%;
+    width: 150px;
+    margin-bottom: 1em;
+}
+
+#about {
+    border-radius: 5%;
+    width: 100px;
+}
 .blog_title {
     width: 65%;
     text-align: center;
@@ -28,7 +43,9 @@ div.absolute {
 .box_style {
     background-color: #e8f7f9;
     padding: 1em;
-    border-radius: 1%;
+    border-radius: 5px;
+    width: 65%;
+    margin-top: 2em;
 }
 .navbar-light {
     background-color:#e8f7f9 !important;
