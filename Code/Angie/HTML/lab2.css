@@ -2,21 +2,22 @@ h1 {
     font-family: 'BenchNine', sans-serif;
     text-align: left;
     padding:2px;
-    font-size: 3em;
+    font-size: 4em;
+    color:#386CB2;
 
 
 }
 
 img {
+    float:left;
     width: 125px;
 
 }
 
 header {
-    width: 70%;
-    margin-left: 20%;
-    margin-right:20%;
+
     background-color: rgb(255, 157, 26);
+
 
 }
 
@@ -48,7 +49,20 @@ li a {
     text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
+
 li a:hover {
     background-color: #386CB2;
+}
+
+footer {
+    text-align: center;
+    color:#386CB2;
+}
+
+p {
+    background-color:#386CB2;
+    color:white;
+    padding:20px;
+    margin:10px;
+    border-radius:20px;
 }
