@@ -18,5 +18,5 @@ for i in range(len(sock_types)):
     #     extra_socks = count%2
     # print(f"{sock_types[i]} socks = {count}")
     # print(f"I have {pair_socks} pair of {sock_types[i]}  of socks and {extra_socks} extra socks" )
-    print(f"I have {count/2} pairs of {sock_types[i]} socks")
+    print(f"I have {count//2} pairs of {sock_types[i]} socks")
 
