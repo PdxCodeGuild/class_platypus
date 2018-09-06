@@ -9,9 +9,10 @@ h1 {
 h3 {
     background-color: #6AA9FF;
     top-margin:4px;
-    padding: 3px;
-    border-radius:5px;
+    padding-left: 5px;
+    border-radius:2px;
     color:white;
+    font-family: 'Source Sans Pro', sans-serif;
     }
 
 .flex-container {
@@ -25,14 +26,15 @@ h3 {
 
 header {
     background-color: rgb(255, 157, 26);
+    border-radius: 5px;
     }
 
 
 
 body {
     width: 70%;
-    margin-left: 20%;
-    margin-right:20%;
+    margin-left: 15%;
+    margin-right:15%;
     background: url('https://front.embarkvet.com/img/breeds/basset_hound.png');
     background-attachment:fixed;
     background-repeat: repeat;
@@ -50,6 +52,7 @@ ul {
 
 li {
     float: right;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 li a {
@@ -75,7 +78,7 @@ p {
     color:white;
     padding:20px;
     font-family: 'Source Sans Pro', sans-serif;
-    border-radius:20px;
+    border-radius:5px;
 }
 
 img {

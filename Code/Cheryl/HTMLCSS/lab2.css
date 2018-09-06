@@ -39,6 +39,8 @@ img {
     border-radius: 5%;
     position: fixed;
     z-index: 1;
+    margin-left: 90%;
+    margin-top: 5em;
 }
 
 #social_media a {
@@ -112,6 +114,17 @@ img {
         margin-right: auto;
         width: 50%;
         border-radius: 5px;
+    }
+    #social_media {
+        display: flex;
+        width: 2em;
+        background-color:orange;
+        text-align:right;
+        border-radius: 5%;
+        position: fixed;
+        z-index: 1;
+        margin-left: 0;
+        margin-top: 2em;
     }
 }
 
