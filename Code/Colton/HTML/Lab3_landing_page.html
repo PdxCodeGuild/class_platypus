@@ -2,11 +2,10 @@
 <html>
 <head>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-    <title>Bee(a)rded Brewing: Barber and Brewery</title>
+    <title>Be(e)arded Brewing: Barber and Brewery</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <nav>
@@ -25,44 +24,59 @@
             <li class="nav-item">
                 <a class="nav-link" href="https://images.pexels.com/photos/1370391/pexels-photo-1370391.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350">Contact us</a>
             </li>
-            <li>
-                <h5>Bee(a)rded Brewing</h5>
-            </li>
+                <h4 class="right-align"> Be(e)arded Brewing</h4>
+
         </ul>
     </nav>
 </head>
 <style>
+    h4{margin: 0
+
+    }
     nav{
-        background-image: url("https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-color: #670022;
     }
     #maindiv{
         background-image: url("https://images.pexels.com/photos/1267314/pexels-photo-1267314.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
         padding: 5px;
         margin: 0
     }
-    #about{
-        margin: 2px
+    #about{margin: 20px;
+        background-color: #374140;
+        opacity: .8;
     }
     #brewery{
-        margin: 2px;
+        background-color: #2A2C2B;
+        opacity: .8;
+    }
+    #hair{
+        background-color: #2A2C2B;
+        opacity: .8;
+    }
+    #footer {
+        background-color: #1E1E20;
+        opacity: .8;
+        margin-bottom: 0;
+    }
+    #marg{
+        margin-bottom: 0;
     }
 </style>
 
 <body>
 <div id= "maindiv" class="row">
 
-    <div id="about" class="card-panel black-text grey darken-3 col s3">
+    <div id="about" class="left card-panel white-text col s3">
         <h3>About us</h3>
-        <p>
+        <p class="flow-text">
             Lorem ipsum dolor amet master cleanse stumptown flexitarian deep v, ethical craft beer disrupt fam. XOXO
             fixie irony, normcore glossier meggings trust fund polaroid echo park biodiesel ethical. Taxidermy jianbing
             pickled, lo-fi microdosing messenger bag meggings subway tile etsy hashtag. Synth pour-over bespoke
             williamsburg tattooed banjo street art venmo. Try-hard art party ennui four dollar toast DIY, vape pug.
-            Keytar meditation locavore irony, biodiesel lumbersexual sartorial farm-to-table church-key knausgaard VHS.
         </p>
     </div>
 
-        <div class="card-panel white-text black col s12">
+        <div id="hair" class="card-panel white-text text-lighten-4 col s6">
         <div class="section">
             <h5>Hair Cuts</h5>
             <p class="flow-text">
@@ -74,7 +88,7 @@
             </p>
             </div>
         </div>
-        <div id= "brewery" class="card-panel white-text blue-grey darken-4 s9">
+        <div id= "brewery" class="card-panel white-text text-lighten-4 col s6">
         <div class="section">
             <h5>Brewery</h5>
             <p class="flow-text">
@@ -85,50 +99,60 @@
             Keytar meditation locavore irony, biodiesel lumbersexual sartorial farm-to-table church-key knausgaard VHS.
             </p>
             </div>
-        </div>
-
+    </div>
     <div class="col s12">
         <div class="row">
+            <div class="card col s4">
+            <div class="card-image">
+              <img class="activator responsive-img " src="https://images.pexels.com/photos/668196/pexels-photo-668196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Meet the Barbers<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Click to learn more about each Barber<i class="material-icons right">close</i></span>
+              <p><li><a class="grey-text text-darken-4" href="https://images.pexels.com/photos/1250426/pexels-photo-1250426.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350!">John Doe</a></li>
+                  <li><a class="grey-text text-darken-4" href="#!">Maximus</a></li>
+                  <li><a class="grey-text text-darken-4" href="#!">Sebastian Janko</a></li>
+                  <li><a class="grey-text text-darken-4" href="#!">Moses Abraham</a></li></p>
+            </div>
+          </div>
+            <div class="card col s4">
+            <div class="card-image">
+              <img class="activator responsive-img " src="https://images.pexels.com/photos/995300/pexels-photo-995300.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Tools of the Trade<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+            </div>
+          </div>
+                <div class="card col s4">
+            <div class="card-image">
+              <img class="activator responsive-img " src="https://images.pexels.com/photos/159291/beer-machine-alcohol-brewery-159291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">See the Brewery<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+            </div>
+            </div>
 
-            <div class="col s4">
-                <img class="responsive-img"
-                     src="https://images.pexels.com/photos/668196/pexels-photo-668196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350">
-            </div>
-            <div class="col s4">
-                <img class="responsive-img"
-                     src=" https://images.pexels.com/photos/995300/pexels-photo-995300.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350">
-            </div>
-            <div class="col s4">
-                <img class="responsive-img"
-                     src="https://images.pexels.com/photos/159291/beer-machine-alcohol-brewery-159291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350">
         </div>
     </div>
 </div>
 
 
 </div>
-<footer class="page-footer black">
+<footer class="page-footer" id="footer">
           <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-
+            <div class="row" id="marg">
+              <div class="col l8 s12">
                   <p class="grey-text text-lighten-4"><h5>Get a beer made on premises and get a rad haircut.</h5></p>
+                  <p> © 2018 Copyright Text</p>
               </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Bios of our Barbers</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">John Doe</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Maximus</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Sebastian Janko</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Moses Abraham</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2018 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
 </footer>
