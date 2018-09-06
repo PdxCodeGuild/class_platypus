@@ -1,6 +1,6 @@
 import string
 
-with open('grimm.txt', 'r', encoding='utf-8') as f:
+with open('gettysbertg.txt', 'r', encoding='utf-8') as f:
     contents = f.read()  # read the contents
 stop = [ '?','.']
 word = ['?','.',';',':',' ']

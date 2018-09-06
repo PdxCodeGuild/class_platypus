@@ -1,36 +1,134 @@
 /*colors:*/
 /*lt. blue #e8f7f9*/
+/*dk. blue #09d3ef*/
 
 header {
     margin-top: 5em;
 }
 
-div.relative {
-    position: relative;
-    width: 65%;
-}
-
-div.absolute {
-    position: absolute;
-    top: 0;
-    right: -40%;
-    width: 30%;
-}
-
-.blog_title {
-    width: 65%;
+footer {
+    background-color: #e8f7f9;
+    margin-top: 5em;
+    padding: 1em;
     text-align: center;
 }
-.wrapper {
-    margin-left: 3em;
+
+img {
+    width: 30%;
+    margin: 1em;
+    border-radius: 5%;
 }
 
-.box_style {
-    background-color: #e8f7f9;
-    padding: 1em;
-    border-radius: 1%;
+
+#about {
+    display:none;
 }
+
+#about_img {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    margin-left: -1em;
+}
+
+#social_media {
+    display: flex;
+    width: 2em;
+    background-color:#09d3ef;
+    text-align:right;
+    border-radius: 5%;
+    position: fixed;
+    z-index: 1;
+    margin-left: 90%;
+}
+
+#social_media a {
+    color:black;
+}
+
+.fa {
+    padding-right: 5px;
+    margin-bottom: -10px;
+    font-size: 20px;
+    text-align: right;
+    text-decoration: none;
+}
+
+
+.wrapper {
+    margin: 2em;
+}
+
 .navbar-light {
     background-color:#e8f7f9 !important;
 }
+
+/*************************************/
+/*Media Queries*/
+/*************************************/
+
+@media only screen and (min-width: 800px) {
+
+    div.relative {
+    position: relative;
+    }
+
+    div.absolute {
+        position: absolute;
+        top: -2em;
+        right: -50%;
+        width: 45%;
+    }
+
+    img {
+        border-radius: 5%;
+        width: 150px;
+        margin-bottom: 1em;
+    }
+
+    .blog_title {
+        width: 65%;
+        text-align: center;
+    }
+
+    .box_style {
+        background-color: #e8f7f9;
+        padding: 1em;
+        border-radius: 5px;
+        width: 65%;
+        margin-top: 2em;
+    }
+
+    #about {
+        display: inline;
+    }
+
+    #about_mobile {
+        display:none;
+    }
+
+    #about_img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        border-radius: 5px;
+    }
+    #social_media {
+        display: flex;
+        width: 2em;
+        background-color:#09d3ef;
+        text-align:right;
+        border-radius: 5%;
+        position: fixed;
+        z-index: 1;
+        margin-left: 0;
+}
+}
+
+
+
+
+
+
 
