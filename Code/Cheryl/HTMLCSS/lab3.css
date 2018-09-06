@@ -1,6 +1,4 @@
-* {
-    border: solid 1px red;
-}
+
 
 /* SITE COLORS*/
 /*blue #1791E8*/
@@ -14,6 +12,13 @@ body {
     color: white;
 }
 
+footer {
+    background-color: #FF7C0D;
+    color: black;
+    margin: -1em;
+    padding: 2em;
+}
+
 .aside_img {
     display:none;
 }
@@ -22,6 +27,9 @@ body {
     color: black;
 }
 
+.caption_styles {
+    text-shadow: 2px 2px black;
+}
 .main_wrapper {
     background-color: #1791E8;
 }
@@ -33,6 +41,9 @@ body {
 /*************************************/
 
 @media only screen and (min-width: 600px) {
+    .dropdown {
+        display:none;
+    }
 
     .aside_img {
         display: block;
@@ -44,5 +55,10 @@ body {
     }
     .carousel_img {
         height: 450px;
+    }
+
+    .sales_row {
+        display:flex;
+        justify-content: space-between !important;
     }
 }
