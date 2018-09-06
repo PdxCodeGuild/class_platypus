@@ -10,6 +10,7 @@
 body {
     background-color: #1791E8;
     color: white;
+    font-family: 'PT Sans', sans-serif;
 }
 
 footer {
@@ -34,7 +35,11 @@ footer {
     background-color: #1791E8;
 }
 
-
+.sales_title_styles {
+    margin: 1.5em -1em 1.5em -1em;
+    padding: 1em 0 0 0;
+    background-color: #FFB91A;
+}
 
 /*************************************/
 /*Media Queries*/
@@ -61,4 +66,5 @@ footer {
         display:flex;
         justify-content: space-between !important;
     }
+
 }
