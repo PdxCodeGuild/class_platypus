@@ -1,0 +1,96 @@
+h1 {
+    font-family: 'Fredericka the Great', cursive;
+    text-align: left;
+    padding:2px;
+    font-size: 4em;
+    color:#386CB2;
+}
+
+h3 {
+    background-color: #6AA9FF;
+    top-margin:4px;
+    padding-left: 5px;
+    border-radius:2px;
+    color:white;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.flex-container {
+    display:flex;
+    justify-content: left;
+
+}
+
+.dog {
+    width: 125px;
+
+}
+
+header {
+    background-color: rgb(255, 157, 26);
+    border-radius: 5px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1px;
+}
+
+body {
+    width: 70%;
+    margin-left: 15%;
+    margin-right:15%;
+    background: url('https://front.embarkvet.com/img/breeds/basset_hound.png');
+    background-attachment:fixed;
+    background-repeat: repeat;
+    background-size: 300px;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FFB01A;
+}
+
+.social_media {
+    float:left;
+}
+
+.social_media img {
+    width: 15px;
+}
+
+
+
+li {
+    float: right;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+li a:hover {
+    background-color: #386CB2;
+}
+
+footer {
+    text-align: center;
+    color:#386CB2;
+}
+
+p {
+    background-color:#386CB2;
+    color:white;
+    padding:20px;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius:5px;
+}
+
