@@ -40,6 +40,7 @@ img {
     position: fixed;
     z-index: 1;
     margin-left: 90%;
+    margin-top: 5em;
 }
 
 #social_media a {
@@ -117,13 +118,14 @@ img {
     #social_media {
         display: flex;
         width: 2em;
-        background-color:#09d3ef;
+        background-color:orange;
         text-align:right;
         border-radius: 5%;
         position: fixed;
         z-index: 1;
         margin-left: 0;
-}
+        margin-top: 2em;
+    }
 }
 
 
