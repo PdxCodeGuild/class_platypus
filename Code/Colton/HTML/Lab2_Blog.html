@@ -91,10 +91,11 @@
         ul{list-style: none;
             color: white;
         }
-        img{width: 200px;
+        img {width: 200px;
             padding: 5px
         }
         html{background-color: black }
+
         a, a:hover, a:active, a:visited { color: white; }
 
 
@@ -183,6 +184,13 @@
             width: 100%;
         }
     }
+    #carousel{
+        text-align: center;
+    }
+    #carousel > img{
+        width: 500px ;
+    }
+
     </style>
 </head>
 
@@ -242,6 +250,30 @@
                     </ul>
             </article>
         </div>
+
+           <div id="carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <span><img src="https://images.pexels.com/photos/877695/pexels-photo-877695.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="Second slide"></span>
+                </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span></a>
+            </div>
+
+
     <script>
     // Get the modal
     var modal = document.getElementById('myModal');
