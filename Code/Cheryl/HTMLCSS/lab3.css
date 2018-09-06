@@ -1,0 +1,64 @@
+
+
+/* SITE COLORS*/
+/*blue #1791E8*/
+/*orange #FF7C0D*/
+/*burnt orange #FF6747*/
+/*mustard #FFB91A*/
+/*light teal #4CE8D8*/
+
+body {
+    background-color: #1791E8;
+    color: white;
+}
+
+footer {
+    background-color: #FF7C0D;
+    color: black;
+    margin: -1em;
+    padding: 2em;
+}
+
+.aside_img {
+    display:none;
+}
+.aside_wrapper {
+    background-color: #FF7C0D;
+    color: black;
+}
+
+.caption_styles {
+    text-shadow: 2px 2px black;
+}
+.main_wrapper {
+    background-color: #1791E8;
+}
+
+
+
+/*************************************/
+/*Media Queries*/
+/*************************************/
+
+@media only screen and (min-width: 600px) {
+    .dropdown {
+        display:none;
+    }
+
+    .aside_img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        border-radius: 4px;
+        border: solid grey 1px;
+    }
+    .carousel_img {
+        height: 450px;
+    }
+
+    .sales_row {
+        display:flex;
+        justify-content: space-between !important;
+    }
+}
