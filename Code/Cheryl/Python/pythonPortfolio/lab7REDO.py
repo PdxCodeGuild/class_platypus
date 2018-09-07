@@ -28,6 +28,6 @@ def game():
         play = input('Would you like to play again? ').lower()
 
 
-print(game())
+game()
 print('Thanks for playing!')
 
