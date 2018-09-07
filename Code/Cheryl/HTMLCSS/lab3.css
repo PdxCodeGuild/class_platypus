@@ -1,6 +1,4 @@
-* {
-    border: solid 1px red;
-}
+
 
 /* SITE COLORS*/
 /*blue #1791E8*/
@@ -12,20 +10,41 @@
 body {
     background-color: #1791E8;
     color: white;
+    font-family: 'PT Sans', sans-serif;
 }
 
+footer {
+    background-color: #1791E8;
+    margin: -1em;
+    padding: 3em;
+    text-align: center;
+}
+
+.address {
+    margin-bottom: 2em;
+}
 .aside_img {
     display:none;
 }
-.aside_wrapper {
-    background-color: #FF7C0D;
-    color: black;
-}
 
+
+   .aside_wrapper {
+        display: none;
+    }
+
+.caption_styles {
+    text-shadow: 2px 2px black;
+}
 .main_wrapper {
     background-color: #1791E8;
 }
 
+.sales_title_styles {
+    margin: 1.5em -1em 1.5em -1em;
+    padding: 1em 0 0 1em;
+    background-color: #FFB91A;
+
+}
 
 
 /*************************************/
@@ -33,16 +52,33 @@ body {
 /*************************************/
 
 @media only screen and (min-width: 600px) {
+    .dropdown {
+        display:none;
+    }
 
     .aside_img {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 2em auto 1.5em auto;
+        /*margin-left: auto;*/
+        /*margin-right: auto;*/
+        /*margin-top: 2em;*/
         width: 75%;
         border-radius: 4px;
         border: solid grey 1px;
     }
+
+    .aside_wrapper {
+    background-color: #FF7C0D;
+    color: black;
+        display: block;
+}
     .carousel_img {
         height: 450px;
     }
+
+    .sales_row {
+        display:flex;
+        justify-content: space-between !important;
+    }
+
 }
