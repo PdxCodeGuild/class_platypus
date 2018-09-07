@@ -7,19 +7,22 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <script src="https://use.fontawesome.com/e8208dc275.js"></script>
     <link rel="stylesheet" href="lab3.css">
 </head>
 <body>
 <div class="container-fluid">
     <div class="row ">
         <div class="col-md-2 col-sm-12 aside_wrapper">
-            <h3>Logo</h3>
+            <h3 class="logo">Logo</h3>
             <img class="aside_img"
                  src="https://salsacycles.com/files/bikes/_carousel_thumbnail/salsa-marrakesh-18-BK1923-drop-bar-touring-bike-640x360.jpg"/>
-            <div class="col-md-12 col-sm-12"><h7><br>190 E. Burnside</h7>
+            <div class="col-md-12 col-sm-12">
+                <h7><br>190 E. Burnside</h7>
                 <h6>Portland, OR</h6>
                 <h6>98111</h6><br>
-           <h7>503.555.5555</h7></div>
+                <h7>503.555.5555</h7>
+            </div>
         </div>
 
         <div class="col-md-10 col-sm-12 main_wrapper">
@@ -35,16 +38,16 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">New <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="#New">New <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Used</a>
+                                <a class="nav-link" href="#Used">Used</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Repair</a>
+                                <a class="nav-link" href="#Repair">Repair</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="#About">About</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -52,10 +55,10 @@
                                     Find Us
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Our Location</a>
-                                    <a class="dropdown-item" href="#">Phone Number</a>
+                                    <a class="dropdown-item" href="#address">Our Location</a>
+                                    <a class="dropdown-item" href="#address">Phone Number</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Social Media</a>
+                                    <a class="dropdown-item" href="#SocialMedia">Social Media</a>
                                 </div>
                             </li>
 
@@ -134,7 +137,7 @@
 
                     <div class="col-md-4 col-sm-12">
                         <div class="sales_row sales_title_styles">
-                            <h2>NEW BIKES</h2>
+                            <h2 id="New">NEW BIKES</h2>
                         </div>
                         <div>
                             <p>New Bike Paragraph<br>
@@ -149,7 +152,7 @@
 
                     <div class="col-md-4 col-sm-12">
                         <div class="sales_row sales_title_styles">
-                            <h2>USED BIKES</h2>
+                            <h2 id="Used">USED BIKES</h2>
                         </div>
                         <p>Used Bike Paragraph<br>
                             hat the hell is this? Okay, that's enough. Now stop the microphone. I'm sorry fellas. I'm
@@ -158,10 +161,9 @@
                             electricity that I need.</p>
                     </div>
 
-
                     <div class="col-md-4 col-sm-12">
                         <div class="sales_row sales_title_styles">
-                            <h2>BIKE REPAIR</h2>
+                            <h2 id="Repair">BIKE REPAIR</h2>
                         </div>
                         <p>Bike Repair Paragraph<br>
                             hat the hell is this? Okay, that's enough. Now stop the microphone. I'm sorry fellas. I'm
@@ -170,61 +172,96 @@
                             electricity that I need.</p>
                     </div>
 
-
-
                 </div>
-            <div id="About"><!--ABOUT US-->
-                <div class="row ">
-                    <div class="col-md-12 col-sm-12 ">
-                        <div class="sales_row sales_title_styles">
-                        <h2>About Us</h2>
+                <div id="About"><!--ABOUT US-->
+                    <div class="row ">
+                        <div class="col-md-12 col-sm-12 ">
+                            <div class="sales_row sales_title_styles">
+                                <h2>About Us</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <p>
+                                Science Fiction Theater. Precisely. Can't be. This is nuts. Aw, c'mon. Oh. I don't wanna
+                                see
+                                you
+                                in
+                                here again.
+                            </p>
+                            <p>
+                                Excuse me. Sam, quit fiddling with that thing and come in here and eat your dinner.
+                                Stand
+                                tall,
+                                boy,
+                                have some respect for yourself. Don't you know that if you let people walk all over you
+                                know,
+                                they'll be walking all over you for the rest of your life? Listen to me, do you think
+                                I'm
+                                gonna
+                                spend the rest of my life in this slop house? Hi, Marty. Calvin.
+                            </p>
+                            <div class="address_styles" id="address">
+                                <h7><br>190 E. Burnside</h7>
+                                <h6>Portland, OR</h6>
+                                <h6>98111</h6><br>
+                                <h7>503.555.5555</h7>
+                            </div>
+                            <div class="row" id="SocialMedia">
+                                <div class="col-md-4 col-sm-12 social_media">
+                                    <!--Twitter-->
+                                    <a href="http://www.twitter.com">
+                                        <button type="button" class="btn btn-block btn-tw"><i class="fa fa-twitter pr-1"></i>
+                                            Twitter
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 col-sm-12 social_media">
+                                    <!--Google +-->
+                                    <a href="http://www.twitter.com">
+                                        <button type="button" class="btn btn-block btn-gplus"><i
+                                                class="fa fa-google-plus pr-1"></i>
+                                            Google +
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 col-sm-12">
+                                    <!--Linkedin-->
+                                    <a href="http://www.twitter.com">
+                                        <button type="button" class="btn btn-block btn-li"><i class="fa fa-linkedin pr-1"></i>
+                                            Linkedin
+                                        </button>
+                                    </a>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12 col-sm-12">
-                    <p>Science Fiction Theater. Precisely. Can't be. This is nuts. Aw, c'mon. Oh. I don't wanna see
-                        you
-                        in
-                        here again.</p>
-                    <p>
-                        Excuse me. Sam, quit fiddling with that thing and come in here and eat your dinner. Stand
-                        tall,
-                        boy,
-                        have some respect for yourself. Don't you know that if you let people walk all over you
-                        know,
-                        they'll be walking all over you for the rest of your life? Listen to me, do you think I'm
-                        gonna
-                        spend the rest of my life in this slop house? Hi, Marty. Calvin.</p>
- <div class="address"><h7><br>190 E. Burnside</h7>
-                <h6>Portland, OR</h6>
-                <h6>98111</h6><br>
-           <h7>503.555.5555</h7></div>
-                </div>
-            </div><!--ABOUT US-->
 
+                </div><!--ABOUT US-->
+
+            </div>
         </div>
     </div>
-</div>
 
-<footer>
-    <div>
-        <h7>site design by Cheryl Lewman</h7>
-    </div>
-    <div>
-        <h8>© 2018</h8>
-    </div>
+    <footer>
+        <div>
+            <h7>site design by Cheryl Lewman</h7>
+        </div>
+        <div>
+            <h8>© 2018</h8>
+        </div>
 
-</footer>
+    </footer>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
 </body>
 </html>
