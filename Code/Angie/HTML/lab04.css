@@ -1,0 +1,31 @@
+h1{
+    font-family: 'Philosopher', sans-serif;
+    font-size: 5em;
+}
+
+.left-head {
+    color:white;
+    text-align:right;
+}
+
+.right-head {
+    color:black;
+
+}
+
+#main-flex-container {
+    display:flex;
+    flex-direction:row;
+}
+
+.left-container {
+    width:50%;
+    background-color: #2197CC;
+    
+}
+
+.right-container {
+    background-color:white;
+    width:50%;
+    height:100%;
+}
