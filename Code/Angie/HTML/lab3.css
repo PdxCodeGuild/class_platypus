@@ -1,23 +1,25 @@
+
+
+
+body {
+    background-color: rgb(4, 193, 175);
+
+}
+/*In Header*/
 h1 {
     color:#763E6B;
     text-shadow: 2px 2px #FFFB77;
-    font-size: 3em;
+    font-size: 5em;
     font-family: 'Permanent Marker', cursive;
 }
-
+/* Name in header*/
 h5 {
     color: white;
     margin-bottom: 10%;
 
 }
 
-header {
-    padding-left: 5%;
-    padding-bottom: 2%;
-
-}
-
-li {
+.nav-item {
     font-family: 'Source Sans Pro', sans-serif;
 
 }
@@ -32,21 +34,31 @@ li {
     flex-direction: column;
     border-right: 2px solid white;
     justify-content: center;
-
-
 }
-
+/*Width of site navigation*/
 nav {
-    width: 150px; /* Set a width if you like */
+    width: 150px;
     margin: 0 auto;
 }
+.social_media {
+    padding-left:0px;
+    margin-top:5%;
+}
+.social_media img {
+    width:35px;
+    background-color:white;
+    border-radius:10px;
 
-ul {
+}
+
+/* Site navigation*/
+.nav-flex-column {
     list-style-type: none;
     margin: 0;
     padding: 0;
 
 }
+
 nav a {
     background-color: #763E6B; /* background color */
     color: white; /* text color */
@@ -74,29 +86,40 @@ nav a.active {
 
 
 }
-.main-content {
-    width: 75%;
+#main-content {
     flex-direction: column;
     display: flex;
-    background-color: white;
     margin: 0 auto;
 }
 
 .flex-container {
     display: flex;
-
+    flex-direction:row;
 }
 
-.carousel {
-    max-width: 750px;
-    display:flex;
-    width: auto;
-    height:350px;
-    max-height: 350px;
 
+.carousel-item{
+    border: 2px solid white;
+    width:800px;
+    height:350px;
+    overflow:hidden;
 }
 
 .flex-row {
     display:flex;
     flex-direction:row;
+    justify-content: space-evenly;
+
+}
+
+.row {
+    margin:10px;
+    border: 2px solid white;
+    height: 200px;
+
+}
+/*In the footer*/
+h6{
+    text-align:center;
+    color:white;
 }
