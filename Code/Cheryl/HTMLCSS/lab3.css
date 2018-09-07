@@ -1,4 +1,6 @@
-
+/** {*/
+    /*border: red solid 1px;*/
+/*}*/
 
 /* SITE COLORS*/
 /*blue #1791E8*/
@@ -11,6 +13,7 @@ body {
     background-color: #1791E8;
     color: white;
     font-family: 'PT Sans', sans-serif;
+    max-width: 1280px;
 }
 
 footer {
@@ -20,17 +23,18 @@ footer {
     text-align: center;
 }
 
-.address {
+.address_styles {
     margin-bottom: 2em;
 }
+
 .aside_img {
     display:none;
 }
 
+.aside_wrapper {
+    display: none;
+}
 
-   .aside_wrapper {
-        display: none;
-    }
 
 .caption_styles {
     text-shadow: 2px 2px black;
@@ -43,9 +47,11 @@ footer {
     margin: 1.5em -1em 1.5em -1em;
     padding: 1em 0 0 1em;
     background-color: #FFB91A;
-
 }
 
+.social_media {
+    margin-bottom: 1em;
+}
 
 /*************************************/
 /*Media Queries*/
@@ -71,14 +77,24 @@ footer {
     background-color: #FF7C0D;
     color: black;
         display: block;
-}
-    .carousel_img {
-        height: 450px;
     }
 
+    .btn-block {
+        width: 55%;
+
+    }
+    .carousel_img {
+        height: 500px;
+    }
+
+    .logo {
+        margin: 1em 0 0 1em;
+    }
     .sales_row {
         display:flex;
         justify-content: space-between !important;
     }
+
+
 
 }
