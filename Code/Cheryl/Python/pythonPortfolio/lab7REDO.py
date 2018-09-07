@@ -9,10 +9,11 @@ print('Welcome to Rock, Paper, Scissors, Lizard, Spock!')
 def game():
     play = 'yes'
     while play == 'yes':
-        choices = ['rock', 'paper', 'scissors']
+        choices = ['rock', 'paper', 'scissors', 'spock', 'lizard']
         computer_choice = random.choice(choices)
         user_choice = input('Please choose rock, paper, scissors, lizard, or Spock. >  ').lower()
-        rps_dict = {'rock': {'paper': True, 'scissors': False}, 'paper': {'rock': False, 'scissors': True}}
+        # true is lose// false is win
+        rps_dict = {'rock': {'paper': True, 'scissors': False, 'lizard': False, 'spock': True}, 'paper': {'rock': False, 'scissors': True, 'lizard': True, 'spock': False}, 'scissors': {'paper': False, 'rock': True, 'lizard': False, 'spock': True}, 'lizard': {'rock': True, 'spock': False, 'scissors': True, 'paper': False}, 'spock': {'lizard': True, 'scissors': False, 'paper': True, 'rock': False}}
 
         print(f'\tYou chose: {user_choice.upper()}.\n\tThe computer chose: {computer_choice.upper()}.')
 
