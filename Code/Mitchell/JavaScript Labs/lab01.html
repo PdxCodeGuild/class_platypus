@@ -16,10 +16,14 @@
         let five_random_emoticons = document.querySelector('#five_random_emoticons');
         let output_div = document.querySelector('#output_div');
         one_random_emoticon.onclick = function() {
-            let random_eye = Math.floor(Math.random() * eyes.length);
-            let random_nose = Math.floor(Math.random() * noses.length);
-            let random_mouth = Math.floor(Math.random() * mouths.length);
-            output_div.innerText = eyes[random_eye] + ' ' + noses[random_nose] + ' ' + mouths[random_mouth];
+            output_div.innerText = eyes[Math.floor(Math.random() * eyes.length)] + ' ' + noses[Math.floor(Math.random() * noses.length)] + ' ' + mouths[Math.floor(Math.random() * mouths.length)];
+        }
+        five_random_emoticons.onclick = function() {
+            let random_emoticons = ' ';
+            for (let i = 0; i < 5; i++) {
+                random_emoticons += (i+1) + '.)  ' + eyes[Math.floor(Math.random() * eyes.length)] + ' ' + noses[Math.floor(Math.random() * noses.length)] + ' ' + mouths[Math.floor(Math.random() * mouths.length)] + '    ';
+            }
+            output_div.innerText = random_emoticons;
         }
     </script>
 </body>
