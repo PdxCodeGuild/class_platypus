@@ -6,7 +6,6 @@
          <style>
             body {
                 color: #fff;
-                padding: 100px 25px;
                 font-family: Dosis, sans-serif;
                 background-image: url("wizard.jpg");
             }
@@ -18,20 +17,33 @@
 
     </body>
  <script>
-
+            let myVar;
+            myVar = setTimeout(response, 300);
+            alert ('The Wizard Knows All...');
             function random_element(array) {
                 let random_index = Math.floor(Math.random()*array.length);
                 return array[random_index];
             }
             function response(){
-            let answers = ['Absolutely', 'No', 'Never', 'Ask Again Later'];
+            let answers = ['Luck Is In Your Favour.', 'Cursed Are Thee', 'Never.', 'The Scrolls Have Been Sealed.', 'Doom.'];
             let re = random_element(answers);
-            let question = prompt('Ask The Magic 8 Ball A Question...');
+            let question = prompt('Ask The Wizard A Question...');
             if (question !== null && question !== '') {
                 alert(re);
                 console.log(re)
             }}
-            var myVar;
-            myVar = setTimeout(response(), 10000);
+
+            // function play(){
+            // let again = prompt('Ask Again? ');
+            // if yes = 'yes':
+            // alert(re);
+            // console.log(re)
+            //
+            // if no = 'no':
+            // break
+            // }}
+
+
+
         </script>
 </html>
