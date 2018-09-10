@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+    <h1>To play rock, paper, scissors, press the button that coincides with your choice:</h1>
+    <button id="rock_bt">Rock</button>
+    <button id="paper_bt">Paper</button>
+    <button id="scissors_bt">Scissors</button>
+    <div id="output_div"></div>
+    <script type="text/javascript">
+        let options = ["rock", "paper", "scissors"];
+        rock_bt.onclick = function() {
+            let cpu_choice = options[Math.floor(Math.random() * options.length)];
+            if (cpu_choice === "paper") {output_div.innerText = "You chose rock and the computer chose paper, paper covers rock so you lose!";}
+            else if (cpu_choice === "scissors") {output_div.innerText = "You chose rock and the computer chose scissors, rock smashes scissors so you win!";}
+            else {output_div.innerText = "You chose rock and the computer chose rock, so it is a tie!";}
+        }
+        paper_bt.onclick = function() {
+            let cpu_choice = options[Math.floor(Math.random() * options.length)];
+            if (cpu_choice === "scissors") {output_div.innerText = "You chose paper and the computer chose scissors, scissors cuts paper so you lose!";}
+            else if (cpu_choice === "rock") {output_div.innerText = "You chose paper and the computer chose rock, paper covers rock so you win!";}
+            else {output_div.innerText = "You chose paper and the computer chose paper, so it is a tie!";}
+        }
+        scissors_bt.onclick = function() {
+            let cpu_choice = options[Math.floor(Math.random() * options.length)];
+            if (cpu_choice === "rock") {output_div.innerText = "You chose scissors and the computer chose rock, rock smashes scissors so you lose!";}
+            else if (cpu_choice === "paper") {output_div.innerText = "You chose scissors and the computer chose paper, scissors cut paper so you win!";}
+            else {output_div.innerText = "You chose scissors and the computer chose scissors, so it is a tie!";}
+        }
+    </script>
+</body>
+</html>
