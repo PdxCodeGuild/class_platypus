@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Version 3 of madlib lab</title>
+</head>
+<body>
+<script>
+
+    function random_element(arr) {
+        return arr[Math.floor(Math.random()*arr.length)]
+    }
+
+    answer = 'yes'
+    while (answer === 'yes') {
+        let verb = prompt('When I was a kid, my favorite thing to do was to:  ')
+        let verb_two = prompt('What was another thing you liked doing as a kid? : ')
+        let verb_three = prompt('When I was a kid, I absolutely hated to:  ')
+        let randomVerb = random_element([verb, verb_two, verb_three])
+
+        let noun = prompt('Where is your dream vacation?  ')
+        let noun_two = prompt('What is the worst place you ever visited? ')
+        let noun_three = prompt('Where were you born?  ')
+        let randomNoun = random_element([noun, noun_two, noun_three])
+
+        let adj = prompt('What is your favorite color?  ')
+        let adj_two = prompt('What color do you absolutely hate? ')
+        let adj_three = prompt('What color is your car?  ')
+        let randomAdj = random_element([adj, adj_two, adj_three])
+
+        let animal = prompt('What is your favorite animal?   ')
+        let animal_two = prompt('What animal are you most scared of?  ')
+        let animal_three = prompt('The biggest animal in the forest is a:  ')
+        let randomAnimal = random_element([animal, animal_two, animal_three])
+
+        document.write('<div><h1>Here\'s your Madlib!</h1>' + '<br>' + '<h2>I was ' + randomVerb + 'ing ' + ' in ' + randomNoun + ' when I came across a wild ' + randomAnimal + ' with ' + randomAdj + ' spots. </h2></div>')
+        answer = prompt('Would you like to play again?')
+    }
+
+</script>
+</body>
+</html>
