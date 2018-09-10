@@ -34,9 +34,12 @@
             let noses = ['.', '>', '3','8'];
             let question = document.querySelector('#question');
             let bt_emoticon = document.querySelector('#bt_emoticon');
+
             bt_emoticon.onclick = function(){
-                let random_num = Math.floor(Math.random() * 4);
-                question.innerText += eyes[random_num] + noses[random_num]  + mouths[random_num];
+                let random_num1 = Math.floor(Math.random() * 4);
+                let random_num2 = Math.floor(Math.random() * 4);
+                let random_num3 = Math.floor(Math.random() * 4);
+                question.innerText += eyes[random_num1] + noses[random_num2]  + mouths[random_num3];
                 }
         </script>
     </body>
