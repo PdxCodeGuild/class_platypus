@@ -6,7 +6,7 @@ while answer == 'yes':
     output = user_input * 0.3048
     output = round(output, 3)
     print(output)
-    answer = str.lower(input('Would you like to run this converter again? answer \'yes\' or \'no\''))
+    answer = str.lower(input('Would you like to run this converter again? answer \'yes\' or \'no\' '))
     # answer = str.lower(answer)
 
 else:
