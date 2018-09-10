@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Version 2 of madlib lab</title>
+</head>
+<body>
+<script>
+    let verb_list = []
+    let verb = prompt('When I was a kid, my favorite thing to do was to:  ')
+    let verb_two = prompt('What was another thing you liked doing as a kid? : ')
+    let verb_three = prompt('When I was a kid, I absolutely hated to:  ')
+    verb_list.push(verb, verb_two, verb_three)
+
+    let randomVerb = verb_list[Math.floor(Math.random() * verb_list.length)];
+
+    // document.write(randomVerb + '   spacee .   ')
+
+    let noun_list = []
+    let noun = prompt('Where is your dream vacation?  ')
+    let noun_two = prompt('What is the worst place you ever visited? ')
+    let noun_three = prompt('Where were you born?  ')
+    noun_list.push(noun, noun_two, noun_three)
+
+    let randomNoun = noun_list[Math.floor(Math.random() * noun_list.length)];
+
+    let adj_list = []
+    let adj = prompt('What is your favorite color?  ')
+    let adj_two = prompt('What color do you absolutely hate? ')
+    let adj_three = prompt('What color is your car?  ')
+    adj_list.push(adj, adj_two, adj_three)
+
+    let randomAdj = adj_list[Math.floor(Math.random() * adj_list.length)];
+
+    let animal_list = []
+    let animal = prompt('What is your favorite animal?   ')
+    let animal_two = prompt('What animal are you most scared of?  ')
+    let animal_three = prompt('The biggest animal in the forest is a:  ')
+    animal_list.push(animal, animal_two, animal_three)
+
+    let randomAnimal = animal_list[Math.floor(Math.random() * animal_list.length)];
+
+    document.write('<div><h1>Here\'s your Madlib!</h1>' + '<br>' + '<h2>I was ' + randomVerb + 'ing ' + ' in ' + randomNoun + ' when I came across a wild ' + randomAnimal + ' with ' + randomAdj + ' spots. </h2></div>')
+</script>
+</body>
+</html>
