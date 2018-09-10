@@ -17,6 +17,7 @@
     </style>
 </head>
 <body>
+    <!-- text input, dropdown lists, and button-->
     <input id="input_value" type="text" placeholder="number"/>
     <select id="input_units"></select>
     <select id="output_units"></select>
@@ -24,11 +25,12 @@
     <div id="output_div"></div>
 
     <div id="random_blocks">
-
     </div>
 
     <script type="text/javascript">
 
+
+        // just for fun :)
         let random_blocks = document.querySelector('#random_blocks')
         for (let i=0; i<100; ++i) {
             let block = document.createElement('div')
@@ -39,14 +41,15 @@
             random_blocks.appendChild(block)
         }
 
-
-
+        // get the elements out of the dom
         let input_value = document.querySelector('#input_value')
         let input_units = document.querySelector('#input_units')
         let output_units = document.querySelector('#output_units')
         let bt_convert = document.querySelector('#bt_convert')
         let output_div = document.querySelector('#output_div')
 
+
+        // list our units
         let units = [{
             unit_name:'ft',
             to_meters: 0.3048
@@ -66,6 +69,8 @@
             unit_name: 'in',
             to_meters: 0.0254
         }]
+
+        // loop over the units, generate option elements for the drop-down lists
         for (let i=0; i<units.length; ++i) {
             let unit_name = units[i].unit_name
             let unit_value = units[i].to_meters
@@ -82,7 +87,7 @@
             output_units.appendChild(option_out)
         }
 
-
+        // button click event
         bt_convert.onclick = function() {
             let v = input_value.value
             let units_in = input_units.options[input_units.selectedIndex]
