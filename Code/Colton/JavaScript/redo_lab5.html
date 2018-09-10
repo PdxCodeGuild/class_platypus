@@ -2,21 +2,45 @@
 
 <html>
     <head>
-
+    <style>
+        #bt_emoticon{
+            margin:auto;
+            display:block;
+        }
+        #question
+        {
+            text-align: center;
+        }
+    </style>
     </head>
     <body>
+        <div><button id="bt_emoticon">Get Emoticon!</button></div>
+        <div id="question"></div>
+
+
+
+
+
+
+
+
+
+
+
+
         <script>
             let eyes = [':', ';', ':', 'B'];
             let mouths = ['\)','(', 'p', 'D'];
             let noses = ['.', '>', '3','8'];
+            let question = document.querySelector('#question');
+            let bt_emoticon = document.querySelector('#bt_emoticon');
 
-            let i=0;
-            while(i <5){
-                let random_num = Math.floor(Math.random() * 4);
-                i++;
-                out_string = eyes[random_num] + noses[random_num] + mouths[random_num];
-            alert(out_string)}
-
+            bt_emoticon.onclick = function(){
+                let random_num1 = Math.floor(Math.random() * 4);
+                let random_num2 = Math.floor(Math.random() * 4);
+                let random_num3 = Math.floor(Math.random() * 4);
+                question.innerText += eyes[random_num1] + noses[random_num2]  + mouths[random_num3];
+                }
         </script>
     </body>
 </html>
