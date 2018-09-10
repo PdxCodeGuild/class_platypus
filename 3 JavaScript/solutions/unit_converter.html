@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Example</title>
+    <style>
+        #random_blocks {
+            display:flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+        }
+        #random_blocks > div {
+            width:10px;
+            height:10px;
+            margin: 4px;
+        }
+    </style>
 </head>
 <body>
     <input id="input_value" type="text" placeholder="number"/>
@@ -10,7 +22,24 @@
     <select id="output_units"></select>
     <button id="bt_convert">convert</button>
     <div id="output_div"></div>
+
+    <div id="random_blocks">
+
+    </div>
+
     <script type="text/javascript">
+
+        let random_blocks = document.querySelector('#random_blocks')
+        for (let i=0; i<100; ++i) {
+            let block = document.createElement('div')
+            let r = Math.floor(Math.random()*256)
+            let g = Math.floor(Math.random()*256)
+            let b = Math.floor(Math.random()*256)
+            block.style.backgroundColor = 'rgb('+r+','+g+','+b+')'
+            random_blocks.appendChild(block)
+        }
+
+
 
         let input_value = document.querySelector('#input_value')
         let input_units = document.querySelector('#input_units')
