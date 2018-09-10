@@ -5,22 +5,34 @@
     <title>Convert Python Grade into JS</title>
 </head>
 <body>
+
 <script>
+
     let user_grade = prompt('Enter your number grade: ')
+    let singles_digit = user_grade % 10
+    if (singles_digit < 4){
+        suffix = '-'
+    }
+    else if (singles_digit > 6){
+        suffix = '+'
+    }
+    else{
+        suffix = ''
+    }
     if (user_grade < 60){
         alert('You\'ve failed! Hang your head in shame.')
 }
     else if (user_grade < 70){
-        alert('Hmmmm... you\'ve almost failed, but not quite. This is a D')
+        alert('Hmmmm... you\'ve almost failed, but not quite. This is a D' + suffix)
 }
     else if (user_grade < 80){
-        alert('Meh. This is a C')
+        alert('Meh. This is a C' + suffix)
 }
     else if (user_grade < 90){
-        alert('Your mother might not be proud, but your grandmother will. You have a B')
+        alert('Your mother might not be proud, but your grandmother will. You have a B' + suffix)
 }
     else if (user_grade <= 100){
-        alert('Nice job! You\'ve earned an A')
+        alert('Nice job! You\'ve earned an A' + suffix)
 }
 
 </script>
