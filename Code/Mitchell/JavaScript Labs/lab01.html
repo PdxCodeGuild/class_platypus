@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Emoticon Generator</title>
+</head>
+<body>
+    <button id="one_random_emoticon">1 Random Emoticon</button>
+    <button id="five_random_emoticons">5 Random Emoticons</button>
+    <div id="output_div"></div>
+    <script>
+        let eyes = [':', ';', '8', '=']
+        let noses = ['^', 'c', '>', '-', '*', 'v']
+        let mouths = [')', '|', '(', 'P', 'O', '/', ']']
+        let one_random_emoticon = document.querySelector('#one_random_emoticon');
+        let five_random_emoticons = document.querySelector('#five_random_emoticons');
+        let output_div = document.querySelector('#output_div');
+        one_random_emoticon.onclick = function() {
+            let random_eye = Math.floor(Math.random() * eyes.length);
+            let random_nose = Math.floor(Math.random() * noses.length);
+            let random_mouth = Math.floor(Math.random() * mouths.length);
+            output_div.innerText = eyes[random_eye] + ' ' + noses[random_nose] + ' ' + mouths[random_mouth];
+        }
+    </script>
+</body>
+</html>
