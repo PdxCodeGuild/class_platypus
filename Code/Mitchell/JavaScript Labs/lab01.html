@@ -9,6 +9,9 @@
     <button id="five_random_emoticons">5 Random Emoticons</button>
     <div id="output_div"></div>
     <script>
+        function random_element(arr) {
+            return arr[Math.floor(Math.random()*arr.length)];
+        }
         let eyes = [':', ';', '8', '=']
         let noses = ['^', 'c', '>', '-', '*', 'v']
         let mouths = [')', '|', '(', 'P', 'O', '/', ']']
@@ -16,12 +19,12 @@
         let five_random_emoticons = document.querySelector('#five_random_emoticons');
         let output_div = document.querySelector('#output_div');
         one_random_emoticon.onclick = function() {
-            output_div.innerText = eyes[Math.floor(Math.random() * eyes.length)] + ' ' + noses[Math.floor(Math.random() * noses.length)] + ' ' + mouths[Math.floor(Math.random() * mouths.length)];
+            output_div.innerText = random_element(eyes) + ' ' + random_element(noses) + ' ' + random_element(mouths);
         }
         five_random_emoticons.onclick = function() {
             let random_emoticons = ' ';
             for (let i = 0; i < 5; i++) {
-                random_emoticons += (i+1) + '.)  ' + eyes[Math.floor(Math.random() * eyes.length)] + ' ' + noses[Math.floor(Math.random() * noses.length)] + ' ' + mouths[Math.floor(Math.random() * mouths.length)] + '    ';
+                random_emoticons += (i+1) + '.)  ' + random_element(eyes) + ' ' + random_element(noses) + ' ' + random_element(mouths) + \n;
             }
             output_div.innerText = random_emoticons;
         }
