@@ -8,6 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <!-- Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Baumans" rel="stylesheet">
+    <!--Vue CND-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <style>
         body {
             font-family: 'Baumans', cursive;
@@ -22,7 +24,7 @@
             background-color: gray;
             color: white;
             padding-left:3%;
-            width:30%;
+            width:20%;
             position: sticky;
         }
         #menu {
@@ -31,14 +33,16 @@
             top:0;
         }
         #menu_pic {
-            width:90%;
-            padding-top:5%;
+            width:80%;
+            padding-top:10%;
         }
         #menu_bar a {
-            width:90%;
+            width:80%;
         }
         #web_page {
             background-image: url("https://d17omnzavs9b58.cloudfront.net/assets/article/2017/05/11/amiibofeature_feature.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         h1 {
             opacity:0.8;
@@ -51,15 +55,16 @@
            height:40px;
            padding-left:5px;
         }
-        #amiibo_display {
+        #cards {
             display:flex;
             flex-direction:row;
             flex-wrap:wrap;
             justify-content:space-evenly;
-            padding:20px;
+            width:100%;
         }
         .card {
-            width:30%;
+            width:300px;
+            padding:3%;
         }
         .amiibo_pic {
             height:80%;
@@ -77,197 +82,51 @@
             <a class="waves-effect light-blue accent-3 waves-light btn-small">Buy</a>
             <a class="waves-effect teal waves-light btn-small" href="https://www.reddit.com/r/amiibosale/">Sell</a>
             <a class="waves-effect amber waves-light btn-small" href="https://www.reddit.com/r/amiiboSwap/">Trade</a>
-            <a class="waves-effect pink darken-2 waves-light btn-small" href="https://www.reddit.com/r/amiibo/">Community</a>
+            <a class="waves-effect pink darken-2 waves-light btn-small" href="https://www.reddit.com/r/amiibo/">Share</a>
         </div>
     </div>
     <div id="web_page">
         <h1><img id="title_pic"src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Amiibo.svg/2000px-Amiibo.svg.png"> hub</h1>
         <div id="amiibo_display">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://images.multiplayer.com/thumbs/88/2b/product.product-image-407713-600x0-q85.jpg">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Mario (Wedding) amiibo<i class="material-icons right">🛒</i></span>
-                    <p>The Mario amiibo dressed in wedding attire from Super Mario Odyssey collection. <a href="https://www.nintendo.com/amiibo/detail/mario-wedding-outfit-amiibo-super-mario-odyssey-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p>
-                        <a href="https://www.amazon.com/Amiibo-Mario-Super-Odyssey-Nintendo-Switch/dp/B0721NP5XK">Amazon</a>
-                    </p>
-                    <p>
-                        <a href="https://www.bestbuy.com/site/nintendo-amiibo-figure-super-mario-odyssey-series-mario-wedding-outfit/5929500.p?skuId=5929500">Best Buy</a></p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://media.nintendo.com/nintendo/bin/tCME6ZMYsvWXa41BfJJF06cALr5e9cN3/6HdFXPdGZwMEkyQK6JyzE9p3hrJ__Dan.png">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Peach (Wedding) amiibo<i class="material-icons right">🛒</i></span>
-                    <p>The Peach amiibo dressed in wedding attire from Super Mario Odyssey collection. <a href="https://www.nintendo.com/amiibo/detail/peach-wedding-outfit-amiibo-super-mario-odyssey-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p>
-                        <a href="https://www.amazon.com/Amiibo-Peach-Super-Odyssey-Nintendo-Switch/dp/B071GPJVTQ">Amazon</a>
-                    </p>
-                    <p>
-                        <a href="https://www.bestbuy.com/site/nintendo-amiibo-figure-super-mario-odyssey-series-peach-wedding-outfit/5929600.p?skuId=5929600">Best Buy</a></p>
-                    <p>
-                        <a href="https://www.gamestop.com/accessories/peach-wedding-outfit-super-mario-odyssey-amiibo-figure/149657">GameStop</a>
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://media.nintendo.com/nintendo/bin/oYA0xlau-uLcE2uEs2DCXVUWEfdj5fjq/VA8rch-JfRggNYRmQz8ZzU62QjAG_tlS.png">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Bowser (Wedding) amiibo<i class="material-icons right">🛒</i></span>
-                    <p>The Bowser amiibo dressed in wedding attire from Super Mario Odyssey collection. <a href="https://www.nintendo.com/amiibo/detail/bowser-wedding-outfit-amiibo-super-mario-odyssey-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p>
-                        <a href="https://www.amazon.com/Amiibo-Bowser-Super-Odyssey-Nintendo-Switch/dp/B071GPJS1Q">Amazon</a>
-                    </p>
-                    <p>
-                        <a href="https://www.bestbuy.com/site/nintendo-amiibo-figure-super-mario-odyssey-series-bowser-wedding-outfit/5929602.p?skuId=5929602">Best Buy</a></p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://images-na.ssl-images-amazon.com/images/I/91NWGKmdf3L._AC_SL1500_.jpg">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Pikmin amiibo<i class="material-icons right">🛒</i></span>
-                    <p>An amiibo made up of five different Pikmin. <a href="https://www.nintendo.com/amiibo/detail/pikmin-amiibo-pikmin-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p><a href="https://www.amazon.com/Nintendo-amiibo-Pikmin-switch/dp/B071D8LQSP">Amazon</a></p>
-                    <p><a href="https://www.walmart.com/ip/Pikmin-Pikachu-Series-Nintendo-amiibo-NVLCAPAA/55779039">Walmart</a></p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">                                                                               
-                    <img class="activator amiibo_pic" src="https://vignette.wikia.nocookie.net/kirby/images/f/f3/Kirby_Kirby_amiibo_box.png/revision/latest?cb=20160311033451&path-prefix=en">
-                </div>                                                                                                                                      
-                <div class="card-content">                                                                                                                  
-                    <span class="card-title activator grey-text text-darken-4">Kirby amiibo<i class="material-icons right">🛒</i></span>
-                    <p>An amiibo of Kirby riding a warp star from the Kirby series. <a href="https://www.nintendo.com/amiibo/detail/kirby-amiibo-kirby-series">info</a></p>
-                </div>                                                                                                                                      
-                <div class="card-reveal">                                                                                                                   
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p><a href="https://www.amazon.com/Kirby-amiibo-Nintendo-3DS/dp/B01CKH0XQ6">Amazon</a></p>
-                    <p><a href="https://www.bestbuy.com/site/nintendo-amiibo-figure-kirby-series-kirby/5109102.p?skuId=5109102">Best Buy</a></p>
-                    <p><a href="https://www.walmart.com/ip/Kirby-Kirby-Series-Nintendo-amiibo-NVLCALAA/50556825">Walmart</a></p>
-                </div>                                                                                                                                      
-            </div>                                                                                                                                          
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://images-na.ssl-images-amazon.com/images/I/81JvI57D0DL._AC_.jpg">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">King Dedede amiibo<i class="material-icons right">🛒</i></span>
-                    <p>The King Dedede amiibo from the Kirby series. <a href="https://www.nintendo.com/amiibo/detail/king-dedede-amiibo-kirby-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p><a href="https://www.amazon.com/King-Dedede-amiibo-Nintendo-3DS/dp/B01CKH0WBC?th=1">Amazon</a></p>
-                    <p><a href="https://www.bestbuy.com/site/nintendo-amiibo-figure-kirby-series-king-dedede/5108700.p?skuId=5108700">Best Buy</a></p>
-                </div>
-            </div>
-
-
-
-
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://i.pinimg.com/originals/8c/c3/00/8cc3003beb399429b7ad2b9ad47ceeee.jpg">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Link (Archer) amiibo<i class="material-icons right">🛒</i></span>
-                    <p>An amiibo of Breath Of The Wild Link holding a bow and arrow. <a href="https://www.nintendo.com/amiibo/detail/link-archer-amiibo-the-legend-of-zelda-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p><a href="https://www.amazon.com/Nintendo-amiibo-Link-Archer-Breath-wii-u/dp/B01N4NTNO2?th=1">Amazon</a></p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://media.nintendo.com/nintendo/bin/IKP3QHdanrkWBx2cTpC5hYlVGSXc55Vt/qxcPQAUZ-KlA3mTyAA9jsIUFBEFrG-U1.png">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Zelda amiibo<i class="material-icons right">🛒</i></span>
-                    <p>The Zelda amiibo in her Breath Of The Wild outfit. <a href="https://www.nintendo.com/amiibo/detail/zelda-amiibo-the-legend-of-zelda-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    Currently no online links.
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://i.pinimg.com/originals/06/3d/5f/063d5f2b3e1568f68a859c4d327b5edd.jpg">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Link (Rider) amiibo<i class="material-icons right">🛒</i></span>
-                    <p>A Link amiibo from Breath Of The Wild riding horseback. <a href="https://www.nintendo.com/amiibo/detail/link-rider-amiibo-the-legend-of-zelda-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p><a href="https://www.amazon.com/Amiibo-link-riding-Nintendo-Wii-U/dp/B01MUCC1KI">Amazon</a></p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic_square" src="https://i.ebayimg.com/images/g/fUMAAOSwB-1YsOqm/s-l300.jpg">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Guardian amiibo<i class="material-icons right">🛒</i></span>
-                    <p>A giant Gauardian amiibo from the Legend Of Zelda: Breath Of The Wild game. <a href="https://www.nintendo.com/amiibo/detail/guardian-amiibo-the-legend-of-zelda-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p><a href="https://www.amazon.com/Amiibo-Guardian-Legend-Breath-Switch-165993011/dp/B01MTAPW3R">Amazon</a></p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://images-na.ssl-images-amazon.com/images/I/91JMNPYH52L._AC_.jpg">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Samus Aran & Metroid amiibo<i class="material-icons right">🛒</i></span>
-                    <p>A double amiibo pack containing both Samus Aran and Metroid amiibos. <a href="https://www.nintendo.com/amiibo/detail/samus-aran-amiibo-metroid-series">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    Currently no links.
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator amiibo_pic" src="https://s1.thcdn.com/productimg/600/600/11676020-2214550384518647.jpg">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Detective Pikachu amiibo<i class="material-icons right">🛒</i></span>
-                    <p>A giant Detective Pikachu amiibo form the Detective Pikachu 3DS game. <a href="https://www.nintendo.com/amiibo/detail/detective-pikachu-amiibo">info</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Links to buy Online:<i class="material-icons right">close</i></span>
-                    <p><a href="https://www.amazon.com/Nintendo-Amiibo-Detective-Pikachu-3DS/dp/B078YQH6DB">Amazon</a></p>
-                    <p><a href="https://www.bestbuy.com/site/nintendo-amiibo-figure-detective-pikachu/6195480.p?skuId=6195480">Best Buy</a></p>
-                    <p><a href="https://www.gamestop.com/nintendo-3ds/accessories/detective-pikachu-amiibo/158785">GameStop</a></p>
-                    <p><a href="https://www.target.com/p/nintendo-detective-pikachu-amiibo-figure/-/A-53315837">Target</a></p>
+            <div id="cards">
+                <div v-for="todo in todos">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator amiibo_pic" :src="todo.pic"/>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4"> {{ todo.name }} <i class="material-icons right">🛒</i> </span>
+                            <p>Series: {{ todo.series }}</p>
+                            <a :href="todo.info">info</a>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Links To Buy Online:<i class="material-icons right">❌</i></span>
+                            <p><a :href="todo.amazon">Amazon</a></p>
+                            <p><a :href="todo.bestbuy">Best Buy</a></p>
+                            <p><a :href="todo.ebay">eBay</a></p>
+                            <p><a :href="todo.gamestop">GameStop</a></p>
+                            <p><a :href="todo.target">Target</a></p>
+                            <p><a :href="todo.walmart">Walmart</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    var cards = new Vue({
+    el: '#cards',
+    data: {
+        todos: [
+            {name:'Mario (Wedding Outfit)', pic:'https://images.multiplayer.com/thumbs/88/2b/product.product-image-407713-600x0-q85.jpg', series:'Super Mario Odyssey', info:'https://www.nintendo.com/amiibo/detail/mario-wedding-outfit-amiibo-super-mario-odyssey-series', amazon:'https://www.amazon.com/Amiibo-Mario-Super-Odyssey-Nintendo-Switch/dp/B0721NP5XK', bestbuy:'https://www.bestbuy.com/site/nintendo-amiibo-figure-super-mario-odyssey-series-mario-wedding-outfit/5929500.p?skuId=5929500', ebay:'https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw=Mario+%28Wedding+Outfit%29+amiibo+&_sacat=0', gamestop:'https://www.gamestop.com/accessories/super-mario-odyssey-wedding-outfit-amiibo-3-pack/149653', target:'https://www.target.com/p/nintendo-174-mariowedding-outfitamiibo-figure/-/A-52677584', walmart:'https://www.walmart.com/ip/Nintendo-Mario-Wedding-Outfit-Super-Mario-Odyssey-Series-amiibo-NVLCABAT/163040411'},
+            {name:'Peach (Wedding Outfit)', pic:'https://http2.mlstatic.com/amiibo-super-mario-odyssey-princesa-peach-switch-wii-u-3ds-D_NQ_NP_972974-MLB26442110836_112017-F.jpg', series:'Super Mario Odyssey', info:'https://www.nintendo.com/amiibo/detail/peach-wedding-outfit-amiibo-super-mario-odyssey-series', amazon:'https://www.amazon.com/Amiibo-Peach-Super-Odyssey-Nintendo-Switch/dp/B071GPJVTQ/ref=sr_1_1?ie=UTF8&qid=1536620510&sr=8-1&keywords=amiibo+peach+wedding', bestbuy:'https://www.bestbuy.com/site/nintendo-amiibo-figure-super-mario-odyssey-series-peach-wedding-outfit/5929600.p?skuId=5929600&cmp=RMX&extStoreId=452&ref=212&loc=1&gclid=CjwKCAjwrNjcBRA3EiwAIIOvq1m5BtV2tTWFsXJj6zQQkpbs7SIMBjdqrlYzQICsU-kA8GhmAk8kKxoCSMkQAvD_BwE&gclsrc=aw.ds', ebay:'https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw=Peach+%28Wedding+Outfit%29+amiibo&_sacat=0&LH_TitleDesc=0&_osacat=0&_odkw=peach+wedding+amiibo', gamestop:'https://www.gamestop.com/browse?nav=16k-3-Mario+Wedding+Outfit+amiibo+Super+Mario+Odyssey', target:'https://www.target.com/p/nintendo-peach-wedding-outfit-amiibo-figure/-/A-52677563', walmart:'https://www.walmart.com/ip/Peach-Wedding-Outfit-Super-Mario-Odyssey-Series-Nintendo-amiibo-NVLCABAU/900276788?wmlspartner=wlpa&selectedSellerId=360&adid=22222222227093601128&wl0=&wl1=g&wl2=c&wl3=207446150391&wl4=aud-273067695102:pla-338458977558&wl5=9032925&wl6=&wl7=&wl8=&wl9=pla&wl10=111839986&wl11=online&wl12=900276788&wl13=&veh=sem'},
+            {name:'Bowser (Wedding Outfit)', pic:'https://www.gamesmen.com.au/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/u/super_mario_odyssey_col_-_bowser_wedding_outfit_amiibo_2_.jpg', series:'Super Mario Odyssey', info:'https://www.nintendo.com/amiibo/detail/bowser-wedding-outfit-amiibo-super-mario-odyssey-series', amazon:'https://www.amazon.com/Amiibo-Bowser-Super-Odyssey-Nintendo-Switch/dp/B071GPJS1Q', bestbuy:'https://www.bestbuy.com/site/nintendo-amiibo-figure-super-mario-odyssey-series-bowser-wedding-outfit/5929602.p?skuId=5929602&cmp=RMX&extStoreId=451&ref=212&loc=1&gclid=CjwKCAjwrNjcBRA3EiwAIIOvqwyGhephv-WBQqU4HNpo_JbfVMAcS2J2r0fharX71-ZsOQHyWYKcaxoCpScQAvD_BwE&gclsrc=aw.ds', ebay:'https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw=Bowser+%28Wedding+Outfit%29+amiibo&_sacat=0&LH_TitleDesc=0&_osacat=0&_odkw=Peach+%28Wedding+Outfit%29+amiibo&LH_TitleDesc=0', gamestop:'https://www.gamestop.com/accessories/super-mario-odyssey-wedding-outfit-amiibo-3-pack/149653', target:'https://www.target.com/p/nintendo-bowser-wedding-outfit-amiibo-figure/-/A-52677587', walmart:'https://www.walmart.com/ip/Bowser-Wedding-Outfit-Super-Mario-Odyssey-Series-Nintendo-amiibo-NVLCABAV/936938183'},
+            {name:'Pikmin', pic:'https://images-na.ssl-images-amazon.com/images/I/91NWGKmdf3L._AC_SL1500_.jpg', series:'Pikmin', info:'https://www.nintendo.com/amiibo/detail/pikmin-amiibo-pikmin-series', amazon:'https://www.amazon.com/Nintendo-amiibo-Pikmin-switch/dp/B071D8LQSP', bestbuy:'https://www.bestbuy.com/site/nintendo-amiibo-figure-pikmin/5853900.p?skuId=5853900&ref=30&loc=BM02&gclid=CjwKCAjwrNjcBRA3EiwAIIOvqwzpS53In8n3ljDJejaIM1CEQ-oQbjLIs_D5_Wbhb1rnhCnq18o5NhoCmkUQAvD_BwE&gclsrc=aw.ds', ebay:'https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313.TR2.TRC1.A0.H0.XPikmin+amiibo.TRS0&_nkw=Pikmin+amiibo&_sacat=0&LH_TitleDesc=0&_osacat=0&_odkw=Bowser+%28Wedding+Outfit%29+amiibo&LH_TitleDesc=0', gamestop:'https://www.gamestop.com/accessories/pikmin-pikmin-amiibo-figure/147378', target:'#', walmart:'https://www.walmart.com/ip/Pikmin-Pikachu-Series-Nintendo-amiibo-NVLCAPAA/55779039'}
+        ]
+    }
+    })
+    //{name:'', pic:'', series:'', info:'',amazon:'', bestbuy:'', ebay:'', gamestop:'', target:'', walmart:''},
+</script>
 </body>
 </html>
