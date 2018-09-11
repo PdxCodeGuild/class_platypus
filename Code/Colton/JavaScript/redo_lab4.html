@@ -4,12 +4,20 @@
 
     </head>
     <body>
-        <script>
-            prompt('Ask me a question?');
-            let answer = ['Yes', 'No', 'Maybe', 'Does not look good', 'Ask me later', 'Things are looking up', 'outlook good', 'reply hazy try again'];
-            let random_num = Math.floor(Math.random() * answer.length);
-            alert(answer[random_num]);
+        <input id="input_value" type="text" placeholder="ask me a question?"/>
+        <div><button id="bt_question">Get Your Fortune!</button></div>
+        <div id="container"></div>
 
+
+
+        <script>
+            let container = document.querySelector('#container');
+            let answer = ['Yes', 'No', 'Maybe', 'Does not look good', 'Ask me later', 'Things are looking up', 'outlook good', 'reply hazy try again'];
+            let bt_question = document.querySelector('#bt_question');
+
+            bt_question.onclick = function() {
+                let random_num = Math.floor(Math.random() * answer.length);
+                container.innerText += (answer[random_num])}
         </script>
     </body>
 </html>

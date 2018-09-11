@@ -5,12 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-    <script>
-        alert('Welcome to the Magic 8 Ball Game!')
+<script>
+    alert('Welcome to the Magic 8 Ball Game!')
+    let answer
+    while (answer != 'done') {
         prompt('What is your question for the oracle? >  ')
         let magic = ['Yes', 'No', 'The future is cloudy', 'It has been decided in your favor', 'You never know', 'Try Again', 'Not sure']
-        let randomMagic = magic[Math.floor(Math.random()*magic.length)];
+        let randomMagic = magic[Math.floor(Math.random() * magic.length)];
         alert(randomMagic)
-    </script>
+        answer = prompt('to end game type done, or hit any other key to continue ')
+    }
+
+</script>
 </body>
 </html>
