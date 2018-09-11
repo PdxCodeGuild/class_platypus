@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ATM Transactions</title>
+</head>
+<body>
+    <button onclick="myBalance()">Balance</button>
+    <button onclick="myDeposit()">Deposit</button>
+    <button onclick="myWithdrawal()">Withdrawal</button>
+<script>
+    class ATM {
+        constructor(x=0){
+            this.x=x
+        }
+        balance(){
+            return this.x
+        }
+        deposit(cash){
+            this.x=this.x + cash
+        }
+        withdrawal(minus){
+            this.x=this.x - minus
+        }
+    }
+    // let machine = new ATM(100)
+    // machine.withdrawal(50)
+    // machine.deposit(5)
+    // console.log(machine.balance())
+
+    function myBalance() {
+        document.getElementById("balance")
+    }
+    function myDeposit(){
+        document.getElementById("deposit")
+    }
+    function myWithdrawal(){
+        document.getElementById("withrawal")
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
