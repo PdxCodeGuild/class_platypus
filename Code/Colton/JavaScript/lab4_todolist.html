@@ -6,7 +6,7 @@
 </head>
 <style>
     body{
-        content-align: center;
+        place-content: center;
     }
 </style>
     <body>
@@ -25,6 +25,13 @@
                 let li = document.createElement('li');
                 li.appendChild(document.createTextNode(thing));
                 ul.appendChild(li)
+                let cb = document.createElement( "input" );
+                cb.type = "checkbox";
+                cb.id = "c1";
+                cb.value = name;
+                cb.checked = false;
+                list.appendChild(cb);
+                list.innerHTML+=name
             }
 
 
