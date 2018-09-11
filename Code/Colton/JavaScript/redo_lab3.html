@@ -2,20 +2,34 @@
 
 <html>
     <head>
+        <style>
 
+
+        </style>
     </head>
     <body>
-        ...
+            <input id="grade" type="number" placeholder="Enter Grade" value=" "/>
+            <div><button id="bt_convert">Convert</button></div>
+       <div id="letter">
+
+       </div>
         <script>
-            let grade = prompt('What test score did you get?');
-            if (grade <= 59 ) {alert('F')}
-            else if (grade >= 60 && grade <= 69) {alert('D');}
-            else if (grade >= 70 && grade <= 79){alert('C')
-            }
-            else if (grade >= 80 && grade <= 89){alert('B')
-            }
-            else if (grade >= 90 && grade <= 100){alert('A')
-            }
+            let letter = document.querySelector('#letter');
+            let bt_convert = document.querySelector('#bt_convert');
+
+             bt_convert.onclick = function() {
+                 let grade = document.getElementById('grade').value;
+                 if (grade < 59){
+                     letter.innerText = 'F';}
+                 else if (grade >= 60 && grade <= 69){
+                     letter.innerText = 'D';}
+                 else if (grade >= 70 && grade <= 79){
+                     letter.innerText = 'C';}
+                 else if (grade >= 80 && grade <= 89){
+                    letter.innerText = 'B';}
+                 else if (grade >= 90 && grade <= 100){
+                    letter.innerText = 'A';}
+                    }
         </script>
     </body>
 </html>
