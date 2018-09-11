@@ -3,26 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Emoticon</title>
+    <style>
+        body {
+            margin-top:2%;
+            text-align: center;
+
+        }
+    </style>
+
 </head>
 <body>
+    <button id="btn" type="button">Click for Emoticon!</button>
+    <p id="output"></p>
+
+
     <script>
-    import random
+        function randomElement(array) {
+            return array[Math.floor(Math.random()*array.length)]
+        }
 
-    let eyes = ['8', ':', ';', 'X', '|']
-    let nose = ['-', 'U', '=', 'c', '^']
-    let mouth = ['D', 'P', ')', '(', 'O']
+        let eyes = ['8', ':', ';', 'X', '|'];
+        let nose = ['-', 'U', '=', 'c', '^'];
+        let mouth = ['D', 'P', ')', '(', 'O'];
+        let output = document.querySelector('#output');
 
-     let c = 0
+        let c = 0;
+        while (c < 10) {
 
-    while c < 10:
-    emoticon = random.choice(eyes) + random.choice(nose) + random.choice(mouth)
-    c += 1
+            c += 1
+        }
 
-    if c == 11:
-        break
+        let btn = document.querySelector('#btn')
+        btn.onclick = function() {
+            output.innerText += randomElement(eyes) + randomElement(nose) + randomElement(mouth)
+        }
 
-    alert(emoticon)
-    </script>
+
+
+     </script>
 
 </body>
 </html>
