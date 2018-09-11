@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO!</title>
+</head>
+<style>
+    body{
+        place-content: center;
+    }
+</style>
+    <body>
+        <input id="thing" type="text" placeholder="Add to your to-do!"/>
+        <div><button id="bt_addlist">ADD IT!</button></div>
+        <ul id="list">
+
+        </ul>
+
+
+        <script>
+            let bt_addlist = document.querySelector('#bt_addlist');
+            bt_addlist.onclick = function() {
+                let thing = document.querySelector('#thing').value;
+                let ul = document.getElementById('list');
+                let li = document.createElement('li');
+                li.appendChild(document.createTextNode(thing));
+                ul.appendChild(li)
+                let cb = document.createElement( "input" );
+                cb.type = "checkbox";
+                cb.id = "c1";
+                cb.value = name;
+                cb.checked = false;
+                list.appendChild(cb);
+                list.innerHTML+=name
+            }
+
+
+        </script>
+    </body>
+</html>
