@@ -1,13 +1,17 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.3.8/Tone.min.js"></script>
     </head>
     <body>
         <h1>Guess The Number!</h1>
         <div id="buttons"></div>
         <div id="guesses">5</div>
         <script type="text/javascript">
+
+            let synth = new Tone.Synth().toMaster()
+
+
             let n_buttons = 10;
             let picked_num = Math.floor(Math.random()*n_buttons)+1
             let counter = 0;
@@ -20,9 +24,16 @@
                 btn.onclick = function(){
                     guesses--
                     document.querySelector("#guesses").innerText = guesses
-                    if (guesses == 0){
-                        alert("You Lose!")
-                        window.location.reload()
+                    if (guesses == 0) {
+                        synth.triggerAttackRelease('C2', '8n')
+                        setTimeout(function() {
+                            alert("You Lose!")
+                            window.location.reload()
+                        }, 500)
+
+
+                    } else {
+                        synth.triggerAttackRelease('C4', '8n')
                     }
                     if (this.innerText == picked_num){
                         alert('You Win!')
