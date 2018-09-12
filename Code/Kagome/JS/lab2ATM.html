@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <title>ATM Transactions</title>
 </head>
+<style>
+    body {
+                color: #ffffff;
+                font-family: Dosis, sans-serif;
+                background-image: url("atmcard.png");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+            }
+</style>
 <body>
-    <button onclick="myBalance()">Balance</button>
-    <button onclick="myDeposit()">Deposit</button>
-    <button onclick="myWithdrawal()">Withdrawal</button>
+    <button onclick="getElementById('deposit').innerHTML = myDeposit()">Make A Deposit.</button>
+    <p id=deposit> </p>
+    <button onclick="getElementById('withdrawal').innerHTML = myWithdrawal()">Withdrawal.</button>
+    <p id=withdrawal> </p>
+    <button onclick="getElementById('balance').innerHTML = myBalance()">Check Your Balance.</button>
+    <p id=balance> </p>
 <script>
+
     class ATM {
         constructor(x=0){
             this.x=x
@@ -23,19 +37,19 @@
             this.x=this.x - minus
         }
     }
-    // let machine = new ATM(100)
-    // machine.withdrawal(50)
-    // machine.deposit(5)
-    // console.log(machine.balance())
+    let machine = new ATM(100);
+    // let balance = 100
 
-    function myBalance() {
-        document.getElementById("balance")
-    }
+
     function myDeposit(){
         document.getElementById("deposit")
+
     }
     function myWithdrawal(){
         document.getElementById("withrawal")
+    }
+    function myBalance() {
+        document.getElementById("balance")
     }
 
 
