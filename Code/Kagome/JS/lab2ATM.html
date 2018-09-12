@@ -16,7 +16,7 @@
             }
 </style>
 <body>
-    <button onclick="getElementById('deposit').innerHTML = myDeposit()">Make A Deposit.</button>
+    <button onclick="getElementById('deposit').innerHTML = $ + myDeposit()">Make A Deposit.</button>
     <input type="text" id="MakeDeposit"><br>
     <p id=deposit>
     </p>
@@ -48,7 +48,6 @@
         }
     }
     let machine = new ATM(100);
-    // let balance = 100
 
 
     function myDeposit(){
@@ -64,7 +63,6 @@
     }
     function myBalance() {
         document.getElementById("balance")
-        // machine.deposit(document.querySelector("#CheckBalance").value);
         return machine.balance();
     }
 
