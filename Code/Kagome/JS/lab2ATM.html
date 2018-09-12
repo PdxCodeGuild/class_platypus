@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ATM Transactions</title>
+</head>
+<style>
+    body {
+                background-color: #ffffff;
+                color: #000000;
+                font-family: Dosis, sans-serif;
+                background-image: url("atmcard.png");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+            }
+</style>
+<body>
+    <button onclick="getElementById('deposit').innerHTML = $ + myDeposit()">Make A Deposit.</button>
+    <input type="text" id="MakeDeposit"><br>
+    <p id=deposit>
+    </p>
+
+
+    <button onclick="getElementById('withdrawal').innerHTML = myWithdrawal()">Withdrawal.</button>
+    <input type="text" id="MakeWithdrawal"><br>
+    <p id=withdrawal> </p>
+
+
+    <button onclick="getElementById('balance').innerHTML = myBalance()">Check Your Balance.</button>
+    <p id=balance> </p>
+
+
+<script>
+
+    class ATM {
+        constructor(x=0){
+            this.x=x
+        }
+        balance(){
+            return this.x
+        }
+        deposit(cash){
+            this.x=this.x + parseInt(cash)
+        }
+        withdrawal(minus){
+            this.x=this.x - parseInt(minus)
+        }
+    }
+    let machine = new ATM(100);
+
+
+    function myDeposit(){
+        document.getElementById("deposit")
+        machine.deposit(document.querySelector("#MakeDeposit").value);
+        return machine.balance();
+
+    }
+    function myWithdrawal(){
+        document.getElementById("withdrawal")
+        machine.withdrawal(document.querySelector("#MakeWithdrawal").value);
+        return machine.balance();
+    }
+    function myBalance() {
+        document.getElementById("balance")
+        return machine.balance();
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
