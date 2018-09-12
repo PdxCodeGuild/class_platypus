@@ -17,9 +17,13 @@
     ul{
         list-style: none;
     }
+    #lump{
+        font-size: 5vw;
+    }
 
 </style>
     <body>
+    <div id="lump">
         <input id="thing" type="text" placeholder="Add to your to-do!"/>
         <div><button id="bt_addlist">ADD IT!</button></div>
         <div>To do:</div>
@@ -31,7 +35,7 @@
         <s><ul id="complete">
 
         </ul></s>
-
+    </div>
 
         <script>
             let bt_addlist = document.querySelector('#bt_addlist');
