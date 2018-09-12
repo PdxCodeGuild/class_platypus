@@ -12,28 +12,43 @@
     <body>
         <input id="thing" type="text" placeholder="Add to your to-do!"/>
         <div><button id="bt_addlist">ADD IT!</button></div>
+        <div>To do:</div>
         <ul id="list">
+
+        </ul>
+
+        <div>Completed Tasks:</div>
+        <ul id="complete">
 
         </ul>
 
 
         <script>
             let bt_addlist = document.querySelector('#bt_addlist');
+
             bt_addlist.onclick = function() {
                 let thing = document.querySelector('#thing').value;
                 let ul = document.getElementById('list');
                 let li = document.createElement('li');
                 li.appendChild(document.createTextNode(thing));
-                ul.appendChild(li)
-                let cb = document.createElement( "input" );
-                cb.type = "checkbox";
-                cb.id = "c1";
-                cb.value = name;
-                cb.checked = false;
-                list.appendChild(cb);
-                list.innerHTML+=name
-            }
+                ul.appendChild(li);
+                li.id ='task';
 
+                let bt_complete = document.createElement( "button" );
+                bt_complete.id = "bt_complete";
+                bt_complete.innerHTML = 'Complete';
+                list.appendChild(bt_complete);
+            };
+
+            let bt_complete = document.querySelector('#bt_complete');
+
+            bt_complete.onclick= function(){
+                let task = document.querySelector('#task');
+                let ul = document.getElementById('complete');
+                let li = document.createElement('task');
+                li.appendChild(document.createTextNode(task));
+                ul.appendChild(li);
+                }
 
         </script>
     </body>
