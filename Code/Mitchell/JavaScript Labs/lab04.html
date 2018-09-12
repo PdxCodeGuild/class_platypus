@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <input type="text" id="new_item"><button id="add_new">Add</button><br>
+    <ul id="todo_list"></ul>
+    <script>
+        let list = document.querySelector("#todo_list")
+        let item = document.querySelector("#new_item")
+        let add = document.querySelector("#add_new")
+        add.onclick = function() {
+            if (item.value != "") {
+                let li = document.createElement("li")
+                li.appendChild(document.createTextNode(item.value))
+                list.appendChild(li)
+                item.value = ""
+            }
+        }
+    </script>
+</body>
+</html>
