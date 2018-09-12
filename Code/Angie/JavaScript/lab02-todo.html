@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TO DO LIST</title>
+    <style>
+        body{
+            text-align:center;
+            margin-top:2%;
+        }
+        #list {
+            width:30%;
+            text-align:left;
+            margin-right:33%;
+            margin-left:33%;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" placeholder="to do">
+    <button id="btn">Add</button>
+    <div id="list"></div>
+
+    <script>
+            btn.onclick = function createList() {
+            let x = document.createElement('ul')
+            x.setAttribute("id", "myUL")
+            document.getElementById('list').appendChild(x)
+
+            let y = document.createElement("li");
+            y.innerText = document.getElementById("input").value
+            document.getElementById("myUL").appendChild(y)
+            
+
+
+
+        }
+
+
+
+
+    </script>
+
+
+</body>
+</html>
