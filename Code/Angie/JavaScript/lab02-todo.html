@@ -10,9 +10,12 @@
         }
         #list {
             width:30%;
-            text-align:left;
+            text-align:center;
             margin-right:33%;
             margin-left:33%;
+        }
+        li {
+            list-style-type: none;
         }
     </style>
 </head>
@@ -20,21 +23,29 @@
     <input id="input" placeholder="to do">
     <button id="btn">Add</button>
     <div id="list"></div>
+    <div id="complete_list"></div>
 
     <script>
             btn.onclick = function createList() {
             let x = document.createElement('ul')
             x.setAttribute("id", "myUL")
-            document.getElementById('list').appendChild(x)
+            document.getElementById('list').appendChild(x) // creates the list
 
             let y = document.createElement("li");
-            y.innerText = document.getElementById("input").value
+            y.innerText = document.getElementById("input").value // shows list in div and appends
             document.getElementById("myUL").appendChild(y)
-            
+
+            }
+
+            complete.onclick = function completeList() {
+            let z = document.createElement('button')
+            z.setAttribute("id", "complete")
+            z.innerText = 'X'
+            document.getElementById("complete")
 
 
 
-        }
+            }
 
 
 
