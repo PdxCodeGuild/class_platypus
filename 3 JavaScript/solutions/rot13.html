@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ROT 13</title>
+</head>
+<body>
+    <input id="unencrypted_input" type="text" placeholder="enter word">
+    <input id="rot_number" type="number" placeholder="enter rotation amount">
+    <button id="btn">Encrypt</button>
+    <div id="encrypted_div"></div>
+
+    <script>
+        function rotn(txt, n=13) {
+            let output = ''
+            let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+            for (let i = 0; i < txt.length; ++i) {
+                let found = alphabet.indexOf(txt[i])
+                if (found === -1) {
+                    output += txt[i]
+                } else {
+                    found = (found + n) % alphabet.length
+                    output += alphabet[found]
+                }
+            }
+            return output
+        }
+        let encrypted_div = document.querySelector('#encrypted_div')
+        let btn = document.querySelector('#btn')
+        let unencrypted_input = document.querySelector('#unencrypted_input')
+        let rot_number = document.querySelector('#rot_number')
+        btn.onclick = function () {
+            let txt = unencrypted_input.value // get text out of input field
+            let n = parseInt(rot_number.value)
+            let output = rotn(txt, n) // encrypt the text
+            encrypted_div.innerText = output // show encrypted text
+        }
+    </script>
+
+</body>
+</html>

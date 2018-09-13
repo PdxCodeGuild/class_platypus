@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>ATM Transactions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
     body {
@@ -16,18 +20,18 @@
             }
 </style>
 <body>
-    <button onclick="getElementById('deposit').innerHTML = $ + myDeposit()">Make A Deposit.</button>
-    <input type="text" id="MakeDeposit"><br>
+    <button class="btn btn-danger" onclick="getElementById('deposit').innerHTML = '$' + myDeposit()">Make A Deposit.</button>
+    <input type="text" id="MakeDeposit"placeholder="$"><br>
     <p id=deposit>
     </p>
 
 
-    <button onclick="getElementById('withdrawal').innerHTML = myWithdrawal()">Withdrawal.</button>
-    <input type="text" id="MakeWithdrawal"><br>
+    <button class="btn btn-danger" onclick="getElementById('withdrawal').innerHTML = '$' + myWithdrawal()">Withdrawal.</button>
+    <input type="text" id="MakeWithdrawal" placeholder="$"><br>
     <p id=withdrawal> </p>
 
 
-    <button onclick="getElementById('balance').innerHTML = myBalance()">Check Your Balance.</button>
+    <button class="btn btn-danger" onclick="getElementById('balance').innerHTML = '$' + myBalance()">Check Your Balance.</button>
     <p id=balance> </p>
 
 
@@ -65,16 +69,6 @@
         document.getElementById("balance")
         return machine.balance();
     }
-
-
-
-
-
-
-
-
-
-
 
 </script>
 
