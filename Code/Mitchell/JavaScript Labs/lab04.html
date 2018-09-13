@@ -15,7 +15,13 @@
         add.onclick = function() {
             if (item.value != "") {
                 let li = document.createElement("li")
-                li.appendChild(document.createTextNode(item.value))
+                li.appendChild(document.createTextNode(item.value + " "))
+                let completed = document.createElement("button")
+                completed.innerText = "✅"
+                li.appendChild(completed)
+                let remove = document.createElement("button")
+                remove.innerText = "❌"
+                li.appendChild(remove)
                 list.appendChild(li)
                 item.value = ""
             }
