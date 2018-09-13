@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <script>
+            function add(a, b) {
+                return a + b
+            }
+            // console.log(add(5, 2))
+
+            function doubleLetters(txt) {
+                let r = ''
+                for (let i=0; i<txt.length; i++) {
+                    r += txt[i] + txt[i]
+                }
+                return r
+            }
+
+            // console.log(doubleLetters('hello')) // hheelllloo
+            // console.log(doubleLetters('cat')) // ccaatt
+
+            function missingChar(txt) {
+                let r = []
+                for (let i=0; i<txt.length; ++i) {
+                    r.push(txt.slice(0, i) + txt.slice(i+1))
+                }
+                return r
+            }
+
+            //console.log(missingChar('kitten')) // ['itten', 'ktten', 'kiten', 'kiten', 'kittn', 'kitte']
+
+
+            function countOccurrances(letter, txt) {
+                let count = 0
+                for (let i=0; i<txt.length; i++) {
+                    if (txt[i] === letter) {
+                        count++
+                    }
+                }
+                return count
+            }
+            // console.log(countOccurrances('i', 'antidisestablishmentterianism')) // 5
+            // console.log(countOccurrances('p', 'pneumonoultramicroscopicsilicovolcanoconiosis')) // 2
+
+
+            function fibonacci(n) {
+                if (n === 0) {
+                    return []
+                } else if (n === 1) {
+                    return [1]
+                }
+                let r = [1, 1]
+                for (let i=2; i<n; ++i) {
+                    r.push(r[i-1] + r[i-2])
+                }
+                return r
+            }
+
+            console.log(fibonacci(1)) // [1, 1, 2, 3, 5, 8, 13, 21]
+
+        </script>
+    </body>
+</html>
