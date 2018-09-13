@@ -17,7 +17,7 @@ Get a string from the user, print out another string, doubling every letter.
 
 ```
 >>> Enter some text: hello
-hheelloo
+hheelllloo
 ```
 
 ## Problem 2

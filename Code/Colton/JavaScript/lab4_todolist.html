@@ -6,34 +6,66 @@
 </head>
 <style>
     body{
-        place-content: center;
+        color: White;
+        text-align: center;
+        background-image: url("https://images.pexels.com/photos/261630/pexels-photo-261630.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center ;
+        background-size: cover
     }
+    ul{
+        list-style: none;
+    }
+    #lump{
+        background-color: grey;
+        opacity: .8;
+        width: fit-content;
+        font-size: 3vw;
+        text-align: center;
+        margin:auto
+    }
+
 </style>
     <body>
+    <div id="lump">
         <input id="thing" type="text" placeholder="Add to your to-do!"/>
         <div><button id="bt_addlist">ADD IT!</button></div>
+        <div>To do:</div>
         <ul id="list">
 
         </ul>
 
+        <div>Completed Tasks:</div>
+        <s><ul id="complete">
+
+        </ul></s>
+    </div>
 
         <script>
             let bt_addlist = document.querySelector('#bt_addlist');
+
             bt_addlist.onclick = function() {
                 let thing = document.querySelector('#thing').value;
                 let ul = document.getElementById('list');
                 let li = document.createElement('li');
                 li.appendChild(document.createTextNode(thing));
-                ul.appendChild(li)
-                let cb = document.createElement( "input" );
-                cb.type = "checkbox";
-                cb.id = "c1";
-                cb.value = name;
-                cb.checked = false;
-                list.appendChild(cb);
-                list.innerHTML+=name
-            }
+                ul.appendChild(li);
+                li.id ='task';
 
+                let bt_complete = document.createElement( "button" );
+                bt_complete.id = "bt_complete";
+                bt_complete.innerHTML = 'Complete';
+                bt_complete.onclick= function(){
+                    let task = document.querySelector('#task');
+                    let ul = document.getElementById('complete');
+                    let li = document.createElement('li');
+                    li.innerText = task;
+                    ul.appendChild(task);
+                    list.removeChild(bt_complete)
+                };
+                list.appendChild(bt_complete);
+            };
 
         </script>
     </body>
