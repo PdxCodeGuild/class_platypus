@@ -8,22 +8,35 @@
     <h1>Todo List</h1>
     <input type="text" id="new_item"><button id="add_new">Add</button><br>
     <ul id="todo_list"></ul>
+    <div id="test_field"></div>
     <script>
         let list = document.querySelector("#todo_list")
         let item = document.querySelector("#new_item")
         let add = document.querySelector("#add_new")
+        let test = document.querySelector("#test_field")
         add.onclick = function() {
-            if (item.value != "") {
-                let li = document.createElement("li")
-                li.appendChild(document.createTextNode(item.value + " "))
-                let completed = document.createElement("button")
-                completed.innerText = "✅"
-                li.appendChild(completed)
-                let remove = document.createElement("button")
-                remove.innerText = "❌"
-                li.appendChild(remove)
-                list.appendChild(li)
-                item.value = ""
+            // Checks that item is not empty
+            if (item.value === '') return
+            // Add new item to the list
+            let li = document.createElement("li")
+            li.appendChild(document.createTextNode(item.value + " "))
+            // Add completed button next to the item
+            let completed = document.createElement("button")
+            completed.innerText = "✅"
+            li.appendChild(completed)
+            // Add remove button next to the item
+            let remove = document.createElement("button")
+            remove.innerText = "❌"
+            li.appendChild(remove)
+            list.appendChild(li)
+            item.value = ""
+            // Puts a checkmark next to item and removes buttons
+            completed.onclick = function() {
+                li.innerText = li.innerText.slice(0, li.innerText.length-2) + "✔️"
+            }
+            // Removes item from list
+            remove.onclick = function() {
+                list.removeChild(li)
             }
         }
     </script>
