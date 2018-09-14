@@ -3,36 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Bouncing Ball</title>
+    <!-- Materialize CND -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Google Fonts CND -->
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Tammudu" rel="stylesheet">
     <style>
     	body {
     		text-align: center;
-    		font-family: Blippo, fantasy;
+    		font-family: 'Baloo Tammudu', cursive;
     		background-image: url("http://f.fwallpapers.com/images/blue-balls.jpg");
   			background-repeat: no-repeat;
             background-attachment: fixed;
     	}
-    	canvas {
-    		border-style: groove;
-    		background-color: rgba(255, 255, 255, 0.5);
-    	}
     	h1 {
     		color: DeepSkyBlue;
     		text-shadow: 5px 5px black;
-    		font-size: 50px;
+    		font-size: 400%;
+    	}
+    	canvas {
+    		border-style: groove;
+    		background-color: rgba(255, 255, 255, 0.5);
+    		width: 75%;
+    		height: 200%
+    	}
+    	#buttons {
+    		padding: 1%;
+    	}
+    	#gravity {
+    		background-color: #80d8ff;
     	}
     	#testField {}
     </style>
 </head>
 <body>
-	<h1>Bouncing Blue Ball</h1>
-	<canvas id="cnv" width="500" height="500"></canvas>
-	<div id="testField"></div>
+	<div id="mainDiv">
+		<h1>Blue Bouncing Ball</h1>
+		<canvas id="cnv"></canvas>
+		<div id="buttons">
+			<a id="gravity" class="waves-effect waves-light btn">Gravity</a>
+		</div>
+		<div id="testField"></div>
+	</div>
 	<script type="text/javascript">
+		// gets reffrences to all buttons
+		let gravity = document.querySelector("#gravity")
+		let gravityLevel = 1.5
+		gravity.onclick = function() {
+			if (ball.gravityBool === false)
+				{ball.gravityBool = true}
+			else
+				{ball.gravityBool = false}
+		}
 		// Creates ball and intitializes canvas
 		let cnv = document.getElementById('cnv');
     	let ctx = cnv.getContext('2d');
 		let ball = {
     		radius: 20,
+    		gravityBool: false,
     		px: Math.random()*cnv.width,
     		py: Math.random()*cnv.height,
     		vx: (2*Math.random()-1)*10,
@@ -43,7 +71,8 @@
 			// update the ball's position
 			ball.px += ball.vx
 			ball.py += ball.vy
-			ball.vy += 1
+			if (ball.gravityBool === true)
+				{ball.vy += gravityLevel}
 			// if ball hits right wall
 			if (ball.px + ball.radius > cnv.width) {
 				ball.px = cnv.width - ball.radius
@@ -70,13 +99,9 @@
 			// draw the ball's shading
     		let shading = 2
     		ctx.beginPath();
-			if (ball.vx > 0)
-				{ctx.arc(ball.px-shading, ball.py, ball.radius, 0, 2 * Math.PI, false)}
-			else if (ball.vx < 0)
+			if (ball.vx < 0)
 				{ctx.arc(ball.px+shading, ball.py, ball.radius, 0, 2 * Math.PI, false)}
-			else if (ball.vy >= 0)
-				{ctx.arc(ball.px, ball.py-shading, ball.radius, 0, 2 * Math.PI, false)}
-			else if (ball.vx < 0)
+			else
 				{ctx.arc(ball.px, ball.py+shading, ball.radius, 0, 2 * Math.PI, false)}
 			ctx.fillStyle = 'black';
 			ctx.fill()
@@ -84,6 +109,11 @@
     		ctx.beginPath();
 			ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false)
 			ctx.fillStyle = 'DeepSkyBlue';
+			ctx.fill()
+			// draw light
+			ctx.beginPath();
+			ctx.fillStyle = 'white';
+			ctx.fillRect(ball.px-(ball.radius/2), ball.py-(ball.radius/2), 3, 3)
 			ctx.fill()
 		}
 		// Updates position/drawing of ball
