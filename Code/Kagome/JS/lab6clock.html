@@ -1,34 +1,49 @@
 <html>
-<body>
-<title>Local Oregon Time</title>
-
-<style>
+<head>
+    <title>Local Oregon Time</title>
+    <style>
     body {
-                background-color: #ffffff;
-                color: white;
-                font-family: Dosis, sans-serif;
-                background-size: contain;
-                background-image: url("falls.jpg");
-                background-repeat: round;
-                background-attachment: fixed;
-            }
-    #clock {
-                text-align: center;
+        background-color: #ffffff;
+        color: white;
+        font: italic 1.2em "Fira Sans", serif;
+        text-shadow: 4px 2px 4px #000000;
+        background-size: contain;
+        background-image: url("falls.jpg");
+        background-repeat: round;
+        background-attachment: fixed;
+        padding-top: 300px;
+        padding-right: 7px;
+        padding-bottom: 50px;
+        padding-left: 30px;
     }
-   h1 {
-                text-align: center;
-   }
+
+    #clock {
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+    }
+    #clockdiv {
+        background-color:rgba(0,0,0,0.5)
+    }
 </style>
+</head>
+<body>
 
-<h1>Local Oregon Time</h1>
-<p id="clock"></p>
+
+
+<div id="clockdiv">
+    <h1>Local Oregon Time</h1>
+    <p id="clock"></p>
+</div>
 <script>
-var myVar = setInterval(myTimer, 1000);
+    var myVar = setInterval(myTimer, 1000);
 
-function myTimer() {
-    var d = new Date();
-    document.getElementById("clock").innerHTML = d.toLocaleTimeString();
-}
+    function myTimer() {
+        var d = new Date();
+        document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+    }
 </script>
 
 </body>
