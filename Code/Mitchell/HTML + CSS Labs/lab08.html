@@ -6,13 +6,21 @@
     <style>
     	body {
     		text-align: center;
+    		font-family: Blippo, fantasy;
+    		background-image: url("http://f.fwallpapers.com/images/blue-balls.jpg");
+  			background-repeat: no-repeat;
+            background-attachment: fixed;
     	}
     	canvas {
-    		border: 3px solid black;
+    		border-style: groove;
+    		background-color: rgba(255, 255, 255, 0.5);
     	}
     	h1 {
-    		color: blue;
+    		color: DeepSkyBlue;
+    		text-shadow: 5px 5px black;
+    		font-size: 50px;
     	}
+    	#testField {}
     </style>
 </head>
 <body>
@@ -24,7 +32,7 @@
 		let cnv = document.getElementById('cnv');
     	let ctx = cnv.getContext('2d');
 		let ball = {
-    		radius: 12,
+    		radius: 20,
     		px: Math.random()*cnv.width,
     		py: Math.random()*cnv.height,
     		vx: (2*Math.random()-1)*10,
@@ -35,6 +43,7 @@
 			// update the ball's position
 			ball.px += ball.vx
 			ball.py += ball.vy
+			ball.vy += 1
 			// if ball hits right wall
 			if (ball.px + ball.radius > cnv.width) {
 				ball.px = cnv.width - ball.radius
@@ -59,9 +68,9 @@
 		// Draws the ball with shading and light
 		function drawBall(ball, ctx) {
 			// draw the ball's shading
-    		let shading = 3
+    		let shading = 2
     		ctx.beginPath();
-			if (ball.vx >= 0)
+			if (ball.vx > 0)
 				{ctx.arc(ball.px-shading, ball.py, ball.radius, 0, 2 * Math.PI, false)}
 			else if (ball.vx < 0)
 				{ctx.arc(ball.px+shading, ball.py, ball.radius, 0, 2 * Math.PI, false)}
@@ -74,7 +83,7 @@
 			// draw the ball
     		ctx.beginPath();
 			ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false)
-			ctx.fillStyle = 'blue';
+			ctx.fillStyle = 'DeepSkyBlue';
 			ctx.fill()
 		}
 		// Updates position/drawing of ball
