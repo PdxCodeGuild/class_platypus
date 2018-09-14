@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncing Ball</title>
+</head>
+<body>
+	<canvas id="cnv" width="500" height="500"></canvas>
+	<div id="test_field"></div>
+	<script type="text/javascript">
+		// Creates ball and intitializes canvas
+		let cnv = document.getElementById('cnv');
+    	let ctx = cnv.getContext('2d');
+		let ball = {
+    		radius: 8,
+    		px: Math.random()*cnv.width,
+    		py: Math.random()*cnv.height,
+    		vx: (2*Math.random()-1)*10,
+    		vy: (2*Math.random()-1)*10
+		};
+		// Updates position/drawing of ball
+		function main_loop() {
+			// clear canvas to update the next animation frame
+			ctx.clearRect(0, 0, cnv.width, cnv.height)
+    		// update the ball's position
+    		ball.px += ball.vx
+			ball.py += ball.vy
+    		// check if it hit a boundary
+    		if (ball.px >= cnv.width || ball.py >= cnv.height || ball.px <= 0 || ball.py <= 0) {
+    			ball.vx = ball.vx * -1 + Math.floor(Math.random() * 21) - 10
+    			ball.vy = ball.vy * -1 + Math.floor(Math.random() * 21) - 10
+    		}
+    		// draw the ball
+    		ctx.beginPath();
+			ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false)
+			ctx.fillStyle = 'green';
+			ctx.fill()
+    		window.requestAnimationFrame(main_loop)
+		}
+		window.requestAnimationFrame(main_loop)
+	</script>
+</body>
+</html>
