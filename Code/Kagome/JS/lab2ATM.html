@@ -7,19 +7,44 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
 <style>
     body {
-                background-color: #ffffff;
-                color: #000000;
-                font-family: Dosis, sans-serif;
-                background-image: url("atmcard.png");
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-position: center;
+        background-color: #ffffff;
+        color: #000000;
+        font: italic 1.2em "Fira Sans", serif;
+        text-shadow: 4px 2px 4px #000000;
+        background-image: url("atmcard.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
             }
+    #btnpad{
+        padding-top: 300px;
+        padding-right: 7px;
+        padding-bottom: 50px;
+        padding-left: 30px;
+    }
+    #p1 {
+        text-align: center;
+        color: #ffffff;
+        font: italic 1.2em "Fira Sans", serif;
+        text-shadow: 4px 2px 4px #000000;
+        /*padding-top: 300px;*/
+        /*padding-right: 7px;*/
+        /*padding-bottom: 50px;*/
+        /*padding-left: 30px;*/
+        font-size: 55px;
+        position:absolute;
+        left:50%;
+        top:120px;
+        transform:translateX(-50%);
+        z-index:10;
+    }
 </style>
+</head>
 <body>
+<div id="btnpad">
+    <p id="p1">Feed Me</p>
     <button class="btn btn-danger" onclick="getElementById('deposit').innerHTML = '$' + myDeposit()">Make A Deposit.</button>
     <input type="text" id="MakeDeposit"placeholder="$"><br>
     <p id=deposit>
@@ -33,7 +58,6 @@
 
     <button class="btn btn-danger" onclick="getElementById('balance').innerHTML = '$' + myBalance()">Check Your Balance.</button>
     <p id=balance> </p>
-
 
 <script>
 
