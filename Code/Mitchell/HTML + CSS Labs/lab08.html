@@ -6,6 +6,7 @@
 </head>
 <body>
 	<canvas id="cnv" width="500" height="500"></canvas>
+	<div id="test_field"></div>
 	<script type="text/javascript">
 		// Creates ball and intitializes canvas
 		let cnv = document.getElementById('cnv');
@@ -20,18 +21,24 @@
 		// Updates position/drawing of ball
 		function main_loop() {
     		// update the ball's position
+    		ball.px += ball.vx
+			ball.py += ball.vy
     		// check if it hit a boundary
+    		if (ball.px >= cnv.width || ball.py >= cnv.height || ball.px <= 0 || ball.py <= 0) {
+    			test_field.innerText = "Hit boundry"
+    			ball.vx = ball.vx * -1 + Math.floor(Math.random() * 21) - 10
+    			ball.vy = ball.vy * -1 + Math.floor(Math.random() * 21) - 10
+    		}
     		// draw the ball
     		ctx.beginPath();
-			ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false);
+			ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false)
 			ctx.fillStyle = 'green';
-			ctx.fill();
-			// Adjust movement of ball
-			ball.px += 1
-			ball.py += 1
-    		window.requestAnimationFrame(main_loop);
+			ctx.fill()
+    		window.requestAnimationFrame(main_loop)
+    		//erases some of white (still working on)
+    		ctx.clearRect(ball.px-ball.radius, ball.py-ball.radius, ball.radius, ball.radius)
 		}
-		window.requestAnimationFrame(main_loop);
+		window.requestAnimationFrame(main_loop)
 	</script>
 </body>
 </html>
