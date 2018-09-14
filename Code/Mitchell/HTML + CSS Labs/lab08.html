@@ -35,17 +35,27 @@
 			// update the ball's position
 			ball.px += ball.vx
 			ball.py += ball.vy
-			// check if the ball hit a side boundary
-			if (ball.px + ball.radius > cnv.width || ball.px - ball.radius < 0) {
+			// if ball hits right wall
+			if (ball.px + ball.radius > cnv.width) {
+				ball.px = cnv.width - ball.radius
 				ball.vx = ball.vx * -1 * 0.9
-				// move the ball back into the correct boundaries
 			}
-			// check if ball hit the top or bottom boundary
-			else if (ball.py + ball.radius > cnv.height || ball.py - ball.radius < 0) {
+			// if ball hits left wall
+			else if (ball.px - ball.radius < 0) {
+				ball.px = 0 + ball.radius
+				ball.vx = ball.vx * -1 * 0.9
+			}
+			// if ball hits bottom wall
+			else if (ball.py + ball.radius > cnv.height) {
+				ball.py = cnv.height - ball.radius
+				ball.vy = ball.vy * -1 * 0.9
+			}
+			// if ball hits top wall
+			else if (ball.py - ball.radius < 0) {
+				ball.py = 0 + ball.radius
 				ball.vy = ball.vy * -1 * 0.9
 			}
 		}
-
 		// Draws the ball with shading and light
 		function drawBall(ball, ctx) {
 			// draw the ball's shading
@@ -53,11 +63,11 @@
     		ctx.beginPath();
 			if (ball.vx >= 0)
 				{ctx.arc(ball.px-shading, ball.py, ball.radius, 0, 2 * Math.PI, false)}
-			if (ball.vx < 0)
+			else if (ball.vx < 0)
 				{ctx.arc(ball.px+shading, ball.py, ball.radius, 0, 2 * Math.PI, false)}
-			if (ball.vy >= 0)
+			else if (ball.vy >= 0)
 				{ctx.arc(ball.px, ball.py-shading, ball.radius, 0, 2 * Math.PI, false)}
-			if (ball.vx < 0)
+			else if (ball.vx < 0)
 				{ctx.arc(ball.px, ball.py+shading, ball.radius, 0, 2 * Math.PI, false)}
 			ctx.fillStyle = 'black';
 			ctx.fill()
@@ -67,13 +77,13 @@
 			ctx.fillStyle = 'blue';
 			ctx.fill()
 		}
-
 		// Updates position/drawing of ball
 		function main_loop() {
 			// clear canvas to update the next animation frame
 			ctx.clearRect(0, 0, cnv.width, cnv.height)
     		// get the new position
     		updateBallPosition(ball, cnv)
+    		// calls code used to draw and shade in ball
     		drawBall(ball, ctx)
     		window.requestAnimationFrame(main_loop)
 		}
