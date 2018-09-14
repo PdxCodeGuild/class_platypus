@@ -17,13 +17,17 @@
                 background-attachment: fixed;
                 background-position: center;
             }
+    #completed_list {
+        text-decoration: line-through;
+    }
 </style>
 <body>
     <div>
-    <button class="btn btn-danger" onclick="getElementById('todo_list').innerHTML = '' + todo_input()">To Do List</button>
-    <input type="text" id="ToDo"placeholder="Things To Be Done..."><br>
+    <button class="btn btn-danger" id ='add_bt' onclick="getElementById('todo_list').innerHTML = '' + todo_input()">Add To List</button>
+    <input type="text" id="todo_input" placeholder="Things To Be Done..."><br>
     <p id=todo>
     </p>
+    </div>
     <div>
             <ul id="todo_list"></ul>
             <ul id="completed_list"></ul>
@@ -33,8 +37,7 @@
             let todo_input = document.querySelector('#todo_input');
             let list = document.querySelector('#todo_list');
             let completed_list = document.querySelector('#completed_list');
-            // let button_complete =
-            // let button_remove =
+
 
            add_bt.onclick = function() {
                let text = todo_input.value;
@@ -49,7 +52,7 @@
 
 
                let button_complete = document.createElement('button');
-               button_complete.innerHTML = '⍻';
+               button_complete.innerHTML = 'x';
                button_complete.onclick = function () {
                    list.removeChild(this.parentElement);
                    let li = document.createElement('li');
