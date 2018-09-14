@@ -48,7 +48,7 @@
 	<script type="text/javascript">
 		// gets reffrences to all buttons
 		let gravity = document.querySelector("#gravity")
-		let gravityLevel = 1.5
+		let gravityLevel = 1
 		gravity.onclick = function() {
 			if (ball.gravityBool === false)
 				{ball.gravityBool = true}
@@ -71,27 +71,27 @@
 			// update the ball's position
 			ball.px += ball.vx
 			ball.py += ball.vy
-			if (ball.gravityBool === true)
+			if (ball.gravityBool)
 				{ball.vy += gravityLevel}
 			// if ball hits right wall
 			if (ball.px + ball.radius > cnv.width) {
 				ball.px = cnv.width - ball.radius
-				ball.vx = ball.vx * -1 * 0.9
+				ball.vx = ball.vx * -1 * 0.8
 			}
 			// if ball hits left wall
 			else if (ball.px - ball.radius < 0) {
 				ball.px = 0 + ball.radius
-				ball.vx = ball.vx * -1 * 0.9
+				ball.vx = ball.vx * -1 * 0.8
 			}
 			// if ball hits bottom wall
 			else if (ball.py + ball.radius > cnv.height) {
 				ball.py = cnv.height - ball.radius
-				ball.vy = ball.vy * -1 * 0.9
+				ball.vy = ball.vy * -1 * 0.8
 			}
 			// if ball hits top wall
 			else if (ball.py - ball.radius < 0) {
 				ball.py = 0 + ball.radius
-				ball.vy = ball.vy * -1 * 0.9
+				ball.vy = ball.vy * -1 * 0.8
 			}
 		}
 		// Draws the ball with shading and light
