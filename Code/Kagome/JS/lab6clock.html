@@ -1,0 +1,30 @@
+<html>
+<body>
+<title>L0c4l 0reG0N T1M3</title>
+<p>L0c4l 0reG0N T1M3</p>
+<style>
+    body {
+                background-color: #ffffff;
+                color: #007bb5;
+                font-family: Dosis, sans-serif;
+                background-size: contain;
+                background-image: url("falls.jpg");
+                background-repeat: round;
+                background-attachment: fixed;
+            }
+</style>
+
+<p id="clock"></p>
+
+<script>
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+    var d = new Date();
+    document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+}
+</script>
+
+</body>
+</html>
+
