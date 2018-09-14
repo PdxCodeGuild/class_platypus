@@ -3,38 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>Bouncing Ball</title>
+    <style>
+    	body {
+    		text-align: center;
+    	}
+    	canvas {
+    		border: 3px solid black;
+    	}
+    	h1 {
+    		color: blue;
+    	}
+    </style>
 </head>
 <body>
+	<h1>Bouncing Blue Ball</h1>
 	<canvas id="cnv" width="500" height="500"></canvas>
-	<div id="test_field"></div>
+	<div id="testField"></div>
 	<script type="text/javascript">
 		// Creates ball and intitializes canvas
 		let cnv = document.getElementById('cnv');
     	let ctx = cnv.getContext('2d');
 		let ball = {
-    		radius: 8,
+    		radius: 12,
     		px: Math.random()*cnv.width,
     		py: Math.random()*cnv.height,
     		vx: (2*Math.random()-1)*10,
     		vy: (2*Math.random()-1)*10
 		};
+		// Updates the balls position taking into acount the walls
+		function updateBallPosition(ball, cnv) {
+			// update the ball's position
+			ball.px += ball.vx
+			ball.py += ball.vy
+			// check if the ball hit a side boundary
+			if (ball.px + ball.radius > cnv.width || ball.px - ball.radius < 0) {
+				ball.vx = ball.vx * -1 * 0.9
+				// move the ball back into the correct boundaries
+			}
+			// check if ball hit the top or bottom boundary
+			else if (ball.py + ball.radius > cnv.height || ball.py - ball.radius < 0) {
+				ball.vy = ball.vy * -1 * 0.9
+			}
+		}
+
+		// Draws the ball with shading and light
+		function drawBall(ball, ctx) {
+			// draw the ball's shading
+    		let shading = 3
+    		ctx.beginPath();
+			if (ball.vx >= 0)
+				{ctx.arc(ball.px-shading, ball.py, ball.radius, 0, 2 * Math.PI, false)}
+			if (ball.vx < 0)
+				{ctx.arc(ball.px+shading, ball.py, ball.radius, 0, 2 * Math.PI, false)}
+			if (ball.vy >= 0)
+				{ctx.arc(ball.px, ball.py-shading, ball.radius, 0, 2 * Math.PI, false)}
+			if (ball.vx < 0)
+				{ctx.arc(ball.px, ball.py+shading, ball.radius, 0, 2 * Math.PI, false)}
+			ctx.fillStyle = 'black';
+			ctx.fill()
+			// draw the ball
+    		ctx.beginPath();
+			ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false)
+			ctx.fillStyle = 'blue';
+			ctx.fill()
+		}
+
 		// Updates position/drawing of ball
 		function main_loop() {
 			// clear canvas to update the next animation frame
 			ctx.clearRect(0, 0, cnv.width, cnv.height)
-    		// update the ball's position
-    		ball.px += ball.vx
-			ball.py += ball.vy
-    		// check if it hit a boundary
-    		if (ball.px >= cnv.width || ball.py >= cnv.height || ball.px <= 0 || ball.py <= 0) {
-    			ball.vx = ball.vx * -1 + Math.floor(Math.random() * 21) - 10
-    			ball.vy = ball.vy * -1 + Math.floor(Math.random() * 21) - 10
-    		}
-    		// draw the ball
-    		ctx.beginPath();
-			ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false)
-			ctx.fillStyle = 'green';
-			ctx.fill()
+    		// get the new position
+    		updateBallPosition(ball, cnv)
+    		drawBall(ball, ctx)
     		window.requestAnimationFrame(main_loop)
 		}
 		window.requestAnimationFrame(main_loop)
