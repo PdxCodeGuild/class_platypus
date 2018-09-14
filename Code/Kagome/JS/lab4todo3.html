@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Things To Do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    body {
+                background-color: #ffffff;
+                color: #000000;
+                font-family: Dosis, sans-serif;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+            }
+</style>
+<body>
+    <div>
+    <button class="btn btn-danger" onclick="getElementById('todo_list').innerHTML = '' + todo_input()">To Do List</button>
+    <input type="text" id="ToDo"placeholder="Things To Be Done..."><br>
+    <p id=todo>
+    </p>
+    <div>
+            <ul id="todo_list"></ul>
+            <ul id="completed_list"></ul>
+    </div>
+    <script type="text/javascript">
+            let add_bt = document.querySelector('#add_bt');
+            let todo_input = document.querySelector('#todo_input');
+            let list = document.querySelector('#todo_list');
+            let completed_list = document.querySelector('#completed_list');
+            // let button_complete =
+            // let button_remove =
+
+           add_bt.onclick = function() {
+               let text = todo_input.value;
+               if (text === '') {
+                   return;
+               }
+               todo_input.value = '';
+               let li = document.createElement('li');
+               li.classList.add('todo_item');
+               let text_div = document.createElement('div');
+               text_div.innerHTML = text;
+
+
+               let button_complete = document.createElement('button');
+               button_complete.innerHTML = '⍻';
+               button_complete.onclick = function () {
+                   list.removeChild(this.parentElement);
+                   let li = document.createElement('li');
+                   li.innerText = text;
+                   completed_list.appendChild(li);
+               };
+
+               let button_remove = document.createElement('button');
+               button_remove.innerHTML = '✓';
+               button_remove.onclick = function () {
+                   list.removeChild(this.parentElement);
+               };
+
+               li.appendChild(text_div);
+               li.appendChild(button_complete);
+               li.appendChild(button_remove);
+               list.appendChild(li);
+           }
+           </script>
+    </body>
+</html>
