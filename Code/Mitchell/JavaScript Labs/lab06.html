@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+</head>
+<body>
+	<p>Current Time:</p>
+	<p id="time"></p>
+	<script>
+		var myVar = setInterval(myTimer, 0000);
+		function myTimer() {
+    		var d = new Date();
+    		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+		}
+	</script>
+</body>
+</html>
