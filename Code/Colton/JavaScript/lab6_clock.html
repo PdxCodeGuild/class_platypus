@@ -14,23 +14,24 @@
     </div>
 
     <script>
-    let time = setInterval(myTimer, 1000);
+    setInterval(myTimer, 1000);
     let stopwatch = document.getElementById('stopwatch');
+    let spot = document.getElementById('spot');
+
     function myTimer() {
         let d = new Date();
         document.getElementById("clock").innerHTML = d.toLocaleTimeString();
     }
-    stopwatch.onclick = function(){
-        let d = new Date();
-        d.setHours(0, 0, 0, 0);
-        document.getElementById("spot").innerHTML = d;
-        stopwatch_interval = setInterval(update_stopwatch, 1000)
-    };
-        function update_stopwatch() {
-            let d = null;
-                d.setSeconds(d.getSeconds()+1);
-                stopwatch.innerHTML = time_str(d);
-            }
+
+    stopwatch.onclick = function () {
+        start = new Date()
+
+    }
+
+
+
+
+
 
     </script>
 </body>
