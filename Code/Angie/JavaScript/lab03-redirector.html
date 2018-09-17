@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Redirect</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <style>
+        body {
+            text-align:center;
+            font-family: 'Muli', sans-serif;
+        }
+
+        #main-flex-container {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+        }
+
+        #count {
+
+            font-size:5em;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1>Which website would you like to go to?</h1>
+    <div id="main-flex-container">
+        <a href="#"><img src="http://lansdalemeats.net/wp-content/uploads/2017/11/Domestic-Swiss.jpg" width="200px"></a>
+        <a href="#"><img src="https://rmmsonline.com/wp-content/uploads/2018/08/google.png" width="200px"></a>
+        <a href="#"><img src="https://mindbodygreen-res.cloudinary.com/images/w_767,q_auto:eco,f_auto,fl_lossy/ptr/QOWVQzz/stitch-fix.jpg" width="200px"></a>
+        <a href="#"><img src="https://assets.rockpapershotgun.com/images//2018/02/homestar-1-620x320.jpg/RPSS/resize/760x-1/format/jpg/quality/70" width="200px"></a>
+        <a href="#"><img src="https://cdn2.omidoo.com/sites/default/files/imagecache/full_width/images/bydate/201710/evermanguidetobodybuilding1.jpeg" width="200px"></a>
+        <a href="#"><img src="https://www.govloop.com/wp-content/uploads/2015/07/minions.png" width="200px"></a>
+
+    </div>
+
+    <div id="count"></div>
+    <script>
+        let count = document.querySelector('#count');
+
+        function randomElement(array) {
+            let index = Math.floor(Math.random()* array.length); // creates the random website
+            return array[index]
+        }
+
+        let websites = ['https://www.cheese.com/', 'www.minionsmovie.com/minions.html', 'https://www.bodybuilding.com/', 'https://homestarrunner.com/', 'https://www.stitchfix.com/', 'https://www.google.com/']
+
+        let imgs = document.querySelectorAll('img');  // loops through the images
+        for (let i=0; i<imgs.length; ++i) {
+            imgs[i].onclick = function () {
+                let c = 5
+                setInterval(function() {
+                    c -= 1
+                    count.innerText = c
+                    if (c === 0) {
+                        window.location = randomElement(websites)
+                    }
+                }, 1000)
+            }
+        }
+
+
+
+        // create random website function
+        // loop through images so when you click on them it calls the random website function
+        // add countdown after you click an image, it waits and redirects to the random website
+        // place countdown on website
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>
