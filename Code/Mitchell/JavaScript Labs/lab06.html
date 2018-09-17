@@ -3,15 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Clock</title>
+    <style>
+    	.clockNode {
+    		display: flex;
+    		flex-direction: row;
+    		text-indent: 2em;
+    	}
+	</style>
 </head>
 <body>
-	<p>Current Time:</p>
-	<p id="time"></p>
+	<div class="clockNode">Current Time:
+		<div id="time"></div>
+	</div>
+	<hr>
+	<div class="clockNode">Stop Watch:
+		<div id="currentTime"></div>
+		<button id="startButton">Start</button>
+		<button id="lapButton">Lap</button>
+	</div>
+	<div class="clockNode">
+		<ul id="lapList"></ul>
+	</div>
 	<script>
-		var myVar = setInterval(myTimer, 0000);
-		function myTimer() {
-    		var d = new Date();
-    		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+		setInterval(function() {
+    		let d = new Date();
+    		document.querySelector("#time").innerHTML = d.toLocaleTimeString();
+		}, 50);
+		// Function that returns the stop watch time in the H:M:S format
+		function getStopWatchString(stopWatchTime)
+			{return stopWatchTime.getHours() + ":" + stopWatchTime.getMinutes() + ":" + stopWatchTime.getSeconds()}
+		// Variables used for stopwatch
+		let stopWatch = document.querySelector("#currentTime")
+		let startButton = document.querySelector("#startButton")
+		let stopWatchTime = new Date()
+		stopWatchTime.setHours(0,0,0,0)
+		stopWatch.innerHTML = getStopWatchString(stopWatchTime)
+		// Codeused to start and stop stopwatch
+		startButton.onclick = function() {
+			// Press Start button to start running clock
+			if (startButton.innerText === 'Start') {
+				startButton.innerText = 'Stop'
+				// setinterval
+				setInterval(function() {
+					// update stopWatchTime using getSeconds setSeconds
+					stopWatchTime.setSeconds(stopWatchTime.getSeconds() + 1)
+					stopWatch.innerHTML = getStopWatchString(stopWatchTime)
+				}, 1000)
+			}
+			// Press stop to clear clock back to zero
+			else {
+				// clear back to zero and change button to start
+				stopWatchTime.setHours(0,0,0,0)
+				startButton.innerText = 'Start'
+				stopWatch.innerHTML = getStopWatchString(stopWatchTime)
+			}
+		}
+		// Code used by stopwatch to keep track of lap time
+		let laps = document.querySelector("#lapList")
+		let lapNum = 1
+		lapButton.onclick = function() {
+			// whenever lap is clicked, an item is added to lapList with the time at the moment
+			let li = document.createElement("li")
+			li.appendChild(document.createTextNode(lapNum + ".) " + getStopWatchString(stopWatchTime)))
+			lapList.appendChild(li)
+			lapNum++
 		}
 	</script>
 </body>
