@@ -7,23 +7,30 @@
     	.clockNode {
     		display: flex;
     		flex-direction: row;
-    		text-indent: 2em;
     	}
 	</style>
 </head>
 <body>
-	<div class="clockNode">Current Time:
-		<div id="time"></div>
-	</div>
+	<h2>Clock, Watch and Timer</h2>
 	<hr>
-	<div class="clockNode">Stop Watch:
-		<div id="currentTime"></div>
-		<button id="startButton">Start</button>
-		<button id="lapButton">Lap</button>
-	</div>
-	<div class="clockNode">
-		<ul id="lapList"></ul>
-	</div>
+	<div class="clockNode">Current Time:</div>
+	<div id="time"></div>
+	<hr>
+	<div class="clockNode">Stop Watch:</div>
+	<button id="startButton">Start</button>
+	<button id="lapButton">Lap</button>
+	<div id="currentTime"></div>
+	<ul id="lapList"></ul>
+	<hr>
+	<div class="clockNode">Timer:</div>
+	<input type="number" id="timerAmount">
+	<select id="time_units_ddl">
+		<option value="seconds">seconds</option>
+		<option value="minutes">minutes</option>
+		<option value="hours">hours</option>
+	</select>
+	<button id="timerButton">Set</button>
+	<hr>
 	<script>
 		setInterval(function() {
     		let d = new Date();
@@ -64,9 +71,23 @@
 		lapButton.onclick = function() {
 			// whenever lap is clicked, an item is added to lapList with the time at the moment
 			let li = document.createElement("li")
-			li.appendChild(document.createTextNode(lapNum + ".) " + getStopWatchString(stopWatchTime)))
+			li.appendChild(document.createTextNode("Lap " + lapNum + ".) " + getStopWatchString(stopWatchTime)))
 			lapList.appendChild(li)
 			lapNum++
+		}
+
+		// Code used to set and activate timer
+		let timerAmount = document.querySelector("#timerAmount")
+		let timerButton = document.querySelector("#timerButton")
+		let time_units_ddl = document.querySelector('#time_units_ddl')
+		timerButton.onclick = function() {
+			let units = time_units_ddl.options[time_units_ddl.selectedIndex].value
+			if (units === "seconds")
+				//{setTimeout(alert("Time's up"), timerAmount)}
+			else if (units === "minutes")
+				//{setTimeout(alert("Time's up"), timerAmount)}
+			else if (units === "hours")
+				//{setTimeout(alert("Time's up"), timerAmount)}
 		}
 	</script>
 </body>
