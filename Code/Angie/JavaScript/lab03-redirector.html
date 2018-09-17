@@ -16,6 +16,11 @@
             justify-content: space-evenly;
         }
 
+        #count {
+
+            font-size:5em;
+        }
+
     </style>
 
 </head>
@@ -28,42 +33,40 @@
         <a href="#"><img src="https://assets.rockpapershotgun.com/images//2018/02/homestar-1-620x320.jpg/RPSS/resize/760x-1/format/jpg/quality/70" width="200px"></a>
         <a href="#"><img src="https://cdn2.omidoo.com/sites/default/files/imagecache/full_width/images/bydate/201710/evermanguidetobodybuilding1.jpeg" width="200px"></a>
         <a href="#"><img src="https://www.govloop.com/wp-content/uploads/2015/07/minions.png" width="200px"></a>
-        <div class="count"></div>
-
 
     </div>
+
+    <div id="count"></div>
     <script>
         let count = document.querySelector('#count');
-        let c = 5
+
         function randomElement(array) {
-                let re = Math.floor(Math.random()* websites.length);
-                return array[re];
-            }
+            let index = Math.floor(Math.random()* array.length); // creates the random website
+            return array[index]
+        }
 
         let websites = ['https://www.cheese.com/', 'www.minionsmovie.com/minions.html', 'https://www.bodybuilding.com/', 'https://homestarrunner.com/', 'https://www.stitchfix.com/', 'https://www.google.com/']
 
-        let imgs = document.querySelectorAll('img');
-        for (i=0; i <imgs.length; ++i) {
-            imgs.onclick = function () {
-                imgs.onclick = randomElement(re)
-                if (c === 5) {
-                    count.innerText = c
+        let imgs = document.querySelectorAll('img');  // loops through the images
+        for (let i=0; i<imgs.length; ++i) {
+            imgs[i].onclick = function () {
+                let c = 5
+                setInterval(function() {
                     c -= 1
-                }
-
-
+                    count.innerText = c
+                    if (c === 0) {
+                        window.location = randomElement(websites)
+                    }
+                }, 1000)
             }
+        }
 
-        }
-        imgs.onclick = function() {
-            let re = randomElement(websites);
-            document.querySelector('#count').innerText = c
-        }
-        // console.log(imgs)
-        // img.onclick = function () {
-        //
-        //
-        // }
+
+
+        // create random website function
+        // loop through images so when you click on them it calls the random website function
+        // add countdown after you click an image, it waits and redirects to the random website
+        // place countdown on website
 
 
 
