@@ -14,16 +14,24 @@
     </div>
 
     <script>
-    let time = setInterval(myTimer, 1000);
+    setInterval(myTimer, 1000);
     let stopwatch = document.getElementById('stopwatch');
+    let spot = document.getElementById('spot');
+
     function myTimer() {
         let d = new Date();
         document.getElementById("clock").innerHTML = d.toLocaleTimeString();
     }
-    stopwatch.onclick = function(){
-        let d = new Date();
-        document.getElementById('spot').innerText = d.time
+
+    stopwatch.onclick = function () {
+        start = new Date()
+
     }
+
+
+
+
+
 
     </script>
 </body>

@@ -76,22 +76,22 @@
 			// if ball hits right wall
 			if (ball.px + ball.radius > cnv.width) {
 				ball.px = cnv.width - ball.radius
-				ball.vx = ball.vx * -1 * 0.8
+				ball.vx = ball.vx * -1 * 0.6
 			}
 			// if ball hits left wall
 			else if (ball.px - ball.radius < 0) {
 				ball.px = 0 + ball.radius
-				ball.vx = ball.vx * -1 * 0.8
+				ball.vx = ball.vx * -1 * 0.6
 			}
 			// if ball hits bottom wall
 			else if (ball.py + ball.radius > cnv.height) {
 				ball.py = cnv.height - ball.radius
-				ball.vy = ball.vy * -1 * 0.8
+				ball.vy = ball.vy * -1 * 0.6
 			}
 			// if ball hits top wall
 			else if (ball.py - ball.radius < 0) {
 				ball.py = 0 + ball.radius
-				ball.vy = ball.vy * -1 * 0.8
+				ball.vy = ball.vy * -1 * 0.6
 			}
 		}
 		// Draws the ball with shading and light
