@@ -26,8 +26,9 @@
         	methods: {
         		letter_clicked(letter) {
         			//alert(letter)
-        			this.onclick = function() {
-        				// loop through word see if letter is in it, if it is set show to true
+        			for (let i="0"; i<data.word.length; i++) {
+        				if (letter === data.word[i])
+        					{data.word.shown = true}
         			}
         		}
         	},
@@ -35,14 +36,12 @@
 		        // Load words from GitHub and save in words[]
 		        let url = 'https://raw.githubusercontent.com/PdxCodeGuild/class_platypus/0a62e5c4e806f830e37e130fba947b7c7415630b/Code/Angie/Python/english.txt'
 		        let words = []
-		        let testDiv = document.querySelector("#testDiv")
 		        let app = this
 		        axios.get(url).then(function (response) {
 		            words = response.data.split('\n')
 		            app.word = words[Math.floor(Math.random() * words.length)]
 		            for (let i=0; i<app.word.length; i++) {
 		            	app.secret.push({letter: app.word[i], shown: false})
-
 		            }
 		        })
         	}
