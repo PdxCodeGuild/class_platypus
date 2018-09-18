@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hang Man</title>
+    <!-- Vue CND -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script type="text/javascript"></script>
+</head>
+<body>
+	<div id="app">
+		{{message}}
+	  <button v-for="char in alphabet" v-on:click="letter_clicked(char)">{{char}}</button>
+	</div>
+    <script>
+        // Load words from GitHub and save in words[]
+        let url = 'https://raw.githubusercontent.com/PdxCodeGuild/class_platypus/0a62e5c4e806f830e37e130fba947b7c7415630b/Code/Angie/Python/english.txt'
+        let words = []
+        let testDiv = document.querySelector("#testDiv")
+        axios.get(url).then(function (response) {
+            words.push(response.data)
+        })
+        // Creates vue app containing all letter buttons
+        new Vue({
+        	el: '#app',
+        	data: {
+        		alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        	},
+        	// Function called when letter is guessed
+        	methods: {
+        		letter_clicked(letter) {
+        			alert(letter)
+        		}
+        	}
+        })
+    </script>
+</body>
+</html>
