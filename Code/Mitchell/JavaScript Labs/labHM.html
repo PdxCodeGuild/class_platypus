@@ -6,12 +6,18 @@
     <!-- Vue CND -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
-	<div id="app">
-		{{guesses}} {{counter}} {{word}}
-	 	<span v-for="letter in secret">{{ letter.shown? letter.letter: '_' }} </span>
-		<button v-for="char in alphabet" v-on:click="letter_clicked(char)" :disabled="guesses.indexOf(char)!=-1">{{char}}</button>
+	<div id="mainDiv" class="container">
+		<div id="app">
+		<h1>Hang Man!</h1>
+		<div class="col s4"> Number of Guesses: <h4>{{counter}}</h4></div>
+		 	<span v-for="letter in secret">{{ letter.shown? letter.letter: '_' }} </span>
+			<button v-for="char in alphabet" v-on:click="letter_clicked(char)" :disabled="guesses.indexOf(char)!=-1">{{char}}</button>
+			<div class="col s4"> Guessed Letters: {{guesses}}</div>
+		</div>
 	</div>
     <script>
         // Creates vue app containing all letter buttons
@@ -21,7 +27,7 @@
         		alphabet: 'abcdefghijklmnopqrstuvwxyz',
         		word: '',
         		secret: [],
-        		guesses: [],
+        		guesses: '',
         		counter: 5,
         	},
         	// Function called when letter is guessed
@@ -30,7 +36,7 @@
         		check_win() {
         			for (let i=0; i<this.secret.length; i++) {
         				// returns false if their is still a blank
-        				if (this.secret[i].shown === false)
+        				if (this.secret[i].shown === false) 
         					{return false}
         			}
         			// returns true if player won and all letters shown
@@ -38,7 +44,7 @@
         		},
         		// Code called each time the player presses a button to guess
         		letter_clicked(letter) {
-        			this.guesses.push(letter)
+        			this.guesses = this.guesses + letter + ', ' 
         			let found = false
         			for (let i=0; i<this.secret.length; i++) {
         				// if guessed letter is in word show it
@@ -77,5 +83,7 @@
         	}
         })
     </script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
