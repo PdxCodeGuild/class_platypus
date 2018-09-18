@@ -47,13 +47,10 @@
         					found = true
         				}
         			}
-
-        			//WIN condition
-     				if (check_win()) {
+        			// Checks if the player has won
+     				if (this.check_win()) {
      					alert("you win")
      				}
-     				//WIN condition
-
         			// If end of word is reached ad no letter found, add it to guessed and add a limb
         			if (!found) {
         				this.counter--
