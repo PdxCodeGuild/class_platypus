@@ -9,7 +9,8 @@
 </head>
 <body>
 	<div id="app">
-	 	 {{ secret }}: {{ letter }}
+		{{word}}
+	 	<span v-for="letter in secret">{{ letter.shown? letter.letter: '_' }} </span>
 		<button v-for="char in alphabet" v-on:click="letter_clicked(char)">{{char}}</button>
 	</div>
     <script>
@@ -24,7 +25,10 @@
         	// Function called when letter is guessed
         	methods: {
         		letter_clicked(letter) {
-        			alert(letter)
+        			//alert(letter)
+        			this.onclick = function() {
+        				// loop through word see if letter is in it, if it is set show to true
+        			}
         		}
         	},
         	created: function() {
