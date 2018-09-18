@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman</title>
+    <style>
+        body {
+      background: #1791E8;
+      font-family:"sans-serif";
+      color: white;
+      height:100%;
+      text-align:center;
+      font-size:18px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    }
+    #alphabet li {
+      text-align: center;
+    }
+    #my-word {
+      margin: 0;
+      display: block;
+      padding: 0;
+      display: block;
+    }
+    #my-word li {
+      list-style: none;
+      margin: 0;
+      display: inline-block;
+      padding: 0 10px;
+      font-size:16px;
+    }
+    #mylives{
+      font-size:16px;
+      text-align:center;
+      display:block;
+    }
+    button{
+      background: #1791E8;
+      color: white;
+      border: solid 1px white;
+      text-decoration:none;
+      font-size: 12px;
+      padding:18px 10px;
+      width:180px;
+      margin: 10px;
+        &:hover{
+          background:white;
+          border: solid 1px white;
+          color: #1791E8;
+    }
+</style>
+</head>
+<body>
+    <h1>Hangman!</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script>
+
+        // make alphabet list
+        let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+        'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+        't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+
+        // <!--this will point to word list NEED to do a .split-->
+        let url = 'https://raw.githubusercontent.com/PdxCodeGuild/class_platypus/0a62e5c4e806f830e37e130fba947b7c7415630b/Code/Angie/Python/english.txt'
+        axios.get(url).then(function (response) {
+            // handle success
+            console.log(response.data)
+        }
+        // this points to random word chosen
+        var res = str.split(" ");
+        var words = ['url'];
+        var words = words[Math.floor(Math.random() * words.length)];
+
+
+
+//        board needs to point to _ (underscore)
+        var answerArray = [];
+        for (var i = 0; i < word.length; i++) {
+        answerArray[i] = "_";
+    }
+
+
+
+//        make alphabet ul
+        var buttons = function () {
+            myButtons = document.getElementById('buttons');
+            letters = document.createElement('ul');
+            for (var i = 0; i < alphabet.length; i++) {
+            letters.id = 'alphabet';
+    }
+
+
+
+    //create list
+          list = document.createElement('li');
+          list.id = 'letter';
+          list.innerHTML = alphabet[i];
+          check();
+          myButtons.appendChild(letters);
+          letters.appendChild(list);
+    }
+         // Show lives left
+        comments = function () {
+        showLives.innerHTML = "You have " + lives + " lives";
+        if (lives < 1) {
+        showLives.innerHTML = "Game Over";
+    }
+        for (var i = 0; i < guesses.length; i++) {
+        if (counter + space === guesses.length) {
+        showLives.innerHTML = "You Won!";
+      }
+
+</script>
+</body>
+</html>
