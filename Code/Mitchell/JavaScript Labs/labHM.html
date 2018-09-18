@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="app">
-		{{guesses}} {{counter}}
+		{{guesses}} {{counter}} {{word}}
 	 	<span v-for="letter in secret">{{ letter.shown? letter.letter: '_' }} </span>
 		<button v-for="char in alphabet" v-on:click="letter_clicked(char)" :disabled="guesses.indexOf(char)!=-1">{{char}}</button>
 	</div>
@@ -26,6 +26,17 @@
         	},
         	// Function called when letter is guessed
         	methods: {
+        		// Loops over word and checks if all letters are guessed
+        		check_win() {
+        			for (let i=0; i<this.secret.length; i++) {
+        				// returns false if their is still a blank
+        				if (this.secret[i].shown === false)
+        					{return false}
+        			}
+        			// returns true if player won and all letters shown
+        			return true
+        		},
+        		// Code called each time the player presses a button to guess
         		letter_clicked(letter) {
         			this.guesses.push(letter)
         			let found = false
@@ -33,13 +44,13 @@
         				// if guessed letter is in word show it
         				if (letter === this.secret[i].letter) {
         					this.secret[i].shown = true
-        					//this.disabled = true
         					found = true
         				}
         			}
-        			// if end of word is reached ad no letter found, add it to guessed and add a limb
+        			// If end of word is reached ad no letter found, add it to guessed and add a limb
         			if (!found) {
         				this.counter--
+        				// if number of guesses remaining is zero or less, player loses
         				if (this.counter <= 0) {
         					alert("You lost")
         				}
@@ -52,6 +63,7 @@
 		        let words = []
 		        let app = this
 		        axios.get(url).then(function (response) {
+		            // Save input words to an array so it can be chosen from
 		            words = response.data.split('\n')
 		            app.word = words[Math.floor(Math.random() * words.length)]
 		            for (let i=0; i<app.word.length; i++) {
