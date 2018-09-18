@@ -2,45 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>hang Man</title>
+    <title>Hang Man</title>
     <!-- Vue CND -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 </head>
 <body>
-	<div id="blank">
-		{{word}}
-	</div>
 	<div id="app">
-		{{message}}
-	  <button v-for="char in alphabet" v-on:click="letter_clicked(char)">{{char}}</button>
+	 	 {{ secret }}: {{ letter }}
+		<button v-for="char in alphabet" v-on:click="letter_clicked(char)">{{char}}</button>
 	</div>
     <script>
-        // Load words from GitHub and save in words[]
-        let url = 'https://raw.githubusercontent.com/PdxCodeGuild/class_platypus/0a62e5c4e806f830e37e130fba947b7c7415630b/Code/Angie/Python/english.txt'
-        let words = []
-        let testDiv = document.querySelector("#testDiv")
-        axios.get(url).then(function (response) {
-            words.push(response.data)
-        })
-        let word = words[Math.floor(Math.random() * words.length)]
         // Creates vue app containing all letter buttons
         new Vue({
         	el: '#app',
         	data: {
-        		alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        		alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        		word: '',
+        		secret: []
         	},
         	// Function called when letter is guessed
         	methods: {
         		letter_clicked(letter) {
         			alert(letter)
         		}
-        	}
-        })
-        new Vue({
-        	el: '#blank',
-        	data: {
-        		word: word
+        	},
+        	created: function() {
+		        // Load words from GitHub and save in words[]
+		        let url = 'https://raw.githubusercontent.com/PdxCodeGuild/class_platypus/0a62e5c4e806f830e37e130fba947b7c7415630b/Code/Angie/Python/english.txt'
+		        let words = []
+		        let testDiv = document.querySelector("#testDiv")
+		        let app = this
+		        axios.get(url).then(function (response) {
+		            words = response.data.split('\n')
+		            app.word = words[Math.floor(Math.random() * words.length)]
+		            for (let i=0; i<app.word.length; i++) {
+		            	app.secret.push({letter: app.word[i], shown: false})
+
+		            }
+		        })
         	}
         })
     </script>
