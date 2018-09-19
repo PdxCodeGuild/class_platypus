@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Quote</title>
+    <div id="quote"></div>
+    <div id="author"></div>
+</head>
+<body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+
+    <script>
+        let qotd = document.querySelector('#quote')
+        let auth = document.querySelector('#author')
+
+
+        function getQuote() {
+
+            let url = 'https://favqs.com/api/qotd'
+            axios.get(url).then(function(response) {
+                console.log(response)
+                let getQuote_url = response.data.quote.body
+                console.log(getQuote_url)
+                qotd.innerText = getQuote_url
+                let author_url = response.data.quote.author
+                auth.innerText = author_url
+            })}
+            getQuote()
+        //setInterval(getQuote, 4000)
+
+
+    </script>
+</body>
+</html>
