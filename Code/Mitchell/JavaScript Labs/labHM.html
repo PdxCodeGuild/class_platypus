@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="app">
-		{{guesses}} {{counter}}
+		{{guesses}} {{counter}} {{word}}
 	 	<span v-for="letter in secret">{{ letter.shown? letter.letter: '_' }} </span>
 		<button v-for="char in alphabet" v-on:click="letter_clicked(char)" :disabled="guesses.indexOf(char)!=-1">{{char}}</button>
 	</div>
@@ -33,8 +33,7 @@
         				// if guessed letter is in word show it
         				if (letter === this.secret[i].letter) {
         					this.secret[i].shown = true
-        					//this.disabled = true
-        					found = true
+                            found = true
         				}
         			}
         			// if end of word is reached ad no letter found, add it to guessed and add a limb
