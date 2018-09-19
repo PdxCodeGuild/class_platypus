@@ -21,10 +21,10 @@
         let dx = 2;
         let dy = -2;
         function drawBall(){
-            ctx.beginPath();
-            ctx.arc(x, y, ballRadius, 0, Math.PI*2);
             ctx.fillstyle = '#ff0000';
             ctx.fill();
+            ctx.beginPath();
+            ctx.arc(x, y, ballRadius, 0, Math.PI*2);
             ctx.closePath();
         }
         function draw() {
