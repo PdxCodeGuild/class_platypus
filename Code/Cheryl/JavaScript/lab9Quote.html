@@ -1,0 +1,39 @@
+<!--finished part 1-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Quote Generator</title>
+    <style>
+        body {background-color: #069EB8; color: white; font-size: 2em; margin-top: 5em; }
+        div {margin: 1em 5em;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div id="author"></div>
+    <div id="quote"></div>
+
+    <script>
+        let author = document.querySelector('#author')
+        let quote = document.querySelector('#quote')
+        function getQuote() {
+
+            let url = 'https://favqs.com/api/qotd'
+
+            axios.get(url).then(function(response) {
+                let author_url = response.data.quote.author
+                author.innerText = author_url
+                let quote_url = response.data.quote.body
+                quote.innerText = quote_url
+            })
+        }
+
+        getQuote()
+        setInterval(getQuote, 8000)
+
+    </script>
+</body>
+</html>
