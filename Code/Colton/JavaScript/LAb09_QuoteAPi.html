@@ -5,25 +5,44 @@
     <title>Title</title>
     <style>
         body {
-            background-color:black;
+            background-image: url("https://images.pexels.com/photos/36478/amazing-beautiful-beauty-blue.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
 
         }
-        div {
-            margin: 0 auto;
+        #main{
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            min-width: fit-content;
+            max-width: 300px;
+            min-height: 100px;
+            max-height: fit-content;
+            border: 1px solid white;
             color: white;
-            ;
+            text-align: center;
+            background-color: grey;
+            opacity: .8;
+            }
+        #spot{padding-top: 20px;
 
         }
+        #a{
+            padding-top: 10px;
+        }
+
     </style>
 </head>
-<body>
-    <div id="spot"></div>
-    <div id="a"></div>
 
+<div id="main" class="container">
+    <i><div id="spot"></div></i>
+    <div id="a"></div>
+</div>
 
     <script>
         let spot = document.querySelector('#spot');
-        let a = document.querySelector('#a')
+        let a = document.querySelector('#a');
 
        function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
@@ -38,8 +57,8 @@
 }
 
         http_get("https://favqs.com/api/qotd", function(data) {;
-        spot.innerText = data.quote.body;
-        a.innerText = data.quote.author;
+        spot.innerText += data.quote.body ;
+        a.innerText += ' - ' + data.quote.author;
         console.log(data)
         });
 
