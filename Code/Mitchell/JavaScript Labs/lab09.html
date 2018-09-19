@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Random Quote</title>
+    <!-- Vue CND -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 </head>
 <body>
-$END$
+    <!-- Trying Out Vue -->
+    <ul id="quoteList">
+        <li v-for="quote in quotes">
+            "{{ quote.body }}"  -{{ quote.author }}
+        </li>
+    </ul>
+    <script type="text/javascript">
+        var quoteList = new Vue({
+            el: '#quoteList',
+            data: {
+                quotes: []
+            },
+            methods: {
+                getQuote() {
+                    let url = 'https://favqs.com/api/qotd'
+                    let app = this
+                    axios.get(url).then(function(response) {
+                        app.quotes.push({
+                            author: response.data.quote.author,
+                            body: response.data.quote.body
+                        })
+                    })
+                }
+            },
+            created: function() {
+                this.getQuote()
+            }
+        })
+    </script>
 </body>
 </html>
