@@ -36,7 +36,7 @@
         		check_win() {
         			for (let i=0; i<this.secret.length; i++) {
         				// returns false if their is still a blank
-        				if (this.secret[i].shown === false) 
+        				if (this.secret[i].shown === false)
         					{return false}
         			}
         			// returns true if player won and all letters shown
@@ -44,7 +44,7 @@
         		},
         		// Code called each time the player presses a button to guess
         		letter_clicked(letter) {
-        			this.guesses = this.guesses + letter + ', ' 
+        			this.guesses = this.guesses + letter + ', '
         			let found = false
         			for (let i=0; i<this.secret.length; i++) {
         				// if guessed letter is in word show it
