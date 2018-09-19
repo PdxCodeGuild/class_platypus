@@ -13,7 +13,7 @@
 <canvas id="myCanvas" width="500" height="500"></canvas>
 
     <script>
-        let ballRadius = 10;
+        let ballRadius = 5;
         let canvas = document.getElementById("myCanvas");
         let ctx = canvas.getContext("2d");
         let x = canvas.width/2;
@@ -33,9 +33,9 @@
             x += dx;
             y += dy;
             if(x + dx > canvas.width || x + dx < 0) {
-            dx = -dx;}
+                dx = -dx;}
             if(y + dy > canvas.height || y + dy < 0) {
-            dy = -dy; }
+                dy = -dy; }
 
         }
         setInterval(draw, 10);
