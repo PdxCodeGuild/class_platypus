@@ -15,11 +15,6 @@
         h3 {
             text-shadow: 3px 3px #009688;
         }
-        footer {
-            position: fixed;
-            bottom: 5px;
-            width: 100%;
-        }
         #rock_bt {
             background-color: #ff8f00;
             color: black;
@@ -32,61 +27,141 @@
             background-color: #009688;
             color: black;
         }
+        #scoreBox {
+            display:flex;
+            flex-direction:row;
+            text-align: left;
+        }
+        #wins {
+            padding-left: 8%;
+        }
+        #loses {
+            padding-left: 65%;
+        }
+        #winScore {
+            padding-left: 1%;
+            color: #f0f4c3;
+            text-shadow: 2px 2px #009688;
+        }
+        #loseScore {
+            padding-left: 1%;
+            color: #f0f4c3;
+            text-shadow: 2px 2px #009688;
+        }
+        footer {
+            position: fixed;
+            bottom: 5px;
+            width: 100%;
+            text-shadow: 1px 1px #f0f4c3;
+        }
     </style>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.3.9/Tone.min.js"></script>
+    <script src="sounds.js" type="text/javascript"></script>
 </head>
 <body>
     <h3>Rock, Paper, Scissors: Battle Royale</h3>
-    <a class="waves-effect waves-light btn-large" id="rock_bt">🗻Rock🗻</a>
-    <a class="waves-effect waves-light btn-large" id="paper_bt">📄Paper📄</a>
-    <a class="waves-effect waves-light btn-large" id="scissors_bt">✂️Scissors✂️</a>
+    <a class="waves-effect waves-light btn" id="rock_bt">🗻Rock🗻</a>
+    <a class="waves-effect waves-light btn" id="paper_bt">📄Paper📄</a>
+    <a class="waves-effect waves-light btn" id="scissors_bt">✂️Scissors✂️</a>
+    <div id="scoreBox">
+        <h5 id="wins">Wins: </h5><h5 id="winScore"></h5>
+        <h5 id="loses">Loses: </h5><h5 id="loseScore"></h5>
+    </div>
     <footer><h5 id="output_div"></h5></footer>
     <br>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript">
-        //create a synth and connect it to the master output (your speakers)
+        // Uses Tone.js to get sounds to play after turns
         let synth = new Tone.Synth().toMaster()
+        // Used to make melodies for diffrent outcomes
+        function playMelody(notes) {
+            let note_counter = 0
+            let interval = setInterval(function() {
+                if (note_counter < notes.length) {
+                    synth.triggerAttackRelease(notes[note_counter], '8n')
+                } else {
+                    clearInterval(interval)
+                }
+                note_counter += 1
+            }, 500)
+        }
+        // Used to keep track of and display wins & loses
+        let winCounter = 0
+        let loseCounter = 0
+        let winScore = document.querySelector('#winScore')
+        let loseScore = document.querySelector('#loseScore')
+        winScore.innerText = winCounter
+        loseScore.innerText = loseCounter
+        // All option's outcomes with coresponding actions
         let options = ["rock", "paper", "scissors"]
         rock_bt.onclick = function() {
             let cpu_choice = options[Math.floor(Math.random() * options.length)]
+            // Player picks rock computer picks paper (player wins)
             if (cpu_choice === "paper") {
                 output_div.innerText = "You chose rock and the computer chose paper, paper covers rock so you lose!"
-                //play tone for specific outcome
-                synth.triggerAttackRelease('B2', '4n')
+                loseCounter++
+                loseScore.innerText = loseCounter
+                playMelody(['B4', 'C4', 'B4'])
             }
+            // Player picks rock computer picks scissors (computer wins)
             else if (cpu_choice === "scissors") {
                 output_div.innerText = "You chose rock and the computer chose scissors, rock smashes scissors so you win!"
+                winCounter++
+                winScore.innerText = winCounter
+                playMelody(['G4', 'G4', 'G4'])
             }
+            // Player picks rock computer picks rock (tie)
             else {
                 output_div.innerText = "You chose rock and the computer chose rock, so it is a tie!"
+                synth.triggerAttackRelease('B2', '4n')
             }
         }
         paper_bt.onclick = function() {
             let cpu_choice = options[Math.floor(Math.random() * options.length)]
+            // Player picks paper computer picks scissors (player wins)
             if (cpu_choice === "scissors") {
                 output_div.innerText = "You chose paper and the computer chose scissors, scissors cuts paper so you lose!"
+                loseCounter++
+                loseScore.innerText = loseCounter
+                playMelody(['C6', 'C4'])
             }
+            // Player picks paper computer picks rock (computer wins)
             else if (cpu_choice === "rock") {
                 output_div.innerText = "You chose paper and the computer chose rock, paper covers rock so you win!"
+                winCounter++
+                winScore.innerText = winCounter
+                playMelody(['A4', 'B4', 'A4'])
             }
+            // Player picks paper computer picks pape (tie)
             else {
                 output_div.innerText = "You chose paper and the computer chose paper, so it is a tie!"
+                synth.triggerAttackRelease('B2', '4n')
             }
         }
         scissors_bt.onclick = function() {
             let cpu_choice = options[Math.floor(Math.random() * options.length)];
+            // Player picks scissors computer picks rock (player wins)
             if (cpu_choice === "rock") {
                 output_div.innerText = "You chose scissors and the computer chose rock, rock smashes scissors so you lose!"
+                loseCounter++
+                loseScore.innerText = loseCounter
+                playMelody(['C4', 'C4', 'C4'])
             }
+            // Player picks scissors computer picks paper (computer wins)
             else if (cpu_choice === "paper") {
                 output_div.innerText = "You chose scissors and the computer chose paper, scissors cut paper so you win!"
+                winCounter++
+                winScore.innerText = winCounter
+                playMelody(['A4', 'A6'])
             }
+            // Player picks scissors computer picks scissors (tie)
             else {
                 output_div.innerText = "You chose scissors and the computer chose scissors, so it is a tie!"
+                synth.triggerAttackRelease('B2', '4n')
             }
         }
     </script>
