@@ -1,13 +1,20 @@
-alert('test1')
+const addItemInput = document.querySelector('input.addItemInput')
+const addItemButton = document.querySelector('button.addItemButton')
+const removeItemInput = document.querySelector('input.removeItemInput')
+const removeItemButton = document.querySelector('button.removeItemButton')
+const strikeItemInput = document.querySelector('input.strikeItemInput')
+const strikeItemButton = document.querySelector('button.strikeItemButton')
 
+addItemButton.addEventListener('click', () => {
+  let ul = document.getElementsByTagName('ul')[0];
+  let li = document.createElement('li');
+  li.textContent = addItemInput.value;
+  ul.appendChild(li);
+  addItemInput.value = '';
+})
 
-addItem = 'yes'
-if (addItem === 'yes'){
-    let userList = prompt('What item would you like to add? ')
-    userList.push(prompt('What other item would you like to add? '))
-    document.write('test4')
-}
-alert('test2')
-
-alert('test3')
-document.write(groceryList)
+removeItemButton.addEventListener('click', () => {
+  let ul = document.getElementsByTagName('ul')[0];
+  let li = document.querySelector('li:last-child');
+  ul.removeChild(li);
+})
