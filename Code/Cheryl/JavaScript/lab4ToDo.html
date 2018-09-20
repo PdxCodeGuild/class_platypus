@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>To Do List</title>
-    <script src="lab4.js">
 
+    <style>
+        div {
+            margin: 1em;
+            text-align: center;
+        }
 
-    </script>
+    </style>
 </head>
 <body>
 <div>
-    <h1>To Do List:</h1>
-    <p id="list"> </p>
+    <h1 id="myHeading">To Do List:</h1>
+
+  <p class='addBtn'>
+    <input type='text' class='addItemInput'>
+    <button class="addItemButton">Add Item</button>
+<input type='text' class='strikeItemInput'>
+    <button class="strikeItemButton">Choose a number to cross off</button>
+    <button class="removeItemButton">Remove Last Item</button>
+    <ol> </ol>
+  </p>
 
 </div>
+
+<script src="lab4.js"></script>
 </body>
 </html>

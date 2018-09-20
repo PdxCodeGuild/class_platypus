@@ -2,33 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rock, Paper, Scissors</title>
+    <title>Rock, Paper, Scissors: BR</title>
+    <style>
+        body {
+            color: #ff8f00;
+            font-family: 'Acme', sans-serif;
+            text-align: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("https://acculturated.com/wp-content/uploads/2015/12/0-40-paper-scissors-rock-logos.jpg");
+        }
+        h3 {
+            text-shadow: 3px 3px #009688;
+        }
+        footer {
+            position: fixed;
+            bottom: 5px;
+            width: 100%;
+        }
+        #rock_bt {
+            background-color: #ff8f00;
+            color: black;
+        }
+        #paper_bt {
+            background-color: #f0f4c3;
+            color: black;
+        }
+        #scissors_bt {
+            background-color: #009688;
+            color: black;
+        }
+    </style>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.3.9/Tone.min.js"></script>
 </head>
 <body>
-    <h1>To play rock, paper, scissors, press the button that coincides with your choice:</h1>
-    <button id="rock_bt">Rock</button>
-    <button id="paper_bt">Paper</button>
-    <button id="scissors_bt">Scissors</button>
-    <div id="output_div"></div>
+    <h3>Rock, Paper, Scissors: Battle Royale</h3>
+    <a class="waves-effect waves-light btn-large" id="rock_bt">🗻Rock🗻</a>
+    <a class="waves-effect waves-light btn-large" id="paper_bt">📄Paper📄</a>
+    <a class="waves-effect waves-light btn-large" id="scissors_bt">✂️Scissors✂️</a>
+    <footer><h5 id="output_div"></h5></footer>
+    <br>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript">
-        let options = ["rock", "paper", "scissors"];
+        //create a synth and connect it to the master output (your speakers)
+        let synth = new Tone.Synth().toMaster()
+        let options = ["rock", "paper", "scissors"]
         rock_bt.onclick = function() {
-            let cpu_choice = options[Math.floor(Math.random() * options.length)];
-            if (cpu_choice === "paper") {output_div.innerText = "You chose rock and the computer chose paper, paper covers rock so you lose!";}
-            else if (cpu_choice === "scissors") {output_div.innerText = "You chose rock and the computer chose scissors, rock smashes scissors so you win!";}
-            else {output_div.innerText = "You chose rock and the computer chose rock, so it is a tie!";}
+            let cpu_choice = options[Math.floor(Math.random() * options.length)]
+            if (cpu_choice === "paper") {
+                output_div.innerText = "You chose rock and the computer chose paper, paper covers rock so you lose!"
+                //play tone for specific outcome
+                synth.triggerAttackRelease('B2', '4n')
+            }
+            else if (cpu_choice === "scissors") {
+                output_div.innerText = "You chose rock and the computer chose scissors, rock smashes scissors so you win!"
+            }
+            else {
+                output_div.innerText = "You chose rock and the computer chose rock, so it is a tie!"
+            }
         }
         paper_bt.onclick = function() {
-            let cpu_choice = options[Math.floor(Math.random() * options.length)];
-            if (cpu_choice === "scissors") {output_div.innerText = "You chose paper and the computer chose scissors, scissors cuts paper so you lose!";}
-            else if (cpu_choice === "rock") {output_div.innerText = "You chose paper and the computer chose rock, paper covers rock so you win!";}
-            else {output_div.innerText = "You chose paper and the computer chose paper, so it is a tie!";}
+            let cpu_choice = options[Math.floor(Math.random() * options.length)]
+            if (cpu_choice === "scissors") {
+                output_div.innerText = "You chose paper and the computer chose scissors, scissors cuts paper so you lose!"
+            }
+            else if (cpu_choice === "rock") {
+                output_div.innerText = "You chose paper and the computer chose rock, paper covers rock so you win!"
+            }
+            else {
+                output_div.innerText = "You chose paper and the computer chose paper, so it is a tie!"
+            }
         }
         scissors_bt.onclick = function() {
             let cpu_choice = options[Math.floor(Math.random() * options.length)];
-            if (cpu_choice === "rock") {output_div.innerText = "You chose scissors and the computer chose rock, rock smashes scissors so you lose!";}
-            else if (cpu_choice === "paper") {output_div.innerText = "You chose scissors and the computer chose paper, scissors cut paper so you win!";}
-            else {output_div.innerText = "You chose scissors and the computer chose scissors, so it is a tie!";}
+            if (cpu_choice === "rock") {
+                output_div.innerText = "You chose scissors and the computer chose rock, rock smashes scissors so you lose!"
+            }
+            else if (cpu_choice === "paper") {
+                output_div.innerText = "You chose scissors and the computer chose paper, scissors cut paper so you win!"
+            }
+            else {
+                output_div.innerText = "You chose scissors and the computer chose scissors, so it is a tie!"
+            }
         }
     </script>
 </body>
