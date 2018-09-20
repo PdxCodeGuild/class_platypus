@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Quote Me!</title>
     <style>
         body {
             background-image: url("https://images.pexels.com/photos/36478/amazing-beautiful-beauty-blue.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
 
         }
-        #main{
+
+        #main {
             position: absolute;
-            top:0;
+            top: 0;
             bottom: 0;
             left: 0;
             right: 0;
@@ -24,11 +25,14 @@
             text-align: center;
             background-color: grey;
             opacity: .8;
-            }
-        #spot{padding-top: 20px;
+        }
+
+        #spot {
+            padding-top: 20px;
 
         }
-        #a{
+
+        #a {
             padding-top: 10px;
         }
 
@@ -36,33 +40,42 @@
 </head>
 
 <div id="main" class="container">
-    <i><div id="spot"></div></i>
+    <i>
+        <div id="spot"></div>
+    </i>
     <div id="a"></div>
+    <button id="get">Get new Quote</button>
 </div>
 
-    <script>
-        let spot = document.querySelector('#spot');
-        let a = document.querySelector('#a');
+<script>
+    let spot = document.querySelector('#spot');
+    let a = document.querySelector('#a');
 
-       function http_get(url, success) {
+    function http_get(url, success) {
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 1) {
+                xhttp.setRequestHeader('Authorization', 'Token token="<api key here>"')
+            } else if (this.readyState === 4 && this.status === 200) {
                 let data = JSON.parse(xhttp.responseText);
                 success(data);
-             }
-                };
-            xhttp.open("GET", url);
-            xhttp.send();
-}
+            } else if (this.readyState === 4 && this.status === 404) {
+                // handle 404
+            }
+        };
+        xhttp.open("GET", url);
+        xhttp.send();
+    }
 
-        http_get("https://favqs.com/api/qotd", function(data) {;
-        spot.innerText += data.quote.body ;
+
+     http_get("https://favqs.com/api/qotd", function (data) {
+        spot.innerText += data.quote.body;
         a.innerText += ' - ' + data.quote.author;
-        console.log(data)
-        });
+    });
 
 
-    </script>
+
+
+</script>
 </body>
 </html>
