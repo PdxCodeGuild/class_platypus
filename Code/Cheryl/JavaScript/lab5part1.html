@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Redirector</title>
+    <style>
+        body {
+            background-color: #670022;
+            color: lightgoldenrodyellow;
+            font-family: 'Helvetica Neue', arial;
+        }
+        div {
+            margin: 1em;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Click on the button for a random knitting website!</h1>
+    <button id="btn">Knitting Site</button>
+    <div id="output"></div>
+    <script>
+
+        let btn = document.querySelector('#btn');
+        let output = document.querySelector('#output');
+
+        btn.onclick = function() {
+            let site = ['https://www.ravelry.com/', 'http://omakoppa.blogspot.com/', 'https://www.mamainastitch.com/', 'https://theyarnmission.com/category/social_justice/']
+            let randomSite = site[Math.floor(Math.random() * site.length)];
+
+            let c = 5
+            setInterval(function () {
+                output.innerText = c
+                c -= 1
+                if (c === 0) {
+                    window.location = randomSite
+                }
+            }, 1000)
+
+        }
+
+
+
+    </script>
+</div>
+
+</body>
+</html>
