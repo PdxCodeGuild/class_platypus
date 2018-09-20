@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+    <style>
+        body {
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+
+
+    <script>
+       setInterval(function() {
+           let today = new Date()
+           let h = today.getHours();
+           let m = today.getMinutes();
+           let s = today.getSeconds();
+           m = checkTime(m);
+           s = checkTime(s);
+           document.querySelector('#clock').innerHTML =
+           h + ":" + m + ":" + s;
+       }, 1000)
+
+       function checkTime(i) {
+           if (i < 10) {i = "0" + i};
+           return i;
+       }
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <!--Materialize CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <!--Vue CND-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="cards">
+        <ol>
+            <li v-for="todo in todos">
+                <img :src="todo.pic"/>
+            </li>
+        </ol>
+    </div>
+    <script>
+        var cards = new Vue({
+        el: '#cards',
+        data: {
+            todos: [
+                {name:'Mario (Wedding) amiibo', pic:'https://images.multiplayer.com/thumbs/88/2b/product.product-image-407713-600x0-q85.jpg', info:'here is info on mario'},
+                {name:'Peach (Wedding) amiibo', pic:'https://http2.mlstatic.com/amiibo-super-mario-odyssey-princesa-peach-switch-wii-u-3ds-D_NQ_NP_972974-MLB26442110836_112017-F.jpg', info:'here is info on peach'},
+                {name:'Bowser (Wedding) amiibo', pic:'https://www.gamesmen.com.au/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/u/super_mario_odyssey_col_-_bowser_wedding_outfit_amiibo_2_.jpg', info:'some info on Bowser'}
+            ]
+        }
+        })
+    </script>
+</body>
+</html>

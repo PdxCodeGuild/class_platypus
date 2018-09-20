@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hang Man</title>
+    <!-- Vue CND -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+	<div id="mainDiv" class="container">
+		<div id="app">
+		<h1>Hang Man!</h1>
+		<div class="col s4"> Number of Guesses: <h4>{{counter}}</h4></div>
+		 	<span v-for="letter in secret">{{ letter.shown? letter.letter: '_' }} </span>
+			<button v-for="char in alphabet" v-on:click="letter_clicked(char)" :disabled="guesses.indexOf(char)!=-1">{{char}}</button>
+			<div class="col s4"> Guessed Letters: {{guesses}}</div>
+		</div>
+	</div>
+    <script>
+        // Creates vue app containing all letter buttons
+        new Vue({
+        	el: '#app',
+        	data: {
+        		alphabet: 'abcdefghijklmnopqrstuvwxyz',
+        		word: '',
+        		secret: [],
+        		guesses: '',
+        		counter: 5,
+        	},
+        	// Function called when letter is guessed
+        	methods: {
+        		// Loops over word and checks if all letters are guessed
+        		check_win() {
+        			for (let i=0; i<this.secret.length; i++) {
+        				// returns false if their is still a blank
+        				if (this.secret[i].shown === false)
+        					{return false}
+        			}
+        			// returns true if player won and all letters shown
+        			return true
+        		},
+        		// Code called each time the player presses a button to guess
+        		letter_clicked(letter) {
+        			this.guesses = this.guesses + letter + ', '
+        			let found = false
+        			for (let i=0; i<this.secret.length; i++) {
+        				// if guessed letter is in word show it
+        				if (letter === this.secret[i].letter) {
+        					this.secret[i].shown = true
+        					found = true
+        				}
+        			}
+        			// Checks if the player has won
+     				if (this.check_win()) {
+     					alert("you win")
+     				}
+        			// If end of word is reached ad no letter found, add it to guessed and add a limb
+        			if (!found) {
+        				this.counter--
+        				// if number of guesses remaining is zero or less, player loses
+        				if (this.counter <= 0) {
+        					alert("You lost, the word was " + this.word + ".")
+        				}
+        			}
+        		}
+        	},
+        	created: function() {
+		        // Load words from GitHub and save in words[]
+		        let url = 'https://raw.githubusercontent.com/PdxCodeGuild/class_platypus/0a62e5c4e806f830e37e130fba947b7c7415630b/Code/Angie/Python/english.txt'
+		        let words = []
+		        let app = this
+		        axios.get(url).then(function (response) {
+		            // Save input words to an array so it can be chosen from
+		            words = response.data.split('\n')
+		            app.word = words[Math.floor(Math.random() * words.length)]
+		            for (let i=0; i<app.word.length; i++) {
+		            	app.secret.push({letter: app.word[i], shown: false})
+		            }
+		        })
+        	}
+        })
+    </script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

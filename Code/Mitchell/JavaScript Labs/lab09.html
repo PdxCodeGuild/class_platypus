@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Quote</title>
+    <!-- Vue CND -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+</head>
+<body>
+    <center>
+        <!-- Search Bar (not working atm) -->
+        <input type="text" id="inputSearch">
+        <button id="searchButton">Search Quotes</button>
+    </center>
+    <!-- Vue Display -->
+    <ul id="quoteList">
+        <li v-for="quote in quotes">
+            "{{ quote.body }}"  -{{ quote.author }}
+        </li>
+    </ul>
+    <script type="text/javascript">
+        // A list containing all the used quotes
+        var quoteList = new Vue({
+            el: '#quoteList',
+            data: {
+                quotes: []
+            },
+            methods: {
+                // Pulls quote of the day from FavQ's API
+                getQuote() {
+                    let url = 'https://favqs.com/api/qotd'
+                    console.log(url)
+                    let app = this
+                    axios.get(url, {
+                        headers: {
+                            Authorization: 'Token token="<api key here>"'
+                        }
+                    }).then(function(response) {
+                        // Then adds it to list of quotes
+                        app.quotes.push({
+                            author: response.data.quote.author,
+                            body: response.data.quote.body
+                        })
+                    })
+                }
+            },
+            // Prints out list of quotes
+            created: function() {
+                for (let i=0; i<10; i++) {
+                    this.getQuote()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <div id="clock"></div>
+    <div>
+        <p id="spot"></p>
+        <button id="stopwatch">Start</button>
+    </div>
+
+    <script>
+    setInterval(myTimer, 1000);
+    let stopwatch = document.getElementById('stopwatch');
+    let spot = document.getElementById('spot');
+
+    function myTimer() {
+        let d = new Date();
+        document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+    }
+
+    stopwatch.onclick = function () {
+        start = new Date()
+
+    }
+
+
+
+
+
+
+    </script>
+</body>
+</html>

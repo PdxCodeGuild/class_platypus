@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quote-a-thon</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url("http://cdn.playbuzz.com/cdn/1763c248-c050-4ed4-a306-0a03b6858650/11d1fda7-a75b-4437-a47a-b16b89b5e958.jpg");
+        }
+        #verbiage, #author {
+            margin-top: 5%;
+            text-align: center;
+            font-family: 'Muli', sans-serif;
+            color:whitesmoke;
+            font-size: 3em;
+            text-shadow: 2px 2px black;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="verbiage"></div>
+    <div id="author"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script>
+        let quote = document.querySelector('#verbiage')
+        let auth = document.querySelector('#author')
+
+        function getQuote() {
+            let url = 'https://favqs.com/api/qotd';
+            axios.get(url).then(function(response) {
+                let quote_url = response.data.quote.body
+                quote.innerText = '"' + quote_url + '"'
+
+                let authQuote = response.data.quote.author
+                auth.innerText = '-' + authQuote
+
+
+
+            })
+
+            
+        }
+        getQuote()
+        setInterval(getQuote, 5000)
+
+
+    </script>
+
+
+</body>
+</html>
