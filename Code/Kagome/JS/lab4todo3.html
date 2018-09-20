@@ -10,15 +10,15 @@
 </head>
 <style>
     body {
-        background-color: #ffffff;
+        background-color: black;
         background-image: url("chores.jpg");
-        color: #000000;
-        font: italic 1.2em "Fira Sans", serif;
+        color: white;
+        font: 1.2em "Fira Sans", serif;
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;
             }
-    #btnpad{text-align: center;
+    #btnpad {text-align: center;
         color: #000000;
         font: italic 1.2em "Fira Sans", serif;
         text-shadow: 4px 2px 4px #000000;
@@ -30,18 +30,42 @@
         z-index:10;
 
     }
+    #lst {text-align: center;
+
+        font: italic 1.2em "Fira Sans", serif;
+        font-size: 20px;
+        position:absolute;
+        left:65%;
+        top:180px;
+        transform:translateX(-50%);
+        z-index:10;
+        width:400px;
+        background-color: rgba(206,10,23,0.7)
+
+    }
     #completed_list {
         text-decoration: line-through;
+    }
+    .todo_item {
+        display: flex;
+        flex-direction: row;
+    }
+    .list_button {
+        width: 20px;
+        height: 20px;
+        font-size: 8pt;
+        color: black;
+        margin-left: 10px;
     }
 </style>
 <body>
     <div id ='btnpad'>
-    <button class="btn btn-danger" id ='add_bt' onclick="getElementById('todo_list').innerHTML = '' + todo_input()">Add To List</button>
+    <button class="btn btn-danger" id ='add_bt'>Add To List</button>
     <input type="text" id="todo_input" placeholder="Things To Be Done..."><br>
     <p id=todo>
     </p>
     </div>
-    <div>
+    <div id="lst">
             <ul id="todo_list"></ul>
             <ul id="completed_list"></ul>
     </div>
@@ -51,13 +75,17 @@
             let list = document.querySelector('#todo_list');
             let completed_list = document.querySelector('#completed_list');
 
+            todo_input.onkeydown = function(evt) {
+                if (evt.keyCode === 13) {
 
-           add_bt.onclick = function() {
+                }
+             add_bt.onclick = function() {
                let text = todo_input.value;
                if (text === '') {
                    return;
                }
                todo_input.value = '';
+
                let li = document.createElement('li');
                li.classList.add('todo_item');
                let text_div = document.createElement('div');
@@ -66,6 +94,7 @@
 
                let button_complete = document.createElement('button');
                button_complete.innerHTML = 'x';
+               button_complete.classList.add('list_button');
                button_complete.onclick = function () {
                    list.removeChild(this.parentElement);
                    let li = document.createElement('li');
@@ -75,6 +104,7 @@
 
                let button_remove = document.createElement('button');
                button_remove.innerHTML = '✓';
+               button_remove.classList.add('list_button');
                button_remove.onclick = function () {
                    list.removeChild(this.parentElement);
                };
@@ -84,6 +114,19 @@
                li.appendChild(button_remove);
                list.appendChild(li);
            }
+
+            }
+
            </script>
+    <script>
+            var input = document.getElementById("todo_input");
+            input.addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+            document.getElementById("add_bt").click();
+                }
+            });
+     </script>
     </body>
 </html>
+
