@@ -16,9 +16,7 @@ addItemButton.addEventListener('click', () => {
 
 
 strikeItemButton.addEventListener('click', () => {
-  let ol = document.getElementsByTagName('ol');
-  let li = document.createElement('li');
-  active_li = myOl.children[strikeItemInput.value - 1];
+  let active_li = myOl.children[strikeItemInput.value - 1];
   active_li.innerHTML = active_li.innerText;
   active_li.innerHTML = '<del>' + active_li.innerText + '</del>';
   strikeItemInput.value = '';
