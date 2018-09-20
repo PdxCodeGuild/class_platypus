@@ -19,7 +19,7 @@
        }
 
        #demo {
-            margin-top:20%;
+            margin-top:10%;
             text-align: center;
             background-image: linear-gradient(to right, #497eff, #67b3ff, #ad699b, #ff62a6);
             font-family: 'Cinzel', serif;
@@ -27,50 +27,80 @@
             font-size: 6em;
             text-shadow: 2px 2px black;
         }
+        .vote {
+            text-align: center;
+        }
 
 
     </style>
 </head>
 <body>
 
-    <h1>Gender reveal will be...</h1>
+    <h1>Gender Reveal Countdown</h1>
     <div id="demo">
 
     </div>
+    <div class="vote">
+        <h2>What is your prediction?</h2>
+        <input type="text" placeholder="name">
+        <button class="btn">Enter</button>
+        <button class="girl">Girl</button>
+        <button class="boy">Boy</button>
+        <button class="twins">Twins</button>
+    </div>
+
 
         <script>
         // Set the date we're counting down to
-            let countDownDate = new Date("Oct 14, 2018 12:00:00").getTime();
+              let countDownDate = new Date("Oct 14, 2018 12:00:00").getTime();
 
-        // Update the count down every 1 second
-            let x = setInterval(function() {
+            // Update the count down every 1 second
+              let x = setInterval(function() {
 
-          // Get todays date and time
-            let now = new Date().getTime();
+              // Get todays date and time
+              let now = new Date().getTime();
 
-          // Find the distance between now and the count down date
-          let distance = countDownDate - now;
+              // Find the distance between now and the count down date
+              let distance = countDownDate - now;
 
-          // Time calculations for days, hours, minutes and seconds
-          let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              // Time calculations for days, hours, minutes and seconds
+              let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-          // Display the result in the element with id="demo"
-          document.getElementById("demo").innerHTML = days + "D " + hours + "H "
-          + minutes + "M " + seconds + "S ";
+              // Display the result in the element with id="demo"
+              document.getElementById("demo").innerHTML = days + "D " + hours + "h "
+              + minutes + "m " + seconds + "s ";
 
-          // If the count down is finished, write some text
-          if (distance < 0) {
-            clearInterval(x);
-            // document.getElementsByTagName("body")[0].style.backgroundColor = "#ff62a6";
-            document.getElementsByTagName("body")[0].style.backgroundColor = "#497eff";
-            // document.getElementById("demo").innerHTML = "We are having a Girl!";
-            document.getElementById("demo").innerHTML = "We are having a Boy!";
+              // If the count down is finished, write some text
+              if (distance < 0) {
+                clearInterval(x);
+                // document.getElementsByTagName("body")[0].style.backgroundColor = "#ff62a6";
+                document.getElementsByTagName("body")[0].style.backgroundColor = "#497eff";
+                // document.getElementById("demo").innerHTML = "We are having a Girl!";
+                document.getElementById("demo").innerHTML = "We are having a Boy!";
 
-          }
-        }, 1000);
+              }
+            }, 1000);
+
+            let name = document.querySelector('input')
+            let b = document.querySelector('.boy')
+            let g = document.querySelector('.girl')
+
+
+            function removeElement(elementId) {
+                // Removes an element from the document
+                var element = document.getElementById(elementId);
+                element.parentNode.removeChild(element);
+            }
+
+            removeElement('weebly-footer-signup-container')
+
+
+
+
+
         </script>
 
 </body>
