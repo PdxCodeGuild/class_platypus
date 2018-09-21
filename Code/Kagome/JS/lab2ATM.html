@@ -29,10 +29,6 @@
         color: #ffffff;
         font: italic 1.2em "Fira Sans", serif;
         text-shadow: 4px 2px 4px #000000;
-        /*padding-top: 300px;*/
-        /*padding-right: 7px;*/
-        /*padding-bottom: 50px;*/
-        /*padding-left: 30px;*/
         font-size: 55px;
         position:absolute;
         left:50%;
@@ -59,6 +55,9 @@
     <button class="btn btn-danger" onclick="getElementById('balance').innerHTML = '$' + myBalance()">Check Your Balance.</button>
     <p id=balance> </p>
 
+    <button class="btn btn-danger" onclick="window.open('https://www.paypal.com/us/webapps/mpp/send-money-online')">Send Money Via Paypal</button>
+
+    <button class="btn btn-danger" onclick="window.open('https://www.zellepay.com')">Send Money Via Zelle</button>
 <script>
 
     class ATM {
@@ -93,8 +92,6 @@
         document.getElementById("balance")
         return machine.balance();
     }
-
 </script>
-
 </body>
 </html>
