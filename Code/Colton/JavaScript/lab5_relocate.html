@@ -14,7 +14,10 @@
                 let page = Math.floor(Math.random() * randomPages.length);
                 window.location.assign(randomPages[page]);
             }
-
+            setInterval(function(){
+                let page = Math.floor(Math.random() * randomPages.length);
+                window.location.assign(randomPages[page]);
+            }, 1000)
         </script>
 </body>
 </html>
