@@ -7,24 +7,28 @@
     <script src="key_hidden.js"></script>
 </head>
 <body>
+<input id="state" type="text" placeholder="Enter State">
+<button id="st_btn">Submit</button>
+
 <div id="congress"></div>
+
 
 
 
     <script>
 
-
+        let state = document.querySelector('#state').value;
         let congress = document.querySelector('#congress');
+
         $.ajax({
          url: "https://api.propublica.org/congress/v1/members/senate/WA/current.json",
          type: "GET",
          dataType: 'json',
-         headers: {'X-API-Key': 'key'}
+         headers: {'X-API-Key': key}
        }).done(function(data){
             console.log(data);
-            let myObj = data.results;
-            for (x in myObj) {
-            congress.innerHTML += myObj[x];}
+            congress.innerHTML += data.results[0].name + ', ';
+            congress.innerHTML += data.results[1].name
        });
 
 
