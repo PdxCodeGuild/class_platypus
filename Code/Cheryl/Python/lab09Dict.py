@@ -21,15 +21,15 @@ while run_again == 'yes':
     to_meter_dictionary = {'km': user_dist * 1000, 'ft': user_dist * .3048}
     from_meter_dictionary = {'km': user_dist / 1000, 'ft': user_dist / .3048}
 
+    while user_unit in to_meter_dictionary:
+        meter_dist = to_meter_dictionary[user_unit] * from_meter_dictionary[user_final_unit]
+        meter_dist = round(meter_dist, 2)
 
 
-    if user_unit in to_meter_dictionary:
-        to_meter_dictionary[user_unit] += 1
-    else:
-        to_meter_dictionary[user_unit] = 1
+        print(f"Your distance is: {meter_dist} {user_final_unit}.  ")
+        run_again = str.lower(input("Would you like to run this again?  >  "))
 
-    print(from_meter_dictionary)
-    print(f"Your distance is: {meter_dist} {user_final_unit}.  ")
+    # print(f"Your distance is: {meter_dist} {user_final_unit}.  ")
     run_again = str.lower(input("Would you like to run this again?  >  "))
 
 
