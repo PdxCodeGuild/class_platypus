@@ -16,20 +16,24 @@ while run_again == 'yes':
 
     user_dist = float(input(f'Please enter the distance you would like to convert from {user_unit}.  >   '))
 
-    user_dist = round(user_dist, 2)
+    user_dist = round(user_dist, 3)
 
-    to_meter_dictionary = {'km': user_dist * 1000, 'ft': user_dist * .3048}
-    from_meter_dictionary = {'km': user_dist / 1000, 'ft': user_dist / .3048}
+    to_meter_dictionary = {'km': user_dist * 1000, 'm': user_dist, 'ft': user_dist * .3048, 'in': user_dist * 0.0254, 'yds': user_dist * .9144, 'mi': user_dist * 1609.34}
+    from_meter_dictionary = {'km': user_dist / 1000, 'm': user_dist, 'in': user_dist / 0.0254, 'ft': user_dist / .3048, 'yds': user_dist / .9144, 'mi': user_dist / 1609.34}
 
     while user_unit in to_meter_dictionary:
-        meter_dist = to_meter_dictionary[user_unit] * from_meter_dictionary[user_final_unit]
+        # meter_dist = to_meter_dictionary[user_unit] * from_meter_dictionary[user_final_unit]
+        meter_dist = to_meter_dictionary[user_unit]
         meter_dist = round(meter_dist, 2)
 
+        out_dist = from_meter_dictionary[user_final_unit]
+        out_dist = round(out_dist, 2)
 
-        print(f"Your distance is: {meter_dist} {user_final_unit}.  ")
-        run_again = str.lower(input("Would you like to run this again?  >  "))
+        answer = meter_dist * out_dist
 
-    # print(f"Your distance is: {meter_dist} {user_final_unit}.  ")
+        print(f"Your distance is: {answer} {user_final_unit}.  ")
+        break
+
     run_again = str.lower(input("Would you like to run this again?  >  "))
 
 
