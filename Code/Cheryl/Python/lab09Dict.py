@@ -1,4 +1,3 @@
-#same as v4 but using dictionaries NEED TO FINISH!!!
 
 welcome_mess = print('Welcome to the unit converter.')
 
@@ -6,7 +5,7 @@ meter_dist = 0
 run_again = 'yes'
 
 user_unit = 0
-
+out_dist = 0
 
 while run_again == 'yes':
 
@@ -19,21 +18,14 @@ while run_again == 'yes':
     user_dist = round(user_dist, 3)
 
     to_meter_dictionary = {'km': user_dist * 1000, 'm': user_dist, 'ft': user_dist * .3048, 'in': user_dist * 0.0254, 'yds': user_dist * .9144, 'mi': user_dist * 1609.34}
-    from_meter_dictionary = {'km': user_dist / 1000, 'm': user_dist, 'in': user_dist / 0.0254, 'ft': user_dist / .3048, 'yds': user_dist / .9144, 'mi': user_dist / 1609.34}
+    from_meter_dictionary = {'km': 1000, 'm': user_dist, 'in': 0.0254, 'ft': .3048, 'yds': .9144, 'mi': 1609.34}
 
-    while user_unit in to_meter_dictionary:
-        # meter_dist = to_meter_dictionary[user_unit] * from_meter_dictionary[user_final_unit]
-        meter_dist = to_meter_dictionary[user_unit]
+    if user_unit in to_meter_dictionary:
+        meter_dist = to_meter_dictionary[user_unit] / from_meter_dictionary[user_final_unit]
         meter_dist = round(meter_dist, 2)
 
-        out_dist = from_meter_dictionary[user_final_unit]
-        out_dist = round(out_dist, 2)
 
-        answer = meter_dist * out_dist
-
-        print(f"Your distance is: {answer} {user_final_unit}.  ")
-        break
-
+    print(f"Your distance is: {meter_dist} {user_final_unit}.  ")
     run_again = str.lower(input("Would you like to run this again?  >  "))
 
 
