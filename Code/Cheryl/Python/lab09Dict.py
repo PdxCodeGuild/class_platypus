@@ -16,7 +16,7 @@ while run_again == 'yes':
 
     user_dist = float(input(f'Please enter the distance you would like to convert from {user_unit}.  >   '))
 
-    user_dist = round(user_dist, 3)
+    user_dist = round(user_dist, 2)
 
     # create dictionary
     to_meter_dictionary = {'km': user_dist * 1000, 'ft': user_dist * .3048}
