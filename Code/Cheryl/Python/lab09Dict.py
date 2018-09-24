@@ -18,12 +18,20 @@ while run_again == 'yes':
 
     user_dist = round(user_dist, 2)
 
-    # create dictionary
     to_meter_dictionary = {'km': user_dist * 1000, 'ft': user_dist * .3048}
     from_meter_dictionary = {'km': user_dist / 1000, 'ft': user_dist / .3048}
 
-#converts everything to meters
 
-print(from_meter_dictionary)
+
+    if user_unit in to_meter_dictionary:
+        to_meter_dictionary[user_unit] += 1
+    else:
+        to_meter_dictionary[user_unit] = 1
+
+    print(from_meter_dictionary)
+    print(f"Your distance is: {meter_dist} {user_final_unit}.  ")
+    run_again = str.lower(input("Would you like to run this again?  >  "))
+
+
 
 print('Thanks for using the unit converter.')
