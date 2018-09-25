@@ -1,18 +1,19 @@
 #lab 10 version 4 MODE
 from statistics import mode
 
-from fractions import Fraction as fr
+import re
 
 def data():
     try:
+        final_data_set = []
         data_set = input('Please enter your data set. >  ')
         data_set = data_set.split(',')
-        if data_set == str:
-            print('it is a string')
-        print("Mode of data set is % s" % (mode(data_set)))
+        for i in range(len(data_set)):
+            i = data_set[i].strip(' ')
+            final_data_set.append(i)
+        print(f"MODE of this data set is: {mode(final_data_set)}")
         return
     except ValueError:
-        print('There is no mode in this data set.')
+        print(f'There is no MODE in this data set: {data_set}')
 
 data()
-
