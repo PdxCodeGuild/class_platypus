@@ -1,8 +1,6 @@
 #lab 10 version 4 MODE
 from statistics import mode
 
-import re
-
 def data():
     try:
         final_data_set = []
