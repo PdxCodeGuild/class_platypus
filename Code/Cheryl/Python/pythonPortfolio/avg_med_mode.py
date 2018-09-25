@@ -10,24 +10,10 @@ for i in range(len(data_set)):
 
 # average
 def average():
-    nums = []
-    running = 0
-
-    try:
-        # data_set = input('Please enter your number, or type \'done\' to get the average. >    ')
-        # data_set = int(data_set)
-        # data_set = round(data_set, 2)
-        nums.append(data_set)
-        print(nums)
-
-    except ValueError:
-        for num in nums:
-            running += num
-            running = round(running, 2)
-        print('Adding your numbers now...')
-        average = running / len(nums)
-        print(f'The average is: {average}')
-
+    final_avg = [int(i) for i in final_data_set]
+    final_avg = sum(final_avg)
+    average = final_avg / len(final_data_set)
+    print(f'The average is: {average}')
     return
 
 average()
@@ -35,32 +21,17 @@ average()
 
 #MEDIAN
 def median():
-    nums = []
-    running = 0
-    median = ''
 
+    final_data_set.sort()
+    if len(final_data_set) % 2 > 0:
+        median_index = len(final_data_set) // 2
+        median = final_data_set[median_index]
+        print(f'The median number is: {median}')
 
-    try:
-        # data_set = input('Please enter your number, or type \'done\' to get the median. >    ')
-        # data_set = int(data_set)
-        # data_set = round(data_set, 2)
-        nums.append(data_set)
-        print(nums)
-
-    except ValueError:
-
-        nums.sort()
-        length = len(nums)
-
-        if len(nums) % 2 > 0:
-            median_index = len(nums) // 2
-            median = nums[median_index]
-            print(f'The median number is: {median}')
-
-        else:
-            median_index = len(nums) // 2
-            median = (nums[median_index] + nums[median_index - 1]) / 2
-            print(f'The median number is: {median}')
+    else:
+        median_index = len(final_data_set) // 2
+        median = (final_data_set[median_index] + final_data_set[median_index - 1]) / 2
+        print(f'The median number is: {median}')
 
     return
 
