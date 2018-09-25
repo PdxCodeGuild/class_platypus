@@ -1,4 +1,4 @@
-#lab 10 version 2
+#lab 10 version 2 Average
 
 nums = []
 running = 0
