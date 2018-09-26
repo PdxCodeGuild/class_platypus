@@ -44,7 +44,7 @@ if low_user_input < 100:
 num_dict_hundreds = {1: 'one hundred', 2: 'two hundred', 3: 'three hundred', 4: 'four hundred', 5: 'five hundred'}
 h_num_dict_zero = {0: ''}
 h_num_dict_ones = {1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine'}
-h_num_dict_teens = {11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen', 15: 'fifteen', 16: 'sixteen', 17: 'seventeen', 18: 'eighteen', 19: 'nineteen'}
+h_num_dict_teens = {0: 'ten', 1: 'eleven', 2: 'twelve', 3: 'thirteen', 4: 'fourteen', 5: 'fifteen', 6: 'sixteen', 7: 'seventeen', 8: 'eighteen', 9: 'nineteen'}
 h_num_dict_second_digit = {2:'twenty', 3: 'thirty', 4: 'forty', 5: 'fifty', 6: 'sixty', 7: 'seventy', 8: 'eighty', 9: 'ninety'}
 h_num_dict_third_digit = {3: 'three hundred', 4: 'four hundred', 5: 'five hundred', 6: 'six hundred', 7: 'seven hundred', 8: 'eight hundred', 9: 'nine hundred'}
 
@@ -56,21 +56,25 @@ if low_user_input > 99:
     h_num_hundreds = int(user_input_li[0])
     hundreds_digit = low_user_input // 100
 
+
     # handling hundreds place
     print(h_num_dict_third_digit[hundreds_digit])
+
 
     # handling tens place
     if h_num_tens == 0:
         print('')
-    else:
+    elif h_num_tens > 1:
         print(h_num_dict_second_digit[tens_digit])
 
-    #handling ones place
-    if h_num_ones == 0:
-        print(' ')
+    #handling ones place and teens
+    if h_num_tens == 1:
+        print(h_num_dict_teens[ones_digit])
     else:
-        print(h_num_dict_ones[ones_digit])
-
+        if h_num_ones > 0:
+            print(h_num_dict_ones[ones_digit])
+        else:
+            print(' ')
 
 
 
