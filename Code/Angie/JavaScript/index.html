@@ -4,31 +4,67 @@
     <meta charset="UTF-8">
     <title>Countdown</title>
     <link href="https://fonts.googleapis.com/css?family=Cinzel:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <style>
        html, body {
            margin: 0;
            padding: 0;
 
-
         }
+       body {
+           background-color: #656A70;
+       }
+
        h1 {
            text-align: center;
            font-family: 'Cinzel', serif;
-           color: lightgrey;
+           color: white;
            text-shadow: 2px 1px #000;
+           font-size:3em;
        }
 
+
        #demo {
-            margin-top:10%;
+            margin-top:5%;
             text-align: center;
             background-image: linear-gradient(to right, #497eff, #67b3ff, #ad699b, #ff62a6);
             font-family: 'Cinzel', serif;
-            color:whitesmoke;
+            color:white;
             font-size: 6em;
             text-shadow: 2px 2px black;
         }
-        .vote {
+        #form {
+
             text-align: center;
+
+        }
+
+        #link {
+
+            margin:2%;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            font-size:1.5em;
+        }
+
+        /* unvisited link */
+        a:link {
+            color: white;
+        }
+
+        /* visited link */
+        a:visited {
+            color: black;
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: hotpink;
+        }
+
+        /* selected link */
+        a:active {
+            color: black;
         }
 
 
@@ -40,19 +76,12 @@
     <div id="demo">
 
     </div>
-    <div class="vote">
-        <h2>What is your prediction?</h2>
-        <input type="text" placeholder="name">
-        <button class="btn">Enter</button>
-        <button class="girl">Girl</button>
-        <button class="boy">Boy</button>
-        <button class="twins">Twins</button>
-    </div>
+
 
 
         <script>
         // Set the date we're counting down to
-              let countDownDate = new Date("Oct 14, 2018 12:00:00").getTime();
+              let countDownDate = new Date("Oct 12, 2018 16:00:00").getTime();
 
             // Update the count down every 1 second
               let x = setInterval(function() {
@@ -84,24 +113,22 @@
               }
             }, 1000);
 
-            let name = document.querySelector('input')
-            let b = document.querySelector('.boy')
-            let g = document.querySelector('.girl')
-
-
-            function removeElement(elementId) {
-                // Removes an element from the document
-                var element = document.getElementById(elementId);
-                element.parentNode.removeChild(element);
-            }
-
-            removeElement('weebly-footer-signup-container')
-
-
-
 
 
         </script>
+    <div id="link">
+        <a href="https://docs.google.com/forms/d/1_hKP8n9P-g1dSF4fGd1bZ7g90VNpv0k-RCnkwtW1Z7c/viewanalytics">Click to see the voting results!</a>
+    </div>
+
+
+    <div id='form'>
+
+        <!--<h2>What is your prediction?</h2>-->
+
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfI3Y1o9hUplLxbka7iPNE4iX7TojNUR1ND4wH7pJ8KAls6Hw/viewform?embedded=true" width="640" height="608" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+
+
+    </div>
 
 </body>
 </html>
