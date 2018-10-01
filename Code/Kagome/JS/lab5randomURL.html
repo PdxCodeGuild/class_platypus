@@ -2,13 +2,22 @@
 <html>
     <head>
     <meta charset="UTF-8">
-        <title>Slippery Slope</title>
+        <title>Eyes Of The World</title>
         <style>
             #randomurl {
                 text-align:center;
                 width:100%;
                 font-size: 400px;
-                color: #007bb5;
+                font-family: Verdana, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+                color: darkseagreen;
+                padding-top: 180px;
+                padding-right: 55%;
+            }
+            body {
+                background-image: url("worldmap.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
             }
         </style>
     </head>
@@ -22,7 +31,12 @@
                 if (c === 0) {
                     let urls = ['http://www.cnn.com',
                                 'http://www.postsecret.com',
+                                'https://www.nasa.gov',
+                                'https://www.thinkgeek.com',
+                                'https://www.prestwickhouse.com/File%20Library/poems/the-artist.pdf',
+                                'https://kottke.org',
                                 'http://www.pandora.com'];
+
                     let index = Math.floor(Math.random()*urls.length);
                     window.location = urls[index];
                 }

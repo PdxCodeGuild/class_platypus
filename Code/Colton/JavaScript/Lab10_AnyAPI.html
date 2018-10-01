@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Congress API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="key_hidden.js"></script>
+</head>
+<body>
+<input id="state" type="text" placeholder="Enter State">
+<button id="st_btn">Submit</button>
+
+<div id="congress"></div>
+
+
+<script>
+
+    let st_btn = document.querySelector('#st_btn');
+    let congress = document.querySelector('#congress');
+
+    function startAjax() {
+      let state = document.querySelector('#state').value;
+      $.ajax({
+       url: "https://api.propublica.org/congress/v1/members/senate/" + state + "/current.json",
+        type: "GET",
+        dataType: 'json',
+        headers: {'X-API-Key': key},
+        }).done(function (data) {
+          console.log(data);
+          congress.innerHTML += data.results[0].name + ', ';
+          congress.innerHTML += data.results[1].name;
+      })}
+
+    $(st_btn).click(startAjax)
+
+
+
+
+    // st_btn.onclick() = function ($.ajax({
+    //     url: "https://api.propublica.org/congress/v1/members/senate/" + state + "/current.json",
+    //     type: "GET",
+    //     dataType: 'json',
+    //     headers: {'X-API-Key': key}
+    // }).done(function (data) {
+    //     console.log(data);
+    //     congress.innerHTML += data.results[0].name + ', ';
+    //     congress.innerHTML += data.results[1].name
+    // })
+    // )
+
+
+</script>
+</body>
+</html>

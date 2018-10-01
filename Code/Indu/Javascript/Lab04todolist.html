@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+        background-color: blueviolet;
+        }
+* {
+  box-sizing: border-box;
+}
+
+</style>
+</head>
+<body>
+
+    <div id="todolist">
+        <input id="thing" type="text" />
+        <div><button id="bt_addlist">add</button></div>
+        <div>To do:</div>
+        <ul id="list">
+
+        </ul>
+
+        <div>Done:</div>
+        <s><ul id="done">
+
+        </ul></s>
+    </div>
+
+        <script>
+            let bt_addlist = document.querySelector('#bt_addlist');
+
+            bt_addlist.onclick = function() {
+                let thing = document.querySelector('#thing').value;
+                let ul = document.getElementById('list');
+                let li = document.createElement('li');
+                li.appendChild(document.createTextNode(thing));
+                ul.appendChild(li);
+                li.id ='task';
+
+                let bt_done = document.createElement( "button" );
+                bt_done.id = "bt_done";
+                bt_done.innerHTML = 'done';
+                bt_done.onclick= function(){
+                    let task = document.querySelector('#task');
+                    let ul = document.getElementById('done');
+                    let li = document.createElement('li');
+                    li.innerText = task;
+                    ul.appendChild(task);
+                    list.removeChild(bt_done)
+                };
+                list.appendChild(bt_done);
+            };
+
+        </script>
+    </body>
+</html>

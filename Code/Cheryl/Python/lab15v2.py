@@ -2,7 +2,7 @@
 
 
 user_input = int(input('Enter a number from 0-999.  >   '))
-tens_digit = user_input//10
+tens_digit = user_input % 100 //10
 ones_digit = user_input%10
 i = 0
 
