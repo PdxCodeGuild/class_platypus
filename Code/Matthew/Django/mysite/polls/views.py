@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 import random
 
 def index(request):
@@ -19,14 +20,12 @@ def index(request):
 
     # return HttpResponse('index view')
 
-    print('test123')
-    print(request.method)
-    print(request.GET['q'])
-
+    # print('test123')
+    # print(request.method)
+    # print(request.GET['q'])
+    #
     fruits = ['apples', 'bananas', 'pears', request.GET['q']]
     return render(request, 'polls/index.html', {'message': 'hello world!!', 'fruits': fruits})
-
-
 
 
 
