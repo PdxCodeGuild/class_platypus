@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>{{message}}</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <select name="human_choice">
+                {% for opt in rps %}
+                <option value="{{opt}}">{{opt}}</option>
+                {% endfor %}
+
+                <!--<option value="rock">rock</option>-->
+                <!--<option value="paper">paper</option>-->
+                <!--<option value="scissors">scissors</option>-->
+            </select>
+            <button type="submit">submit</button>
+        </form>
+    </body>
+</html>
+
