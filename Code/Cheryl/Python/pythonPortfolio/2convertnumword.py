@@ -1,11 +1,11 @@
 # Lab 15 Version 2 NEWER VERSION
 
-welcome_mess = print(f'\n\tConvert any number between 0 and 999 to English.\n')
+welcome_mess = print(f'\nConvert any number between 0 and 999 to English.\n')
 answer = 'yes'
 
 while answer == 'yes':
 
-    user_input = input('\tEnter a number from 0-999.  >   \n')
+    user_input = input('Enter a number from 0-999.  >   \n')
     low_user_input = int(user_input)
     tens_digit = low_user_input % 100 //10
     ones_digit = low_user_input%10
@@ -87,4 +87,4 @@ while answer == 'yes':
         else:
             print(hundreds_place + '-' + ones_place)
 
-    answer = input(f'\n\tWould you like to convert another number? >  \n').lower()
+    answer = input(f'\nWould you like to convert another number? >  \n').lower()
