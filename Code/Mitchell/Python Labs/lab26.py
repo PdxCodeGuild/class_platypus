@@ -2,6 +2,7 @@
 # A simple python game that can be run in terminal
 import random
 # CLASSES FOR ALL ENTITIES
+
 # Most genreal class, includes all emojis
 class Entity:
     def __init__(self, location_i, location_j, character):
