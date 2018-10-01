@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+</head>
+<body>
+    <input id="number_input" type="number"/>
+    <select id="type_ddl">
+        <option value="trivia">trivia</option>
+        <option value="math">math</option>
+        <option value="date">date</option>
+        <option value="year">year</option>
+    </select>
+    <button id="random_number_btn">random number</button>
+    <button id="btn">get info</button>
+    <ul id="output"></ul>
+    <script>
+        let number_input = document.querySelector('#number_input')
+        let type_ddl = document.querySelector('#type_ddl')
+        let btn = document.querySelector('#btn')
+        let output = document.querySelector('#output')
+        let random_number_btn = document.querySelector('#random_number_btn')
+
+        random_number_btn.onclick = function() {
+            number_input.value = Math.floor(Math.random()*1000)
+        }
+
+        random_number_btn.onclick()
+
+
+        btn.onclick = function() {
+            let type = type_ddl.options[type_ddl.selectedIndex].value
+            let number = number_input.value
+            let url = `http://numbersapi.com/${number}/${type}`
+            output.innerHTML = ''
+            for (let i=0; i<20; ++i) {
+                axios.get(url).then(function(response) {
+                    let li = document.createElement('li')
+                    li.innerText = response.data
+                    output.appendChild(li)
+                })
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <input id="num_input" type="number" value="0"/><br>
+    <button id="add_bt"> + </button>
+    <button id="minus_bt"> - </button>
+    <button id="multiply_bt"> * </button>
+    <button id="divide_bt"> / </button>
+    <button id="equals_bt"> = </button>
+    <div id="output_div"></div>
+    <script type="text/javascript">
+        let num_input = document.querySelector('#num_input');
+        let add_bt = document.querySelector('#add_bt');
+        let minus_bt = document.querySelector('#minus_bt');
+        let multiply_bt = document.querySelector('#multiply_bt');
+        let divide_bt = document.querySelector('#divide_bt');
+        let equals_bt = document.querySelector('#equals_bt');
+        let output_div = document.querySelector('#output_div');
+        add_bt.onclick = function() {
+            let num_1 = num_input.value;
+            num_input.value = 0;
+            equals_bt.onclick = function () {
+                output_div.innerText = Number(num_1) + Number(num_input.value);
+            }
+        }
+        minus_bt.onclick = function() {
+            let num_1 = num_input.value;
+            num_input.value = 0;
+            equals_bt.onclick = function () {
+                output_div.innerText = Number(num_1) - Number(num_input.value);
+            }
+        }
+        multiply_bt.onclick = function() {
+            let num_1 = num_input.value;
+            num_input.value = 0;
+            equals_bt.onclick = function () {
+                output_div.innerText = Number(num_1) * Number(num_input.value);
+            }
+        }
+        divide_bt.onclick = function() {
+            let num_1 = num_input.value;
+            num_input.value = 0;
+            equals_bt.onclick = function () {
+                output_div.innerText = Number(num_1) / Number(num_input.value);
+            }
+        }
+    </script>
+</body>
+</html>
