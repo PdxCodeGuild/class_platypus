@@ -1,5 +1,7 @@
 #Lab 2, Mad Lib, with randomness and user choices
 
+##### For ome reason this is old. The newer version on github and wbsite.
+
 import random
 
 welcome_mess = input("Thanks for visiting Cheryl's Mad Lib \nwhere your input will rewrite a famous \nGeorge Orwell quote! \nHit enter to play. ")
