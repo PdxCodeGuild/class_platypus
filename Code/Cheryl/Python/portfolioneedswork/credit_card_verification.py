@@ -1,7 +1,10 @@
+# add some error verifcation, make enter a number, the right amount of digits and strip white space
 #lab 20 version 1
+
 
 user_card_nums = input('What are the digits of your credit card? >  ')
 user_card_nums = list(user_card_nums)
+
 
 user_card_nums = [int(x) for x in user_card_nums] #converts to an int
 

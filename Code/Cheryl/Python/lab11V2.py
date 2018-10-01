@@ -1,9 +1,9 @@
 
-
+welcome_mess = print(f'\nWelcome to the Calculator.\n ')
 calc = 'yes'
 
 while calc == 'yes':
-    operation = input('What operation would you like to perform? Or type \'done\' to exit the program. *, -, +, or / >   ')
+    operation = input('What operation would you like to perform? (Type \'done\' to exit the program.) *, -, +, or / >   ')
     if operation == 'done':
         print("Have a nice day!")
         break

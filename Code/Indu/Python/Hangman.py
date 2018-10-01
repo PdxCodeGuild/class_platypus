@@ -2,6 +2,7 @@
 #Hangman game with Indu and Angie
 
 import random
+import pdb
 
 def load_words(path):
     with open(path, 'r') as f:
@@ -14,6 +15,7 @@ def load_words(path):
 
 
 words = load_words('english.txt')
+pdb.set_trace()
 
 
 hangman_pics = ['''

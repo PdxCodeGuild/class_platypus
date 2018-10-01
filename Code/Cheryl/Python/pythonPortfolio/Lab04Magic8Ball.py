@@ -1,6 +1,6 @@
 import random
 
-magic = ['Yes', 'No', 'The future is cloudy.', 'It has been decided in your favor.', 'You never know.', 'Try Again', 'Not Sure']
+magic = ['Yes', 'The future is cloudy.', 'It has been decided in your favor.', 'You never know.', 'Try Again', 'Not Sure']
 answer = 'yes'
 
 print("Welcome to the Magic 8 Ball Game!")
