@@ -47,7 +47,7 @@ while run_again == 'yes':
     elif user_final_unit == 'm':
         meter_dist = meter_dist
 
-    meter_dist = round(meter_dist, 3)
+    meter_dist = round(meter_dist, 2)
 
     print(f"Your distance is: {meter_dist} {user_final_unit}.  ")
     run_again = str.lower(input("Would you like to run this again?  >  "))

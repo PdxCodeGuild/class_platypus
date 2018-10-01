@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quote of the day</title>
+    <style>
+        body {
+            /*background-image: url("island.jpg");*/
+            /*background-repeat: no-repeat;*/
+            /*background-attachment: fixed;*/
+            /*background-size: cover;*/
+            background-color: cornflowerblue;
+            text-align:center;
+            font-size:40px ;
+            font-style: italic;
+            padding-top: 200px;
+        }
+        h1{
+            font-family: "Niagara Engraved";
+            font-size: 50px;
+        }
+        #author {
+            padding:15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="quote"></div>
+    <div id="author"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+
+    <script>
+        let qotd = document.querySelector('#quote')
+        let auth = document.querySelector('#author')
+
+        function getQuote() {
+
+            let url = 'https://favqs.com/api/qotd'
+            axios.get(url).then(function(response) {
+                console.log(response)
+                let getQuote_url = response.data.quote.body
+                console.log(getQuote_url)
+                qotd.innerText = getQuote_url
+
+
+
+                let author_url = response.data.quote.author
+                auth.innerText = "- - " + author_url + " - -"
+            })}
+            getQuote()
+        setInterval(getQuote, 8000)
+
+
+    </script>
+</body>
+</html>

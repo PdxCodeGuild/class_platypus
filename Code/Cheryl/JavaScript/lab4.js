@@ -14,7 +14,6 @@ addItemButton.addEventListener('click', () => {
   addItemInput.value = '';
 })
 
-
 strikeItemButton.addEventListener('click', () => {
   let active_li = myOl.children[strikeItemInput.value - 1];
   active_li.innerHTML = active_li.innerText;

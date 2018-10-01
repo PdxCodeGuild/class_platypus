@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>My website</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lab3.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+
+.header {
+    background-color: #154360;
+    padding: 20px;
+    text-align: center;
+    text-decoration-color: #AED6F1;
+}
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #AED6F1 ;
+}
+
+/* Style the topnav links */
+.topnav a {
+    float: left;
+    display: block;
+    color: #2E86C1;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #154360;
+    color: black;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+    width: 25%;
+}
+
+/* Middle column */
+.column.middle {
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+}
+
+/* Style the footer */
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="Header">
+  <h1>Xylem water solutions</h1>
+</div>
+
+<div class="topnav">
+  <a href="#">About us</a>
+  <a href="#">Products and services</a>
+  <a href="#">Current and past projects</a>
+  <a href="#">People</a>
+</div>
+<div class="row">
+  <div class="column side">
+    <h2>WATER RESOURCES</h2>
+    <p>With experience throughout all Water Divisions in Colorado as well as Texas, Arizona, Nebraska, and Utah – LRE is a recognized leader in water resources throughout the western United States. As the cornerstone for our firm’s expertise, our water resources group specializes in providing innovative solutions for water and land to meet the needs and goals of municipal, agricultural, federal and private clients in the areas of water supply planning, water rights, ground water, master planning, water reuse and design engineering.</p>
+  </div>
+  <div class="column middle">
+    <h2>Environmental management</h2>
+    <p>Xylem water solution's Environmental Management group provides our clients with engineering consulting and planning services needed to meet the varied water resource management challenges of municipalities, water and wastewater districts, state agencies, and industry. Using cost-effective and creative approaches, we help clients resolve complex issues related to environmental permitting and regulatory compliance, watershed planning, stormwater and floodplain management, and source water manageme</p>
+
+  </div>
+  <div class="column side">
+    <h2>Technology</h2>
+    <p>Today, successful water resources management relies on an increasingly vast store of historical and real-time data. Our dedicated group of information specialists offer intelligent data integration know-how and can deliver processes and tools customized to meet each client’s very specific needs. Our team’s development experience ranges from custom desktop tools within the MS Office suite to open-source, web-based decision support systems backed by sophisticated SQL databases. Our combination of domain expertise and programming skills allows us to leverage technology to create analysis, communication and decision support tools that really fit with the challenges unique to this industry.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>2018</p>
+</div>
+
+</body>
+</html>
