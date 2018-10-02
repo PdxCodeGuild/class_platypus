@@ -1,0 +1,7 @@
+<h1>Todo List</h1>
+<input id="new_item"><button id="add">Add</button>
+<ul>
+    {% for todo in todos %}
+    <li>{{todo}} <button class="completed">✅</button><button class="deleted">❌</button></li>
+    {% endfor %}
+</ul>
