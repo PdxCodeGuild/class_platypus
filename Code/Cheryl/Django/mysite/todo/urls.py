@@ -2,8 +2,10 @@ from django.conf.urls import url
 from django.urls import path
 from . import views
 
-app_name = 'TodoItem'
+app_name = 'todo'
 urlpatterns = [
-    path('', views.tst_vw, name='index'),
+    path('', views.index, name='index'),
+    path('add/', views.add, name='add'),
+    # path('<int:TodoItem_id>/', views.index, name='index')
 
 ]
