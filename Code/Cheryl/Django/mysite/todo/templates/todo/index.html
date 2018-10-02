@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    Add Item:<br>
+    <input type="text" name="add_item">
+    {% if created_date %}
+        <p><a href="/todo/{{ TodoItem.id }}/">{{ TodoItem.created_date }}</a></p>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>{{ TodoItem.completed_date }}</p>
+    {% endif %}
+    <br>
+    <button type="submit">save</button>
+</form>
+</body>
+</html>
+
