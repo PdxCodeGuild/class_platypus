@@ -11,7 +11,7 @@
 <form action="{% url 'todo:add' %}" method="post">
     {% csrf_token %}
     Add Item:<br>
-    <input type="text" name="add_item">
+    <input type="text" name="TodoItem">
     {% if created_date %}
         <p><a href="/todo/{{ TodoItem.id }}/">{{ TodoItem.created_date }}</a></p>
     {% else %}

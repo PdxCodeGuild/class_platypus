@@ -7,9 +7,10 @@ def index(request):
 
 def add(request):
     # receive the post request from the form in the template
-    if request.POST['add_item'] == True:
+    if request.POST['TodoItem'] == True:
         print('if working')
+        name.save()
     else:
         print('else workign')
-    print(request.POST['add_item'])
+    print(request.POST['TodoItem'])
     return HttpResponse('ok')
