@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+            #maindiv {
+                width:500px;
+                margin: 0 auto;
+            }
+            #maindiv table {
+                width:100%;
+            }
+            #maindiv input {
+                width:20%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="maindiv">
+            <form action="{% url 'contacts:addcontact' %}" method="post">
+                {% csrf_token %}
+                <input name="name" placeholder="Name" type="text" required/>
+                <input name="age" placeholder="Age" type="number"/>
+                <input name="phone" placeholder="Phone#" type="text" pattern="\d\d\d-\d\d\d-\d\d\d\d" required title="phone number must be of the format 555-555-5555"/>
+                <input name="gender" placeholder="Gender" type="text"/>
+                <button type="submit">add</button>
+            </form>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Phone#</th>
+                    <th>Gender</th>
+                    <th></th>
+                </tr>
+                {% for contact in contacts %}
+                <tr>
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.age}}</td>
+                    <td>{{contact.phone_number}}</td>
+                    <td>{{contact.gender}}</td>
+                    <td>
+                        <form action="{% url 'contacts:deletecontact' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{contact.id}}"/>
+                            <button type="submit">X</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
