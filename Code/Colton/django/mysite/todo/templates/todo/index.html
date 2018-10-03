@@ -1,24 +1,41 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+        <style>
 
+
+
+        </style>
     </head>
     <body>
     <div id="lump">
+
         <form action="{%url 'todo:addtodo' %}" method="post">
              {% csrf_token %}
-        <input id="thing" type="text" placeholder="Add to your to-do!"/>
-        <div><button id="bt_addlist">ADD IT!</button></div>
+        <input name="thing" type="text" placeholder="Add to your to-do!"/>
+        <button type="submit">ADD IT!</button>
         </form>
+        <table>
         <div>To do:</div>
-        <ul id="list">
+        {% for todo in todos %}
+        <tr>
+        </form>
 
-        </ul>
-
-        <div>Completed Tasks:</div>
-        <s><ul id="complete">
-
-        </ul></s>
+            <td>
+                {{todo.add_date}}
+            </td>
+            <td>
+                {{todo.thing}}
+            </td>
+            <td>
+                <form action="{% url 'todo:deletetodo' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{todo.id}}"/>
+                <button type="submit">Done</button>
+            </td>
+        </tr>
+            {% endfor %}
+        </table>
     </div>
     </body>
 </html>
