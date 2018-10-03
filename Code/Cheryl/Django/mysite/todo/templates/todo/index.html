@@ -8,8 +8,10 @@
 
 </head>
 <body>
-<form action="{% url 'todo:add' %}" method="post">
+{{ todo_text }}
+<form action="{% url 'todo:add' %}" method="post" name="text_name">
     {% csrf_token %}
+
     Add Item:<br>
     <input type="text" name="TodoItem">
     {% if created_date %}
@@ -17,6 +19,7 @@
     {% else %}
         <p>{{ TodoItem.completed_date }}</p>
     {% endif %}
+
     <br>
     <button type="submit">save</button>
 </form>

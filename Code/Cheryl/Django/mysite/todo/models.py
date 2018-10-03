@@ -5,10 +5,12 @@ from django.utils import timezone
 
 # Create your models here.
 
+# class TodoList(models.Model):
+
+
 class TodoItem(models.Model):
     name = models.CharField(max_length=100)
-    body = models.TextField()
-    created_date = models.DateTimeField('date created')
+    created_date = models.DateTimeField('date created', auto_now_add=True)
     completed_date = models.DateTimeField('date completed', null=True, blank=True)
 
     def __str__(self):

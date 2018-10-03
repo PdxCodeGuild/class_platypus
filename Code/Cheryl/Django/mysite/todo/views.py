@@ -1,16 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, reverse
 # Create your views here.
+from .models import TodoItem
 
 def index(request):
-    return render(request, 'todo/index.html', {})
+    todo = TodoItem.objects.all()
+    return render(request, 'todo/index.html', {'todo': todo})
+
 
 def add(request):
     # receive the post request from the form in the template
-    if request.POST['TodoItem'] == True:
-        print('if working')
-        name.save()
-    else:
-        print('else workign')
-    print(request.POST['TodoItem'])
-    return HttpResponse('ok')
+    todo_text = request.POST['TodoItem']
+    todo_item = TodoItem(name=todo_text)
+    todo_item.save()
+    return HttpResponseRedirect(reverse('todo:index'))
