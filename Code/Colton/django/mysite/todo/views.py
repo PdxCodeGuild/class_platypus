@@ -8,14 +8,17 @@ def index(request):
     todos = Add.objects.all()
     return render(request, 'todo/index.html', {'todos': todos})
 
+
 def addtodo(request):
-    todo = request.POST['todo']
-
+    thing = request.POST['thing']
+    todo = Add(thing=thing)
     todo.save()
+    return HttpResponseRedirect(reverse('todo:index'))
 
-def deletecontact(request):
-    id = request.POST['id']
-    todo = Todo.objects.get(pk=id)
-    Todo.delete()
 
+def deletetodo(request):
+    complete = request.POST['id']
+    complete = Add.objects.get(pk=complete)
+    complete.delete()
+    Add.complete = True
     return HttpResponseRedirect(reverse('todo:index'))
