@@ -1,9 +1,15 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from tkinter import *
+from django.shortcuts import render, reverse
+from django.http import HttpResponseRedirect
 
+from .models import Item
 
 def index(request):
-    #btn = Button(top, text="Click Me")
-    # return HttpResponse("Hello, world. You're at the todo index.")
-    return render(request, 'todo/index.html', {'todos': ['a', 'b', 'c']})
+    #return render(request, 'todo/index.html', {'todos': ['a', 'b', 'c']})
+    todos = Item.objects.all()
+    return render(request, 'todo/index.html', {'todos': todos})
+
+def addItem(request):
+    new_item = request.POST['new_item']
+    item = Item(text=new_item)
+    item.save()
+    return HttpResponseRedirect(reverse('todo:index'))

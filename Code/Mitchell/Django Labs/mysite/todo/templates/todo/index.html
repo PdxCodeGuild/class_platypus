@@ -1,7 +1,11 @@
 <h1>Todo List</h1>
-<input id="new_item"><button id="add">Add</button>
+<form action="{% url 'todo:addItem' %}" method="post">
+    <input name="new_item">
+    {% csrf_token %}
+    <button type="submit">Add</button>
+</form>
 <ul>
     {% for todo in todos %}
-    <li>{{todo}} <button class="completed">✅</button><button class="deleted">❌</button></li>
+    <li>{{todo.text}} <button class="completed">✅</button><button class="deleted">❌</button></li>
     {% endfor %}
 </ul>
