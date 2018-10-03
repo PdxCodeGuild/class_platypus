@@ -5,4 +5,5 @@ app_name = 'todo'
 urlpatterns = [
     path('', views.index, name='index'),
     path('addItem/', views.addItem, name='addItem'),
+    path('deleteItem/', views.deleteItem, name='deleteItem'),
 ]
