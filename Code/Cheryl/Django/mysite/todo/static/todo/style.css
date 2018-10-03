@@ -44,6 +44,17 @@ button {
     border: none;
     padding: 5px;
 }
-#del {
+table {
+    border-collapse: collapse;
+    width: 60%;
+    font-size: 1.25em;
+}
 
+td, th {
+    text-align: left;
+    width: 20%;
+}
+
+.boxes {
+    width: 3%;
 }
