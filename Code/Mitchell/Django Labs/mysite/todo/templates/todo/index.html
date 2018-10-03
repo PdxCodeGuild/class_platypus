@@ -17,10 +17,14 @@
     </li>
     {% endfor %}
 </ul>
-<ul>
-    {% for complete in completed_todos %}
-    <li>
-        {{complete}} ✔️
-    </li>
-    {% endfor %}
-</ul>
+<div name="completed">
+    <h5>Completed:</h5>
+    <a href="{% url 'todo:clearItems' %}" type="submit">Clear</a>
+    <ul>
+        {% for complete in completed_todos %}
+        <li>
+            {{complete}} ✔️
+        </li>
+        {% endfor %}
+    </ul>
+</div>
