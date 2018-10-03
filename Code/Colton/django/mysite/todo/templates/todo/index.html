@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+
+    </head>
+    <body>
+    <div id="lump">
+        <form action="{%url 'todo:addtodo' %}" method="post">
+             {% csrf_token %}
+        <input id="thing" type="text" placeholder="Add to your to-do!"/>
+        <div><button id="bt_addlist">ADD IT!</button></div>
+        </form>
+        <div>To do:</div>
+        <ul id="list">
+
+        </ul>
+
+        <div>Completed Tasks:</div>
+        <s><ul id="complete">
+
+        </ul></s>
+    </div>
+    </body>
+</html>
