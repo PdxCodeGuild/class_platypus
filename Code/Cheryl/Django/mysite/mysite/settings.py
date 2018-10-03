@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'magicball.apps.MagicballConfig',
     'todo.apps.TodoConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
