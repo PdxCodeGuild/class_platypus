@@ -1,0 +1,60 @@
+/*colors:*/
+/*yellow rgb(229, 194, 12);
+black #333*/
+
+
+body {
+    color: #333;
+    background-color: rgb(229, 194, 12);
+    font-family: sans-serif;
+}
+
+
+#main-div {
+    margin: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+ol, p {
+    font-size: 1.5em;
+    margin: 5px;
+}
+
+input {
+    padding: 5px;
+    background-color: silver;
+    width: 50%;
+    border-radius: 5px;
+}
+
+#save {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #3B5998;
+    width: 15%;
+    color: white;
+}
+
+button {
+    background-color: rgb(229, 194, 12);
+    border: none;
+    padding: 5px;
+}
+table {
+    border-collapse: collapse;
+    width: 60%;
+    font-size: 1.25em;
+}
+
+td, th {
+    text-align: left;
+    width: 20%;
+}
+
+.boxes {
+    width: 3%;
+}

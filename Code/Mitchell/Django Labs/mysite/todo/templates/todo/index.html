@@ -1,0 +1,30 @@
+<h1>Todo List</h1>
+<form action="{% url 'todo:addItem' %}" method="post">
+    <input name="new_item">
+    {% csrf_token %}
+    <button type="submit">Add</button>
+</form>
+<ul>
+    {% for todo in uncompleted_todos %}
+    <li>
+        <span>{{todo.text}}</span>
+        <form method="post">
+             {% csrf_token %}
+            <input type="hidden" name="id" value="{{todo.id}}"/>
+            <button class="completed" formaction="{% url 'todo:completeItem' %}">✅</button>
+            <button class="deleted" formaction="{% url 'todo:deleteItem' %}">❌</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<div name="completed">
+    <h5>Completed:</h5>
+    <a href="{% url 'todo:clearItems' %}" type="submit">Clear</a>
+    <ul>
+        {% for complete in completed_todos %}
+        <li>
+            {{complete}} ✔️
+        </li>
+        {% endfor %}
+    </ul>
+</div>

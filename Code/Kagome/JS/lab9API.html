@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>Random Quote</title>
 
-
-
     <style>
         body {
           background: seagreen;
@@ -43,14 +41,14 @@
                 let getQuote_url = response.data.quote.body
                 console.log(getQuote_url)
                 qotd.innerText = getQuote_url
-                
+
 
 
                 let author_url = response.data.quote.author
                 auth.innerText = "- - " + author_url + " - -"
             })}
             getQuote()
-        setInterval(getQuote, 8000)
+        setInterval(getQuote, 15000)
 
 
     </script>
