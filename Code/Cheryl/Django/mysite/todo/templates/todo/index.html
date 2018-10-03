@@ -6,45 +6,73 @@
     <meta charset="UTF-8">
     <title>To Do List</title>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
 </head>
 <body>
 <div id="main-div" class="container">
-<h2>Create your TODO list!</h2>
+    <h2>Create your To Do list!</h2>
     <br>
-  <div class="row">
-    <div class="col-sm col-lg-6">
+    <div class="row">
+        <div class="col-sm col-lg-6">
 
-{{ todo_text }}
-<form action="{% url 'todo:add' %}" method="post" name="text_name">
-    {% csrf_token %}
+            {{ todo_text }}
+            <form action="{% url 'todo:add' %}" method="post" name="text_name">
+                {% csrf_token %}
 
-    <p>Add Item:</p>
-    <input type="text" name="TodoItem">
-    <br>
-    <button id="save" type="submit">save</button>
+                <p>Add Item:</p>
+                <input type="text" name="TodoItem">
+                <br>
+                <button id="save" type="submit">save</button>
+            </form>
+        </div>
+        <div class="col-sm col-lg-6">
 
-    <br>
+            <p><a href="/todo/{{ TodoItem.id }}/">{{ TodoItem.created_date }}</a></p>
+
+            <h3>To Do:</h3>
+            <table>
+                {% for todo in todos %}
+                <tr>
+                    <td>
+                        {{ forloop.counter }} {# starting index 1 #}
+                        {{todo.name}}
+                    </td>
+                    <td class="boxes">
+                        <form action="{% url 'todo:completetodo' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{todo.id}}"/>
+                            <button type="submit">✅</button>
+                        </form>
+                    </td>
+                    <td class="boxes">
+                        <form action="{% url 'todo:deletetodo' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{todo.id}}"/>
+                            <button type="submit">❌</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <br>
+            <h3>Done:</h3>
+            <table>
+                {% for completed_todo in completed_todos %}
+
+                <tr>
+                    <td>
+                        {{ forloop.counter }} {# starting index 1 #}
+                        {{completed_todo.name}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
-    <div class="col-sm col-lg-6">
-
-    {% if created_date %}
-        <p><a href="/todo/{{ TodoItem.id }}/">{{ TodoItem.created_date }}</a></p>
-    {% else %}
-        <p>{{ TodoItem.completed_date }}</p>
-    {% endif %}
-
-    <ol>
-     {% for todo in todos %}
-    <li>{{todo.name}} <button type="submit"> ✅ </button><button type="???">❌</button></li>
-    {% endfor %}
-        </ol>
-
-    </div>
-</form>
-  </div>
-    </div>
+</div>
 </body>
 </html>
 
