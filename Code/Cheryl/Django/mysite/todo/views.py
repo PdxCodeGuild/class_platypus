@@ -7,6 +7,8 @@ from .models import TodoItem
 def index(request):
     todo = TodoItem.objects.all()
     return render(request, 'todo/index.html', {'todo': todo})
+
+
 def add(request):
     # receive the post request from the form in the template
     todo_text = request.POST['TodoItem']
