@@ -20,5 +20,4 @@ def deletetodo(request):
     complete = request.POST['id']
     complete = Add.objects.get(pk=complete)
     complete.delete()
-    Add.complete = True
     return HttpResponseRedirect(reverse('todo:index'))
