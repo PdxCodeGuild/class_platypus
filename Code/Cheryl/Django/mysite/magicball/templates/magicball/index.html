@@ -17,17 +17,16 @@
     <h1>Welcome to the Magic Oracle</h1><br>
 
     <form action="" method="post" name="text_name">
-                {% csrf_token %}
+        {% csrf_token %}
 
-                <h3>Enter your question for the Oracle:</h3>
-                <input type="text" name="" placeholder="Your Question">
-                <br>
-                <button id="save" type="submit">ask</button>
-            </form>
+        <h3>Enter your question for the Oracle:</h3>
+        <input type="text" name="" placeholder="Your Question">
+        <br>
+        <button id="save" type="submit">ask</button>
+    </form>
 
     <h1 id="oracle">{{computer_choice}}</h1>
 
-    <!--<img src="{% static 'magicball/images/theda.jpg' %}"/>-->
 
 </div>
 </body>
