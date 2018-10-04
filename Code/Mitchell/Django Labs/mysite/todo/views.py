@@ -25,3 +25,9 @@ def deleteItem(request):
     item = Item.objects.get(pk=id)
     item.delete()
     return HttpResponseRedirect(reverse('todo:index'))
+
+def clearItems(request):
+    completed_todos = Item.objects.filter(completed=True)
+    for completed_todo in completed_todos:
+        completed_todo.delete()
+    return HttpResponseRedirect(reverse('todo:index'))
