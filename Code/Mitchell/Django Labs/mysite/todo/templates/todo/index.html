@@ -1,38 +1,17 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <style>
-            body {
+        <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}" />
 
-            }
-            h1 {
-                text-align: center;
-            }
-            h5 {
-                margin-left: 20%;
-            }
-            #current {
-                border-style: groove;
-                margin-left: 20%;
-                margin-right: 20%;
-            }
-            #completed {
-                border-style: groove;
-                margin-left: 20%;
-                margin-right: 20%;
-            }
-            #clear {
-                color: white;
-                background-color: blue;
-            }
-        </style>
     </head>
     <body>
         <h1>Todo List</h1>
-        <hr>
-        <h5>Current Items:</h5>
+        <h2>Current Items:</h2>
         <div id="current">
             <form action="{% url 'todo:addItem' %}" method="post">
+                Add new item to Todo list:
                 <input name="new_item">
                 {% csrf_token %}
                 <button type="submit">Add</button>
@@ -40,19 +19,18 @@
             <ul>
                 {% for todo in uncompleted_todos %}
                 <li>
-                    <span>{{todo.text}}</span>
                     <form method="post">
+                        <span>{{todo.text}}</span>
                          {% csrf_token %}
-                        <input type="hidden" name="id" value="{{todo.id}}"/>
-                        <button class="completed" formaction="{% url 'todo:completeItem' %}">✅</button>
+                        <input type="hidden" name="id" value="{{todo.id}}"/><button class="completed" formaction="{% url 'todo:completeItem' %}">✅</button>
                         <button class="deleted" formaction="{% url 'todo:deleteItem' %}">❌</button>
                     </form>
                 </li>
                 {% endfor %}
             </ul>
         </div>
-        <hr>
-        <h5>Completed Items:</h5>
+        <br>
+        <h2>Completed Items:</h2>
         <div id="completed">
             <ul>
                 {% for complete in completed_todos %}
@@ -63,7 +41,6 @@
             </ul>
         </div>
         <center><a id="clear" href="{% url 'todo:clearItems' %}" type="submit">Clear Completed</a></center>
-        <hr>
         <br>
     </body>
 </html>
