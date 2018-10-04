@@ -8,4 +8,5 @@ app_name = 'todo'
 urlpatterns = [
     path('', views.index, name='index'),
     path('addtodo/', views.addtodo, name='addtodo'),
+    path('deletetodo/', views.deletetodo, name='deletetodo'),
     ]
