@@ -24,4 +24,5 @@ urlpatterns = [
     path('todo/', include('todo.urls')),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
+
 ]
