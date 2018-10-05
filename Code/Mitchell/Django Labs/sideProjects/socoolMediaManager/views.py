@@ -2,7 +2,6 @@ from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Platform
 
-
 def index(request):
     #return HttpResponse("Hello, world. You're at the Socool Media Manager's index.")
     platforms = Platform.objects.all()
