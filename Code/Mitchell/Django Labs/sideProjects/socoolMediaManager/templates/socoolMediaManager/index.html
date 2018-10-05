@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>SoCool Media Manager</title>
+</head>
+<body>
+    <h1>SoCool Media Manager</h1>
+    <form action="{% url 'socoolMediaManager:addPlatform' %}" method="post">
+        Username for account:
+        <input name="username_input">
+        {% csrf_token %}
+        <br>
+        Link to account:
+        <input name="link_input">
+        {% csrf_token %}
+        <button type="submit">Add</button>
+    </form>
+    <br>
+    <div id="platforms_display">
+        <ul>
+            {% for platform in platforms %}
+            <li>
+                {{platform}} ✔️
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a id="clear" href="{% url 'socoolMediaManager:clearPlatforms' %}" type="submit">Clear Platforms</a>
+</body>
+</html>
