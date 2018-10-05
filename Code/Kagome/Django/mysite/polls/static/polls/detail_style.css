@@ -1,0 +1,8 @@
+li a {
+    color: black;
+}
+body {
+    background: white url("images/votedimage.png") no-repeat;
+    text-align: center;
+    font: italic 1.5em "Fira Sans", serif;
+}
