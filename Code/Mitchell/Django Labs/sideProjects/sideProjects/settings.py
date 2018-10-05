@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'amiiboHub.apps.AmiibohubConfig',
+    'socoolMediaManager.apps.SocoolmediamanagerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
