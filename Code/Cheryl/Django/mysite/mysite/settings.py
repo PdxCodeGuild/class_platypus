@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'shorturl.apps.ShorturlConfig',
     'blog.apps.BlogConfig',
     'magicball.apps.MagicballConfig',
     'todo.apps.TodoConfig',
