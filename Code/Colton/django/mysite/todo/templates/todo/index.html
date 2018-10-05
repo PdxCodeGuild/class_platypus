@@ -2,40 +2,62 @@
 <html>
     <head>
         <style>
-
+        body{
+            color: white;
+            background-image: url("https://images.pexels.com/photos/261630/pexels-photo-261630.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center ;
+            background-size: cover;
+            width:100%;
+            text-align: center;
+            align-items: center;
+            margin: auto;
+            align-content:center;
+        }
+        table{
+            margin: 0 auto;
+            background-color: grey;
+        }
 
 
         </style>
     </head>
     <body>
+    <form action="{%url 'todo:clear_todo_list' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="delete"/>
+                    <button type="submit">Clear List</button>
+                </form>
     <div id="lump">
-
         <form action="{%url 'todo:addtodo' %}" method="post">
              {% csrf_token %}
         <input name="thing" type="text" placeholder="Add to your to-do!"/>
         <button type="submit">ADD IT!</button>
         </form>
         <table>
-        <div>To do:</div>
+        <h1>To do:</h1>
         {% for todo in todos %}
         <tr>
-        </form>
-
-            <td>
+            <td {% if todo.is_done %}style="text-decoration:line-through"{% endif %}>
                 {{todo.add_date}}
             </td>
-            <td>
+            <td {% if todo.is_done %}style="text-decoration:line-through"{% endif %} >
                 {{todo.thing}}
             </td>
+
             <td>
+                {% if todo.is_done == False %}
                 <form action="{% url 'todo:deletetodo' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="id" value="{{todo.id}}"/>
-                <button type="submit">Done</button>
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{todo.id}}"/>
+                    <button type="submit">Done</button>
+                </form>
+                {% endif %}
             </td>
         </tr>
-            {% endfor %}
+        {% endfor %}
         </table>
-    </div>
+        </div>
     </body>
 </html>

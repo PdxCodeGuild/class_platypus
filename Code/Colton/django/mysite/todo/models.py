@@ -6,7 +6,7 @@ from django.utils import timezone
 class Add(models.Model):
     thing = models.CharField(max_length=200)
     add_date = models.DateTimeField(default=datetime.datetime.now)
-    complete = True
+    is_done = models.BooleanField(default=False)
 
     def __str__(self):
         return self.thing
