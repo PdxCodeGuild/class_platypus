@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>TODO list</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}" />
 </head>
 <body>
+    <h1>{{message}}</h1>
+    <ul>
+        {% for fruit in fruits %}
+        <li>{{fruit}}</li>
+        {% endfor %}
+    </ul>
+    <form>
+        <input type="text" placeholder="enter item">
+        <button id="btn">Enter</button>
+    </form>
 
 </body>
 </html>
