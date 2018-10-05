@@ -7,3 +7,6 @@ from .models import ShortUrl
 
 admin.site.register(ShortUrl)
 
+from .models import UserUrl
+
+admin.site.register(UserUrl)

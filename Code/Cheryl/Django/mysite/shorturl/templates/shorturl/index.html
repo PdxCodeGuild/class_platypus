@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>working html page</p>
+    <div>
+
+         {{ user_url }}
+                <form action="{% url 'shorturl:add' %}" method="post" name="">
+                    {% csrf_token %}
+
+                    <p>Add Item:</p>
+                    <input type="text" name="UserUrl">
+                    <br>
+                    <button id="save" type="submit">save</button>
+                </form>
+
+    </div>
+</body>
+</html>
