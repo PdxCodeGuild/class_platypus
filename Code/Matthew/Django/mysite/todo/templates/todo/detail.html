@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>{{list.name}}</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="text"/>
+            <button type="submit">add</button>
+        </form>
+        <table>
+        {% for item in list.items.all %}
+            <tr>
+                <td {% if item.completed_date is not None %}style="text-decoration:line-through"{% endif %}
+                    title="{{item.completed_date}}">
+                    {{item.text}}
+                </td>
+                <td>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{item.id}}"/>
+                        <button type="submit">🗸</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <a href="{% url 'todo:index' %}"><- back</a>
+    </body>
+</html>

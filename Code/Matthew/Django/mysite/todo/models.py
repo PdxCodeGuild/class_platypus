@@ -37,7 +37,7 @@ class TodoList(models.Model):
 
 class TodoListItem(models.Model):
     text = models.CharField(max_length=100)
-    todolist = models.ForeignKey(TodoList, on_delete=models.CASCADE)
+    todolist = models.ForeignKey(TodoList, on_delete=models.CASCADE, related_name='items')
 
     created_date = models.DateTimeField(auto_now_add=True)
     completed_date = models.DateTimeField(null=True, blank=True)
