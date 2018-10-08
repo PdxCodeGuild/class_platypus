@@ -16,7 +16,7 @@
     {% for url in urls %}
     <tr>
         <td>
-        {{url.short}}
+            <a href="http://localhost:8000/urlshortener/redirect/{{url.short}}">{{url.short}}</a>
         </td>
     </tr>
     {% endfor %}

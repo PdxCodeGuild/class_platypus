@@ -7,5 +7,5 @@ app_name = 'urlshortener'
 urlpatterns = [
     path('', views.index, name='index'),
     path('saveurl/', views.saveurl, name='saveurl'),
-    # path('redirect/', views.redirect, name='redirect')
+    path('redirect/', views.redirect, name='redirect')
     ]
