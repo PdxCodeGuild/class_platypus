@@ -1,22 +1,29 @@
-<!--at the place where I'm trying to get my "code" to show, which is the short url. It works if I "print" but how do i make it work here.-->
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'shorturl/style.css' %}">
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <p>working html page</p>
+<div id="header">
+    <h1>Obtain a Shorter URL for Sharing</h1>
+</div>
     <div>
         <form action="{% url 'shorturl:add' %}" method="post" >
             {% csrf_token %}
-            <p>Add Item:</p>
+            <h2>Add URL to Shorten:</h2>
             <input type="text" name="Web_Url">
             <br>
             {{ code }}
             <button id="save" type="submit">save</button>
         </form>
+    </div>
+    <div>
         <table>
             <tr>
                 <th>Code</th>
