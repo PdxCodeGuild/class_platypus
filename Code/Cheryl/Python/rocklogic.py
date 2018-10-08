@@ -1,1 +1,0 @@
-#try to make rock paper work with the modulus and 5 optoins

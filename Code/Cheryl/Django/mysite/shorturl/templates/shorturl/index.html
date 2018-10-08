@@ -1,3 +1,5 @@
+<!--at the place where I'm trying to get my "code" to show, which is the short url. It works if I "print" but how do i make it work here.-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,17 +9,26 @@
 <body>
     <p>working html page</p>
     <div>
-
-         {{ user_url }}
-                <form action="{% url 'shorturl:add' %}" method="post" >
-                    {% csrf_token %}
-
-                    <p>Add Item:</p>
-                    <input type="text" name="Web_Url">
-                    <br>
-                    <button id="save" type="submit">save</button>
-                </form>
-
+        <form action="{% url 'shorturl:add' %}" method="post" >
+            {% csrf_token %}
+            <p>Add Item:</p>
+            <input type="text" name="Web_Url">
+            <br>
+            {{ code }}
+            <button id="save" type="submit">save</button>
+        </form>
+        <table>
+            <tr>
+                <th>Code</th>
+                <th>Url</th>
+            </tr>
+            {% for url in urls %}
+            <tr>
+                <td>{{url.code}}</td>
+                <td>{{url.original_url}}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 </body>
 </html>
