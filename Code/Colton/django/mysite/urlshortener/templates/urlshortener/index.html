@@ -12,5 +12,14 @@
         <input name="link" type="text" placeholder="Shorten!"/>
         <button type="submit">Minify it!</button>
         </form>
+    <table>
+    {% for url in urls %}
+    <tr>
+        <td>
+        {{url.short}}
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
     </body>
 </html>
