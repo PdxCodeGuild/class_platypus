@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    </head>
+    <body>
+        <input id="todo_input" type="text"/>
+        <button id="btn">add</button>
+        <ul id="todo_ul">
+        </ul>
+        <script>
+            let todo_ul = document.querySelector('#todo_ul')
+            let todo_input = document.querySelector('#todo_input')
+            let btn = document.querySelector('#btn')
+
+            btn.onclick = function() {
+                let url = "{% url 'todoajax:additem' %}"
+                // xhttp.setRequestHeader("Content-Type", "application/json");
+                //xhttp.setRequestHeader('X-CSRFToken', csrf_token);
+
+                let csrf_token = '{{ csrf_token }}'
+
+
+                axios.post(url, {
+                    text: todo_input.value
+                }, {
+                    headers: { 'X-CSRFToken': csrf_token }
+                })
+                .then(function (response) {
+
+                    updateList()
+
+                    // maybe smarter? saves one web request
+                    // let li = document.createElement('li')
+                    // li.innerText = todo_input.value
+                    // todo_ul.appendChild(li)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
+
+
+            function updateList() {
+
+                let url = "{% url 'todoajax:getitems' %}"
+                axios.get(url).then(function(response) {
+                    //console.log(response.data)
+                    let todos = response.data.items
+                    todo_ul.innerHTML = ''
+                    for (let i=0; i<todos.length; ++i) {
+                        let li = document.createElement('li')
+                        li.innerText = todos[i].text
+                        todo_ul.appendChild(li)
+                    }
+                })
+            }
+
+
+            updateList()
+        </script>
+    </body>
+</html>
