@@ -6,4 +6,5 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('rps/', include('rps.urls')),
     path('contacts/', include('contacts.urls')),
+    path('todo/', include('todo.urls')),
 ]

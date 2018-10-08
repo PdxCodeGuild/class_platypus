@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+    <h1>Make your Url short, kinda.</h1>
+    <form action="{%url 'urlshortener:saveurl' %}" method="post">
+             {% csrf_token %}
+        <input name="link" type="text" placeholder="Shorten!"/>
+        <button type="submit">Minify it!</button>
+        </form>
+    </body>
+</html>
