@@ -5,18 +5,58 @@
     <title>TODO list</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Muli" rel="stylesheet">
 </head>
 <body>
-    <h1>{{message}}</h1>
-    <ul>
-        {% for fruit in fruits %}
-        <li>{{fruit}}</li>
-        {% endfor %}
-    </ul>
-    <form>
-        <input type="text" placeholder="enter item">
-        <button id="btn">Enter</button>
-    </form>
 
+
+    <div id="main">
+        <h1>{{message}}</h1>
+        <form action="{% url 'todo:addItem' %}" method="post">
+            {% csrf_token %}
+            <input name="text" type="text" placeholder="enter item">
+            <button type="submit">Add</button>
+        </form>
+
+        <!--<form action="{% url 'todo:completeItem' %}" method="get">-->
+        <table>
+        {% for todo in todos %}
+            <tr>
+                <td {% if text.completeItem is not None %}style="text-decoration:line-through"{% endif %}>
+                    {{todo.text}}
+                </td>
+                <td>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{item.id}}"/>
+                        <button type="submit">&#x2714;</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{item.id}}"/>
+                        <button type="submit">X</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+
+        <!--{% if todos %}-->
+            <!--<ul>-->
+            <!--{% for todo in todos %}-->
+                <!--<li>{{ todo.text }}</li>-->
+            <!--{% endfor %}-->
+            <!--</ul>-->
+        <!--{% else %}-->
+            <!--<p>No items are available.</p>-->
+        <!--{% endif %}-->
+
+
+
+
+        </form>
+    </div>
 </body>
 </html>

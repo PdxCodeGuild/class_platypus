@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'todo.apps.TodoConfig',
+    'urlshort.apps.UrlshortConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
