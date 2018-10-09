@@ -18,4 +18,8 @@ def saveurl(request):
     link.save()
     return HttpResponseRedirect(reverse('urlshortener:index'))
 
+def redirect(request):
+    link = Url(pk=short)
+    return redirect(link)
+
 
