@@ -1,10 +1,3 @@
-from django.shortcuts import render, reverse
-from django.http import HttpResponse, HttpResponseRedirect
-import random
-# from .models import MODEL_CLASS
-import string
+from django.shortcuts import render
 
-
-def index(request):
-
-    return render(request, 'library/index.html', {})
+# Create your views here.
