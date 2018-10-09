@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    path('library/', include('library.urls')),
     path('shorturl/', include('shorturl.urls')),
     path('blog/', include('blog.urls')),
     path('magicball/', include('magicball.urls')),
