@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo.apps.TodoConfig',
     'urlshortener.apps.UrlShortenerConfig',
+    'library',
 ]
 
 MIDDLEWARE = [
