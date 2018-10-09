@@ -9,9 +9,9 @@ class Todolist(models.Model):
     def __str__(self):
         return self.name
 
-class TodolistItem(model.Model):
+class TodoListItem(models.Model):
     text = models.CharField(max_length=100)
-    todolist = models.ForeignKey(TodoList, on_delete=models.CASCADE, related_name='items')
+    todolist = models.ForeignKey(Todolist, on_delete=models.CASCADE, related_name='items')
 
     def is_completed(self):
         return self.completed_date is not None

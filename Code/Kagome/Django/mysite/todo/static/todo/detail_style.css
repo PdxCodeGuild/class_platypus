@@ -1,8 +1,8 @@
 li a {
-    color: black;
+    color: darkblue;
 }
 body {
-    background: white;
+    background: black;
     text-align: center;
     font: italic 1.5em "Fira Sans", serif;
 }

@@ -7,4 +7,5 @@ urlpatterns = [
     path('rps/', include('rps.urls')),
     path('contacts/', include('contacts.urls')),
     path('todo/', include('todo.urls')),
+    path('todoajax/', include('todoajax.urls')),
 ]
