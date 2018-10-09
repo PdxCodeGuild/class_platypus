@@ -28,7 +28,7 @@ def completeItem(request):
 
 def deleteItem(request):
     id = request.POST['id']
-    todo_item = TodoItem.objects.get(pk=id).delete()
+    TodoItem.objects.get(pk=id).delete()
     return HttpResponseRedirect(reverse('todo:index'))
 
 
