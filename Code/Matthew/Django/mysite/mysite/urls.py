@@ -8,4 +8,5 @@ urlpatterns = [
     path('contacts/', include('contacts.urls')),
     path('todo/', include('todo.urls')),
     path('todoajax/', include('todoajax.urls')),
+    path('users/', include('users.urls')),
 ]
