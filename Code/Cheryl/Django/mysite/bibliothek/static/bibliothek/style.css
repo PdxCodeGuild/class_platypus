@@ -1,3 +1,7 @@
 body {
-    background-color: greenyellow;
+    background-color: orange;
+}
+
+li {
+    margin-left: 5%;
 }

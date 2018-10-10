@@ -7,5 +7,42 @@
 </head>
 <body>
 <p>I am working...</p>
+
+<div>
+    <h2>Library</h2>
+    <h3>Add a book to the Catalog</h3>
+
+        <p>Book Title:</p><form action="{% url 'bibliothek:add_book' %}" method="post" >
+            {% csrf_token %}
+            <input type="text" name="Book">
+            <br>
+            {{ title }}
+
+
+    <p>Author(s):</p>
+            <input type="text" name="Book">
+            <br>
+            <!--{{ author }}-->
+            <button id="save" type="submit">save</button>
+        </form>
+
+                    </ul>
+        <h3>Search the Catalog</h3>
+            <ul>an input field to search for:</ul>
+                <li>author</li>
+                <li>book</li>
+                    <ul>
+                        <li>Whether or not book is available</li>
+                    </ul>
+
+  
+
+        <h3>Your Account</h3>
+            <ul>an input field to search for:</ul>
+                <li>record of when user checked in/out books</li>
+                <li>books that user currently has checked out</li>
+
+</div>
+
 </body>
 </html>
