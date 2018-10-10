@@ -17,8 +17,6 @@
     <div class="nav-wrapper">
       <a href="http://localhost:8000/library/" class="brand-logo">Colton's Free Library</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Checkout</a></li>
-        <li><a href="badges.html">Check-in</a></li>
         <li><a href="collapsible.html">Log In</a></li>
       </ul>
     </div>
@@ -31,8 +29,9 @@
     <title>Checkout</title>
 </head>
 <body>
+
+<h4>{{book.title}} by {{book.author}}</h4>
 <div>Is this the book you would like to Checkout?</div>
-<h1>{{book.title}}</h1>
 
 
 <form action="{% url 'library:checkout' book.id %}" method="post">

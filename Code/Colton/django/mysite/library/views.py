@@ -10,4 +10,10 @@ def index(request):
 
 def checkout(request, book_id):
     book = Book.objects.get(pk=book_id)
-    return render(request, 'library/detail.html', {'book': book})
+    if Book.checked_out:
+        return HttpResponse('That book is already checked out.')
+    else:
+        return render(request, 'library/detail.html', {'book': book})
+
+
+
