@@ -21,7 +21,7 @@ def add(request):
     return HttpResponseRedirect(reverse('shorturl:index'))
 
 
-def redirect(request):
-    original_url = Web_Url(original_url=user_url, code=code)
-    original_url.save()
-    return HttpResponseRedirect(reverse('shorturl:index'))
+def redirect(request, code):
+    url_row = Web_Url.objects.get(code=code)
+
+    return HttpResponseRedirect(url_row.original_url)

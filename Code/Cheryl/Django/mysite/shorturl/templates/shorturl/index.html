@@ -33,7 +33,7 @@
             {% for url in urls %}
             <tr>
                 <!--<td><a href="{{url.original_url}}">{{url.code}}</a></td>-->
-                <td><a href="http://localhost:8000{% url 'shorturl:redirect' %}{{url.code}}">{{url.code}}</a></td>
+                <td><a href="http://localhost:8000{% url 'shorturl:redirect' url.code %}">{{url.code}}</a></td>
                 <td>{{url.original_url}}</td>
             </tr>
             {% endfor %}

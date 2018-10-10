@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bibliothek.apps.BibliothekConfig',
+    'library.apps.LibraryConfig',
     'shorturl.apps.ShorturlConfig',
     'blog.apps.BlogConfig',
     'magicball.apps.MagicballConfig',
