@@ -1,11 +1,14 @@
 from django.shortcuts import render, reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from .models import Platform
 
 def index(request):
-    #return HttpResponse("Hello, world. You're at the Socool Media Manager's index.")
     platforms = Platform.objects.all()
     return render(request, 'socoolMediaManager/index.html', {'platforms': platforms})
+
+def edit(request):
+    platforms = Platform.objects.all()
+    return render(request, 'socoolMediaManager/edit.html', {'platforms': platforms})
 
 def addPlatform(request):
     username_input = request.POST['username_input']
@@ -14,8 +17,8 @@ def addPlatform(request):
     platform.save()
     return HttpResponseRedirect(reverse('socoolMediaManager:index'))
 
-def clearPlatforms(request):
-    platforms = Platform.objects.all()
-    for platform in platforms:
-        platform.delete()
+def deletePlatform(request):
+    id = request.POST['id']
+    platform = Platform.objects.get(pk=id)
+    platform.delete()
     return HttpResponseRedirect(reverse('socoolMediaManager:index'))

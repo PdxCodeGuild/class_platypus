@@ -26,11 +26,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'socoolMediaManager:edit' %}">Edit</a>
+            <a class="nav-link" href="{% url 'socoolMediaManager:index' %}">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Edit</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Post</a>
@@ -46,13 +46,38 @@
         </form>
       </div>
     </nav>
-    <h1>INDEX</h1>
+    <h1>Edit</h1>
     <div id="main_div">
+        <div id="add_platform"></div>
+            <form action="{% url 'socoolMediaManager:addPlatform' %}" method="post">
+                Username for account:
+                <input name="username_input">
+                {% csrf_token %}
+                <br>
+                Link to the account:
+                <input name="link_input">
+                {% csrf_token %}
+                <br>
+                <select name="platform_type_id">
+                    {% for platform_type in platform_types %}
+                    <option value="{{platform_type.id}}">{{platform_type.name}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button type="submit">Add Account</button>
+            </form>
+        </div>
+        <br>
         <div id="display_platforms">
             <ul>
                 {% for platform in platforms %}
                 <li>
                     <a href="{{ platform.link }}">{{platform.username}}</a>
+                    <form action="{% url 'socoolMediaManager:deletePlatform' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{platform.id}}" name="id"/>
+                        <button type="submit">❌</button>
+                    </form>
                 </li>
                 {% endfor %}
             </ul>
