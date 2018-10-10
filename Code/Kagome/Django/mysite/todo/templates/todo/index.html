@@ -1,13 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>To Do List</title>
+    <title></title>
     {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
 </head>
 <body>
-
+    <ul>
+    {% for list in lists %}
+    <li>{{list.name}}
+    {% for list_item in list.todolistitem_set.all %}
+        <li>{{list_item.text}}</li>
+        {% endfor %}
+    </li>
+    {% endfor %}
+    </ul>
+    <p></p>
 </body>
 </html>

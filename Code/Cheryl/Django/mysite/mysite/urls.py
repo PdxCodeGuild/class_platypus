@@ -21,8 +21,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('bibliothek/', include('bibliothek.urls')),
     path('library/', include('library.urls')),
-    path('', RedirectView.as_view(url='/library/', permanent=True)),
     path('shorturl/', include('shorturl.urls')),
     path('blog/', include('blog.urls')),
     path('magicball/', include('magicball.urls')),
