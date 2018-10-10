@@ -14,8 +14,9 @@ def saveUrl(request):
     url.save()
     return HttpResponseRedirect(reverse('urlshort:index'))
 
-def redirect(request):
-    return HttpResponseRedirect(reverse('render/url:long_url/'))
+def redirect(request, code):
+    url = Url.objects.get(short_url=code)
+    return HttpResponseRedirect(url.long_url)
 
 def clearUrls(request):
     urls = Url.objects.all()

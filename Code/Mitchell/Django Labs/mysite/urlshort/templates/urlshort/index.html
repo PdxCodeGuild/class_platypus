@@ -20,6 +20,7 @@
                 {% for url in urls %}
                 <li>
                     <a href="{{url.long_url}}">{{url}}</a>
+                    <a href="{% url 'urlshort:redirect' url.short_url %}">{{url}}</a>
                 </li>
                 {% endfor %}
             </ul>
