@@ -1,25 +1,55 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <style>
+        h3 {
+            text-align: center;
+        }
+        body {
+            color: black;
+            background-color: grey;
+        }
+        a {
+            color:black;
+        }
+        a:hover{
+            color:red;
+        }
+
+
 
         </style>
     </head>
     <body>
-    <h1>Make your Url short, kinda.</h1>
+    <h3>Make your Url short, kinda.</h3>
+    <div class="container">
+        <form action="{%url 'urlshortener:clear_list' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="delete"/>
+                    <button type="submit">Clear List</button>
+                </form>
+    <div class="deep-purple darken-4 ">
     <form action="{%url 'urlshortener:saveurl' %}" method="post">
              {% csrf_token %}
         <input name="link" type="text" placeholder="Shorten!"/>
+        </div>
         <button type="submit">Minify it!</button>
         </form>
+
     <table>
     {% for url in urls %}
     <tr>
         <td>
-            <a href="http://localhost:8000/urlshortener/redirect/{{url.short}}">{{url.short}}</a>
+            <a href="{%url 'urlshortener:change' url.short %}">http://localhost:8000/urlshortener/change/{{url.short}}</a>
+        </td>
+        <td>
         </td>
     </tr>
     {% endfor %}
+
     </table>
+        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </body>
 </html>
