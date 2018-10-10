@@ -5,6 +5,26 @@
     <title>URL Shortner</title>
 </head>
 <body>
-    <h1>Rendering urlshort index.html</h1>
+    <div id="main_div">
+        <h1>Rendering urlshort index.html</h1>
+        <div id="new_url">
+            <form action="{% url 'urlshort:saveUrl' %}" method="post">
+                Add new url:
+                <input name="url_input">
+                {% csrf_token %}
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <div id="display_urls">
+            <ul>
+                {% for url in urls %}
+                <li>
+                    <a href="{% url 'urlshort:redirect' url.short_url %}">{{url}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a id="clear" href="{% url 'urlshort:clearUrls' %}" type="submit">Clear Urls</a>
+    </div>
 </body>
 </html>

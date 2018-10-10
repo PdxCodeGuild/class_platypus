@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'amiiboHub.apps.AmiibohubConfig',
     'socoolMediaManager.apps.SocoolmediamanagerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -120,3 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Added to render social media icons
+MEDIA_URL = '/uploaded_files/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_files')
