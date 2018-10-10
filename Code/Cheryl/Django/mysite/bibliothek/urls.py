@@ -3,7 +3,7 @@ from . import views
 from django.urls import path
 
 
-app_name = 'library'
+app_name = 'bibliothek'
 urlpatterns = [
     path('', views.index, name='index'),
 

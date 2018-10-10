@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+from django.http import HttpResponse
+
+import random
+from .models import Books
+
+def index(request):
+    return render(request, 'library/index.html', {})
