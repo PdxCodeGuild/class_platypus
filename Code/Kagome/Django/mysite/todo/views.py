@@ -10,6 +10,7 @@ from .models import Todolist, TodoListItem
 
 def index(request):
     lists = Todolist.objects.all()
+    print(lists)
     return render(request, 'todo/index.html', {'lists': lists})
 
 

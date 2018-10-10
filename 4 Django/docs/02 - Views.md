@@ -35,7 +35,7 @@ urlpatterns = [
 ```python
 def detail(request, todo_item_id):
     todo_item = get_object_or_404(TodoItem, pk=todo_item_id)
-    return render(request, 'todoapp/detail.html', {'todo_item': todo_item})
+    return render(request, checkout.html, {'todo_item': todo_item})
 
 ```
 
