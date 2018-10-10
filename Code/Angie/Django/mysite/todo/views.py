@@ -1,25 +1,34 @@
 from django.shortcuts import render
-
-
-from django.http import HttpResponse
+from django.utils import timezone
+from django.urls import reverse
+from django.http import HttpResponseRedirect, HttpResponse
 from .models import TodoItem
 
 
 def index(request):
-    todo = TodoItem.objects.all()
-    return render(request, 'todo/index.html', {'todo': todo})
+    todos = TodoItem.objects.all()
+    return render(request, 'todo/index.html', {'message': 'To Do List', 'todos': todos})
 
-# create item
-def addItem(request):
-    text = request.POST['text']
-# add item to list
 
-# complete item
+# add/complete item
 def completeItem(request):
+    if request.method == 'POST':
+        if 'text' in request.POST: # adding a new item
+            text = request.POST['text']
+            todo_item = TodoItem(text=text, created_date=timezone.now())
+            todo_item.save()
+        else:
+            id = request.POST['id']
+            item = TodoItem.objects.get(pk=id)
+            item.completed_date = timezone.now()
+            item.save()
+    return HttpResponseRedirect(reverse('todo:index'))
 
-# take completed item off of list
-# place item in completed list
+
 
 def deleteItem(request):
+    id = request.POST['id']
+    TodoItem.objects.get(pk=id).delete()
+    return HttpResponseRedirect(reverse('todo:index'))
 
 

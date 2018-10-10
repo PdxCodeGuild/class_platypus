@@ -1,0 +1,108 @@
+body {
+    background-image: url("images/otherbg.jpg");
+    margin: 0;
+    background-size: cover;
+    background-attachment:fixed;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+    font-family: 'Homemade Apple', cursive;
+    color: white;
+    text-shadow: 2px 2px black;
+
+}
+
+#main {
+    margin: 5% auto;
+    padding:1%;
+    text-align: center;
+    background: #AED6F1;
+    font-family: 'Muli', sans-serif;
+    width: 80%;
+    height:100vh;
+    overflow: auto;
+    box-shadow: -14px 10px 33px rgba(0,0,0,0.75);
+
+}
+input {
+    padding: 3px;
+    margin-bottom: 1%;
+}
+table {
+    margin: 0 auto;
+    width: 300px;
+}
+
+#btn {
+    background-color: #4CAF50; /* Blue */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+
+}
+#btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+}
+
+#btn:hover {
+    background-color: #008CBA;
+    color: white;
+}
+.btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+
+}
+
+.btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.btn:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+.otherBtn {
+    background-color: #4CAF50; /* Red */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+
+}
+.otherBtn:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.otherBtn {
+    background-color: white;
+    color: black;
+    border: 2px solid #f44336;
+}
