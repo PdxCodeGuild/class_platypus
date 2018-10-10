@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Url
 import random
@@ -18,4 +18,12 @@ def saveurl(request):
     link.save()
     return HttpResponseRedirect(reverse('urlshortener:index'))
 
+
+def change(request, short):
+    short = Url.objects.get(short=short)
+    return HttpResponseRedirect(short.link)
+
+def clear_list(request):
+    delete = Url.objects.all().delete()
+    return HttpResponseRedirect(reverse('urlshortener:index'))
 

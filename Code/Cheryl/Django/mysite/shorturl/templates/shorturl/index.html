@@ -1,4 +1,4 @@
-
+<!--I am stuck but thinking that I create a new url for each small link, then that url automatically redirects to the original input site-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,8 @@
 </head>
 <body>
 <div id="header">
-    <h1>Obtain a Shorter URL for Sharing</h1>
+    <h1>URL Shortener</h1>
+    <h3>Use the 'URL Shortener' to shorten a longer url into a manageable length that can be used for sharing.</h3>
 </div>
     <div>
         <form action="{% url 'shorturl:add' %}" method="post" >
@@ -31,11 +32,13 @@
             </tr>
             {% for url in urls %}
             <tr>
-                <td>{{url.code}}</td>
+                <!--<td><a href="{{url.original_url}}">{{url.code}}</a></td>-->
+                <td><a href="http://localhost:8000{% url 'shorturl:redirect' url.code %}">{{url.code}}</a></td>
                 <td>{{url.original_url}}</td>
             </tr>
             {% endfor %}
         </table>
+
     </div>
 </body>
 </html>

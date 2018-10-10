@@ -3,13 +3,13 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from django.utils import timezone
-from .models import TodoList, TodoListItem
+from .models import Todolist, TodoListItem
 
 
 
 
 def index(request):
-    lists = TodoList.objects.all()
+    lists = Todolist.objects.all()
     return render(request, 'todo/index.html', {'lists': lists})
 
 
@@ -26,6 +26,9 @@ def detail(request, pk):
             item.completed_date = timezone.now()
             item.save()
 
-    list = TodoList.objects.get(pk=pk)
+    list = Todolist.objects.get(pk=pk)
 
     return render(request, 'todo/detail.html', {'list': list})
+
+def all(request):
+    pass

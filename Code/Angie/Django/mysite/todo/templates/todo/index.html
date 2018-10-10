@@ -12,51 +12,41 @@
 
     <div id="main">
         <h1>{{message}}</h1>
-        <form action="{% url 'todo:addItem' %}" method="post">
+        <form action="{% url 'todo:completeItem' %}" method="post">
             {% csrf_token %}
             <input name="text" type="text" placeholder="enter item">
-            <button type="submit">Add</button>
+            <button id="btn" type="submit">Add</button>
         </form>
 
-        <!--<form action="{% url 'todo:completeItem' %}" method="get">-->
+        <!--<form action="{% url 'todo:completeItem' %}" method="post">-->
         <table>
         {% for todo in todos %}
             <tr>
-                <td {% if text.completeItem is not None %}style="text-decoration:line-through"{% endif %}>
+                <td {% if todo.completed_date is not None %} style="text-decoration:line-through" {% endif %} title="{{todo.completed_date}}">
                     {{todo.text}}
                 </td>
                 <td>
-                    <form action="" method="post">
+                    <form action="{% url 'todo:completeItem' %}" method="post">
                         {% csrf_token %}
-                        <input type="hidden" name="id" value="{{item.id}}"/>
-                        <button type="submit">&#x2714;</button>
+                        <input type="hidden" name="id" value="{{todo.id}}"/>
+                        <button class="btn" type="submit">&#x2714;</button>
                     </form>
                 </td>
                 <td>
-                    <form action="" method="post">
+                    <form action="{% url 'todo:deleteItem' %}" method="post">
                         {% csrf_token %}
-                        <input type="hidden" name="id" value="{{item.id}}"/>
-                        <button type="submit">X</button>
+                        <input type="hidden" name="id" value="{{todo.id}}"/>
+                        <button class="otherBtn" type="submit">X</button>
                     </form>
                 </td>
             </tr>
         {% endfor %}
         </table>
 
-        <!--{% if todos %}-->
-            <!--<ul>-->
-            <!--{% for todo in todos %}-->
-                <!--<li>{{ todo.text }}</li>-->
-            <!--{% endfor %}-->
-            <!--</ul>-->
-        <!--{% else %}-->
-            <!--<p>No items are available.</p>-->
-        <!--{% endif %}-->
 
 
 
 
-        </form>
     </div>
 </body>
 </html>

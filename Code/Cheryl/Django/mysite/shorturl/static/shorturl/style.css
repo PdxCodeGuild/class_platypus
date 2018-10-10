@@ -4,7 +4,7 @@
 /*dark orange B24600*/
 
 body {
-    background-color: #B24600;
+    background-color: #333;
     background-image: url("images/ice1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,6 +24,7 @@ div {
     padding: 5%;
 }
 
+
 button {
     width: 15%;
     margin-top: 3%;
@@ -41,11 +42,19 @@ input {
     background-color: white;
 }
 
+table {
+    width: 100%;
+}
 th {
     font-size: 1.5em;
+    text-align: left;
 }
 
 th, td {
     border-bottom: 1px solid #999;
     padding: 1%;
+}
+
+td {
+    font-size: 1.25em;
 }
