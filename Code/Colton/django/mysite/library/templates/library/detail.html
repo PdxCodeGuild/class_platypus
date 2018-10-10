@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Checkout</title>
+</head>
+<body>
+<div>Is this the book you would like to Checkout?</div>
+<h1>{{book.title}}</h1>
+
+
+<form action="{% url 'library:checkout' book.id %}" method="post">
+{% csrf_token %}
+
+<input type="submit" value="Checkout" />
+</form>
+</body>
+</html>
