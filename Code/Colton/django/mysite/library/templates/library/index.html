@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Welcome to the Library</title>
-</head>
-<body>
-    <form>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body{
+            text-align: center;
+            background-image: url("https://images.pexels.com/photos/12064/pexels-photo-12064.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350");
+            color: black;
+        }
+    table{
+        margin: 0 auto;
+        text-align: center;
+        background-color: grey;
+        opacity: .8;
+    }
+    nav{
+        text-align: justify;
+        background-color: black;
+    }
+    #book{
+        background-color: grey;
+        opacity: .8;
+    }
 
-    </form>
+    </style>
+    <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Colton's Free Library</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Checkout</a></li>
+        <li><a href="badges.html">Check-in</a></li>
+        <li><a href="collapsible.html">Log In</a></li>
+      </ul>
+    </div>
+  </nav>
+    </head>
+    <title>Welcome to the Library</title>
+
+<body>
+    <div class="container">
+    <table class="flow-text">
+
+        <div id="book">Title /// Author /// Published</div>
+        {% for book in books %}
+        <tr>
+
+            <td>
+                {{book.title}}
+            <td>
+                ///
+            </td>
+            </td>
+            <td>
+                {{book.author}}
+            </td>
+             <td>
+                ///
+            </td>
+            <td>
+                {{book.pub_date}}
+            </td>
+            <td>
+
+            </td>
+            {% endfor %}
+    </table>
+        </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

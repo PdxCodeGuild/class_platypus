@@ -2,6 +2,6 @@ from django.shortcuts import render
 from .models import Book, Author
 
 def index(request):
-    checkout = Book.objects.get('title')
-    return render(request, 'library/index.html', {'checkout': checkout})
+    books = Book.objects.all
+    return render(request, 'library/index.html', {'books': books})
 
