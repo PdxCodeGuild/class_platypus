@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.utils import timezone
 from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import UrlShort
@@ -17,15 +16,8 @@ def index(request):
 # save URL and create a code
 def saveUrl(request):
     text = request.POST['text']
-    # code = ''  # create random code
-    # for i in range(6):
-    #     c = random.choice(string.ascii_letters + string.digits)
-    #     code += c
-    # print(code, text)
-    # short_url = UrlShort(code=code, long_url=text)
     short_url = UrlShort(long_url=text, code=get_random_string(6))
     short_url.save()
-    # print(UrlShort.objects.all())
     return HttpResponseRedirect(reverse('urlshort:index'))
 
 # find URL from code then redirect to the longURL
