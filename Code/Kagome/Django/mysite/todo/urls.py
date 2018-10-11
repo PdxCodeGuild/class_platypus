@@ -7,5 +7,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('<int:pk>/', views.detail, name='detail'),
-    path('all/', views.all, name='all')
+    path('add/', views.add_todo, name='addtodo'),
+    path('all/', views.all, name='all'),
+    path('deletetodo/', views.deletetodo, name='deletetodo'),
+    path('completetodo/', views.completetodo, name='completetodo'),
 ]

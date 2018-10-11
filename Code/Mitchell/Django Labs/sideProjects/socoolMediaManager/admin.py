@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Platform, PlatformType
+
+admin.site.register(Platform)
+admin.site.register(PlatformType)
