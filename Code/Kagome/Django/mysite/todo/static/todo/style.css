@@ -1,9 +1,16 @@
 
 li {
     list-style: square;
+    display:flex;
+    flex-direction:row;
+}
+
+li > * {
+    padding:4px;
 }
 body {
     background-color: white;
+    background-image: url("notepad.jpg");
     color: cadetblue;
     font: 1.2em "Fira Sans", serif;
 }
@@ -13,5 +20,5 @@ body {
 button {
     background-color: white;
     padding: 4px;
-    /*float: right;*/
 }
+

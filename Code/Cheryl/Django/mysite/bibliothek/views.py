@@ -10,7 +10,6 @@ from .models import Book, Author
 
 def index(request):
     authors = Author.objects.all()
-    # books = Book.objects.get()
     books = Book.objects.all()
     return render(request, 'bibliothek/index.html', {'authors': authors, 'books': books})
 

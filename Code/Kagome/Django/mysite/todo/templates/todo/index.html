@@ -3,43 +3,40 @@
 <head>
     <title></title>
     {% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
 </head>
 <body>
-    <ul>
     {% for list in lists %}
-        <h3>{{list.name}}</h3>
-    {% for list_item in list.items.all %}
-        {% if list_item.completed %}
-        <li><del>{{list_item.text}}</del></li>
-        {% else %}
-        <li>{{ list_item.text }}</li>
-        {% endif %}
-        <form action="{% url 'todo:completetodo' %}" method="post">
-    {% csrf_token %}
-        <input type="hidden" name="id" value="{{list_item.id}}"/>
-        <button type="submit">✓</button>
-    </form>
-</td>
-<td class="boxes">
-    <form action="{% url 'todo:deletetodo' %}" method="post">
+    <h3>{{list.name}}</h3>
+    <form action="{% url 'todo:addtodo' %}" method="post">
         {% csrf_token %}
-
-        <input type="hidden" name="id" value="{{list_item.id}}"/>
-        <button type="submit">x</button>
+        <input type="hidden" name="list_id" value="{{list.id}}"/>
+        new to do item: <input name="newtodo" type="text" placeholder="Chores To Do"/>
+        <button type="submit">add</button>
     </form>
+    <ul>
+    {% for list_item in list.items.all %}
+        <li>
+        {% if list_item.completed %}
+            <del>{{list_item.text}}</del>
+        {% else %}
+            <span>{{ list_item.text }}</span>
+            <form action="{% url 'todo:completetodo' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{list_item.id}}"/>
+                <button type="submit">✓</button>
+            </form>
+            <form action="{% url 'todo:deletetodo' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{list_item.id}}"/>
+                <button type="submit">x</button>
+            </form>
+        {% endif %}
+        </li>
         {% endfor %}
-
-    {% endfor %}
     </ul>
-    <p></p>
+    {% endfor %}
 
 
-<form action="{% url 'todo:addtodo' %}" method="post">
-    {% csrf_token %}
-    new to do item: <input name="newtodo" type="text" placeholder="Chores To Do"/>
-    <button type="submit">add</button>
-</form>
 </body>
 </html>
