@@ -1,6 +1,9 @@
 from django.shortcuts import render, reverse
 from django.http import HttpResponseRedirect
 from .models import Platform, PlatformType
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     platforms = Platform.objects.all()
@@ -25,3 +28,27 @@ def deletePlatform(request):
     platform = Platform.objects.get(pk=id)
     platform.delete()
     return HttpResponseRedirect(reverse('socoolMediaManager:edit'))
+
+def register_user(request):
+    username = request.POST['username']
+    email = request.POST['email']
+    password = request.POST['password']
+    user = User.objects.create_user(username, email, password)
+    login(request, user)
+    return HttpResponseRedirect(reverse('socoolMediaManager:index'))
+
+def login_user(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect(reverse('socoolMediaManager:index'))
+    return HttpResponseRedirect(reverse('socoolMediaManger:register'))
+
+def register(request):
+    return render(request, 'socoolMediaManager/register.html', {})
+
+def logout_user(request):
+    logout(request)
+    return render(request, 'socoolMediaManager/register.html', {})
