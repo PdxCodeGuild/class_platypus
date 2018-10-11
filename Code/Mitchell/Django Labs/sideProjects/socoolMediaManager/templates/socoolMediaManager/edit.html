@@ -58,6 +58,7 @@
                 <input name="link_input">
                 {% csrf_token %}
                 <br>
+                Social media platform:
                 <select name="platform_type_id">
                     {% for platform_type in platform_types %}
                     <option value="{{platform_type.id}}">{{platform_type.name}}</option>
@@ -72,8 +73,8 @@
             <ul>
                 {% for platform in platforms %}
                 <li>
-                    <a href="{{ platform.link }}">{{platform.username}}</a>
                     <form action="{% url 'socoolMediaManager:deletePlatform' %}" method="post">
+                        <a href="{{ platform.link }}">{{platform.username}}</a>
                         {% csrf_token %}
                         <input type="hidden" value="{{platform.id}}" name="id"/>
                         <button type="submit">❌</button>
