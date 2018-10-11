@@ -26,11 +26,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'socoolMediaManager:profile' %}">Profile</a>
+            <a class="nav-link" href="{% url 'socoolMediaManager:index' %}">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'socoolMediaManager:index' %}">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'socoolMediaManager:edit' %}">Edit</a>
@@ -49,7 +49,8 @@
         </form>
       </div>
     </nav>
-    <h1>INDEX</h1>
+    <h1>PROFILE</h1>
+    <h3>{{user.username}}</h3>
     <div id="main_div">
         <div id="display_platforms">
             <ul>
