@@ -52,10 +52,16 @@
             <ul>
                 {% for platform in platforms %}
                 <li>
-                    <a href="{{ platform.link }}">{{platform.username}}</a>
+                    <a href="{{ platform.link }}">
+                        <img src="{{platform.platform_type.icon.url}}" height="20px"/>
+                        {{platform.username}}
+                    </a>
                 </li>
                 {% endfor %}
             </ul>
+            <!--{% for platform_type in platform_types %}-->
+            <!--<img src="{{platform_type.icon.url}}"/>-->
+            <!--{% endfor %}-->
         </div>
     </div>
 </body>
