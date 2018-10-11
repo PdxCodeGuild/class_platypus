@@ -40,12 +40,18 @@ def logout_view(request):
     return render(request, 'library/logout.html')
 
 
-@login_required
+@login_required(login_url='http://localhost:8000/library/login/')
 def checkout(request, book_id):
     book = Book.objects.get(pk=book_id)
     if Book.checked_out is True:
         return HttpResponse('That book is already checked out.')
     else:
         return render(request, 'library/detail.html', {'book': book})
+
+
+def book_checkout(request, book_id):
+    book = Book.objects.get(pk=book_id, checked_out=True)
+    book.checked_out = True
+    return HttpResponse('You have checked out the book.')
 
 
