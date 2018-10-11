@@ -1,8 +1,15 @@
 #logo {
     border-radius: 10%;
 }
+body {
+    background: white url("images/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Fahkwang', sans-serif;
+}
 #main_div {
     margin: 1%;
     padding: 1%;
     border-style: ridge;
+    color: white;
+    background-color: rgba(0, 213, 255, 0.3);
 }

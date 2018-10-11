@@ -1,7 +1,12 @@
 body {
-    background-color: orange;
+    background-color: #ddcccd;
 }
 
 li {
     margin-left: 5%;
+}
+
+th {
+    padding: 5px;
+    margin-left: 15px;
 }

@@ -36,8 +36,9 @@ def all(request):
 
 def add_todo(request):
     newtodo = request.POST['newtodo']
+    list_id = request.POST['list_id']
     print(newtodo)
-    new_item = TodoListItem(text=newtodo, todolist_id=1)
+    new_item = TodoListItem(text=newtodo, todolist_id=list_id)
     new_item.save()
     return HttpResponseRedirect(reverse('todo:index'))
 
