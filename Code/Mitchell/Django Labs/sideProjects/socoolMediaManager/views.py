@@ -6,12 +6,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 def index(request):
-    platforms = Platform.objects.all()
-    platform_types = PlatformType.objects.all()
-    return render(request, 'socoolMediaManager/index.html', {'platforms': platforms, 'platform_types': platform_types})
+    return render(request, 'socoolMediaManager/index.html', {})
 
+@login_required
+def profile(request):
+    platforms = request.user.platform_set.all()
+    platform_types = PlatformType.objects.all()
+    return render(request, 'socoolMediaManager/profile.html', {'platforms': platforms, 'platform_types': platform_types})
+
+@login_required
 def edit(request):
-    platforms = Platform.objects.all()
+    platforms = request.user.platform_set.all()
     platform_types = PlatformType.objects.all()
     return render(request, 'socoolMediaManager/edit.html', {'platforms': platforms, 'platform_types': platform_types})
 
