@@ -1,25 +1,17 @@
-a:link {
-    color: black;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:visited {
-    color: darkblue;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:hover {
-    color: red;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:active {
-    color: white;
-    background-color: transparent;
-    text-decoration: underline;
-}
-ul {
-    list-style: none;
-}
 
-
+li {
+    list-style: square;
+}
+body {
+    background-color: white;
+    color: cadetblue;
+    font: 1.2em "Fira Sans", serif;
+}
+#complete_todo {
+        text-decoration: line-through;
+    }
+button {
+    background-color: white;
+    padding: 4px;
+    /*float: right;*/
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="main_div">
+        <table>
+            <tr>
+                <td>
+                    <h2>Register</h2>
+                    <form action="{% url 'socoolMediaManager:register_user' %}" method="post">
+                        {% csrf_token %}
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td><input type="text" name="username"/></td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td><input type="text" name="email"/></td>
+                            </tr>
+                            <tr>
+                                <td>Password</td>
+                                <td><input type="password" name="password"/></td>
+                            </tr>
+                        </table>
+                        <button type="submit">register</button>
+                    </form>
+                </td>
+                <td>
+                    <h2>Login</h2>
+                    <form action="{% url 'socoolMediaManager:login_user' %}" method="post">
+                        {% csrf_token %}
+                        <table>
+                            <tr>
+                                <td>Username</td>
+                                <td><input type="text" name="username"/></td>
+                            </tr>
+                            <tr>
+                                <td>Password</td>
+                                <td><input type="password" name="password"/></td>
+                            </tr>
+                        </table>
+                        <button type="submit">login</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
