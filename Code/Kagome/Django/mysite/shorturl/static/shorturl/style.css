@@ -5,32 +5,17 @@ li a {
     margin-left: 43%;
 }
 body {
-    background: white url("images/httpimage.jpg");
+    background: lightblue url("images/bluebg.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: top;
-    box-shadow: 10px 10px 5px grey;
 }
-a:link {
-    color: black;
-    background-color: transparent;
-    text-decoration: none;
+h2{
+    text-align: center;
 }
-a:visited {
-    color: darkblue;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:hover {
-    color: red;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:active {
-    color: white;
-    background-color: transparent;
-    text-decoration: underline;
-}
-ul {
-    list-style: none;
+
+#maindiv {
+    width:500px;
+    margin: 100px auto;
+    background-color: rgba(255,255,255,0.8)
+
 }

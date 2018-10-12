@@ -8,31 +8,27 @@
     <title>Short URL</title>
 </head>
 <body>
-<!--<div id="header">-->
-    <!--<h3></h3>-->
-</div>
-    <div>
-        <form action="{% url 'shorturl:add' %}" method="post" >
+    <div id="maindiv">
+        <h2>Shorten Your URL:</h2>
+        <form action="{% url 'shorturl:add' %}" method="post" style="text-align:center">
             {% csrf_token %}
-            <h2>Shorten Your URL:</h2>
-            <input type="text" name="Short_Url">
-            <br>
-            {{ code }}
+            <input type="text" name="Short_Url" placeholder="Enter URL Here...">
             <button id="save" type="submit">save</button>
         </form>
-    </div>
-    <div>
         <table>
+            <table cellpadding="12">
             <tr>
-                <th>Shortened</th>
                 <th>Url</th>
+                <th>Shortened</th>
             </tr>
             {% for url in urls %}
             <tr>
-                <td>http://localhost:8000{% url 'shorturl:redirect' url.code %}</td>
                 <td>{{url.original_url}}</td>
+                <td>http://localhost:8000{% url 'shorturl:redirect' url.code %}</td>
+
             </tr>
             {% endfor %}
         </table>
 
     </div>
+</body>
