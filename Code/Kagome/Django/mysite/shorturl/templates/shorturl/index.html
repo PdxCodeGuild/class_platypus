@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'shorturl/style.css' %}">
+
+    <meta charset="UTF-8">
+    <title>Short URL</title>
+</head>
+<body>
+    <div id="maindiv">
+        <h2>Shorten Your URL:</h2>
+        <form action="{% url 'shorturl:add' %}" method="post" style="text-align:center">
+            {% csrf_token %}
+            <input type="text" name="Short_Url" placeholder="Enter URL Here...">
+            <button id="save" type="submit">save</button>
+        </form>
+        <table>
+            <table cellpadding="12">
+            <tr>
+                <th>Url</th>
+                <th>Shortened</th>
+            </tr>
+            {% for url in urls %}
+            <tr>
+                <td>{{url.original_url}}</td>
+                <td>http://localhost:8000{% url 'shorturl:redirect' url.code %}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</body>
