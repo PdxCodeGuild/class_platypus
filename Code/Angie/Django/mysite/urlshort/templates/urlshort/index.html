@@ -10,7 +10,7 @@
 <body>
 
     <div id="main-content">
-        <h1>Create a Shorcut for your URL!</h1>
+        <h1>Create a Shortcut for your URL!</h1>
         <form action="{% url 'urlshort:saveUrl' %}" method="post">
         {% csrf_token %}
             <input id="text" name="text" type="text" placeholder="enter url">
@@ -30,6 +30,7 @@
             </tr>
         {% endfor %}
         </table>
+        <a href="{% url 'urlshort:index' %}">Clear Content</a>
 
     </div>
 
