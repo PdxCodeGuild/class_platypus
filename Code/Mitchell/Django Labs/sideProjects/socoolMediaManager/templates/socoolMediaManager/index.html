@@ -41,7 +41,10 @@
             <a class="nav-link disabled" href="#">Post</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="{% url 'socoolMediaManager:logout_user' %}">Login/out</a>
+            <a class="nav-link disabled" href="{% url 'socoolMediaManager:register' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="{% url 'socoolMediaManager:logout_user' %}">Logout</a>
           </li>
         </ul>
         <!-- Right side of NavBar -->
@@ -54,17 +57,33 @@
       </div>
     </nav>
     <div id="main_div">
-
+        <h1>Using SoCool Media Manager</h1>
         <div class="card mb-3">
-          <img class="card-img-top" src="{% static 'socoolMediaManager/images/landing.jpg' %}" alt="Card image cap" height="400px">
+          <img class="card-img-top" src="{% static 'socoolMediaManager/images/landing.jpg' %}" alt="SoCool Media Manager" height="400px">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h3 class="card-title">Create a SoCool account</h3>
+              <p>Signing up for SoCool Media Manager is simple and minimal, only requiring a username and password. A SoCool account will keep track of all your links to social media links</p>
+            <a class="btn btn-primary" href="{% url 'socoolMediaManager:register' %}" role="button">Sign up</a>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <img class="card-img-top" src="{% static 'socoolMediaManager/images/second.jpg' %}" alt="Link Social Media" height="400px">
+          <div class="card-body">
+            <h3 class="card-title">Link all of your social media accounts</h3>
+            <a class="btn btn-primary" href="{% url 'socoolMediaManager:register' %}" role="button">Edit Social Media accounts</a>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <img class="card-img-top" src="{% static 'socoolMediaManager/images/third.jpg' %}" alt="Social Media one click away" height="400px">
+          <div class="card-body">
+            <h3 class="card-title">All Your Social Media is simply a click away</h3>
+            <a class="btn btn-primary" href="{% url 'socoolMediaManager:register' %}" role="button">Sign up</a>
           </div>
         </div>
 
 
+
+        <h3>Check out all the Social Media sites</h3>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -80,7 +99,7 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-                <a href="https://twitter.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/twitter_slide.png' %}" alt="Twitter" height="400px"></a>
+                <a href="https://twitter.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/twitter_slide.jpg' %}" alt="Twitter" height="400px"></a>
             </div>
             <div class="carousel-item">
                 <a href="https://www.facebook.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/facebook_slide.jpg' %}" alt="Facebook" height="400px"></a>
@@ -107,7 +126,7 @@
                 <a href="https://www.snapchat.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/snapchat_slide.jpg' %}" alt="Snapchat" height="400px"></a>
             </div>
             <div class="carousel-item">
-                <a href="https://www.twitch.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/twitch_slide.png' %}" alt="Twitch" height="400px"></a>
+                <a href="https://www.twitch.tv/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/twitch_slide.png' %}" alt="Twitch" height="400px"></a>
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
