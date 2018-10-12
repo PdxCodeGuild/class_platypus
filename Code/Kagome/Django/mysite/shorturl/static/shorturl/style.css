@@ -1,0 +1,40 @@
+/*similiar to detail_style*/
+
+li a {
+    color: black;
+    font: italic 1.5em "Fira Sans", serif;
+    /*margin-top: 50%;*/
+        margin-right: ;
+        /*margin-bottom: ;*/
+        margin-left: 43%;
+}
+body {
+    margin-top: 40%;
+    background: white url("images/votedimage.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: darkblue;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:active {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+}
+ul {
+    list-style: none;
+}
