@@ -1,12 +1,38 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>WiZArdY</title>
     {% load static %}
-
 <link rel="stylesheet" type="text/css" href="{% static 'shorturl/style.css' %}">
+
+    <meta charset="UTF-8">
+    <title>Short URL</title>
 </head>
 <body>
+<!--<div id="header">-->
+    <!--<h3></h3>-->
+</div>
+    <div>
+        <form action="{% url 'shorturl:add' %}" method="post" >
+            {% csrf_token %}
+            <h2>Shorten Your URL:</h2>
+            <input type="text" name="Short_Url">
+            <br>
+            {{ code }}
+            <button id="save" type="submit">save</button>
+        </form>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>Shortened</th>
+                <th>Url</th>
+            </tr>
+            {% for url in urls %}
+            <tr>
+                <td>http://localhost:8000{% url 'shorturl:redirect' url.code %}</td>
+                <td>{{url.original_url}}</td>
+            </tr>
+            {% endfor %}
+        </table>
 
-</body>
-</html>
+    </div>

@@ -1,19 +1,15 @@
-/*similiar to detail_style*/
 
 li a {
     color: black;
     font: italic 1.5em "Fira Sans", serif;
-    /*margin-top: 50%;*/
-        margin-right: ;
-        /*margin-bottom: ;*/
-        margin-left: 43%;
+    margin-left: 43%;
 }
 body {
-    margin-top: 40%;
-    background: white url("images/votedimage.png");
+    background: white url("images/httpimage.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
+    background-position: top;
+    box-shadow: 10px 10px 5px grey;
 }
 a:link {
     color: black;
