@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+      body{
+        text-align: center;
+        background-image: url("https://images.pexels.com/photos/12064/pexels-photo-12064.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350");
+        color: black;
+        }
+    h1{
+        margin: 0 auto;
+        text-align: center;
+        background-color: grey;
+        opacity: .8;
+    }
+    a{
+        color: black;
+    }
+    a:hover {
+        color: red;
+    }
+    nav{
+        text-align: justify;
+        background-color: black;
+    }
+    </style>
+    <nav>
+    <div class="nav-wrapper">
+      <a href="http://localhost:8000/library/" class="brand-logo">Colton's Free Library</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="http://localhost:8000/library/login/">Log In</a></li>
+        <li><a href="http://localhost:8000/library/logout/">Log out</a></li>
+      </ul>
+    </div>
+  </nav>
+    <title>Checkin</title>
+    <h1>You have successfully checked in {{book_id}}.</h1>
+</head>
+<body>
+
+</body>
+</html>
