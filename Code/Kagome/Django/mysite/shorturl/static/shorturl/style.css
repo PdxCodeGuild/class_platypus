@@ -1,0 +1,21 @@
+
+li a {
+    color: black;
+    font: italic 1.5em "Fira Sans", serif;
+    margin-left: 43%;
+}
+body {
+    background: lightblue url("images/bluebg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+h2{
+    text-align: center;
+}
+
+#maindiv {
+    width:500px;
+    margin: 100px auto;
+    background-color: rgba(255,255,255,0.8)
+
+}

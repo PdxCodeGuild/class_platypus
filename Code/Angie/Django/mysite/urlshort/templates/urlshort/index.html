@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>URL Shortener</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'urlshort/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
+
+    <div id="main-content">
+        <h1>Create a Shortcut for your URL!</h1>
+        <form action="{% url 'urlshort:saveUrl' %}" method="post">
+        {% csrf_token %}
+            <input id="text" name="text" type="text" placeholder="enter url">
+            <button id="btn" type="submit">Shorten</button>
+
+        </form>
+
+        <table>
+        {% for url in longUrl %}
+            <tr>
+                <td>
+                    {{url.long_url}}
+                </td>
+                <td>
+                    <a href="{% url 'urlshort:redirect' url.code %}">{{url.code}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <a href="{% url 'urlshort:index' %}">Clear Content</a>
+
+    </div>
 
 </body>
 </html>
