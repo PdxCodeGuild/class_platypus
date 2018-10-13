@@ -5,6 +5,9 @@
     <title>Course List</title>
 </head>
 <body>
-
+{% for course in courses %}
+<h2>{{ course.title}}</h2>
+{{course.description}}
+{% endfor %}
 </body>
 </html>
