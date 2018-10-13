@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="{% static 'css/layout.css' %}">
     </head>
     <body>
+    <nav>
+        <a href="{% url 'views.hello_world' %}">
+Home</a>    </nav>
     <div class="site-container">
 {% block content %}
 
