@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 from django.conf.urls import include, url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
@@ -24,3 +25,5 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url('', views.hello_world),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
