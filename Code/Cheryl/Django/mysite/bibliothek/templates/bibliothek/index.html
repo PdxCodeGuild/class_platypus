@@ -51,10 +51,7 @@
                     <input type="hidden" value="{{book.id}}" name="book_id"/>
                     <button type="submit" value="Submit">{% if book.check_out %}checkin{% else %}checkout{% endif %}</button>
                 </form>
-                    <!--<form action="" method="post">-->
-                    <!--{% csrf_token %}-->
-                    <!--<input type="text" name="book">-->
-                    <!--<option value="{{book.id}}">{{book.available}}</option></form>-->
+
 
             </td>
         </tr>
@@ -82,7 +79,16 @@
 
         <div class="col s3">
             <p>Book Title</p>
-
+             <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="book">
+                    <option value="{{book.id}}">{{book.available}}</option></form>
+            <!---->
+<!--<select class="browser-default" name="author_id">-->
+                <!--{% for book in books %}-->
+                <!--<input type="text" name="book">{{book_title.name}}</input>-->
+                <!--{% endfor %}-->
+            <!--</select>-->
         </div>
         <div class="col s3">
             <p>Author</p>

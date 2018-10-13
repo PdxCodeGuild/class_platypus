@@ -1,4 +1,4 @@
-
+# https://wsvincent.com/django-referencing-the-user-model/
 from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -41,7 +41,8 @@ def check_author(request):
 
 def checkout(request):
     book_id = request.POST['book_id']
-    book = Book.objects.get(pk=book_id, user_check_out=user_check_out)
+    # book = Book.objects.get(pk=book_id, user_check_out=user_check_out)
+    book = Book.objects.get(pk=book_id)
     book.check_out = not book.check_out
     book.save()
     return HttpResponseRedirect(reverse('bibliothek:index'))

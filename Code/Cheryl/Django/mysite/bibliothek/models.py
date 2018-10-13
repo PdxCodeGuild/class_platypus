@@ -18,10 +18,10 @@ class Book(models.Model):
     pub_date = models.DateField('date published')
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
     check_out = models.BooleanField(default=True)
-    user_check_out = models.ForeignKey(
-        get_user_model(),
-        on_delete=models.CASCADE
-    )
+    # user_check_out = models.ForeignKey(
+    #     get_user_model(),
+    #     on_delete=models.CASCADE
+    # )
 
     def __str__(self):
         return self.title
