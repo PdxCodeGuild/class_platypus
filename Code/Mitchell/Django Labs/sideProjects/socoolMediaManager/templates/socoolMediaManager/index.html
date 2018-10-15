@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Google Fonts CND -->
-    <link href="https://fonts.googleapis.com/css?family=Fahkwang" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="{% url 'socoolMediaManager:index' %}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'socoolMediaManager:profile' %}">Profile</a>
@@ -41,31 +41,98 @@
             <a class="nav-link disabled" href="#">Post</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="{% url 'socoolMediaManager:logout_user' %}">Login/out</a>
+            <a class="nav-link" href="{% url 'socoolMediaManager:register' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'socoolMediaManager:logout_user' %}">Logout</a>
           </li>
         </ul>
         <!-- Right side of NavBar -->
         <form method="get" action="http://www.google.com/search">
-            <input type="text"   name="q" size="25" style="color:#808080;"
+            <input type="text"   name="q" size="25" style="color:#3096F0;"
             maxlength="255" placeholder="Google search"
             onfocus="if(this.value==this.defaultValue)this.value=''; this.style.color='black';" onblur="if(this.value=='')this.value=this.defaultValue; "/>
-            <input type="submit" value="Search"/>
+            <button class="btn btn-light btn-sm" type="submit">Search</button>
         </form>
       </div>
     </nav>
     <div id="main_div">
-        <h1>INDEX</h1>
-        <div id="display_platforms">
-            <ul>
-                {% for platform in platforms %}
-                <li>
-                    <a href="{{ platform.link }}">
-                        <img src="{{platform.platform_type.icon.url}}" height="20px"/>
-                        {{platform.username}}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
+        <h1>SoCool Media Manager</h1>
+        <div class="card mb-3">
+          <img class="card-img-top" src="{% static 'socoolMediaManager/images/landing.jpg' %}" alt="SoCool Media Manager">
+          <div class="card-body">
+            <h3 class="card-title">Create a SoCool account or sign into your account if returning.</h3>
+            <a class="btn btn-primary" href="{% url 'socoolMediaManager:register' %}" role="button">Sign up / Sign in</a>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <img class="card-img-top" src="{% static 'socoolMediaManager/images/second.jpg' %}" alt="Link Social Media">
+          <div class="card-body">
+            <h3 class="card-title">Add and delete links to your Social Media account in the "Edit" tab.</h3>
+            <a class="btn btn-primary" href="{% url 'socoolMediaManager:edit' %}" role="button">Edit account links</a>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <img class="card-img-top" src="{% static 'socoolMediaManager/images/third.jpg' %}" alt="Social Media one click away">
+          <div class="card-body">
+            <h3 class="card-title">Bookmark your "Profile" tab so all your Social Media can be a click away!</h3>
+            <a class="btn btn-primary" href="{% url 'socoolMediaManager:profile' %}" role="button">Go to my profile</a>
+          </div>
+        </div>
+        <h1>Social Media sites supported</h1>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="https://twitter.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/twitter_slide.jpg' %}" alt="Twitter" height="400px"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.facebook.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/facebook_slide.jpg' %}" alt="Facebook" height="400px"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.instagram.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/instagram_slide.jpg' %}" alt="Instagram" height="400px"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.youtube.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/youtube_slide.png' %}" alt="YouTube" height="400px"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.linkedin.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/linkedin_slide.jpg' %}" alt="LinkedIn" height="400px"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.reddit.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/reddit_slide.png' %}" alt="Reddit" height="400px"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.tumblr.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/tumblr_slide.png' %}" alt="Tumblr" height="400px"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.pinterest.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/pinterest_slide.png' %}" alt="Pinterest" height="400px"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.snapchat.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/snapchat_slide.jpg' %}" alt="Snapchat" height="400px"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.twitch.tv/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/twitch_slide.png' %}" alt="Twitch" height="400px"></a>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
     </div>
 </body>

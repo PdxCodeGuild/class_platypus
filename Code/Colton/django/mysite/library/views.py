@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Book, Author
+from .models import Book
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -35,6 +35,7 @@ def mylogin(request):
         return HttpResponseRedirect(reverse('library:login'))
 
 
+@login_required(login_url='http://localhost:8000/library/login/')
 def logout_view(request):
     logout(request)
     return render(request, 'library/logout.html')
@@ -43,15 +44,35 @@ def logout_view(request):
 @login_required(login_url='http://localhost:8000/library/login/')
 def checkout(request, book_id):
     book = Book.objects.get(pk=book_id)
-    if Book.checked_out is True:
+    if book.checked_out is True:
         return HttpResponse('That book is already checked out.')
     else:
         return render(request, 'library/detail.html', {'book': book})
 
 
 def book_checkout(request, book_id):
-    book = Book.objects.get(pk=book_id, checked_out=True)
-    book.checked_out = True
-    return HttpResponse('You have checked out the book.')
+    book = Book.objects.get(pk=book_id)
+    if request.POST['checkout'] != 'False':
+        book.checked_out = True
+        book.save()
+        return render(request, 'library/book_check_out.html', {'book': book})
+    else:
+        books = Book.objects.all
+        return render(request, 'library/index.html', {'books': books})
 
 
+# def book_checkin(request, book_id):
+#         book = Book.objects.get(pk=book_id)
+#         book_id.checked_out = False
+#         book.save()
+#         return render(request, 'library/book_check_in.html', {'book': book})
+
+
+def checkin(request, book_id):
+    book = Book.objects.get(pk=book_id)
+    if book.checked_out is True:
+        book.checked_out = False
+        book.save()
+        return render(request, 'library/book_check_in.html', {'book': book})
+    else:
+        return render(request, 'library/detail.html', {'book': book})

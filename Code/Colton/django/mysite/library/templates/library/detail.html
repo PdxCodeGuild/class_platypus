@@ -34,7 +34,7 @@
 <div>Is this the book you would like to Checkout?</div>
 
 
-<form action="{% url 'library:checkout' book.id %}" method="post">
+<form action="{% url 'library:book_checkout' book.id %}" method="post">
 {% csrf_token %}
     <p>
       <label>
@@ -48,7 +48,7 @@
         <span>No</span>
       </label>
     </p>
-<button class="btn waves-effect waves-light" type="submit">Checkout</button>
+<button class="btn waves-effect waves-light" name="action" type="submit">Checkout</button>
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>

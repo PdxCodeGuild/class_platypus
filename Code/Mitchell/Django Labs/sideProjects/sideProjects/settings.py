@@ -124,3 +124,6 @@ STATIC_URL = '/static/'
 # Added to render social media icons
 MEDIA_URL = '/uploaded_files/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_files')
+
+
+LOGIN_URL = '/register/'
