@@ -13,5 +13,5 @@ urlpatterns = [
     path('register_user/', views.register_user, name='register_user'),
     path('mylogin/', views.mylogin, name='mylogin'),
     path('book_checkout<int:book_id>/', views.book_checkout, name='book_checkout'),
-    path('checkin/', views.checkin, name='checkin'),
+    path('checkin/<int:book_id>', views.checkin, name='checkin'),
     ]
