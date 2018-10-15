@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    # path('charts/', include('charts.urls')),
     path('', include('charts.urls'))
+
 ]
