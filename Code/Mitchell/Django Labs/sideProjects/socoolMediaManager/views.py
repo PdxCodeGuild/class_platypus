@@ -21,10 +21,9 @@ def edit(request):
     return render(request, 'socoolMediaManager/edit.html', {'platforms': platforms, 'platform_types': platform_types})
 
 def addPlatform(request):
-    username_input = request.POST['username_input']
     link_input = request.POST['link_input']
     platform_type_id = request.POST['platform_type_id']
-    platform = Platform(username=username_input, link=link_input, platform_type_id=platform_type_id)
+    platform = Platform(user=request.user, link=link_input, platform_type_id=platform_type_id)
     platform.save()
     return HttpResponseRedirect(reverse('socoolMediaManager:edit'))
 
@@ -36,9 +35,8 @@ def deletePlatform(request):
 
 def register_user(request):
     username = request.POST['username']
-    email = request.POST['email']
     password = request.POST['password']
-    user = User.objects.create_user(username, email, password)
+    user = User.objects.create_user(username, password)
     login(request, user)
     return HttpResponseRedirect(reverse('socoolMediaManager:index'))
 
@@ -56,4 +54,4 @@ def register(request):
 
 def logout_user(request):
     logout(request)
-    return render(request, 'socoolMediaManager/register.html', {})
+    return HttpResponseRedirect(reverse('socoolMediaManager:index'))

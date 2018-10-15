@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Google Fonts CND -->
-    <link href="https://fonts.googleapis.com/css?family=Notable" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -41,10 +41,10 @@
             <a class="nav-link disabled" href="#">Post</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="{% url 'socoolMediaManager:register' %}">Login</a>
+            <a class="nav-link" href="{% url 'socoolMediaManager:register' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="{% url 'socoolMediaManager:logout_user' %}">Logout</a>
+            <a class="nav-link" href="{% url 'socoolMediaManager:logout_user' %}">Logout</a>
           </li>
         </ul>
         <!-- Right side of NavBar -->
@@ -52,38 +52,34 @@
             <input type="text"   name="q" size="25" style="color:#3096F0;"
             maxlength="255" placeholder="Google search"
             onfocus="if(this.value==this.defaultValue)this.value=''; this.style.color='black';" onblur="if(this.value=='')this.value=this.defaultValue; "/>
-            <input type="submit" value="Search"/>
+            <button class="btn btn-light btn-sm" type="submit">Search</button>
         </form>
       </div>
     </nav>
     <div id="main_div">
-        <h1>Using SoCool Media Manager</h1>
+        <h1>SoCool Media Manager</h1>
         <div class="card mb-3">
-          <img class="card-img-top" src="{% static 'socoolMediaManager/images/landing.jpg' %}" alt="SoCool Media Manager" height="400px">
+          <img class="card-img-top" src="{% static 'socoolMediaManager/images/landing.jpg' %}" alt="SoCool Media Manager">
           <div class="card-body">
-            <h3 class="card-title">Create a SoCool account</h3>
-              <p>Signing up for SoCool Media Manager is simple and minimal, only requiring a username and password. A SoCool account will keep track of all your links to social media links</p>
-            <a class="btn btn-primary" href="{% url 'socoolMediaManager:register' %}" role="button">Sign up</a>
+            <h3 class="card-title">Create a SoCool account or sign into your account if returning.</h3>
+            <a class="btn btn-primary" href="{% url 'socoolMediaManager:register' %}" role="button">Sign up / Sign in</a>
           </div>
         </div>
         <div class="card mb-3">
-          <img class="card-img-top" src="{% static 'socoolMediaManager/images/second.jpg' %}" alt="Link Social Media" height="400px">
+          <img class="card-img-top" src="{% static 'socoolMediaManager/images/second.jpg' %}" alt="Link Social Media">
           <div class="card-body">
-            <h3 class="card-title">Link all of your social media accounts</h3>
-            <a class="btn btn-primary" href="{% url 'socoolMediaManager:register' %}" role="button">Edit Social Media accounts</a>
+            <h3 class="card-title">Add and delete links to your Social Media account in the "Edit" tab.</h3>
+            <a class="btn btn-primary" href="{% url 'socoolMediaManager:edit' %}" role="button">Edit account links</a>
           </div>
         </div>
         <div class="card mb-3">
-          <img class="card-img-top" src="{% static 'socoolMediaManager/images/third.jpg' %}" alt="Social Media one click away" height="400px">
+          <img class="card-img-top" src="{% static 'socoolMediaManager/images/third.jpg' %}" alt="Social Media one click away">
           <div class="card-body">
-            <h3 class="card-title">All Your Social Media is simply a click away</h3>
-            <a class="btn btn-primary" href="{% url 'socoolMediaManager:register' %}" role="button">Sign up</a>
+            <h3 class="card-title">Bookmark your "Profile" tab so all your Social Media can be a click away!</h3>
+            <a class="btn btn-primary" href="{% url 'socoolMediaManager:profile' %}" role="button">Go to my profile</a>
           </div>
         </div>
-
-
-
-        <h3>Check out all the Social Media sites</h3>
+        <h1>Social Media sites supported</h1>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -120,7 +116,7 @@
                 <a href="https://www.tumblr.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/tumblr_slide.png' %}" alt="Tumblr" height="400px"></a>
             </div>
             <div class="carousel-item">
-                <a href="https://www.pinterest.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/pinterest_slide.jpg' %}" alt="Pinterest" height="400px"></a>
+                <a href="https://www.pinterest.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/pinterest_slide.png' %}" alt="Pinterest" height="400px"></a>
             </div>
             <div class="carousel-item">
                 <a href="https://www.snapchat.com/"><img class="d-block w-100" src="{% static 'socoolMediaManager/images/snapchat_slide.jpg' %}" alt="Snapchat" height="400px"></a>
