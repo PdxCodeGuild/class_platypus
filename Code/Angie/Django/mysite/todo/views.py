@@ -32,3 +32,4 @@ def deleteItem(request):
     return HttpResponseRedirect(reverse('todo:index'))
 
 
+
