@@ -17,7 +17,6 @@ def index(request):
 def saveUrl(request):
     text = request.POST['text']
     text = text.lstrip('http://').lstrip('www.')
-    print(text)
     short_url = UrlShort(long_url=text, code=get_random_string(6))
     short_url.save()
     return HttpResponseRedirect(reverse('urlshort:index'))
