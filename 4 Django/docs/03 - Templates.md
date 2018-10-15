@@ -94,17 +94,19 @@ In the example below, `base.html` contains the header and footer and a global CS
 
 ```html
 {% load static %}
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}"/>
-</head>
-<body>
-    <h1>{% block title %}{% endblock %}</h1>
-    <hr/>
-    {% block content %}
-    {% endblock %}
-    <hr/>
-    (c) myapp inc
-</body>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}"/>
+    </head>
+    <body>
+        <h1>{% block title %}{% endblock %}</h1>
+        <hr/>
+        {% block content %}
+        {% endblock %}
+        <hr/>
+        (c) myapp inc
+    </body>
+</html>
 ```
 
 #### index.html

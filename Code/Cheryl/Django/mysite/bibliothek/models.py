@@ -3,6 +3,8 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth import get_user_model
+
 
 
 class Author(models.Model):
@@ -15,6 +17,11 @@ class Book(models.Model):
     title = models.CharField(max_length=100)
     pub_date = models.DateField('date published')
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
+    check_out = models.BooleanField(default=True)
+    # user_check_out = models.ForeignKey(
+    #     get_user_model(),
+    #     on_delete=models.CASCADE
+    # )
 
     def __str__(self):
         return self.title

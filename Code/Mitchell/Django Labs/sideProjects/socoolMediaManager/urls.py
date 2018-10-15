@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 app_name = 'socoolMediaManager'
 urlpatterns = [
     path('', views.index, name='index'),
+    path('profile/', views.profile, name='profile'),
     path('edit/', views.edit, name='edit'),
     path('addPlatform/', views.addPlatform, name='addPlatform'),
     path('deletePlatform/', views.deletePlatform, name='deletePlatform'),
