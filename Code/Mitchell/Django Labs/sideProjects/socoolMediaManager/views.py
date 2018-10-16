@@ -38,7 +38,7 @@ def register_user(request):
     password = request.POST['password']
     user = User.objects.create_user(username, password)
     login(request, user)
-    return HttpResponseRedirect(reverse('socoolMediaManager:index'))
+    return HttpResponseRedirect(reverse('socoolMediaManager:profile'))
 
 def login_user(request):
     username = request.POST['username']
@@ -46,7 +46,7 @@ def login_user(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return HttpResponseRedirect(reverse('socoolMediaManager:index'))
+        return HttpResponseRedirect(reverse('socoolMediaManager:profile'))
     return HttpResponseRedirect(reverse('socoolMediaManger:register'))
 
 def register(request):

@@ -31,16 +31,13 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'socoolMediaManager:index' %}">Home</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'socoolMediaManager:index' %}">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'socoolMediaManager:edit' %}">Edit</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Post</a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{% url 'socoolMediaManager:register' %}">Login</a>
           </li>
           <li class="nav-item">
@@ -65,14 +62,14 @@
                   <table>
                       <tr>
                           <td>Username:</td>
-                          <td><input type="text" name="username"/></td>
+                          <td><input type="text" name="username" placeholder='Use "_" for space'/></td>
                       </tr>
                       <tr>
                           <td>Password:</td>
-                          <td><input type="password" name="password"/></td>
+                          <td><input type="password" name="password" placeholder="Caps sensitive"></td>
                       </tr>
                       <tr>
-                          <td><button class="btn btn-light" type="submit">Sign up</button></td>
+                          <td><button class="btn btn-primary" type="submit">Sign up</button></td>
                       </tr>
                   </table>
               </form>
@@ -84,14 +81,14 @@
                 <table>
                     <tr>
                         <td>Username:</td>
-                        <td><input type="text" name="username"/></td>
+                        <td><input type="text" name="username" placeholder="SoCool username"/></td>
                     </tr>
                     <tr>
                         <td>Password:</td>
-                        <td><input type="password" name="password"/></td>
+                        <td><input type="password" name="password" placeholder="Caps sensitive"/></td>
                     </tr>
                     <tr>
-                        <td><button class="btn btn-light" type="submit">Sign in</button></td>
+                        <td><button class="btn btn-primary" type="submit">Sign in</button></td>
                     </tr>
                 </table>
             </form>
