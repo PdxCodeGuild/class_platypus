@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+from django.contrib.auth.models import User
+
+# class BookCheckout(models.Model):
+#     book = models.ForeignKey(Book)
+#     user = models.ForeignKey(User)
