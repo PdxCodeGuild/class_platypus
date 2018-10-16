@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body{
+            text-align: center;
+            color: black;
+        }
+    nav{
+        text-align: justify;
+        background-color: black;
+    }
+
+    </style>
+    <nav>
+    <div class="nav-wrapper">
+      <a href="http://localhost:8000/library/" class="brand-logo">Colton's Free Library</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="http://localhost:8000/library/logout_view/">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+    <title>Checkout</title>
+</head>
+<body>
+
+<h4>{{book.title}} by {{book.author}}</h4>
+<div>Is this the book you would like to Checkout?</div>
+
+
+<form action="{% url 'library:book_checkout' book.id %}" method="post">
+{% csrf_token %}
+    <p>
+      <label>
+        <input name="checkout" type="radio" value="True" checked />
+        <span>Yes</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="checkout" type="radio" value="False" />
+        <span>No</span>
+      </label>
+    </p>
+<button class="btn waves-effect waves-light" name="action" type="submit">Checkout</button>
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

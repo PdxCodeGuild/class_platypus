@@ -1,0 +1,51 @@
+body, html {
+    margin: 0;
+
+}
+
+#main-content {
+    margin: 5% auto;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+#text {
+    border: 0.5px solid lightgrey;
+    box-shadow:0 10px 20px 0 rgba(0,0,0,0.19) ;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom:2%;
+    width: 350px;
+    font-family: 'Muli', sans-serif;
+
+}
+
+#text:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+#text:active {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    border: none;
+}
+#btn {
+
+    background-color: slategray;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+    font-family: 'Muli', sans-serif;
+
+
+}
+
+#btn:hover {
+    background-color: lightblue;
+}
+
+table {
+    margin: 0 auto;
+    width: 300px;
+}

@@ -1,25 +1,29 @@
-a:link {
-    color: black;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:visited {
-    color: darkblue;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:hover {
-    color: red;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:active {
-    color: white;
-    background-color: transparent;
-    text-decoration: underline;
-}
-ul {
-    list-style: none;
+
+li {
+    list-style: square;
+    display:flex;
+    flex-direction:row;
 }
 
+li > * {
+    padding:4px;
+}
+body {
+    background: white url("images/notepad.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #241712;
+    font: 1.2em "Fira Sans", serif;
+}
+#complete_todo {
+        text-decoration: line-through;
+    }
+button {
+    background-color: #241712;
+    color: white;
+    padding: 4px;
+    border-radius: 8px;
+    border: none;
+}
 

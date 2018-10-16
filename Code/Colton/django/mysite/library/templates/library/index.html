@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Welcome to the Library</title>
-</head>
-<body>
-    <form>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body{
+            text-align: center;
+            background-image: url("https://images.pexels.com/photos/12064/pexels-photo-12064.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350");
+            color: black;
+        }
+    table{
+        margin: 0 auto;
+        text-align: center;
+        background-color: grey;
+        opacity: .8;
+    }
+    a{
+        color: black;
+    }
 
-    </form>
+    a:hover {
+        color: red;
+    }
+    nav{
+        text-align: justify;
+        background-color: black;
+    }
+    #book{
+        background-color: grey;
+        opacity: .8;
+    }
+
+    </style>
+    <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Colton's Free Library</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="http://localhost:8000/library/login/">Log In</a></li>
+        <li><a href="http://localhost:8000/library/logout_view/">Log out</a></li>
+      </ul>
+    </div>
+  </nav>
+    </head>
+    <title>Welcome to the Library</title>
+
+<body>
+    <div class="container">
+    <table class="flow-text">
+
+        <div id="book">Title /// Author /// Published</div>
+        {% for book in books %}
+        <tr>
+            <td>
+            <a href="{%url 'library:checkout' book.id %}">  {{book.title}} /// {{book.author}} /// {{book.pub_date}} /// <a href="{%url 'library:checkin' book.id %}">Check In</a>
+        </td>
+        </tr>
+            {% endfor %}
+    </table>
+        </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
