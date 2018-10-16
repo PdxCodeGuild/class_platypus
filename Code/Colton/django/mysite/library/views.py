@@ -61,13 +61,6 @@ def book_checkout(request, book_id):
         return render(request, 'library/index.html', {'books': books})
 
 
-# def book_checkin(request, book_id):
-#         book = Book.objects.get(pk=book_id)
-#         book_id.checked_out = False
-#         book.save()
-#         return render(request, 'library/book_check_in.html', {'book': book})
-
-
 def checkin(request, book_id):
     book = Book.objects.get(pk=book_id)
     if book.checked_out is True:
