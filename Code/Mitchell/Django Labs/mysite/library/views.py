@@ -1,4 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+
+from .models import Book, Author, BookCheckout
 
 def index(request):
-    return HttpResponse('ok')
+    return render(request, 'library/index.html', {})
