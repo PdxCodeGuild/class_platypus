@@ -16,32 +16,31 @@
 
             <tr>
                 <th>Book List</th>
-                <!--<th>Author</th>-->
-                <!--<th>User</th>-->
-                <th>In/Out</th>
-
+                <th>Check In/Out</th>
             </tr>
 
-            {% for paper in paper_back %}
+            {% for book in books %}
             <tr>
-                <td>{{ paper.title }}</td>
-
-
-                <td>
-                    <form action="{% url 'library:check_in' %}" method="post">
-                            {% csrf_token %}
-                            <input type="hidden" name="id" value="{{paper.id}}"/>
-                            <button class="otherBtn" type="submit">In</button>
-                        </form>
-                </td>
-
+                <td>{{ book.title }} - {{ book.author.full_name }}</td>
+                {% if book.checkout_name is None %}
                 <td>
                     <form action="{% url 'library:check_out' %}" method="post">
                             {% csrf_token %}
-                            <input type="hidden" name="id" value="{{paper.id}}"/>
-                            <button class="Btn" type="submit">Out</button>
+                            <input type="text" name="name" placeholder="name"/>
+                            <input type="hidden" name="book_id" value="{{book.id}}"/>
+                            <button class="btn" type="submit">Out</button>
                         </form>
                 </td>
+                {% else %}
+                <td>
+                    <form action="{% url 'library:check_in' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{book.id}}"/>
+                            <button class="otherBtn" type="submit">In</button>
+                        </form>
+                </td>
+                {% endif %}
+
             </tr>
             {% endfor %}
 
