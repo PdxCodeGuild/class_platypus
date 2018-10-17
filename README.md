@@ -5,6 +5,7 @@
     - al.burns.email@gmail.com
 - Kagome Miller
     - kagomemiller@gmail.com
+    - capstone: https://github.com/kagomesakura/capstone
 - Indu Thekkemeppilly Sivakumar
     - induts@gmail.com
 - Colton Peterson
@@ -15,6 +16,7 @@
     - capstone: https://github.com/clewman/demograph
 - Mitchell Estes
     - mestes1530@gmail.com
+    - capstone: https://github.com/mestes1530/Sticker-Slab
 - Angie Bowmer
     - angelina.bowmer@gmail.com
     - capstone: https://github.com/aceome/FamLeague

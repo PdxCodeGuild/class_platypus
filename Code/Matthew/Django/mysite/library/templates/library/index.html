@@ -1,0 +1,52 @@
+<html>
+    <head>
+         <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </head>
+    <body>
+        <h2>Available Books</h2>
+        <table>
+        {% for book in available_books %}
+            <tr>
+                <td>{{book.title}} - {{book.author_names}} {{book.count_checkouts}}</td>
+                <td>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="book_id" value="{{book.id}}"/>
+                        <button type="submit">checkout</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <h2>Checked-Out Books</h2>
+        <table>
+        {% for checkout in active_checkouts %}
+            <tr>
+                <td>{{checkout.book.title}} - {{checkout.book.author_names}}</td>
+                <td>{{checkout.checkout_date}}</td>
+                <td>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="checkout_id" value="{{checkout.id}}"/>
+                        <button type="submit">checkin</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <h2>Past Checkouts</h2>
+        <table>
+        {% for checkout in inactive_checkouts %}
+            <tr>
+                <td>{{checkout.book.title}} - {{checkout.book.author_names}}</td>
+                <td>{{checkout.checkout_date}}</td>
+                <td>{{checkout.checkin_date}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>

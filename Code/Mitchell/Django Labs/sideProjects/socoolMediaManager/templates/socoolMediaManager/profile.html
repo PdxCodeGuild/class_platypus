@@ -38,9 +38,6 @@
             <a class="nav-link" href="{% url 'socoolMediaManager:edit' %}">Edit</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Post</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{% url 'socoolMediaManager:register' %}">Login</a>
           </li>
           <li class="nav-item">
@@ -57,20 +54,26 @@
       </div>
     </nav>
     <div id="main_div">
-        <h1>PROFILE</h1>
-        <h3>{{user.username}}</h3>
-        <div id="display_platforms">
-            <ul>
-                {% for platform in platforms %}
-                <li>
-                    <a href="{{ platform.link }}">
-                        <img src="{{platform.platform_type.icon.url}}" height="20px"/>
-                        {{platform.username}}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
+        <h1>{{user.username}}</h1>
+        <hr>
+        <div id="display_platforms" class="d-flex align-content-start flex-wrap">
+            {% for platform in platforms %}
+            <div>
+                <a href="{{ platform.link }}">
+                    <div id="single_platform">
+                        <div class="p-2 flex-fill bd-highlight flex_column">
+                            <div><img src="{{platform.platform_type.icon.url}}" height="60px"/></div>
+                            <b><font color="white">{{platform.username}}</font></b>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </div>
+    <footer>
+        <a class="btn btn-primary btn-lg btn-block" href="{% url 'socoolMediaManager:edit' %}" role="button">Edit Profile</a>
+    </footer>
 </body>
 </html>

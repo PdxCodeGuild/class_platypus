@@ -38,13 +38,10 @@
             <a class="nav-link" href="{% url 'socoolMediaManager:edit' %}">Edit</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Post</a>
+            <a class="nav-link" href="{% url 'socoolMediaManager:register' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="{% url 'socoolMediaManager:register' %}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="{% url 'socoolMediaManager:logout_user' %}">Logout</a>
+            <a class="nav-link" href="{% url 'socoolMediaManager:logout_user' %}">Logout</a>
           </li>
         </ul>
         <!-- Right side of NavBar -->
@@ -57,42 +54,64 @@
       </div>
     </nav>
     <div id="main_div">
-        <h1>Edit</h1>
-        <div id="add_platform"></div>
-            <form action="{% url 'socoolMediaManager:addPlatform' %}" method="post">
-                Username for account:
-                <input name="username_input">
-                {% csrf_token %}
-                <br>
-                Link to the account:
-                <input name="link_input">
-                {% csrf_token %}
-                <br>
-                Social media platform:
-                <select name="platform_type_id">
-                    {% for platform_type in platform_types %}
-                    <option value="{{platform_type.id}}">{{platform_type.name}}</option>
-                    {% endfor %}
-                </select>
-                <br>
-                <button class="btn btn-light" type="submit">Add account</button>
-            </form>
+        <div class="d-flex align-content-start flex-wrap">
+          <div class="p-2 flex-fill bd-highlight">
+              <h1>Editing {{user.username}}'s Account</h1>
+              <hr>
+              <h3>Add a new Social Media platform:</h3>
+              <hr>
+              <form action="{% url 'socoolMediaManager:addPlatform' %}" method="post">
+                  {% csrf_token %}
+                  <table>
+                      <tr>
+                          <td>Username for account:</td>
+                          <td><input type="text" name="username_input" placeholder="Text used for link"/></td>
+                      </tr>
+                      <tr>
+                          <td>Link to the account:</td>
+                          <td><input type="text" name="link_input" placeholder="Paste the URL"></td>
+                      </tr>
+                      <tr>
+                          <td>
+                              Type os Social Media:
+                          </td>
+                          <td>
+                              <select class="form-control" name="platform_type_id">
+                                <option value="" selected disabled hidden>Platform Type</option>
+                                {% for platform_type in platform_types %}
+                                <option value="{{platform_type.id}}">{{platform_type.name}}</option>
+                                {% endfor %}
+                              </select>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td><button class="btn btn-primary" type="submit">Add account</button></td>
+                      </tr>
+                  </table>
+              </form>
+          </div>
         </div>
         <br>
+        <h3>Delete an existing saved platform:</h3>
+        <hr>
         <div id="display_platforms">
             <ul>
                 {% for platform in platforms %}
                 <li>
                     <form action="{% url 'socoolMediaManager:deletePlatform' %}" method="post">
-                        <a href="{{ platform.link }}">{{platform.username}}</a>
+                        <img src="{{platform.platform_type.icon.url}}" height="30px"/>
+                        <b><font color="white">{{platform.username}}</font></b>
                         {% csrf_token %}
                         <input type="hidden" value="{{platform.id}}" name="id"/>
-                        <button type="submit">❌</button>
+                        <button class="btn btn-light btn-sm" type="submit">❌</button>
                     </form>
                 </li>
                 {% endfor %}
             </ul>
         </div>
     </div>
+    <footer>
+        <a class="btn btn-primary btn-lg btn-block" href="{% url 'socoolMediaManager:edit' %}" role="button">Done Editing</a>
+    </footer>
 </body>
 </html>

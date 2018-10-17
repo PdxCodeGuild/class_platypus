@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import MapType, Title
+
+admin.site.register(MapType)
+admin.site.register(Title)

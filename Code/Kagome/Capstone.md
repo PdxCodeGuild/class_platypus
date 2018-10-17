@@ -5,6 +5,12 @@ I am creating a scheduling app that will allow the user to enter days needed off
 
 ## Functionality
 The user will have a login screen that will take them to a monthly calendar. From there they can click on the day and request time off. All information will be saved in a database that management will have access to.
+Objects to include:
+- color coded blocks indicating days on and off
+- employee list
+- hours of operation
+- publish button for sending to employees
+- print function
 
 ## Data Model
 Stored in the backend will include user login/password and dates on the calendar user is requesting time off.
