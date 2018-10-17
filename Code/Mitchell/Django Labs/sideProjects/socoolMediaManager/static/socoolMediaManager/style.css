@@ -5,6 +5,8 @@ body {
     background: white url("images/background.jpg") no-repeat center center fixed;
     background-size: cover;
     font-family: 'Arapey', serif !important;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 #main_div {
     margin: 1%;
@@ -22,10 +24,11 @@ h1 {
     color: white;
 }
 #display_platforms {
-    margin: 3%;
+    margin: 1%;
+    width: 100%;
 }
 #single_platform {
-    padding: 5%;
+    padding: 15%;
 }
 .flex_column {
     display:flex;
