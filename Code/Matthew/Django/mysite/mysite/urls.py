@@ -9,4 +9,5 @@ urlpatterns = [
     path('todo/', include('todo.urls')),
     path('todoajax/', include('todoajax.urls')),
     path('users/', include('users.urls')),
+    path('library/', include('library.urls')),
 ]

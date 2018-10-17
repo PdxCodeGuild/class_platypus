@@ -45,7 +45,6 @@ def logout_view(request):
 def checkout(request, book_id):
     book = Book.objects.get(pk=book_id)
     if book.checked_out is True:
-        #say that is already checked out and ask if they are looking to check it in.
         return HttpResponse('That book is already checked out.')
     else:
         return render(request, 'library/detail.html', {'book': book})
@@ -62,17 +61,11 @@ def book_checkout(request, book_id):
         return render(request, 'library/index.html', {'books': books})
 
 
-def book_checkin(request, book_id):
-        book = Book.objects.get(pk=book_id)
-        book_id.checked_out = False
-        book.save()
-        return render(request, 'library/book_check_in.html', {'book': book})
-
-
-def checkin(request,book_id):
+def checkin(request, book_id):
     book = Book.objects.get(pk=book_id)
     if book.checked_out is True:
         book.checked_out = False
+        book.save()
         return render(request, 'library/book_check_in.html', {'book': book})
     else:
         return render(request, 'library/detail.html', {'book': book})

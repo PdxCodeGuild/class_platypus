@@ -7,18 +7,17 @@
     - kagomemiller@gmail.com
 - Indu Thekkemeppilly Sivakumar
     - induts@gmail.com
-- Skyler Parker
-    - me@skylerparker.com
-- Leanne Black
-    - leanne.black@cox.net
 - Colton Peterson
     - colton.peterson06@gmail.com
+    - capstone: https://github.com/ColtonJP/simply-politico
 - Cheryl Lewman
     - cheryllewman@gmail.com
+    - capstone: https://github.com/clewman/demograph
 - Mitchell Estes
     - mestes1530@gmail.com
 - Angie Bowmer
     - angelina.bowmer@gmail.com
+    - capstone: https://github.com/aceome/FamLeague
 
 
 

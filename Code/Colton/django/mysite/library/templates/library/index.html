@@ -51,8 +51,8 @@
         {% for book in books %}
         <tr>
             <td>
-            <a href="{%url 'library:checkout' book.id %}">  {{book.title}} /// {{book.author}} /// {{book.pub_date}}</a>
-            </td>
+            <a href="{%url 'library:checkout' book.id %}">  {{book.title}} /// {{book.author}} /// {{book.pub_date}} /// <a href="{%url 'library:checkin' book.id %}">Check In</a>
+        </td>
         </tr>
             {% endfor %}
     </table>
