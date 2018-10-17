@@ -5,6 +5,7 @@
     - al.burns.email@gmail.com
 - Kagome Miller
     - kagomemiller@gmail.com
+    - capstone: https://github.com/kagomesakura/capstone
 - Indu Thekkemeppilly Sivakumar
     - induts@gmail.com
 - Colton Peterson
