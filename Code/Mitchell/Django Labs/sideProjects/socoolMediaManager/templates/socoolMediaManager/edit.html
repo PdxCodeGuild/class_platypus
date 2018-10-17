@@ -98,8 +98,8 @@
                 {% for platform in platforms %}
                 <li>
                     <form action="{% url 'socoolMediaManager:deletePlatform' %}" method="post">
-                        <img src="{{platform.platform_type.icon.url}}" height="20px"/>
-                        <b><font color="white">{{platform.user.username}}</font></b>
+                        <img src="{{platform.platform_type.icon.url}}" height="30px"/>
+                        <b><font color="white">{{platform.username}}</font></b>
                         {% csrf_token %}
                         <input type="hidden" value="{{platform.id}}" name="id"/>
                         <button class="btn btn-light btn-sm" type="submit">❌</button>
@@ -109,5 +109,7 @@
             </ul>
         </div>
     </div>
+    <br>
+    <a class="btn btn-primary btn-lg btn-block" href="{% url 'socoolMediaManager:profile' %}" role="button">Done Editing Profile</a>
 </body>
 </html>
