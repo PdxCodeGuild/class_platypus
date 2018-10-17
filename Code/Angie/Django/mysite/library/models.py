@@ -20,3 +20,6 @@ class Book(models.Model):
 
     def is_checked_out(self):
         return self.checkout_name is None
+
+
+# class CheckSystem(models.Model):
