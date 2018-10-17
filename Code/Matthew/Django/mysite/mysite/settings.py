@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'todoajax',
     'census',
     'users',
+    'library',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'demograph.apps.DemographConfig',
     'charts.apps.ChartsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
