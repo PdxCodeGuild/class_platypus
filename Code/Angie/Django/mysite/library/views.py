@@ -28,10 +28,8 @@ def check_out(request):
 
 
 def check_in(request):
-    book_id = request.POST['book_id']
-    book = Book.objects.get(checkout_name=checkout_name)
-    book.
-
-
-
+    id = request.POST['id']
+    book = Book.objects.get(pk=id)
+    book.checkout_name = None
+    book.save()
     return HttpResponseRedirect(reverse('library:index'))
