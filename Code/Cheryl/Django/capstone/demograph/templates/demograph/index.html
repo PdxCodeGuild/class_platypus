@@ -14,17 +14,7 @@
 
 <body>
 <div class="container"> Say something clever...
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <!--<li><a href="/polls/{{ title.id }}/">{{ question.question_text }}</a></li>-->
-<li><a href="{% url 'demograph:detail' title.id %}"> {{ title.question_text }}</a></li>
 
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
 
 </div>
 
