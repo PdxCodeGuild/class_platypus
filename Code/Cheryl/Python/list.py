@@ -16,7 +16,7 @@ show_help()
 
 def add_to_list(item):
     shopping_list.append(item)
-    print(len(shopping_list))
+    print(f'Your shopping list has: {len(shopping_list)}  items.')
 
 
 def show_list():
