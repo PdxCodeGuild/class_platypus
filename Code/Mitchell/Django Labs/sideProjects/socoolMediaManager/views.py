@@ -21,9 +21,10 @@ def edit(request):
     return render(request, 'socoolMediaManager/edit.html', {'platforms': platforms, 'platform_types': platform_types})
 
 def addPlatform(request):
+    username_input = request.POST['username_input']
     link_input = request.POST['link_input']
     platform_type_id = request.POST['platform_type_id']
-    platform = Platform(user=request.user, link=link_input, platform_type_id=platform_type_id)
+    platform = Platform(username=username_input, link=link_input, platform_type_id=platform_type_id, user=request.user)
     platform.save()
     return HttpResponseRedirect(reverse('socoolMediaManager:edit'))
 
