@@ -35,6 +35,10 @@ h1 {
     flex-direction:column;
     text-align:center;
 }
+font {
+    text-align: center;
+    color: white;
+}
 footer {
     position: fixed;
     bottom: 0;
