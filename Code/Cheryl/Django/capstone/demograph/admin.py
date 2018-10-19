@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from .models import MapType, Title
+from .models import MapType
 
 admin.site.register(MapType)
-admin.site.register(Title)

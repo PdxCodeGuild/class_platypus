@@ -1,9 +1,0 @@
-<h1>{{ title.question_text }}</h1>
-
-<ul>
-{% for choice in title.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
-
-<a href="{% url 'demograph:detail' title.id %}">Vote again?</a>
