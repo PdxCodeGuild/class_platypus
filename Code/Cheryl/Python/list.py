@@ -13,7 +13,6 @@ def show_help():
 show_help()
 
 
-
 def add_to_list(item):
     shopping_list.append(item)
     print(f'Your shopping list has: {len(shopping_list)}  items.')
