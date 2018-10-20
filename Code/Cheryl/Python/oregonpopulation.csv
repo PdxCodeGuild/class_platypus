@@ -1,4 +1,3 @@
-,,,,,,,
 FIPS*,County name,RUC code,Pop. 1990,Pop. 2000,Pop. 2010,Pop. 2017,Change 2010-17
 41000,Oregon,,"2,842,337","3,421,524","3,831,072","4,093,465",6.8%
 41001,Baker County,7,"15,317","16,742","16,138","16,059",-0.5%
@@ -37,9 +36,3 @@ FIPS*,County name,RUC code,Pop. 1990,Pop. 2000,Pop. 2010,Pop. 2017,Change 2010-1
 41067,Washington County,1,"311,554","445,256","529,872","582,779",10.0%
 41069,Wheeler County,9,"1,396","1,551","1,439","1,344",-6.6%
 41071,Yamhill County,1,"65,551","84,975","99,190","105,035",5.9%
-,,,,,,,
-"Source: U.S. Census Bureau, 1990, 2000, and 2010 Censuses of Population (corrected), and 2016 County Total Population Estimates.
-
-1) The FIPS codes uniquely identify each county and are part of the Federal Information Processing Standards (FIPS) developed by the National Institute of Standards and Technology (NIST), U.S. Department of Commerce. For more information, see the NIST FIPS publication page.
-
-2) The 2013 rural-urban continuum codes classify metropolitan counties (codes 1 through 3) by size of the Metropolitan Statistical Area (MSA), and nonmetropolitan counties (codes 4 through 9) by degree of urbanization and proximity to metro areas. See rural-urban continuum codes for precise definitions of each code.",,,,,,,
