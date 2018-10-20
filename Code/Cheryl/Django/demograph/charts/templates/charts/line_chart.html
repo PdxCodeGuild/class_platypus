@@ -2,4 +2,23 @@
 
 {% block content %}
     <div>LINE CHART TEST</div>
+
+<div id="finalGraph" style="width:100%;"></div>
+<div>
+   <!--<h3>Graph Type</h3>-->
+      <ul id = "dropdown" class = "dropdown-content">
+         <li>Scatter</li>
+          <li class = "divider"></li>
+         <li>Line</li>
+          <li class = "divider"></li>
+         <li>Bar</a></li>
+         <li class = "divider"></li>
+         <li>Choropleth</li>
+      </ul>
+
+      <a class = "btn dropdown-button" href = "#" data-activates = "dropdown">Graph Type
+         <i class = "mdi-navigation-arrow-drop-down right"></i></a>
+</div>
+
+
 {% endblock %}
