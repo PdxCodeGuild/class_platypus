@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+
+</head>
+<body>
+ <div class="content container">
+            <img src="{% static "charts/images/cat.png" %}" alt="cat" />
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+</body>
+</html>
