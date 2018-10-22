@@ -8,6 +8,7 @@
     - capstone: https://github.com/kagomesakura/capstone
 - Indu Thekkemeppilly Sivakumar
     - induts@gmail.com
+    - capstone: https://github.com/induts/Capstone
 - Colton Peterson
     - colton.peterson06@gmail.com
     - capstone: https://github.com/ColtonJP/simply-politico
