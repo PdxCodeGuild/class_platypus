@@ -65,7 +65,7 @@ function myFunction(type, mode) {
             showlegend: true
         };
         Plotly.newPlot('finalGraph', data, layout, {displayModeBar: false});
-    } else if (type == 'pie') { //pie
+    } else if (type === 'pie') { //pie
         var data = [{
             values: [19, 26, 55],
             labels: ['Residential', 'Non-Residential', 'Utility'],

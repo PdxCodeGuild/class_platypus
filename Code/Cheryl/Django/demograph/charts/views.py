@@ -6,9 +6,9 @@ from .models import MapType
 
 
 def index(request):
-    return render(request, 'charts/line_chart.html', {})
+    return render(request, 'charts/graphs.html', {})
 
 
 
 def line_chart(request):
-    return render(request, 'charts/line_chart.html', {})
+    return render(request, 'charts/graphs.html', {})

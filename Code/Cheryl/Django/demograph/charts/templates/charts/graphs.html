@@ -1,10 +1,11 @@
 {% extends 'charts/base.html' %}
 
 {% block content %}
+
 <div>CHART TEST</div>
 <div>
 
-    <select id="chart_type_ddl" class="browser-default">
+    <select id="chart_type_ddl" class="browser-default ddMenus">
         <option  title='markers' value="scatter">Scatter</option>
         <option title='lines' value="line">Line</option>
         <option title='lines' value="bar">Bar</option>
@@ -15,7 +16,7 @@
 
 
 <div id="finalGraph"  style="width:100%;"></div>
-
+<div id="choroDiv" style="width:100%;"></div>
 
 
 {% endblock %}
