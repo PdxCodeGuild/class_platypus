@@ -2,20 +2,23 @@
 
 {% block content %}
 
-<div>CHART TEST</div>
-<div>
 
-    <select id="chart_type_ddl" class="browser-default ddMenus">
-        <option  title='markers' value="scatter">Scatter</option>
-        <option title='lines' value="line">Line</option>
-        <option title='lines' value="bar">Bar</option>
-        <option value="choropleth">Choropleth</option>
-        <option value="pie">Pie</option>
-    </select>
+<div class="d-flex flex-row bd-highlight">
+
+    <div class="p-2 bd-highlight">
+        <select id="chart_type_ddl" class="browser-default ddMenus">
+            <option title="title" value="title">Graph Types</option>
+            <option title='markers' value="scatter">Scatter</option>
+            <option title='lines' value="line">Line</option>
+            <option title='lines' value="bar">Bar</option>
+            <option value="choropleth">Choropleth</option>
+            <option value="pie">Pie</option>
+        </select>
+    </div>
+
 </div>
 
-
-<div id="finalGraph"  style="width:100%;"></div>
+<div id="finalGraph" style="width:100%;"></div>
 <div id="choroDiv" style="width:100%;"></div>
 
 

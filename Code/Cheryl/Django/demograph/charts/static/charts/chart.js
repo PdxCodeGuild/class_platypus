@@ -77,13 +77,12 @@ function myFunction(type, mode) {
         var data = [trace1, trace2];
 
         var layout = {
-            title: 'Hide the Modebar',
+            title: 'Title',
             showlegend: true
         };
     }
 
-//pie
-    else if (type == 'pie') {
+    else if (type == 'pie') { //pie
         var data = [{
             values: [19, 26, 55],
             labels: ['Residential', 'Non-Residential', 'Utility'],

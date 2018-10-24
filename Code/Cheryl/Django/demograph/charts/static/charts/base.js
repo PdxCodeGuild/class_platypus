@@ -1,3 +1,5 @@
+
+
 var html = '';
 var red;
 var green;
@@ -17,7 +19,7 @@ rgbColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
 html += '<div id="circle" style="background-color:' + rgbColor + '"></div>';
 }
 
-for (var i = 1; i <= 5; i += 1) {
+for (var i = 1; i <= 6; i += 1) {
     var divColors = colors();
 }
 
