@@ -3,11 +3,9 @@
 import requests
 import json
 
+#api key/token
 
-api = key=""
-# DO NOT COMMIT WITH KEY PLZ
-
-
+api_url_base = 'https://api.census.gov/data.json'
 
 def get_json(url):
     return json.loads(requests.get(url).text)
@@ -30,8 +28,8 @@ def get_data(title, datasets):
             print(values)
 
 
-datasets = get_json('https://api.census.gov/data.json')
-get_data('Vintage 2014 Population Estimates: County Total Population and Components of Change', datasets)
+datasets = get_json(api_url_base)
+get_data('County Total Population and Components of Change', datasets)
 
 
 
