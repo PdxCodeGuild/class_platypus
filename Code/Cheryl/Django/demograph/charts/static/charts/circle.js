@@ -1,5 +1,6 @@
 
-var html = '';
+
+    var html = '';
 var red;
 var green;
 var blue;
@@ -23,3 +24,4 @@ for (var i = 1; i <= 6; i += 1) {
 }
 
 document.write(html);
+

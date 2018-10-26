@@ -1,6 +1,10 @@
+/*Materialize dark grey #424242*/
+/*materialize light grey #e0e0e0*/
+/*materialize med grey #616161*/
+
 body {
-    background-color: #666;
-    color: #white;
+    background-color: white;
+    color: #424242;
     font-family: 'Roboto', sans-serif;
 }
 header {
@@ -14,21 +18,29 @@ nav {
 
 /**************************************DROP DOWNS***************************************/
 .ddMenus {
-    background-color: #666;
+    /*background-color: #666;*/
+    background-color:white;
     width: 25%;
     padding: 2%;
     margin-top: 1%;
     color: red !important;
 }
 
+.chartMenu {
+    background-color: #e0e0e0;
+}
+
 /*changes the color of the list contents*/
 ul.dropdown-content.select-dropdown li span {
-    color: pink;
+    color: #616161;
 }
 
 
 
 /**************************************EXTRA***************************************/
+.brand-logo {
+    margin-left: 4%;
+}
 #circle{
     width: 80px;
     height: 80px;
@@ -37,7 +49,6 @@ ul.dropdown-content.select-dropdown li span {
     text-align: center;
     margin: 5%;
 }
-
 
 
 /**************************************BOOTSTRAP NAVIGATION***************************************/
