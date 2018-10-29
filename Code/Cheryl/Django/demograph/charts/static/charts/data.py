@@ -9,7 +9,7 @@ def get_json(url):
 
 
 year = '/2015'
-variables = 'NAME,B17003_002E'
+variables = 'NAME,B19001_001E'
 geography = 'county:*'
 dataset_name = '/acs1'
 # url = 'https://api.census.gov/data/2014/pep/cochar6?get=SEX,STNAME,HISP,RACE6,CTYNAME,POP&for=county:*&DATE=7&AGEGRP=0'
@@ -29,5 +29,5 @@ for row_in in data_in:
     data_out.append(row_out)
 
 for row in data_out:
-    # print(row['STNAME'] + ' - ' + row['CTYNAME'] + ' - ' + row['POP'] + ' - ' + row['RACE6'])
-    print(f"{row['NAME']} total: {row['B17003_002E']}")
+    print(f"{row['NAME']} total: {row['B19001_001E']}")
+
