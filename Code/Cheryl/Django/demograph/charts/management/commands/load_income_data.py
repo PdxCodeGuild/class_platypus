@@ -12,18 +12,18 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-
-        year = '/2015'
+        # for year in [2015, 2016]
+        year = 2015
         variables = 'NAME,B17003_004E,B17003_005E,B17003_006E,B17003_007E,B17003_009E,B17003_010E,B17003_011E,B17003_012E,B17003_015E,B17003_016E,B17003_017E,B17003_018E,B17003_020E,B17003_021E,B17003_022E,B17003_023E'
         geography = 'county:*'
         dataset_name = '/acs1'
-        url = 'https://api.census.gov/data' + year + dataset_name + "?get=" + variables + '&for=' + geography
+        url = f'https://api.census.gov/data/{year}{dataset_name}?get={variables}&for={geography}'
 
         # print(url)
         # return
 
 
-        columns = [
+        subsets = [
             {'IncomeLevel': 'Below Poverty', 'Gender': 'Male', 'EducationLevel': 'Less than hs', 'column_name': 'B17003_004E'},
             {'IncomeLevel': 'Below Poverty', 'Gender': 'Male', 'EducationLevel': 'hs', 'column_name': 'B17003_005E'},
             {'IncomeLevel': 'Below Poverty', 'Gender': 'Male', 'EducationLevel': 'some college', 'column_name': 'B17003_006E'},
@@ -73,7 +73,16 @@ class Command(BaseCommand):
             # print(f"{row['NAME']} Men above poverty level with college per county: {row['B17003_018E']}")
             print(row)
 
-            education_level = EducationLevel.objects.get_or_create(name=row['name'])
+            for subset in subsets:
+                income_level = IncomeLevel.objects.get_or_create(name=subset['IncomeLevel'])
+                gender = Gender.objects.get_or_create(name=subset['Gender'])
+                education_level = EducationLevel.objects.get_or_create(name=subset['EducationLevel'])
+                county =
+                year =
+                population = int(row[subset['column_name']])
+                income_data = IncomeData(education_level=education_level[0], gender=gender[0], income_level=income_level[0], population=population)
+                income_data.save()
+
 
             #if education_level[1] == True:
             #    education_level[0].save()
