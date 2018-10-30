@@ -29,7 +29,30 @@ class Command(BaseCommand):
             {'IncomeLevel': 'Below Poverty', 'Gender': 'Male', 'EducationLevel': 'some college', 'column_name': 'B17003_006E'},
             {'IncomeLevel': 'Below Poverty', 'Gender': 'Male', 'EducationLevel': 'college',
              'column_name': 'B17003_007E'},
-            
+
+            {'IncomeLevel': 'Below Poverty', 'Gender': 'Female', 'EducationLevel': 'Less than hs',
+             'column_name': 'B17003_009E'},
+            {'IncomeLevel': 'Below Poverty', 'Gender': 'Female', 'EducationLevel': 'hs', 'column_name': 'B17003_010E'},
+            {'IncomeLevel': 'Below Poverty', 'Gender': 'Female', 'EducationLevel': 'some college',
+             'column_name': 'B17003_011E'},
+            {'IncomeLevel': 'Below Poverty', 'Gender': 'Female', 'EducationLevel': 'college',
+             'column_name': 'B17003_012E'},
+
+            {'IncomeLevel': 'At or Above Poverty', 'Gender': 'Male', 'EducationLevel': 'Less than hs',
+             'column_name': 'B17003_015E'},
+            {'IncomeLevel': 'At or Above Poverty', 'Gender': 'Male', 'EducationLevel': 'hs', 'column_name': 'B17003_016E'},
+            {'IncomeLevel': 'At or Above Poverty', 'Gender': 'Male', 'EducationLevel': 'some college',
+             'column_name': 'B17003_017E'},
+            {'IncomeLevel': 'At or Above Poverty', 'Gender': 'Male', 'EducationLevel': 'college',
+             'column_name': 'B17003_018E'},
+
+            {'IncomeLevel': 'Below Poverty', 'Gender': 'Female', 'EducationLevel': 'Less than hs',
+             'column_name': 'B17003_020E'},
+            {'IncomeLevel': 'Below Poverty', 'Gender': 'Female', 'EducationLevel': 'hs', 'column_name': 'B17003_021E'},
+            {'IncomeLevel': 'Below Poverty', 'Gender': 'Female', 'EducationLevel': 'some college',
+             'column_name': 'B17003_022E'},
+            {'IncomeLevel': 'Below Poverty', 'Gender': 'Female', 'EducationLevel': 'college',
+             'column_name': 'B17003_023E'},
 
         ]
 
