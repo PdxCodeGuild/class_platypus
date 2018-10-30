@@ -27,15 +27,30 @@ class IncomeLevel(models.Model):
         return self.name
 
 
+class State(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class County(models.Model):
+    state = models.ForeignKey(State, on_delete=models.PROTECT)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.state.name + ' - ' + self.name
+
+
 class IncomeData(models.Model):
     education_level = models.ForeignKey(EducationLevel, on_delete=models.CASCADE)
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
     income_level = models.ForeignKey(IncomeLevel, on_delete=models.CASCADE)
     population = models.IntegerField()
     year = models.IntegerField()
-    county = models.CharField(max_length=100)
+    county = models.ForeignKey(County, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.education_level.name + ' - ' + self.gender.name + ' - ' + self.income_level.name + ' - ' + str(self.population) + ' - ' + str(self.year)
+        return self.education_level.name + ' - ' + self.gender.name + ' - ' + self.income_level.name + ' - ' + str(self.population) + ' - ' + str(self.year) + ' - ' + self.county.state.name + ' - ' + self.county.name
 
 
