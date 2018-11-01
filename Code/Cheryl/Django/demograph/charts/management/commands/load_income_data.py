@@ -5,11 +5,7 @@ from charts.models import IncomeLevel, Gender, EducationLevel, IncomeData, State
 
 
 def get_json(url):
-    # print('loading ' + url + '...')
     return json.loads(requests.get(url).text)
-
-
-
 
 
 class Command(BaseCommand):

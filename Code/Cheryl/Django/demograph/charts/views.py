@@ -1,27 +1,18 @@
 
 from django.http import HttpResponse
-from django.shortcuts import render
-import requests
-
-
-
-# def index(request):
-#     return render(request, 'charts/graphs.html', {})
-#
-#
-#
-# def line_chart(request):
-#     return render(request, 'charts/graphs.html', {})
-
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, reverse
+from django.utils import timezone
+from .models import IncomeData, Gender, EducationLevel
 
 
 
 def index(request):
-    county = {}
-    if 'county:*' in request.GET:
-        county_ext = request.GET['county:*']
-        url = 'https://api.census.gov/data/2015/acs1?get=NAME,B17003_002E&for=' % county_ext
-        response = requests.get(url)
-        county = response.json()
-    return render(request, 'charts/graphs.html', {'county': county})
+    return render(request, 'charts/index.html', {})
 
+
+def getdata(request):
+    # items = IncomeData.objects.filter(year='2015', gender=Gender.objects.get(pk=2), education_level=EducationLevel.objects.get(pk=1))
+    items = IncomeData.objects.filter(year='2015')
+
+    return render(request, 'charts/graphs.html', {'items': items})
