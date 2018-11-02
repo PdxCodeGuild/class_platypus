@@ -51,3 +51,5 @@ class IncomeData(models.Model):
         return self.education_level.name + ' - ' + self.gender.name + ' - ' + self.income_level.name + ' - ' + str(self.population) + ' - ' + str(self.year) + ' - ' + self.county.state.name + ' - ' + self.county.name
 
 
+    def to_dictionary(self):
+        return {'education_level': self.education_level.name, 'gender': self.gender.name, 'population': self.population}

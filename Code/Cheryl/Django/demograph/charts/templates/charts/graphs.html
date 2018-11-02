@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col s2">
         <div class="input-field col s12 ddMenus chartMenu">
-            <select id="chart_type_ddl" >
+            <select id="chart_type_ddl">
                 <option>Graph Type</option>
                 <option title='markers' value="scatter">Scatter</option>
                 <option title='lines' value="line">Line</option>
@@ -19,10 +19,10 @@
     <div class="col s2">
         <div class="input-field col s12 ddMenus">
             <select id="gender">
-                <option>Gender</option>
-                <option title='' value="">Total</option>
-                <option title='' value="">Female</option>
-                <option title='' value="">Male</option>
+                <option value="">Any Gender</option>
+                {% for gender in genders %}
+                <option value="{{gender.id}}">{{gender.name}}</option>
+                {% endfor %}ß
 
             </select>
         </div>
@@ -31,11 +31,10 @@
     <div class="col s2">
         <div class="input-field col s12 ddMenus">
             <select id="year">
-                <option>Year</option>
-                <option title='' value="">2017</option>
-                <option title='' value="">2016</option>
-                <option title='' value="">2015</option>
-                <option title='' value="">2014</option>
+                <option value="">Any Year</option>
+                {% for year in years %}
+                <option value="{{year}}">{{year}}</option>
+                {% endfor %}
             </select>
         </div>
     </div>
@@ -44,8 +43,9 @@
         <div class="input-field col s12 ddMenus">
             <select id="income">
                 <option>Income</option>
-                <option title='' value="">Below Poverty</option>
-                <option title='' value="">Above Poverty</option>
+                {% for income_level in income_levels %}
+                <option value="{{income_level.id}}">{{income_level.name}}</option>
+                {% endfor %}
             </select>
         </div>
     </div>
@@ -53,11 +53,10 @@
         <div class="input-field col s12 ddMenus">
             <select id="education">
                 <option>Education</option>
-                <option title='' value="">No High School Diploma</option>
-                <option title='' value="">High School Diploma</option>
-                                <option title='' value="">Some College</option>
-                                <option title='' value="">Bachelor's Degree or Above</option>
 
+                {% for education_level in education_levels %}
+                <option value="{{education_level.id}}">{{education_level.name}}</option>
+                {% endfor %}
 
             </select>
         </div>
@@ -69,36 +68,48 @@
 <div id="choroDiv" style="width:100%;"></div>
 
 
-    <script>
-        let year_input = document.querySelector('#year')
-        let btn = document.querySelector('#btn')
-        let gender_input = document.querySelector('#gender')
-        let poverty_level = document.querySelector('#income')
-        let education_level = document.querySelector('#education')
-        // let population = document.querySelector('#population')
-        // let county = document.querySelector('#county')
+<script>
+    let year_input = document.querySelector('#year')
+    let gender_input = document.querySelector('#gender')
+    let income_level = document.querySelector('#income')
+    let education_level = document.querySelector('#education')
 
 
-        btn.onclick = function() {
-            let url = "{% url 'charts:get_data' %}"
+    function getData() {
+        let url = "{% url 'charts:get_data' %}"
 
-            // get the filter values from the drop-down lists
-            // put those filter values into the params of the axios get
+        let gender_id = gender_input.options[gender_input.selectedIndex].value
+        let education_level_id = education_level.options[education_level.selectedIndex].value
+        let year_id = year_input.options[year_input.selectedIndex].value
+        let income_level_id = income_level.options[income_level.selectedIndex].value
 
 
-            axios.get(url, {
-                params: {
-                    gender: 'Female'
-                }
-            })
+        // get the filter values from the drop-down lists
+        // put those filter values into the params of the axios get
+
+
+        axios.get(url, {
+            params: {
+                gender_id: gender_id,
+                education_level_id: education_level_id,
+                year: year_id,
+                income_level_id: income_level_id
+
+            }
+        })
             .then(function (response) {
                 console.log(response.data)
                 // updateList()
 
             })
+    }
 
-        }
-    </script>
+
+    gender_input.onchange = getData
+    income_level.onchange = getData
+    education_level.onchange = getData
+    year_input.onchange = getData
+</script>
 
 
 {% endblock %}

@@ -1,7 +1,11 @@
 /*Materialize dark grey #424242*/
 /*materialize light grey #e0e0e0*/
 /*materialize med grey #616161*/
-
+.test {
+    background-color: pink;
+    width: 200px;
+    height: 200px;
+}
 body {
     background-color: white;
     color: #424242;
