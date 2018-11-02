@@ -5,6 +5,6 @@ from . import views
 app_name = 'charts'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('getdata/', views.getdata, name='getdata'),
+    path('get_data/', views.get_data, name='get_data')
 
 ]
