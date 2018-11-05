@@ -6,9 +6,15 @@ import json
 from django.http import JsonResponse
 
 
-
-
 def index(request):
+    return render(request, 'charts/index.html', {})
+
+
+def about(request):
+    return render(request, 'charts/about.html', {})
+
+
+def graphs(request):
     # items = IncomeData.objects.filter(year='2015', gender=Gender.objects.get(pk=2), education_level=EducationLevel.objects.get(pk=1))
     items = IncomeData.objects.filter(year=2015)
     years = {income_datum.year for income_datum in IncomeData.objects.all()}
@@ -23,11 +29,11 @@ def index(request):
                                                   'genders': Gender.objects.all()})
 
 
-
 def get_data(request):
     gender_id = request.GET['gender_id']
     education_level_id = request.GET['education_level_id']
-    year = request.GET('year_id')
+    income_level_id = request.GET['income_level_id']
+    year = request.GET['year']
 
     items = IncomeData.objects.all()
     if gender_id != '':
@@ -35,14 +41,17 @@ def get_data(request):
     if year != '':
         items = items.filter(year=year)
     if income_level_id != '':
-        items = items.filter(income_level_id=education_level_id)
+        items = items.filter(income_level_id=income_level_id)
     if education_level_id != '':
-        items = items.filter(education_level_id=education_level_id)[:1000]
+        items = items.filter(education_level_id=education_level_id)
+
+    items = items[:1000]
 
     data = []
     for item in items:
          data.append(item.to_dictionary())
     return JsonResponse({'data': data})
+
 
 def gender(request):
     pass

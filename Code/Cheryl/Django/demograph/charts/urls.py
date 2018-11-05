@@ -4,7 +4,9 @@ from . import views
 
 app_name = 'charts'
 urlpatterns = [
+    path('graphs/', views.graphs, name='graphs'),
+    path('get_data/', views.get_data, name='get_data'),
     path('', views.index, name='index'),
-    path('get_data/', views.get_data, name='get_data')
+    path('charts/about/', views.about, name='about'),
 
 ]

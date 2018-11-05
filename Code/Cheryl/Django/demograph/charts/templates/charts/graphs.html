@@ -1,72 +1,74 @@
 {% extends 'charts/base.html' %}
 
 {% block content %}
-
-<div class="row">
-    <div class="col s2">
-        <div class="input-field col s12 ddMenus chartMenu">
-            <select id="chart_type_ddl">
-                <option>Graph Type</option>
-                <option title='markers' value="scatter">Scatter</option>
-                <option title='lines' value="line">Line</option>
-                <option title='lines' value="bar">Bar</option>
-                <option value="choropleth">Choropleth</option>
-                <option value="pie">Pie</option>
-            </select>
+<div class="chartContainer">
+    <div class="row">
+        <div class="col s2">
+            <div class="input-field  ddMenus chartMenu">
+                <select id="chart_type_ddl">
+                    <option>Graph Type</option>
+                    <option title='markers' value="scatter">Scatter</option>
+                    <option title='lines' value="line">Line</option>
+                    <option title='lines' value="bar">Bar</option>
+                    <option value="choropleth">Choropleth</option>
+                    <option value="pie">Pie</option>
+                </select>
+            </div>
         </div>
-    </div>
 
-    <div class="col s2">
-        <div class="input-field col s12 ddMenus">
-            <select id="gender">
-                <option value="">Any Gender</option>
-                {% for gender in genders %}
-                <option value="{{gender.id}}">{{gender.name}}</option>
-                {% endfor %}ß
+        <div class="col s2">
+            <div class="input-field ddMenus">
+                <select id="gender">
+                    <option value="">Any Gender</option>
+                    {% for gender in genders %}
+                    <option value="{{gender.id}}">{{gender.name}}</option>
+                    {% endfor %}ß
 
-            </select>
+                </select>
+            </div>
         </div>
-    </div>
 
-    <div class="col s2">
-        <div class="input-field col s12 ddMenus">
-            <select id="year">
-                <option value="">Any Year</option>
-                {% for year in years %}
-                <option value="{{year}}">{{year}}</option>
-                {% endfor %}
-            </select>
+        <div class="col s2">
+            <div class="input-field ddMenus">
+                <select id="year">
+                    <option value="">Any Year</option>
+                    {% for year in years %}
+                    <option value="{{year}}">{{year}}</option>
+                    {% endfor %}
+                </select>
+            </div>
         </div>
-    </div>
 
-    <div class="col s2">
-        <div class="input-field col s12 ddMenus">
-            <select id="income">
-                <option>Income</option>
-                {% for income_level in income_levels %}
-                <option value="{{income_level.id}}">{{income_level.name}}</option>
-                {% endfor %}
-            </select>
+        <div class="col s3">
+            <div class="input-field  ddMenus">
+                <select id="income">
+                    <option value="">Any Income Level</option>
+                    {% for income_level in income_levels %}
+                    <option value="{{income_level.id}}">{{income_level.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="col s2">
-        <div class="input-field col s12 ddMenus">
-            <select id="education">
-                <option>Education</option>
+        <div class="col s3">
+            <div class="input-field  ddMenus">
+                <select id="education">
+                    <option value="">Any Education</option>
+                    {% for education_level in education_levels %}
+                    <option value="{{education_level.id}}">{{education_level.name}}</option>
+                    {% endfor %}
 
-                {% for education_level in education_levels %}
-                <option value="{{education_level.id}}">{{education_level.name}}</option>
-                {% endfor %}
-
-            </select>
+                </select>
+            </div>
         </div>
-    </div>
 
+    </div>
+    <iframe src="https://plot.ly/~cheryllewman/0">
+        <p>Your browser does not support iframes.</p>
+    </iframe>
+
+    <!--<div id="finalGraph" style="width:100%;"></div>-->
+    <!--<div id="choroDiv" style="width:100%;"></div>-->
 </div>
-
-<div id="finalGraph" style="width:100%;"></div>
-<div id="choroDiv" style="width:100%;"></div>
-
 
 <script>
     let year_input = document.querySelector('#year')
@@ -83,18 +85,12 @@
         let year_id = year_input.options[year_input.selectedIndex].value
         let income_level_id = income_level.options[income_level.selectedIndex].value
 
-
-        // get the filter values from the drop-down lists
-        // put those filter values into the params of the axios get
-
-
         axios.get(url, {
             params: {
                 gender_id: gender_id,
                 education_level_id: education_level_id,
                 year: year_id,
                 income_level_id: income_level_id
-
             }
         })
             .then(function (response) {
@@ -104,13 +100,11 @@
             })
     }
 
-
     gender_input.onchange = getData
     income_level.onchange = getData
     education_level.onchange = getData
     year_input.onchange = getData
 </script>
-
 
 {% endblock %}
 

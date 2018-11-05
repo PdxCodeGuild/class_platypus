@@ -22,7 +22,7 @@ class Command(BaseCommand):
             url = f'https://api.census.gov/data/{year}{dataset_name}?get={variables}&for={geography}'
             urls.append((year, url))
             # print(url)
-        # return
+            # return
 
         for year in range(2016, 2018):
             variables = 'NAME,B17003_004E,B17003_005E,B17003_006E,B17003_007E,B17003_009E,B17003_010E,B17003_011E,B17003_012E,B17003_015E,B17003_016E,B17003_017E,B17003_018E,B17003_020E,B17003_021E,B17003_022E,B17003_023E'

@@ -13,6 +13,7 @@ chart_type_ddl.onchange = function () {
 }
 
 
+
 function myFunction(type, mode) {
 
     if (type === 'choropleth') {
@@ -59,15 +60,12 @@ console.log(data.locations);
       Plotly.plot(finalGraph, data, layout, {showLink: false});
   });
 
-
-
-
 }
     else if (type == 'bar' || type == 'line' || type == 'scatter') {
         trace1 = {
             type: type,
-            x: [1, 2, 3, 4],
-            y: [10, 15, 13, 17],
+            x: x, //x is gender
+            y: y, //y is income level
             mode: mode,
             name: 'Red',
             line: {
@@ -79,8 +77,8 @@ console.log(data.locations);
 
         trace2 = {
             type: type,
-            x: [1, 2, 3, 4],
-            y: [12, 9, 15, 12],
+            x: x,
+            y: y,
             mode: mode,
             name: 'Blue',
             line: {
@@ -113,11 +111,4 @@ console.log(data.locations);
 }
 
 
-
-
-// to make it editable with plotly on their site, always shows
-// var layout = {
-//     title: 'Always Display the Modebar',
-//     showlegend: false};
-// Plotly.newPlot('myDiv', data, layout, {displayModeBar: true});
 
