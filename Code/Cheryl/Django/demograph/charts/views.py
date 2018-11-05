@@ -53,7 +53,32 @@ def get_data(request):
     return JsonResponse({'data': data})
 
 
-def gender(request):
-    pass
+def get_plotly_url(request):
+    gender_id = request.GET['gender_id']
+    education_level_id = request.GET['education_level_id']
+    income_level_id = request.GET['income_level_id']
+    year = request.GET['year']
+
+    items = IncomeData.objects.all()
+    if gender_id != '':
+        items = items.filter(gender_id=gender_id)
+    if year != '':
+        items = items.filter(year=year)
+    if income_level_id != '':
+        items = items.filter(income_level_id=income_level_id)
+    if education_level_id != '':
+        items = items.filter(education_level_id=education_level_id)
+
+    items = items[:1000]
+
+    data = []
+    for item in items:
+         data.append(item.to_dictionary())
+    return HttpResponse({'data': data})
+
+
+
+
+
 
 

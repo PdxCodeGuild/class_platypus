@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>Demograph</title>
     <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}/favicon.ico"/>
+
+    <!--materialize-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -29,13 +32,19 @@
     <nav>
         <div class="nav-wrapper grey darken-3">
             <a href="#" class="brand-logo">Demograph</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
                 <li><a href="{% url 'charts:index'  %}">Home</a></li>
                 <li><a href="{% url 'charts:graphs'  %}">Graph</a></li>
                 <li><a href="{% url 'charts:about'  %}">About</a></li>
             </ul>
         </div>
     </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="{% url 'charts:index'  %}">Home</a></li>
+        <li><a href="{% url 'charts:graphs'  %}">Graph</a></li>
+        <li><a href="{% url 'charts:about'  %}">About</a></li>
+    </ul>
 </header>
 
 <!--<p class="flow-text">test for mobile</p>-->
@@ -55,13 +64,11 @@
 <!--materialize-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<!--<script src="{% static 'charts/chart.js' %}"></script>-->
+<script src="{% static 'charts/chart.js' %}"></script>
 <script src="{% static 'charts/choropleth.js' %}"></script>
-
 
 <script src="{% static 'charts/base.js' %}"></script>
 <script src="{% static 'charts/userOption1.js' %}"></script>
-<!--<script src="{% static 'charts/circle.js' %}"></script>-->
 </body>
 
 </html>

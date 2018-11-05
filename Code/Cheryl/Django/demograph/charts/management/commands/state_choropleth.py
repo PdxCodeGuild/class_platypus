@@ -2,12 +2,20 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly
 import pandas as pd
-plotly.tools.set_credentials_file(username='cheryllewman', api_key='FHe2FrQ6UQXs6hvv8StD')
+import resource
+plotly.tools.set_credentials_file(username='cheryllewman', api_key='')
 
 # Create random data with numpy
 import numpy as np
 
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
+#import requests
+
+
+df = pd.read_csv('2011_us_ag_exports.csv')
+# df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
+# df = pd.read_csv(requests.get('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv').text)
+
+print('!!!!!!!')
 
 for col in df.columns:
     df[col] = df[col].astype(str)
@@ -47,4 +55,7 @@ layout = dict(
 )
 
 fig = dict(data=data, layout=layout)
-py.iplot(fig, filename='d3-cloropleth-map')
+url = py.plot(fig, filename='d3-cloropleth-map')
+print(url)
+
+
