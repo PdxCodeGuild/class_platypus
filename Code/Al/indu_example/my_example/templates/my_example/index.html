@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    </head>
+    <body>
+		<select id='select_color'>
+		  {% for color in colors %}	
+		    <option value="{{color.id}}">{{color.name}}</option>
+		  {% endfor %}
+		</select>
+		<select id='select_show'>
+		  {% for show in shows %}	
+		    <option value="{{show.id}}">{{show.name}}</option>
+		  {% endfor %}
+		</select>
+        <button id="btn">add</button>
+
+		<ul id='active_people'>
+		</ul>
+        <script>
+            let active_people = document.querySelector('#active_people')
+            let select_color = document.querySelector('#select_color')
+            let select_show = document.querySelector('#select_show')
+            let btn = document.querySelector('#btn')
+			let out_color = select_color.options[select_color.selectedIndex].value
+			let out_show = select_show.options[select_show.selectedIndex].value
+
+            btn.onclick = function() {
+				let out_color = select_color.options[select_color.selectedIndex].value
+				let out_show = select_show.options[select_show.selectedIndex].value
+                let url = "{% url 'my_example:json_post' %}";
+                let csrf_token = '{{ csrf_token }}';
+                axios.post(url, {
+                    color: out_color,
+					show: out_show,
+                }, {
+                    headers: { 'X-CSRFToken': csrf_token }
+                })
+                .then(function (response) {
+					console.log(response)
+
+                })
+            }
+        </script>
+    </body>
+</html>
