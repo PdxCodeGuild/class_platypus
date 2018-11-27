@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hacker</title>
+    <style>
+        #hacker {
+            width: 300px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+    <input type="text" onkeydown="hacker()">
+    <div id="hacker"></div>
+
+</div>
+<script>
+
+
+    let str = "/* requires profile list write lock held */\\n\" +\n" +
+        "            \"void __aa_proxy_redirect(struct aa_label *orig, struct aa_label *new)\\n\" +\n" +
+        "            \"{\\n\" +\n" +
+        "            \"\\tstruct aa_label *tmp;\\n\" +\n" +
+        "            \"\\n\" +\n" +
+        "            \"\\tAA_BUG(!orig);\\n\" +\n" +
+        "            \"\\tAA_BUG(!new);\\n\" +\n" +
+        "            \"\\tlockdep_assert_held_exclusive(&labels_set(orig)->lock);\\n\" +\n" +
+        "            \"\\n\" +\n" +
+        "            \"\\ttmp = rcu_dereference_protected(orig->proxy->label,\\n\" +\n" +
+        "            \"\\t\\t\\t\\t\\t&labels_ns(orig)->lock);\\n\" +\n" +
+        "            \"\\trcu_assign_pointer(orig->proxy->label, aa_get_label(new));\\n\" +\n" +
+        "            \"\\torig->flags |= FLAG_STALE;\\n\" +\n" +
+        "            \"\\taa_put_label(tmp);\\n\" +";
+
+    let i = 0
+    function hacker() {
+        i++
+        let res = str.substr(0, i);
+        document.getElementById("hacker").innerHTML = res;
+    }
+
+
+</script>
+</body>
+</html>

@@ -38,14 +38,14 @@ class Command(BaseCommand):
 
                 # get or create if it doesn't exist
                 state_name = datum['STNAME']
-                if State.objects.filter(name=state_name).count() == 0:
+                if not State.objects.filter(name=state_name).exists():
                     state = State(name=state_name)
                     state.save()
                 else:
                     state = State.objects.get(name=state_name)
 
                 county_name = datum['CTYNAME']
-                if County.objects.filter(name=county_name).count() == 0:
+                if not County.objects.filter(name=county_name, state_id=state.id).exists():
                     county = County(name=county_name, state=state)
                     county.save()
                 else:

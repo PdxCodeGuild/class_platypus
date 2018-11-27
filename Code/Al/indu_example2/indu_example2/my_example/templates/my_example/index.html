@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+          <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+    <body>
+        <select id='select_grade'>
+          {% for grade in grades %}
+            <option value="{{grade.id}}">{{grade.name}}</option>
+          {% endfor %}
+        </select>
+        <button id="btn">select</button>
+
+		<div id="myDiv">
+		</div>
+        <script>
+            let select_grade = document.querySelector('#select_grade')
+            let btn = document.querySelector('#btn')
+            btn.onclick = function() {
+                let out_grade = select_grade.options[select_grade.selectedIndex].value
+                let url = "{% url 'my_example:json_get' %}";
+                let csrf_token = '{{ csrf_token }}';
+                axios.get(url, {
+                    params: {grade: out_grade}
+                }, {
+                    headers: { 'X-CSRFToken': csrf_token }
+                })
+                .then(function (response) {
+					var data = []
+					
+					for (let [key, value] of Object.entries(response.data.grades)) {
+					    console.log(key, value);
+						var my_data = {
+							x: [],
+							y: [],
+						    mode: 'markers',
+						    type: 'scatter',
+						    name: key,
+						    text: [],
+						    marker: { size: 12 }
+						}
+						for (j=0; j<value.length; j++) {
+						  my_data.x.push(value[j].cards)
+						  my_data.y.push(value[j].friends)
+						  my_data.text.push(value[j].name)
+						};
+					data.push(my_data)
+					};
+					console.log(my_data)
+					var layout = {
+  xaxis: {
+    range: [0, 100]
+  },
+  yaxis: {
+    range: [0, 100]
+  },
+  title:'Data Labels Hover'
+};
+
+Plotly.newPlot('myDiv', data, layout);
+
+					
+					})};
+
+					
+
+        </script>
+    </body>
+</html>

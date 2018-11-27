@@ -37,7 +37,7 @@ def deletePlatform(request):
 def register_user(request):
     username = request.POST['username']
     password = request.POST['password']
-    user = User.objects.create_user(username, password)
+    user = User.objects.create_user(username, '', password)
     login(request, user)
     return HttpResponseRedirect(reverse('socoolMediaManager:profile'))
 

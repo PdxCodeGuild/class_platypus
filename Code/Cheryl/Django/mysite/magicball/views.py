@@ -15,7 +15,7 @@ def index(request):
 
     return render(request, 'magicball/index.html', {})
 
-    #
+
     # if request.method == 'POST':
     #     computer_choice = random.choice(magicball)
     #     oracle_record = OracleRecord(computer_choice=computer_choice)
