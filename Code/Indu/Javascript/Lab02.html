@@ -8,12 +8,23 @@
 <body>
 <p>This website will generate a password </p>
 <script>
+    <!--function random_element(array) {-->
+                <!--let random_index = Math.floor(Math.random()*array.length);-->
+                <!--return array[random_index];-->
+    <!--}-->
+
     var length = prompt('please enter the length of password');
-    // charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    //     passWord = "";
-    // for (var i = 0, n = charset.length; i < length; ++i) {
-    //     passWord += charset.charAt(Math.floor(Math.random() * n));
-    // alert(passWord)
+    length= parseInt(length)
+    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    password = '';
+    for (let i=0; i<length; ++i){
+        let random_index = Math.floor(Math.random()*charset.length);
+        password += charset[random_index];
+        <!--password += random_element(charset);-->
+    }
+    alert(password);
+
+
     </script>
 
 </body>
